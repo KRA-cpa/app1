@@ -110,148 +110,182 @@ app.use(cors());
 app.use(express.json());
 const upload = multer({ dest: 'uploads/' });
 
+// --- REPLACE your existing '/api/upload-csv' route with THIS ---
+
+// In your server.cjs file...
+
+// (Keep your existing requires for express, multer, csv-parser, fs, path, and your db connection)
+const express = require('express');
+const multer = require('multer');
+const csv = require('csv-parser');
+const fs = require('fs');
+const path = require('path');
+const db = require('./db'); // Assuming your db connection is here
+const logger = require('./logger'); // Assuming your logger is here
+
+const app = express();
+const upload = multer({ dest: 'uploads/' });
+
+// ... (keep all your other app.use and app.get routes) ...
+
+
+// --- REPLACE your existing '/api/upload-csv' route with THIS ---
 app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
-  // const user = req.user;
-  const user = { name: 'defaultUserPositional5Col' }; // <<<< REPLACE with actual user identification
+    const filePath = req.file.path;
+    const { uploadOption, templateType } = req.body;
 
-  if (!req.file) {
-    return res.status(400).json({ message: 'No CSV file uploaded.' });
-  }
-  const filePath = req.file.path;
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded.' });
+    }
 
-  let projectPhaseCounts = {};
-  let totalErrors = 0;
-  let totalProcessed = 0;
-  let headerSkipped = false; // Flag to track if header has been skipped
+    // --- Reusable validation function ---
+    const validateRow = async (row, rowIndex) => {
+        const project = row[0];
+        const phasecode = row[1];
+        const year = parseInt(row[2], 10);
 
-// <<<< Main try block STARTS here >>>>
-try {
-  const stream = fs.createReadStream(filePath)
-      .pipe(csv({
-          headers: false, // Treat rows as arrays
-          // skipLines: 1 // Alternative if you prefer skipping here
-      }));
+        if (!project || !phasecode) {
+            return { isValid: false, error: `Row ${rowIndex + 1}: Project and Phasecode cannot be empty.` };
+        }
+        if (isNaN(year) || year < 2011) {
+            return { isValid: false, error: `Row ${rowIndex + 1}: Invalid or missing Year (must be 2011 or later).` };
+        }
 
-  // <<<< 'for await...of' loop STARTS here >>>>
-  for await (const rowArray of stream) {
-      // --- Skip the Header Row ---
-      if (!headerSkipped) {
-          headerSkipped = true;
-          logger.info('Skipping assumed header row:', rowArray);
-          continue;
-      }
-      // --------------------------
+        try {
+            const [results] = await db.promise().query(
+                'SELECT 1 FROM `re.project_phase_validation` WHERE project = ? AND phasecode = ?',
+                [project, phasecode]
+            );
+            if (results.length === 0) {
+                 return { isValid: false, error: `Row ${rowIndex + 1}: Project/Phasecode combination not found.` };
+            }
+        } catch (dbError) {
+            logger.error('Database validation error:', dbError);
+            return { isValid: false, error: `Row ${rowIndex + 1}: Database error during validation.` };
+        }
+        
+        return { isValid: true, error: null };
+    };
 
-      totalProcessed++;
+    const results = [];
+    const errors = [];
+    const recordsToInsert = [];
+    let rowCounter = 0;
 
-      // --- Access data by INDEX (0 to 4) ---
-      const project = rowArray[0]?.trim();
-      const phasecode = rowArray[1]?.trim();
-      const year = rowArray[2]?.trim();
-      const month = rowArray[3]?.trim();
-      const value = rowArray[4]?.trim();
+    const fileStream = fs.createReadStream(filePath);
 
-      // --- Validate Data ---
-      const monthNum = parseInt(month, 10);
-      const yearNum = parseInt(year, 10);
-      const valueNum = parseFloat(value);
+    // Process the CSV
+    fileStream
+        .pipe(csv({ headers: false }))
+        .on('data', async (row) => {
+            fileStream.pause(); // Pause stream to wait for async validation
+            
+            // --- FIX: Skip the header row (the first row) ---
+            if (rowCounter === 0) {
+                rowCounter++;
+                fileStream.resume();
+                return;
+            }
 
-      if (project == null || phasecode == null || year == null || month == null || value == null ||
-          project === '' || phasecode === '' ||
-          isNaN(yearNum) || isNaN(monthNum) || monthNum < 1 || monthNum > 12 ||
-          isNaN(valueNum) || valueNum < 0 || valueNum > 100)
-      {
-          logger.warn(`Skipping invalid row (${totalProcessed}) - Failed Validation (Positional 5-Col):`, rowArray);
-          totalErrors++;
-          continue; // Skip this row
-      }
+            const rowIndex = rowCounter++;
+            const validationResult = await validateRow(row, rowIndex);
 
-      // --- Database Interaction for this specific row ---
-      // <<<< Inner try block for DB STARTS here >>>>
-      try {
-          // Use 'pool' (your actual variable)
-          const connection = await pool.getConnection();
-          // <<<< Innermost try block for DB operations STARTS here >>>>
-          try {
-              const [existingRows] = await connection.execute(
-                  'SELECT ID FROM re.pocpermonth WHERE project = ? AND phasecode = ? AND year = ? AND month = ?',
-                  [project, phasecode, yearNum, monthNum]
-              );
+            if (!validationResult.isValid) {
+                errors.push(validationResult.error);
+                fileStream.resume();
+                return;
+            }
 
-              const compositeKey = `${project}|${phasecode}`;
-              projectPhaseCounts[compositeKey] = projectPhaseCounts[compositeKey] || { project: project, phasecode: phasecode, inserted: 0, updated: 0 };
+            const project = row[0];
+            const phasecode = row[1];
+            const year = parseInt(row[2], 10);
+            
+            if (uploadOption === 'poc' && templateType === 'short') {
+                const pocValue = row[3]; // Column D
+                if (pocValue !== null && pocValue.trim() !== '') {
+                    // For short template, assume month is 1, or adjust as needed
+                    recordsToInsert.push([project, phasecode, year, 1, pocValue]); 
+                } else {
+                    errors.push(`Row ${rowIndex + 1}: No POC value found in short template.`);
+                }
+            } else if (uploadOption === 'poc' && templateType === 'long') {
+                let hasMonthData = false;
+                for (let i = 0; i < 12; i++) {
+                    const month = i + 1;
+                    const pocValue = row[i + 3]; // Columns D-O are indices 3-14
+                    if (pocValue !== null && pocValue.trim() !== '') {
+                        hasMonthData = true;
+                        recordsToInsert.push([project, phasecode, year, month, pocValue]);
+                    }
+                }
+                if (!hasMonthData) {
+                    errors.push(`Row ${rowIndex + 1}: No POC data found in any month column for long template.`);
+                }
+            }
+            fileStream.resume();
+        })
+        .on('end', async () => {
+            fs.unlinkSync(filePath); // Clean up uploaded file
 
-              if (existingRows.length > 0) {
-                  // UPDATE logic
-                  const existingId = existingRows[0].ID;
-                  await connection.execute(
-                      'UPDATE re.pocpermonth SET value = ?, userM = ? WHERE ID = ?',
-                      [valueNum, user.name, existingId]
-                  );
-                  logger.info(`Updated row for ID: ${existingId}`);
-                  projectPhaseCounts[compositeKey].updated++;
-              } else {
-                  // INSERT logic
-                  const [insertResult] = await connection.execute(
-                      'INSERT INTO re.pocpermonth (project, phasecode, year, month, value, userC, userM) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                      [project, phasecode, yearNum, monthNum, valueNum, user.name, user.name]
-                  );
-                  logger.info(`Inserted new row with ID: ${insertResult.insertId}`);
-                  projectPhaseCounts[compositeKey].inserted++;
-              }
-          // <<<< Innermost try block for DB operations ENDS here >>>>
-          } finally {
-              // Ensure connection is always released
-              if (connection) connection.release();
-          }
-          // <<<< Innermost try/finally ENDS here >>>>
+            const processedRowCount = rowCounter > 0 ? rowCounter -1 : 0;
 
-      // <<<< Inner catch block for DB STARTS here >>>>
-      } catch (dbError) {
-          logger.error(`Database error for row (${totalProcessed}) (Positional 5-Col):`, rowArray, dbError);
-          totalErrors++;
-      }
-      // <<<< Inner try/catch block for DB ENDS here >>>>
+            if (recordsToInsert.length === 0) {
+                return res.status(400).json({
+                    message: `Upload finished. No valid data found to process. ${errors.length > 0 ? 'See errors below.' : ''}`,
+                    totalRowsProcessed: processedRowCount,
+                    totalInserted: 0,
+                    totalUpdated: 0,
+                    totalErrors: errors.length,
+                    summary: [],
+                    errors: errors 
+                });
+            }
 
-  } // <<<< 'for await...of' loop ENDS here >>>>
+            const query = 'INSERT INTO pocpermonth (project, phasecode, year, month, value) VALUES ? ON DUPLICATE KEY UPDATE value = VALUES(value)';
 
-  // --- Format and Send SUCCESS Response (AFTER loop, but INSIDE main try) ---
-  const summaryArray = Object.values(projectPhaseCounts);
-  const totalInserted = summaryArray.reduce((sum, item) => sum + item.inserted, 0);
-  const totalUpdated = summaryArray.reduce((sum, item) => sum + item.updated, 0);
+            try {
+                const [result] = await db.promise().query(query, [recordsToInsert]);
+                res.status(200).json({
+                    message: 'CSV processed successfully.',
+                    totalRowsProcessed: processedRowCount,
+                    totalInserted: result.affectedRows - result.warningStatus,
+                    totalUpdated: result.warningStatus,
+                    totalErrors: errors.length,
+                    summary: [], // This can be enhanced later if needed
+                    errors: errors
+                });
+            } catch (dbError) {
+                logger.error('Bulk insert failed:', dbError);
+                res.status(500).json({ message: 'Failed to save data to the database.', error: dbError.message });
+            }
+        })
+        .on('error', (error) => {
+            fs.unlinkSync(filePath);
+            logger.error('CSV parsing error:', error);
+            res.status(500).json({ message: 'Error parsing CSV file.' });
+        });
+});
 
-  const responsePayload = {
-      message: "CSV processing complete (positional, 5 columns).",
-      summary: summaryArray,
-      totalInserted: totalInserted,
-      totalUpdated: totalUpdated,
-      totalErrors: totalErrors,
-      totalRowsProcessed: totalProcessed
-  };
-  logger.info("Sending success response (positional, 5 columns):", responsePayload);
-  res.status(200).json(responsePayload);
-
-// <<<< Main try block ENDS here >>>>
-} catch (error) { // A
-  // <<<< Main catch block STARTS here (Catches stream/parsing errors) >>>>
-  logger.error('Error processing CSV file (positional, 5 columns):', error);
-  if (!res.headersSent) { // Avoid sending multiple responses
-      res.status(500).json({ message: 'Error processing CSV file.', error: error.message });
-  }
-// <<<< Main catch block ENDS here >>>>
-} finally {
-  // <<<< Main finally block STARTS here (Always runs for cleanup) >>>>
-  fs.unlink(filePath, (err) => { // Delete the temporary file
-      if (err) logger.error('Error deleting temporary upload file:', filePath, err);
-  });
-} // <<<< Main finally block ENDS here >>>>
-
-}); // <<<< Route handler ENDS here >>>>
- // End of stream processing loop
-
+// api/upload-csv ends here //
  
 // Data Display
 // --- MODIFY your existing GET /api/pocdata route in server.cjs ---
+
+// --- NEW: Add this endpoint to serve data for the report tab ---
+app.get('/api/poc-data', async (req, res) => {
+  try {
+    // Query the database to get all data, ordering it for consistency
+    const [rows] = await db.promise().query(
+      'SELECT * FROM pocpermonth ORDER BY project, phasecode, year, month'
+    );
+    // Send the data back as a JSON response
+    res.json(rows);
+  } catch (error) {
+    logger.error('Error fetching POC data:', error);
+    res.status(500).json({ message: 'Failed to fetch data from database.' });
+  }
+});
+
 
 app.get('/api/pocdata', async (req, res) => {
   // Extract query parameters

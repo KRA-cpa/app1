@@ -761,3 +761,415 @@
 2025-06-12T13:38:36.188Z info: [Frontend] DB status fetch completed with status: 200
 2025-06-12T13:38:36.189Z info: [Frontend] DB status response parsed
 2025-06-12T13:38:36.189Z info: [Frontend] Setting DB status to connected
+2025-06-12T14:21:19.925Z info: [Frontend] CSV file selected: POClong.csv
+2025-06-12T14:21:22.857Z info: [Frontend] Starting CSV upload: POClong.csv
+2025-06-12 22:21:23 info: Skipping assumed header row:
+2025-06-12 22:21:23 warn: Skipping invalid row (1) - Failed Validation (Positional 5-Col):
+2025-06-12 22:21:23 info: CSV processing complete (positional, 5 columns).
+2025-06-12T14:21:23.223Z info: [Frontend] CSV upload successful: POClong.csv
+2025-06-12T14:23:27.120Z info: [Frontend] Fetching filter options
+2025-06-12T14:23:27.122Z info: [Frontend] Fetching data
+2025-06-12T14:23:27.123Z info: [Frontend] Fetching filter options
+2025-06-12T14:23:27.124Z info: [Frontend] Fetching data
+2025-06-12 22:23:27 info: Received request for /api/pocdata/options
+2025-06-12 22:23:27 info: Received request for /api/pocdata with filters:
+2025-06-12 22:23:27 info: Executing SQL:
+2025-06-12 22:23:27 info: With Params:
+2025-06-12 22:23:27 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:23:27 info: Releasing database connection for /api/pocdata
+2025-06-12 22:23:27 info: Received request for /api/pocdata with filters:
+2025-06-12 22:23:27 info: Executing SQL:
+2025-06-12 22:23:27 info: With Params:
+2025-06-12T14:23:27.467Z info: [Frontend] Data received from backend
+2025-06-12 22:23:27 info: Received request for /api/pocdata/options
+2025-06-12T14:23:27.481Z info: [Frontend] Received filter options
+2025-06-12 22:23:27 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:23:27 info: Releasing database connection for /api/pocdata
+2025-06-12T14:23:27.819Z info: [Frontend] Data received from backend
+2025-06-12T14:23:27.831Z info: [Frontend] Received filter options
+2025-06-12T14:23:34.089Z info: [Frontend] Filter changed - Year: 2024
+2025-06-12T14:23:34.129Z info: [Frontend] Fetching data
+2025-06-12 22:23:34 info: Received request for /api/pocdata with filters:
+2025-06-12 22:23:34 info: Executing SQL:
+2025-06-12 22:23:34 info: With Params:
+2025-06-12 22:23:34 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:23:34 info: Releasing database connection for /api/pocdata
+2025-06-12T14:23:34.475Z info: [Frontend] Data received from backend
+2025-06-12T14:23:36.146Z info: [Frontend] Filter changed - Project: B40
+2025-06-12 22:23:36 info: Received request for /api/pocdata with filters:
+2025-06-12 22:23:36 info: Executing SQL:
+2025-06-12 22:23:36 info: With Params:
+2025-06-12T14:23:36.152Z info: [Frontend] Fetching data
+2025-06-12 22:23:36 info: Fetched 1 rows from pocpermonth.
+2025-06-12 22:23:36 info: Releasing database connection for /api/pocdata
+2025-06-12T14:23:36.572Z info: [Frontend] Data received from backend
+2025-06-12T14:23:38.623Z info: [Frontend] Checking DB connection status
+2025-06-12 22:23:38 info: Received request for /api/db-status
+2025-06-12 22:23:38 info: DB status check successful.
+2025-06-12T14:23:38.625Z info: [Frontend] Checking DB connection status
+2025-06-12 22:23:38 info: Received request for /api/db-status
+2025-06-12 22:23:38 info: DB status check successful.
+2025-06-12T14:23:38.985Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T14:23:38.990Z info: [Frontend] DB status response parsed
+2025-06-12T14:23:38.992Z info: [Frontend] Setting DB status to connected
+2025-06-12T14:23:39.004Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T14:23:39.013Z info: [Frontend] DB status response parsed
+2025-06-12T14:23:39.015Z info: [Frontend] Setting DB status to connected
+2025-06-12T14:26:25.660Z info: [Frontend] CSV file selected: POClong.csv
+2025-06-12T14:26:27.327Z info: [Frontend] Starting CSV upload: POClong.csv
+2025-06-12 22:26:27 info: Skipping assumed header row:
+2025-06-12 22:26:27 warn: Skipping invalid row (1) - Failed Validation (Positional 5-Col):
+2025-06-12 22:26:27 info: CSV processing complete (positional, 5 columns).
+2025-06-12T14:26:27.696Z info: [Frontend] CSV upload successful: POClong.csv
+2025-06-12T14:27:48.975Z info: [Frontend] CSV file selected: POClong.csv
+2025-06-12T14:27:50.248Z info: [Frontend] Starting CSV upload: POClong.csv
+2025-06-12 22:27:51 info: Skipping assumed header row:
+2025-06-12 22:27:51 warn: Skipping invalid row (1) - Failed Validation (Positional 5-Col):
+2025-06-12 22:27:51 info: CSV processing complete (positional, 5 columns).
+2025-06-12T14:27:51.732Z info: [Frontend] CSV upload successful: POClong.csv
+2025-06-12T14:39:12.152Z info: [Frontend] Checking DB connection status
+2025-06-12T14:39:16.573Z info: [Frontend] Fetching filter options
+2025-06-12T14:39:16.576Z info: [Frontend] Fetching data
+2025-06-12T14:39:16.580Z info: [Frontend] Fetching filter options
+2025-06-12 22:39:16 info: Received request for /api/pocdata/options
+2025-06-12T14:39:16.582Z info: [Frontend] Fetching data
+2025-06-12 22:39:16 info: Received request for /api/pocdata with filters:
+2025-06-12 22:39:16 info: Executing SQL:
+2025-06-12 22:39:16 info: With Params:
+2025-06-12 22:39:16 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:39:16 info: Releasing database connection for /api/pocdata
+2025-06-12 22:39:17 info: Received request for /api/pocdata with filters:
+2025-06-12 22:39:17 info: Executing SQL:
+2025-06-12 22:39:17 info: With Params:
+2025-06-12 22:39:17 info: Received request for /api/pocdata/options
+2025-06-12 22:39:17 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:39:17 info: Releasing database connection for /api/pocdata
+2025-06-12T14:39:16.980Z info: [Frontend] Data received from backend
+2025-06-12T14:39:17.017Z info: [Frontend] Received filter options
+2025-06-12T14:39:17.324Z info: [Frontend] Data received from backend
+2025-06-12T14:39:17.364Z info: [Frontend] Received filter options
+2025-06-12T14:39:17.655Z info: [Frontend] Checking DB connection status
+2025-06-12T14:39:17.657Z info: [Frontend] Checking DB connection status
+2025-06-12T14:39:24.892Z info: [Frontend] Fetching filter options
+2025-06-12T14:39:24.894Z info: [Frontend] Fetching data
+2025-06-12T14:39:24.896Z info: [Frontend] Fetching filter options
+2025-06-12 22:39:25 info: Received request for /api/pocdata/options
+2025-06-12T14:39:24.898Z info: [Frontend] Fetching data
+2025-06-12 22:39:25 info: Received request for /api/pocdata with filters:
+2025-06-12 22:39:25 info: Executing SQL:
+2025-06-12 22:39:25 info: With Params:
+2025-06-12 22:39:25 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:39:25 info: Releasing database connection for /api/pocdata
+2025-06-12 22:39:25 info: Received request for /api/pocdata/options
+2025-06-12T14:39:25.226Z info: [Frontend] Received filter options
+2025-06-12 22:39:25 info: Received request for /api/pocdata with filters:
+2025-06-12 22:39:25 info: Executing SQL:
+2025-06-12 22:39:25 info: With Params:
+2025-06-12T14:39:25.235Z info: [Frontend] Data received from backend
+2025-06-12 22:39:25 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:39:25 info: Releasing database connection for /api/pocdata
+2025-06-12T14:39:25.594Z info: [Frontend] Data received from backend
+2025-06-12T14:39:25.611Z info: [Frontend] Received filter options
+2025-06-12T14:39:28.743Z info: [Frontend] Checking DB connection status
+2025-06-12T14:39:28.745Z info: [Frontend] Checking DB connection status
+2025-06-12T14:43:27.159Z info: [Frontend] Checking DB connection status
+2025-06-12T14:43:27.162Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:43:27 info: Received request for /api/db-status
+2025-06-12 22:43:27 info: DB status check successful.
+2025-06-12T14:43:27.489Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T14:44:02.175Z info: [Frontend] Fetching filter options
+2025-06-12T14:44:02.175Z info: [Frontend] Fetching data
+2025-06-12T14:44:02.176Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:44:02 info: Received request for /api/pocdata/options
+2025-06-12 22:44:02 info: Received request for /api/db-status
+2025-06-12 22:44:02 info: DB status check successful.
+2025-06-12T14:44:02.177Z info: [Frontend] Fetching filter options
+2025-06-12 22:44:02 info: Received request for /api/pocdata with filters:
+2025-06-12 22:44:02 info: Executing SQL:
+2025-06-12 22:44:02 info: With Params:
+2025-06-12T14:44:02.177Z info: [Frontend] Fetching data
+2025-06-12T14:44:02.513Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12 22:44:02 info: Received request for /api/pocdata/options
+2025-06-12T14:44:02.519Z info: [Frontend] Received filter options
+2025-06-12 22:44:02 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:44:02 info: Releasing database connection for /api/pocdata
+2025-06-12 22:44:03 info: Received request for /api/pocdata with filters:
+2025-06-12 22:44:03 info: Executing SQL:
+2025-06-12 22:44:03 info: With Params:
+2025-06-12T14:44:02.853Z info: [Frontend] Data received from backend
+2025-06-12 22:44:03 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:44:03 info: Releasing database connection for /api/pocdata
+2025-06-12T14:44:02.866Z info: [Frontend] Received filter options
+2025-06-12T14:44:03.205Z info: [Frontend] Data received from backend
+2025-06-12T14:44:04.635Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:44:04 info: Received request for /api/db-status
+2025-06-12 22:44:04 info: DB status check successful.
+2025-06-12T14:44:04.974Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T14:44:07.065Z info: [Frontend] Fetching filter options
+2025-06-12T14:44:07.066Z info: [Frontend] Fetching data
+2025-06-12T14:44:07.067Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:44:07 info: Received request for /api/db-status
+2025-06-12 22:44:07 info: DB status check successful.
+2025-06-12 22:44:07 info: Received request for /api/pocdata/options
+2025-06-12T14:44:07.068Z info: [Frontend] Fetching filter options
+2025-06-12T14:44:07.068Z info: [Frontend] Fetching data
+2025-06-12 22:44:07 info: Received request for /api/pocdata with filters:
+2025-06-12 22:44:07 info: Executing SQL:
+2025-06-12 22:44:07 info: With Params:
+2025-06-12 22:44:07 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:44:07 info: Releasing database connection for /api/pocdata
+2025-06-12T14:44:07.404Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12 22:44:07 info: Received request for /api/pocdata/options
+2025-06-12T14:44:07.419Z info: [Frontend] Received filter options
+2025-06-12 22:44:08 info: Received request for /api/pocdata with filters:
+2025-06-12 22:44:08 info: Executing SQL:
+2025-06-12 22:44:08 info: With Params:
+2025-06-12T14:44:07.710Z info: [Frontend] Data received from backend
+2025-06-12 22:44:08 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:44:08 info: Releasing database connection for /api/pocdata
+2025-06-12T14:44:07.729Z info: [Frontend] Received filter options
+2025-06-12T14:44:08.037Z info: [Frontend] Data received from backend
+2025-06-12T14:44:12.929Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:44:13 info: Received request for /api/db-status
+2025-06-12 22:44:13 info: DB status check successful.
+2025-06-12T14:44:13.254Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12 22:44:34 info: Skipping assumed header row:
+2025-06-12 22:44:34 warn: Skipping invalid row (1) - Failed Validation (Positional 5-Col):
+2025-06-12 22:44:34 info: CSV processing complete (positional, 5 columns).
+2025-06-12T14:48:45.612Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:48:45 info: Received request for /api/db-status
+2025-06-12 22:48:45 info: DB status check successful.
+2025-06-12T14:48:45.616Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:48:45 info: Received request for /api/db-status
+2025-06-12 22:48:45 info: DB status check successful.
+2025-06-12T14:48:48.509Z info: [Frontend] Fetching filter options
+2025-06-12T14:48:48.512Z info: [Frontend] Fetching data
+2025-06-12T14:48:48.515Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:48:48 info: Received request for /api/pocdata/options
+2025-06-12T14:48:48.521Z info: [Frontend] Fetching data
+2025-06-12 22:48:48 info: Received request for /api/db-status
+2025-06-12 22:48:48 info: DB status check successful.
+2025-06-12T14:48:48.518Z info: [Frontend] Fetching filter options
+2025-06-12 22:48:49 info: Received request for /api/pocdata with filters:
+2025-06-12 22:48:49 info: Executing SQL:
+2025-06-12 22:48:49 info: With Params:
+2025-06-12 22:48:49 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:48:49 info: Releasing database connection for /api/pocdata
+2025-06-12 22:48:49 info: Received request for /api/pocdata/options
+2025-06-12T14:48:48.918Z info: [Frontend] Received filter options
+2025-06-12 22:48:49 info: Received request for /api/pocdata with filters:
+2025-06-12 22:48:49 info: Executing SQL:
+2025-06-12 22:48:49 info: With Params:
+2025-06-12 22:48:49 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:48:49 info: Releasing database connection for /api/pocdata
+2025-06-12T14:48:49.255Z info: [Frontend] Data received from backend
+2025-06-12T14:48:49.299Z info: [Frontend] Received filter options
+2025-06-12T14:48:49.589Z info: [Frontend] Data received from backend
+2025-06-12T14:48:49.849Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:48:50 info: Received request for /api/db-status
+2025-06-12 22:48:50 info: DB status check successful.
+2025-06-12T14:49:34.639Z info: [Frontend] Fetching filter options
+2025-06-12T14:49:34.640Z info: [Frontend] Fetching data
+2025-06-12T14:49:34.643Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:49:35 info: Received request for /api/db-status
+2025-06-12 22:49:35 info: DB status check successful.
+2025-06-12T14:49:34.645Z info: [Frontend] Fetching filter options
+2025-06-12 22:49:35 info: Received request for /api/pocdata/options
+2025-06-12T14:49:34.649Z info: [Frontend] Fetching data
+2025-06-12 22:49:35 info: Received request for /api/pocdata with filters:
+2025-06-12 22:49:35 info: Executing SQL:
+2025-06-12 22:49:35 info: With Params:
+2025-06-12 22:49:35 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:49:35 info: Releasing database connection for /api/pocdata
+2025-06-12 22:49:35 info: Received request for /api/pocdata/options
+2025-06-12T14:49:35.056Z info: [Frontend] Received filter options
+2025-06-12 22:49:35 info: Received request for /api/pocdata with filters:
+2025-06-12 22:49:35 info: Executing SQL:
+2025-06-12 22:49:35 info: With Params:
+2025-06-12 22:49:35 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:49:35 info: Releasing database connection for /api/pocdata
+2025-06-12T14:49:35.371Z info: [Frontend] Data received from backend
+2025-06-12T14:49:35.409Z info: [Frontend] Received filter options
+2025-06-12T14:49:35.701Z info: [Frontend] Data received from backend
+2025-06-12T14:49:36.356Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:49:36 info: Received request for /api/db-status
+2025-06-12 22:49:36 info: DB status check successful.
+2025-06-12T14:49:36.841Z info: [Frontend] Fetching filter options
+2025-06-12T14:49:36.841Z info: [Frontend] Fetching data
+2025-06-12T14:49:36.842Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:49:37 info: Received request for /api/pocdata/options
+2025-06-12 22:49:37 info: Received request for /api/db-status
+2025-06-12 22:49:37 info: DB status check successful.
+2025-06-12T14:49:36.843Z info: [Frontend] Fetching filter options
+2025-06-12T14:49:36.843Z info: [Frontend] Fetching data
+2025-06-12 22:49:37 info: Received request for /api/pocdata with filters:
+2025-06-12 22:49:37 info: Executing SQL:
+2025-06-12 22:49:37 info: With Params:
+2025-06-12 22:49:37 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:49:37 info: Releasing database connection for /api/pocdata
+2025-06-12 22:49:37 info: Received request for /api/pocdata/options
+2025-06-12T14:49:37.200Z info: [Frontend] Received filter options
+2025-06-12 22:49:37 info: Received request for /api/pocdata with filters:
+2025-06-12 22:49:37 info: Executing SQL:
+2025-06-12 22:49:37 info: With Params:
+2025-06-12T14:49:37.500Z info: [Frontend] Data received from backend
+2025-06-12 22:49:37 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:49:37 info: Releasing database connection for /api/pocdata
+2025-06-12T14:49:37.523Z info: [Frontend] Received filter options
+2025-06-12T14:49:37.846Z info: [Frontend] Data received from backend
+2025-06-12T14:49:38.232Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:49:38 info: Received request for /api/db-status
+2025-06-12 22:49:38 info: DB status check successful.
+2025-06-12T14:50:49.165Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:50:49 info: Received request for /api/db-status
+2025-06-12 22:50:49 info: DB status check successful.
+2025-06-12T14:50:49.168Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:50:49 info: Received request for /api/db-status
+2025-06-12 22:50:49 info: DB status check successful.
+2025-06-12T14:50:55.203Z info: [Frontend] Fetching filter options
+2025-06-12T14:50:55.206Z info: [Frontend] Fetching data
+2025-06-12T14:50:55.209Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:50:55 info: Received request for /api/db-status
+2025-06-12 22:50:55 info: DB status check successful.
+2025-06-12T14:50:55.212Z info: [Frontend] Fetching filter options
+2025-06-12T14:50:55.217Z info: [Frontend] Fetching data
+2025-06-12 22:50:55 info: Received request for /api/pocdata/options
+2025-06-12 22:50:55 info: Received request for /api/pocdata with filters:
+2025-06-12 22:50:55 info: Executing SQL:
+2025-06-12 22:50:55 info: With Params:
+2025-06-12 22:50:55 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:50:55 info: Releasing database connection for /api/pocdata
+2025-06-12 22:50:55 info: Received request for /api/pocdata/options
+2025-06-12T14:50:55.556Z info: [Frontend] Received filter options
+2025-06-12 22:50:56 info: Received request for /api/pocdata with filters:
+2025-06-12 22:50:56 info: Executing SQL:
+2025-06-12 22:50:56 info: With Params:
+2025-06-12T14:50:55.848Z info: [Frontend] Data received from backend
+2025-06-12T14:50:55.875Z info: [Frontend] Received filter options
+2025-06-12 22:50:56 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:50:56 info: Releasing database connection for /api/pocdata
+2025-06-12T14:50:56.208Z info: [Frontend] Data received from backend
+2025-06-12T14:50:56.659Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:50:56 info: Received request for /api/db-status
+2025-06-12 22:50:56 info: DB status check successful.
+2025-06-12T14:50:58.155Z info: [Frontend] Fetching filter options
+2025-06-12T14:50:58.157Z info: [Frontend] Fetching data
+2025-06-12T14:50:58.159Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:50:58 info: Received request for /api/pocdata/options
+2025-06-12 22:50:58 info: Received request for /api/db-status
+2025-06-12 22:50:58 info: DB status check successful.
+2025-06-12T14:50:58.162Z info: [Frontend] Fetching filter options
+2025-06-12 22:50:58 info: Received request for /api/pocdata with filters:
+2025-06-12 22:50:58 info: Executing SQL:
+2025-06-12 22:50:58 info: With Params:
+2025-06-12 22:50:58 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:50:58 info: Releasing database connection for /api/pocdata
+2025-06-12T14:50:58.164Z info: [Frontend] Fetching data
+2025-06-12 22:50:58 info: Received request for /api/pocdata with filters:
+2025-06-12 22:50:58 info: Executing SQL:
+2025-06-12 22:50:58 info: With Params:
+2025-06-12T14:50:58.582Z info: [Frontend] Data received from backend
+2025-06-12 22:50:58 info: Received request for /api/pocdata/options
+2025-06-12 22:50:58 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:50:58 info: Releasing database connection for /api/pocdata
+2025-06-12T14:50:58.616Z info: [Frontend] Received filter options
+2025-06-12T14:50:58.934Z info: [Frontend] Data received from backend
+2025-06-12T14:50:58.973Z info: [Frontend] Received filter options
+2025-06-12T14:51:00.825Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:01 info: Received request for /api/db-status
+2025-06-12 22:51:01 info: DB status check successful.
+2025-06-12T14:51:23.356Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:23 info: Received request for /api/db-status
+2025-06-12 22:51:23 info: DB status check successful.
+2025-06-12T14:51:23.359Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:23 info: Received request for /api/db-status
+2025-06-12 22:51:23 info: DB status check successful.
+2025-06-12T14:51:24.748Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:24 info: Received request for /api/db-status
+2025-06-12 22:51:24 info: DB status check successful.
+2025-06-12T14:51:24.749Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:25 info: Received request for /api/db-status
+2025-06-12 22:51:25 info: DB status check successful.
+2025-06-12T14:51:31.520Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:31 info: Received request for /api/db-status
+2025-06-12 22:51:31 info: DB status check successful.
+2025-06-12T14:51:31.521Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:31 info: Received request for /api/db-status
+2025-06-12 22:51:31 info: DB status check successful.
+2025-06-12T14:51:33.478Z info: [Frontend] Fetching filter options
+2025-06-12T14:51:33.479Z info: [Frontend] Fetching data
+2025-06-12T14:51:33.480Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:33 info: Received request for /api/db-status
+2025-06-12 22:51:33 info: DB status check successful.
+2025-06-12 22:51:33 info: Received request for /api/pocdata/options
+2025-06-12T14:51:33.482Z info: [Frontend] Fetching filter options
+2025-06-12T14:51:33.483Z info: [Frontend] Fetching data
+2025-06-12 22:51:33 info: Received request for /api/pocdata with filters:
+2025-06-12 22:51:33 info: Executing SQL:
+2025-06-12 22:51:33 info: With Params:
+2025-06-12 22:51:33 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:51:33 info: Releasing database connection for /api/pocdata
+2025-06-12 22:51:34 info: Received request for /api/pocdata with filters:
+2025-06-12 22:51:34 info: Executing SQL:
+2025-06-12 22:51:34 info: With Params:
+2025-06-12 22:51:34 info: Received request for /api/pocdata/options
+2025-06-12T14:51:33.852Z info: [Frontend] Data received from backend
+2025-06-12T14:51:33.865Z info: [Frontend] Received filter options
+2025-06-12 22:51:34 info: Fetched 4 rows from pocpermonth.
+2025-06-12 22:51:34 info: Releasing database connection for /api/pocdata
+2025-06-12T14:51:34.229Z info: [Frontend] Data received from backend
+2025-06-12T14:51:34.249Z info: [Frontend] Received filter options
+2025-06-12T14:51:35.043Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:35 info: Received request for /api/db-status
+2025-06-12 22:51:35 info: DB status check successful.
+2025-06-12T14:51:54.235Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:51:54 info: Received request for /api/db-status
+2025-06-12 22:51:54 info: DB status check successful.
+2025-06-12T14:54:23.789Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:54:24 info: Received request for /api/db-status
+2025-06-12 22:54:24 info: DB status check successful.
+2025-06-12T14:54:24.731Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:54:25 info: Received request for /api/db-status
+2025-06-12 22:54:25 info: DB status check successful.
+2025-06-12T14:54:29.974Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:54:29 info: Received request for /api/db-status
+2025-06-12 22:54:29 info: DB status check successful.
+2025-06-12T14:54:29.977Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:54:30 info: Received request for /api/db-status
+2025-06-12 22:54:30 info: DB status check successful.
+2025-06-12T14:54:32.209Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:54:32 info: Received request for /api/db-status
+2025-06-12 22:54:32 info: DB status check successful.
+2025-06-12T14:55:27.366Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:55:27 info: Received request for /api/db-status
+2025-06-12 22:55:27 info: DB status check successful.
+2025-06-12T14:55:28.829Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:55:29 info: Received request for /api/db-status
+2025-06-12 22:55:29 info: DB status check successful.
+2025-06-12T14:56:15.622Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:56:15 info: Received request for /api/db-status
+2025-06-12 22:56:15 info: DB status check successful.
+2025-06-12T14:56:17.118Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:56:17 info: Received request for /api/db-status
+2025-06-12 22:56:17 info: DB status check successful.
+2025-06-12T14:56:17.779Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:56:18 info: Received request for /api/db-status
+2025-06-12 22:56:18 info: DB status check successful.
+2025-06-12T14:56:29.496Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:56:29 info: Received request for /api/db-status
+2025-06-12 22:56:29 info: DB status check successful.
+2025-06-12T14:56:30.310Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:56:30 info: Received request for /api/db-status
+2025-06-12 22:56:30 info: DB status check successful.
+2025-06-12T14:56:30.838Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:56:31 info: Received request for /api/db-status
+2025-06-12 22:56:31 info: DB status check successful.
+2025-06-12T14:56:31.691Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:56:32 info: Received request for /api/db-status
+2025-06-12 22:56:32 info: DB status check successful.
+2025-06-12T14:57:16.263Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 22:57:16 info: Received request for /api/db-status
+2025-06-12 22:57:16 info: DB status check successful.
+2025-06-12T15:01:53.438Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:01:53 info: Received request for /api/db-status
+2025-06-12 23:01:53 info: DB status check successful.
