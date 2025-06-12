@@ -366,3 +366,61 @@
 2025-06-08T13:13:13.617Z info: [Frontend] Setting DB status to connected
 2025-06-08T13:13:13.645Z info: [Frontend] Data received from backend
 2025-06-08T13:13:13.656Z info: [Frontend] Received filter options
+2025-06-12 21:07:15 info: This message goes to console AND combined.log
+2025-06-12 21:07:15 warn: This warning goes to console AND combined.log
+2025-06-12 21:07:15 error: This error goes to console, combined.log, AND error.log
+2025-06-12 21:07:15 info: Attempting to create MySQL connection pool...
+2025-06-12 21:07:15 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-12 21:07:15 info: MySQL Pool ready.
+2025-06-12T13:07:29.563Z info: [Frontend] Checking DB connection status
+2025-06-12 21:07:29 info: Received request for /api/db-status
+2025-06-12 21:07:29 info: DB status check successful.
+2025-06-12T13:07:29.566Z info: [Frontend] Checking DB connection status
+2025-06-12 21:07:29 info: Received request for /api/db-status
+2025-06-12 21:07:29 info: DB status check successful.
+2025-06-12T13:07:29.759Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T13:07:30.333Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T13:07:30.338Z info: [Frontend] DB status response parsed
+2025-06-12T13:07:30.339Z info: [Frontend] Setting DB status to connected
+2025-06-12T13:07:30.364Z info: [Frontend] Setting DB status to connected
+2025-06-12T13:07:30.363Z info: [Frontend] DB status response parsed
+2025-06-12T13:08:05.757Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-12T13:08:17.880Z info: [Frontend] Fetching filter options
+2025-06-12T13:08:17.881Z info: [Frontend] Fetching data
+2025-06-12T13:08:17.882Z info: [Frontend] Fetching filter options
+2025-06-12 21:08:18 info: Received request for /api/pocdata/options
+2025-06-12T13:08:17.883Z info: [Frontend] Fetching data
+2025-06-12 21:08:18 info: Received request for /api/pocdata with filters:
+2025-06-12 21:08:18 info: Executing SQL:
+2025-06-12 21:08:18 info: With Params:
+2025-06-12 21:08:18 info: Fetched 3 rows from pocpermonth.
+2025-06-12 21:08:18 info: Releasing database connection for /api/pocdata
+2025-06-12 21:08:18 info: Received request for /api/pocdata with filters:
+2025-06-12 21:08:18 info: Executing SQL:
+2025-06-12 21:08:18 info: With Params:
+2025-06-12T13:08:18.281Z info: [Frontend] Data received from backend
+2025-06-12 21:08:18 info: Received request for /api/pocdata/options
+2025-06-12T13:08:18.286Z info: [Frontend] Received filter options
+2025-06-12 21:08:18 info: Fetched 3 rows from pocpermonth.
+2025-06-12 21:08:18 info: Releasing database connection for /api/pocdata
+2025-06-12T13:08:18.624Z info: [Frontend] Data received from backend
+2025-06-12T13:08:18.632Z info: [Frontend] Received filter options
+2025-06-12T13:08:23.416Z info: [Frontend] Checking DB connection status
+2025-06-12 21:08:23 info: Received request for /api/db-status
+2025-06-12 21:08:23 info: DB status check successful.
+2025-06-12T13:08:23.418Z info: [Frontend] Checking DB connection status
+2025-06-12 21:08:23 info: Received request for /api/db-status
+2025-06-12 21:08:23 info: DB status check successful.
+2025-06-12T13:08:23.734Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T13:08:23.736Z info: [Frontend] DB status response parsed
+2025-06-12T13:08:23.736Z info: [Frontend] Setting DB status to connected
+2025-06-12T13:08:23.739Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T13:08:23.740Z info: [Frontend] DB status response parsed
+2025-06-12T13:08:23.740Z info: [Frontend] Setting DB status to connected
+2025-06-12T13:08:32.170Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-12T13:15:29.206Z info: [Frontend] Checking DB connection status
+2025-06-12 21:15:29 info: Received request for /api/db-status
+2025-06-12 21:15:29 info: DB status check successful.
+2025-06-12T13:15:29.221Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T13:15:29.224Z info: [Frontend] DB status response parsed
+2025-06-12T13:15:29.225Z info: [Frontend] Setting DB status to connected

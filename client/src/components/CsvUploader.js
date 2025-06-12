@@ -1,6 +1,6 @@
 // client/src/components/CsvUploader.js
 import React, { useState, useEffect } from 'react';
-import { logToServer } from '../utils/logger'; // <<< Import the logger
+import { logToServer } from '../utils/logger';
 
 function CsvUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -8,179 +8,152 @@ function CsvUploader() {
   const [isLoading, setIsLoading] = useState(false);
   const [dbStatus, setDbStatus] = useState('checking');
   const [dbErrorMessage, setDbErrorMessage] = useState('');
+  const [uploadSummary, setUploadSummary] = useState(null);
+  const [uploadTotals, setUploadTotals] = useState(null);
 
-  // --- NEW State for upload results ---
-  const [uploadSummary, setUploadSummary] = useState(null); // To store the array: [{ project, phasecode, inserted, updated }]
-  const [uploadTotals, setUploadTotals] = useState(null);   // To store { inserted, updated, errors, processed }
+  // --- MODIFIED: State to manage the selected upload option, default is now 'poc' ---
+  const [uploadOption, setUploadOption] = useState('poc'); // 'date' or 'poc'
 
-  // Function to check DB status (assuming this works correctly now)
+  // (checkDbConnection function remains the same)
   const checkDbConnection = async () => {
-    // Reset states when checking connection
-    logToServer('info', 'Checking DB connection status', 'CsvUploader'); // Log start
+    logToServer('info', 'Checking DB connection status', 'CsvUploader');
     setDbStatus('checking');
     setDbErrorMessage('');
     setMessage('');
-    setUploadSummary(null); // Clear previous results
-    setUploadTotals(null);  // Clear previous results
+    setUploadSummary(null);
+    setUploadTotals(null);
 
     try {
       const response = await fetch('/api/db-status', {
-          method: 'GET',
-          // vvv Add these options vvv
-          cache: 'no-store', // Tells fetch not to use caches
-          headers: { // Optional extra headers, might help in some cases
-              'Cache-Control': 'no-cache',
-              'Pragma': 'no-cache',
-              'Expires': '0',
-          }
-          // ^^^ Add these options ^^^
+        method: 'GET',
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+        },
       });
       logToServer('info', `DB status fetch completed with status: ${response.status}`, 'CsvUploader');
-  
-      // --- REMOVE 304 handling if using no-cache ---
-      // if (response.status === 304) { ... } // No longer needed
-  
-      if (!response.ok) { // Should now be 200 OK or an actual error status
-          // ... existing error handling for non-200 status ...
-           let errorMsg = `Backend responded with status ${response.status}`;
-           try {
-               const errorResult = await response.json();
-               errorMsg = errorResult.message || errorMsg;
-           } catch (parseError) { }
-           throw new Error(errorMsg);
+
+      if (!response.ok) {
+        let errorMsg = `Backend responded with status ${response.status}`;
+        try {
+          const errorResult = await response.json();
+          errorMsg = errorResult.message || errorMsg;
+        } catch (parseError) {}
+        throw new Error(errorMsg);
       }
-  
-      // Only parse JSON if response is OK (2xx)
+
       const result = await response.json();
       logToServer('info', 'DB status response parsed', 'CsvUploader', { result });
-  
+
       if (result.status === 'connected') {
-         logToServer('info', 'Setting DB status to connected', 'CsvUploader');
-         setDbStatus('connected');
+        logToServer('info', 'Setting DB status to connected', 'CsvUploader');
+        setDbStatus('connected');
       } else {
-          const errorMsg = result.message || 'Backend reported DB not connected.';
-          setDbErrorMessage(errorMsg);
-          logToServer('warn', `Setting DB status to error (backend report): ${errorMsg}`, 'CsvUploader');
-          setDbStatus('error');
+        const errorMsg = result.message || 'Backend reported DB not connected.';
+        setDbErrorMessage(errorMsg);
+        logToServer('warn', `Setting DB status to error (backend report): ${errorMsg}`, 'CsvUploader');
+        setDbStatus('error');
       }
-  
-  } catch (error) { // Catches fetch errors or errors thrown above
+    } catch (error) {
       logToServer('error', `Setting DB status to error (fetch/logic failed): ${error.message}`, 'CsvUploader');
       setDbStatus('error');
       setDbErrorMessage(error.message || 'Could not verify server connection status.');
-  }
-}
+    }
+  };
 
   useEffect(() => {
     checkDbConnection();
   }, []);
 
-    // Handler for file input changes
-    const handleFileChange = (event) => {
-      setMessage('');
-      setUploadSummary(null); // Clear results when file changes
-      setUploadTotals(null);  // Clear results when file changes
-      const file = event.target.files[0];
-      if (file && file.type === 'text/csv') {
-        setSelectedFile(file);
-         logToServer('info', `CSV file selected: ${file.name}`, 'CsvUploader', { fileName: file.name, fileSize: file.size }); // Log file selection
-      } else {
-        setSelectedFile(null);
-        setMessage('Please select a valid .csv file.');
-         // ... handle invalid file ...
-         if (file) { // Log only if a file was actually selected but was wrong type
-          logToServer('warn', `Invalid file type selected: ${file.name}`, 'CsvUploader', { fileName: file.name, fileType: file.type });
-         }
-         // --- ADDED MISSING BRACE ---
-         const fileInput = document.getElementById('csvFileInput');
-         if (fileInput) fileInput.value = null; // Clear visual selection
-      } // <<< Now this correctly closes the 'else' block
-    }; // <<< And this correctly closes the 'handleFileChange' function
-  
+  const handleFileChange = (event) => {
+    setMessage('');
+    setUploadSummary(null);
+    setUploadTotals(null);
+    const file = event.target.files[0];
+    if (file && file.type === 'text/csv') {
+      setSelectedFile(file);
+      logToServer('info', `CSV file selected: ${file.name}`, 'CsvUploader', { fileName: file.name, fileSize: file.size });
+    } else {
+      setSelectedFile(null);
+      setMessage('Please select a valid .csv file.');
+      if (file) {
+        logToServer('warn', `Invalid file type selected: ${file.name}`, 'CsvUploader', { fileName: file.name, fileType: file.type });
+      }
+      const fileInput = document.getElementById('csvFileInput');
+      if (fileInput) fileInput.value = null;
+    }
+  };
 
-  // Handler for the upload button click
   const handleUpload = async () => {
     if (!selectedFile) {
       setMessage('Please select a file first.');
       return;
     }
     if (dbStatus !== 'connected') {
-        setMessage('Cannot upload: Database is not connected.');
-        return;
-        
+      setMessage('Cannot upload: Database is not connected.');
+      return;
     }
 
     setIsLoading(true);
     setMessage('Uploading...');
-        // Log upload start
-        logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { fileName: selectedFile.name });
-    setUploadSummary(null); // Clear previous results
-    setUploadTotals(null);  // Clear previous results
+    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption });
+    setUploadSummary(null);
+    setUploadTotals(null);
+    
     const formData = new FormData();
-    formData.append('csvFile', selectedFile); // Matches backend key
+    formData.append('csvFile', selectedFile);
+    formData.append('uploadOption', uploadOption);
 
     try {
-      const response = await fetch('/api/upload-csv', { // Your upload endpoint
+      const response = await fetch('/api/upload-csv', {
         method: 'POST',
         body: formData,
       });
 
-      // Try to parse JSON regardless of response.ok to get potential error messages
       const result = await response.json();
 
       if (response.ok) {
-        // --- SUCCESS ---
-        setMessage(result.message || 'File uploaded successfully!'); // Set main message
-        // --- Store detailed results ---
-        setUploadSummary(result.summary || []); // Store summary array (or empty if missing)
-        setUploadTotals({ // Store totals object
-            inserted: result.totalInserted,
-            updated: result.totalUpdated,
-            errors: result.totalErrors,
-            processed: result.totalRowsProcessed
+        setMessage(result.message || 'File uploaded successfully!');
+        setUploadSummary(result.summary || []);
+        setUploadTotals({
+          inserted: result.totalInserted,
+          updated: result.totalUpdated,
+          errors: result.totalErrors,
+          processed: result.totalRowsProcessed
         });
- // Log success details
- logToServer('info', `CSV upload successful: ${selectedFile.name}`, 'CsvUploader', { response: result });
-
-        // --- Clear file ---
+        logToServer('info', `CSV upload successful: ${selectedFile.name}`, 'CsvUploader', { response: result });
         setSelectedFile(null);
         const fileInput = document.getElementById('csvFileInput');
         if (fileInput) fileInput.value = null;
-
       } else {
-        // --- Handle known error response from backend ---
         setMessage(`Upload failed: ${result.message || response.statusText}`);
-        setUploadSummary(null); // Clear results on failure
+        setUploadSummary(null);
         setUploadTotals(null);
-// Log backend-reported error
-logToServer('error', `CSV upload failed (backend error): ${result.message || response.statusText}`, 'CsvUploader', { response: result, fileName: selectedFile?.name });
+        logToServer('error', `CSV upload failed (backend error): ${result.message || response.statusText}`, 'CsvUploader', { response: result, fileName: selectedFile?.name });
       }
     } catch (error) {
-      // --- Handle fetch/network errors or non-JSON responses ---
-      setIsLoading(false); // Ensure loading stops
       console.error('Upload error:', error);
       setMessage(`Upload failed: ${error.message}. Check network or server availability.`);
-      setUploadSummary(null); // Clear results on failure
+      setUploadSummary(null);
       setUploadTotals(null);
-      // Log fetch/network error
       logToServer('error', `CSV upload failed (network/fetch error): ${error.message}`, 'CsvUploader', { error, fileName: selectedFile?.name });
     } finally {
-        // --- Stop loading indicator ---
-        setIsLoading(false); // Ensure loading stops in all cases
+      setIsLoading(false);
     }
   };
 
-  // Determine if controls should be disabled
   const controlsDisabled = isLoading || dbStatus !== 'connected';
+  const uploadButtonDisabled = !selectedFile || controlsDisabled;
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '20px', margin: '20px 0', borderRadius: '5px' }}>
+    <div>
       <h2>Upload CSV File to Update/Insert Data</h2>
 
       {/* Database Status Display */}
       <div style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
-        {/* ... DB status rendering code ... */}
-         <strong>Database Status:</strong>
+        <strong>Database Status:</strong>
         {dbStatus === 'checking' && <span style={{ marginLeft: '10px', color: '#888' }}> Checking connection...</span>}
         {dbStatus === 'connected' && <span style={{ marginLeft: '10px', color: 'green', fontWeight: 'bold' }}> Connected</span>}
         {dbStatus === 'error' && (
@@ -192,6 +165,36 @@ logToServer('error', `CSV upload failed (backend error): ${result.message || res
         )}
       </div>
 
+      {/* --- MODIFIED: Upload Options with Radio Buttons --- */}
+      <div style={{ margin: '20px 0', border: '1px solid #eee', padding: '15px', borderRadius: '5px' }}>
+        <strong>Select Upload Type:</strong>
+        <div style={{ marginTop: '10px' }}>
+          {/* This option is now disabled */}
+          <label style={{ marginRight: '20px', cursor: 'not-allowed', color: '#999' }}>
+            <input
+              type="radio"
+              name="uploadOption"
+              value="date"
+              checked={uploadOption === 'date'}
+              onChange={() => setUploadOption('date')}
+              disabled={true} // Always disabled
+            />
+            Upload Completion Date
+          </label>
+          <label style={{ cursor: 'pointer' }}>
+            <input
+              type="radio"
+              name="uploadOption"
+              value="poc"
+              checked={uploadOption === 'poc'}
+              onChange={() => setUploadOption('poc')}
+              disabled={controlsDisabled}
+            />
+            Upload POC Data
+          </label>
+        </div>
+      </div>
+
       {/* File Input */}
       <input
         id="csvFileInput"
@@ -199,24 +202,22 @@ logToServer('error', `CSV upload failed (backend error): ${result.message || res
         accept=".csv"
         onChange={handleFileChange}
         disabled={controlsDisabled}
-        style={{ display: 'block', margin: '10px 0' }}
+        style={{ display: 'block', margin: '20px 0 10px 0' }}
       />
       {selectedFile && <p>Selected file: {selectedFile.name}</p>}
 
       {/* Upload Button */}
       <button
         onClick={handleUpload}
-        disabled={!selectedFile || controlsDisabled}
-        style={{ padding: '10px 15px', cursor: controlsDisabled ? 'not-allowed' : 'pointer' }}
+        disabled={uploadButtonDisabled}
+        style={{ padding: '10px 15px', cursor: uploadButtonDisabled ? 'not-allowed' : 'pointer' }}
       >
         {isLoading ? 'Uploading...' : 'Upload to Server'}
       </button>
 
-      {/* Feedback Message Area */}
+      {/* Feedback Message Area & Upload Results (No change from previous version) */}
       {message && <p style={{ marginTop: '15px', fontWeight: 'bold', color: message.startsWith('Upload failed') || message.startsWith('Cannot upload') ? 'red' : 'green' }}>{message}</p>}
-
-      {/* --- NEW: Display Upload Results --- */}
-      {uploadTotals && ( // Only show this section if uploadTotals has data
+      {uploadTotals && (
         <div style={{ border: '1px solid blue', padding: '10px', marginTop: '15px', background: '#f0f8ff' }}>
           <h4>Upload Results:</h4>
           <p>
@@ -225,8 +226,6 @@ logToServer('error', `CSV upload failed (backend error): ${result.message || res
             Updated: {uploadTotals.updated ?? 'N/A'} |
             Errors: {uploadTotals.errors ?? 'N/A'}
           </p>
-
-          {/* Display per project/phase summary if available */}
           {uploadSummary && uploadSummary.length > 0 && (
             <>
               <h5>Details by Project/Phase:</h5>
@@ -241,25 +240,5 @@ logToServer('error', `CSV upload failed (backend error): ${result.message || res
                 </thead>
                 <tbody>
                   {uploadSummary.map((item, index) => (
-                    // Use index for key if composite key isn't unique enough (though it should be)
-                    <tr key={`${item.project}-${item.phasecode}-${index}`}>
-                      <td style={{ padding: '4px 8px' }}>{item.project}</td>
-                      <td style={{ padding: '4px 8px' }}>{item.phasecode}</td>
-                      <td style={{ padding: '4px 8px', textAlign: 'right' }}>{item.inserted}</td>
-                      <td style={{ padding: '4px 8px', textAlign: 'right' }}>{item.updated}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </>
-          )}
-        </div>
-      )}
-      {/* --- End Upload Results --- */}
-
-    </div>
-  );
-}
-
-
-export default CsvUploader;
+                    <tr key={`<span class="math-inline">\{item\.project\}\-</span>{item.phasecode}-${index}`}>
+                      <td style={{ padding: '4px 8px' }}></td>
