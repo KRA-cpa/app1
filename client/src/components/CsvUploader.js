@@ -10,11 +10,11 @@ function CsvUploader() {
   const [dbErrorMessage, setDbErrorMessage] = useState('');
   const [uploadSummary, setUploadSummary] = useState(null);
   const [uploadTotals, setUploadTotals] = useState(null);
+  const [uploadOption, setUploadOption] = useState('poc');
 
-  // --- MODIFIED: State to manage the selected upload option, default is now 'poc' ---
-  const [uploadOption, setUploadOption] = useState('poc'); // 'date' or 'poc'
+  // --- ADDED: State for template selection, defaults to 'short' ---
+  const [templateType, setTemplateType] = useState('short'); // 'short' or 'long'
 
-  // (checkDbConnection function remains the same)
   const checkDbConnection = async () => {
     logToServer('info', 'Checking DB connection status', 'CsvUploader');
     setDbStatus('checking');
@@ -98,13 +98,18 @@ function CsvUploader() {
 
     setIsLoading(true);
     setMessage('Uploading...');
-    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption });
+    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType });
     setUploadSummary(null);
     setUploadTotals(null);
     
     const formData = new FormData();
     formData.append('csvFile', selectedFile);
     formData.append('uploadOption', uploadOption);
+    
+    // Also append templateType if the poc option is selected
+    if (uploadOption === 'poc') {
+      formData.append('templateType', templateType);
+    }
 
     try {
       const response = await fetch('/api/upload-csv', {
@@ -149,7 +154,7 @@ function CsvUploader() {
 
   return (
     <div>
-      <h2>Upload CSV File to Update/Insert Data</h2>
+      <h2>Upload CSV File</h2>
 
       {/* Database Status Display */}
       <div style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
@@ -165,11 +170,10 @@ function CsvUploader() {
         )}
       </div>
 
-      {/* --- MODIFIED: Upload Options with Radio Buttons --- */}
+      {/* Upload Options */}
       <div style={{ margin: '20px 0', border: '1px solid #eee', padding: '15px', borderRadius: '5px' }}>
         <strong>Select Upload Type:</strong>
         <div style={{ marginTop: '10px' }}>
-          {/* This option is now disabled */}
           <label style={{ marginRight: '20px', cursor: 'not-allowed', color: '#999' }}>
             <input
               type="radio"
@@ -177,7 +181,7 @@ function CsvUploader() {
               value="date"
               checked={uploadOption === 'date'}
               onChange={() => setUploadOption('date')}
-              disabled={true} // Always disabled
+              disabled={true}
             />
             Upload Completion Date
           </label>
@@ -191,20 +195,51 @@ function CsvUploader() {
               disabled={controlsDisabled}
             />
             Upload POC Data
+
+            {/* --- NEW: Conditional Template Selection --- */}
+            {uploadOption === 'poc' && (
+              <div style={{ padding: '10px 0 0 25px', fontSize: '0.9em' }}>
+                <strong>Select Template Type:</strong>
+                <label style={{ marginLeft: '10px', marginRight: '15px', cursor: 'pointer' }}>
+                  <input
+                    type="radio"
+                    name="templateType"
+                    value="short"
+                    checked={templateType === 'short'}
+                    onChange={() => setTemplateType('short')}
+                    disabled={controlsDisabled}
+                  />
+                  Short Template
+                </label>
+                <label style={{cursor: 'pointer'}}>
+                  <input
+                    type="radio"
+                    name="templateType"
+                    value="long"
+                    checked={templateType === 'long'}
+                    onChange={() => setTemplateType('long')}
+                    disabled={controlsDisabled}
+                  />
+                  Long Template
+                </label>
+              </div>
+            )}
           </label>
         </div>
       </div>
 
-      {/* File Input */}
-      <input
-        id="csvFileInput"
-        type="file"
-        accept=".csv"
-        onChange={handleFileChange}
-        disabled={controlsDisabled}
-        style={{ display: 'block', margin: '20px 0 10px 0' }}
-      />
-      {selectedFile && <p>Selected file: {selectedFile.name}</p>}
+      {/* --- MODIFIED: File Input and selected file text are centered --- */}
+      <div style={{ textAlign: 'center', margin: '20px 0 10px 0' }}>
+          <input
+            id="csvFileInput"
+            type="file"
+            accept=".csv"
+            onChange={handleFileChange}
+            disabled={controlsDisabled}
+          />
+          {selectedFile && <p>Selected file: {selectedFile.name}</p>}
+      </div>
+
 
       {/* Upload Button */}
       <button
@@ -215,7 +250,7 @@ function CsvUploader() {
         {isLoading ? 'Uploading...' : 'Upload to Server'}
       </button>
 
-      {/* Feedback Message Area & Upload Results (No change from previous version) */}
+      {/* Feedback Message Area & Upload Results */}
       {message && <p style={{ marginTop: '15px', fontWeight: 'bold', color: message.startsWith('Upload failed') || message.startsWith('Cannot upload') ? 'red' : 'green' }}>{message}</p>}
       {uploadTotals && (
         <div style={{ border: '1px solid blue', padding: '10px', marginTop: '15px', background: '#f0f8ff' }}>
@@ -240,5 +275,21 @@ function CsvUploader() {
                 </thead>
                 <tbody>
                   {uploadSummary.map((item, index) => (
-                    <tr key={`<span class="math-inline">\{item\.project\}\-</span>{item.phasecode}-${index}`}>
-                      <td style={{ padding: '4px 8px' }}></td>
+                    <tr key={`${item.project}-${item.phasecode}-${index}`}>
+                      <td style={{ padding: '4px 8px' }}>{item.project}</td>
+                      <td style={{ padding: '4px 8px' }}>{item.phasecode}</td>
+                      <td style={{ padding: '4px 8px', textAlign: 'right' }}>{item.inserted}</td>
+                      <td style={{ padding: '4px 8px', textAlign: 'right' }}>{item.updated}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default CsvUploader;
