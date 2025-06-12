@@ -1221,3 +1221,167 @@
 2025-06-12T15:41:55.150Z info: [Frontend] DB status fetch completed with status: 200
 2025-06-12T15:41:55.152Z info: [Frontend] DB status response parsed
 2025-06-12T15:41:55.152Z info: [Frontend] Setting DB status to connected
+2025-06-12 23:44:58 info: Received request for /api/db-status
+2025-06-12 23:44:58 info: DB status check successful.
+2025-06-12 23:44:59 info: Received request for /api/db-status
+2025-06-12 23:44:59 info: DB status check successful.
+2025-06-12T15:44:59.548Z info: [Frontend] Checking DB connection status
+2025-06-12 23:44:59 info: Received request for /api/db-status
+2025-06-12 23:44:59 info: DB status check successful.
+2025-06-12T15:44:59.550Z info: [Frontend] Checking DB connection status
+2025-06-12 23:44:59 info: Received request for /api/db-status
+2025-06-12 23:44:59 info: DB status check successful.
+2025-06-12T15:44:59.864Z info: [Frontend] DB status response parsed
+2025-06-12T15:44:59.863Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:44:59.865Z info: [Frontend] Setting DB status to connected
+2025-06-12T15:44:59.870Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:44:59.870Z info: [Frontend] DB status response parsed
+2025-06-12T15:44:59.871Z info: [Frontend] Setting DB status to connected
+2025-06-12 23:45:01 info: Received request for /api/db-status
+2025-06-12 23:45:01 info: DB status check successful.
+2025-06-12T15:45:01.955Z info: [Frontend] Checking DB connection status
+2025-06-12 23:45:01 info: Received request for /api/db-status
+2025-06-12 23:45:01 info: DB status check successful.
+2025-06-12 23:45:01 info: Received request for /api/db-status
+2025-06-12 23:45:01 info: DB status check successful.
+2025-06-12T15:45:01.957Z info: [Frontend] Checking DB connection status
+2025-06-12 23:45:02 info: Received request for /api/db-status
+2025-06-12 23:45:02 info: DB status check successful.
+2025-06-12T15:45:01.976Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:45:01.979Z info: [Frontend] DB status response parsed
+2025-06-12T15:45:01.979Z info: [Frontend] Setting DB status to connected
+2025-06-12T15:45:02.589Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:45:02.606Z info: [Frontend] DB status response parsed
+2025-06-12T15:45:02.606Z info: [Frontend] Setting DB status to connected
+2025-06-12T15:45:19.317Z info: [Frontend] CSV file selected: POCshort.csv
+2025-06-12T15:45:20.617Z info: [Frontend] Starting CSV upload: POCshort.csv
+2025-06-12 23:45:20 info: Skipping assumed header row:
+2025-06-12 23:45:20 info: Updated row for ID: 4
+2025-06-12 23:45:20 info: CSV processing complete (positional, 5 columns).
+2025-06-12T15:45:20.959Z info: [Frontend] CSV upload successful: POCshort.csv
+2025-06-12 23:45:26 info: Received request for /api/db-status
+2025-06-12 23:45:26 info: DB status check successful.
+2025-06-12T15:45:28.500Z info: [Frontend] Checking DB connection status
+2025-06-12 23:45:28 info: Received request for /api/db-status
+2025-06-12 23:45:28 info: DB status check successful.
+2025-06-12 23:45:28 info: Received request for /api/db-status
+2025-06-12 23:45:28 info: DB status check successful.
+2025-06-12T15:45:28.500Z info: [Frontend] Checking DB connection status
+2025-06-12 23:45:28 info: Received request for /api/db-status
+2025-06-12 23:45:28 info: DB status check successful.
+2025-06-12T15:45:28.816Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:45:28.817Z info: [Frontend] DB status response parsed
+2025-06-12T15:45:28.818Z info: [Frontend] Setting DB status to connected
+2025-06-12T15:45:28.822Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:45:28.823Z info: [Frontend] DB status response parsed
+2025-06-12T15:45:28.823Z info: [Frontend] Setting DB status to connected
+2025-06-12T15:45:34.457Z info: [Frontend] CSV file selected: POClong.csv
+2025-06-12T15:45:35.491Z info: [Frontend] Starting CSV upload: POClong.csv
+2025-06-12 23:45:35 info: Skipping assumed header row:
+2025-06-12 23:45:35 warn: Skipping invalid row (1) - Failed Validation (Positional 5-Col):
+2025-06-12 23:45:35 info: CSV processing complete (positional, 5 columns).
+2025-06-12T15:45:35.852Z info: [Frontend] CSV upload successful: POClong.csv
+2025-06-12T15:50:45.300Z info: [Frontend] CSV file selected: POCshort.csv
+2025-06-12T15:50:46.431Z info: [Frontend] Starting CSV upload: POCshort.csv
+2025-06-12 23:50:47 info: Skipping assumed header row:
+2025-06-12 23:50:47 info: Updated row for ID: 4
+2025-06-12 23:50:47 info: CSV processing complete (positional, 5 columns).
+2025-06-12T15:50:47.970Z info: [Frontend] CSV upload successful: POCshort.csv
+2025-06-12 23:56:43 info: Received request for /api/db-status
+2025-06-12 23:56:43 info: DB status check successful.
+2025-06-13 00:01:30 info: Received request for /api/db-status
+2025-06-13 00:01:30 info: DB status check successful.
+2025-06-12T16:01:30.948Z info: [Frontend] Checking DB connection status
+2025-06-13 00:01:31 info: Received request for /api/db-status
+2025-06-13 00:01:31 info: DB status check successful.
+2025-06-12T16:01:30.951Z info: [Frontend] Checking DB connection status
+2025-06-13 00:01:31 info: Received request for /api/db-status
+2025-06-13 00:01:31 info: DB status check successful.
+2025-06-12T16:01:31.269Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:01:31.270Z info: [Frontend] DB status response parsed
+2025-06-12T16:01:31.270Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:01:31.271Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:01:31.273Z info: [Frontend] DB status response parsed
+2025-06-12T16:01:31.274Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:01:32 info: Received request for /api/db-status
+2025-06-13 00:01:32 info: DB status check successful.
+2025-06-13 00:02:08 info: Received request for /api/db-status
+2025-06-13 00:02:08 info: DB status check successful.
+2025-06-12T16:02:08.715Z info: [Frontend] Checking DB connection status
+2025-06-13 00:02:09 info: Received request for /api/db-status
+2025-06-13 00:02:09 info: DB status check successful.
+2025-06-12T16:02:08.716Z info: [Frontend] Checking DB connection status
+2025-06-13 00:02:09 info: Received request for /api/db-status
+2025-06-13 00:02:09 info: DB status check successful.
+2025-06-12T16:02:09.036Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:02:09.039Z info: [Frontend] DB status response parsed
+2025-06-12T16:02:09.041Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:02:09.047Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:02:09.047Z info: [Frontend] DB status response parsed
+2025-06-12T16:02:09.048Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:02:28 info: Received request for /api/db-status
+2025-06-13 00:02:28 info: DB status check successful.
+2025-06-13 00:04:29 info: Received request for /api/db-status
+2025-06-13 00:04:29 info: DB status check successful.
+2025-06-12T16:04:29.618Z info: [Frontend] Checking DB connection status
+2025-06-13 00:04:29 info: Received request for /api/db-status
+2025-06-13 00:04:29 info: DB status check successful.
+2025-06-12T16:04:29.620Z info: [Frontend] Checking DB connection status
+2025-06-13 00:04:29 info: Received request for /api/db-status
+2025-06-13 00:04:29 info: DB status check successful.
+2025-06-12T16:04:29.962Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:04:29.963Z info: [Frontend] DB status response parsed
+2025-06-12T16:04:29.964Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:04:29.969Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:04:29.970Z info: [Frontend] DB status response parsed
+2025-06-12T16:04:29.970Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:04:30 info: Received request for /api/db-status
+2025-06-13 00:04:30 info: DB status check successful.
+2025-06-13 00:04:45 info: Received request for /api/db-status
+2025-06-13 00:04:45 info: DB status check successful.
+2025-06-12T16:04:45.008Z info: [Frontend] Checking DB connection status
+2025-06-13 00:04:45 info: Received request for /api/db-status
+2025-06-13 00:04:45 info: DB status check successful.
+2025-06-13 00:04:45 info: Received request for /api/db-status
+2025-06-13 00:04:45 info: DB status check successful.
+2025-06-12T16:04:45.010Z info: [Frontend] Checking DB connection status
+2025-06-13 00:04:45 info: Received request for /api/db-status
+2025-06-13 00:04:45 info: DB status check successful.
+2025-06-12T16:04:45.029Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:04:45.036Z info: [Frontend] DB status response parsed
+2025-06-12T16:04:45.037Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:04:45.568Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:04:45.591Z info: [Frontend] DB status response parsed
+2025-06-12T16:04:45.592Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:04:46 info: Received request for /api/db-status
+2025-06-13 00:04:46 info: DB status check successful.
+2025-06-13 00:11:38 info: This message goes to console AND combined.log
+2025-06-13 00:11:38 warn: This warning goes to console AND combined.log
+2025-06-13 00:11:38 error: This error goes to console, combined.log, AND error.log
+2025-06-13 00:11:38 info: Attempting to create MySQL connection pool...
+2025-06-13 00:11:38 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-13 00:11:38 info: MySQL Pool ready.
+2025-06-13 00:11:51 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:11:51 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:11:51 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:11:51 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)

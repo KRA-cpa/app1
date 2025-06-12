@@ -110,24 +110,6 @@ app.use(cors());
 app.use(express.json());
 const upload = multer({ dest: 'uploads/' });
 
-// --- REPLACE your existing '/api/upload-csv' route with THIS ---
-
-// In your server.cjs file...
-
-// (Keep your existing requires for express, multer, csv-parser, fs, path, and your db connection)
-const express = require('express');
-const multer = require('multer');
-const csv = require('csv-parser');
-const fs = require('fs');
-const path = require('path');
-const db = require('./db'); // Assuming your db connection is here
-const logger = require('./logger'); // Assuming your logger is here
-
-const app = express();
-const upload = multer({ dest: 'uploads/' });
-
-// ... (keep all your other app.use and app.get routes) ...
-
 
 // --- REPLACE your existing '/api/upload-csv' route with THIS ---
 app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
@@ -273,16 +255,15 @@ app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
 
 // --- NEW: Add this endpoint to serve data for the report tab ---
 app.get('/api/poc-data', async (req, res) => {
+  logger.info('GET /api/poc-data - Received request to fetch data.');
   try {
-    // Query the database to get all data, ordering it for consistency
-    const [rows] = await db.promise().query(
-      'SELECT * FROM pocpermonth ORDER BY project, phasecode, year, month'
-    );
-    // Send the data back as a JSON response
+    const [rows] = await db.promise().query('SELECT * FROM pocpermonth ORDER BY project, phasecode, year, month');
+    logger.info(`GET /api/poc-data - Successfully fetched ${rows.length} rows.`);
     res.json(rows);
   } catch (error) {
-    logger.error('Error fetching POC data:', error);
-    res.status(500).json({ message: 'Failed to fetch data from database.' });
+    // This log is crucial for debugging
+    logger.error('GET /api/poc-data - DATABASE ERROR:', error); 
+    res.status(500).json({ message: 'Database query failed. Check server logs for details.' });
   }
 });
 

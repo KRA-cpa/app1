@@ -7,14 +7,17 @@ function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+// Data Fetch
+
   const fetchData = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('/api/poc-data'); 
+      // Using full URL to ensure direct communication
+      const response = await fetch('http://localhost:3001/api/poc-data'); 
       if (!response.ok) {
-        const errData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
-        throw new Error(errData.message || 'Failed to fetch data');
+        const errData = await response.json().catch(() => ({})); // Try to get JSON error, but don't fail if it's not JSON
+        throw new Error(errData.message || 'Failed to fetch data from server.');
       }
       const jsonData = await response.json();
       setData(jsonData);

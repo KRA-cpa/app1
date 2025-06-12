@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import CsvUploader from './components/CsvUploader';
 import DataDisplay from './components/DataDisplay';
-import { logToServer } from './utils/logger';
 import './App.css';
 
 function App() {
@@ -12,37 +11,23 @@ function App() {
   const [dbErrorMessage, setDbErrorMessage] = useState('');
 
   const checkDbConnection = async () => {
-    logToServer('info', 'Checking DB connection status from App.js', { tab: activeTab });
     setDbStatus('checking');
     setDbErrorMessage('');
-
     try {
-      const response = await fetch('/api/db-status', {
-        method: 'GET',
-        cache: 'no-store',
-      });
-      
+      const response = await fetch('http://localhost:3001/api/db-status'); // Using full URL
       if (!response.ok) {
-        let errorMsg = `Backend responded with status ${response.status}`;
-        try {
-          const errorResult = await response.json();
-          errorMsg = errorResult.message || errorMsg;
-        } catch (parseError) {}
-        throw new Error(errorMsg);
+        throw new Error('Network response was not ok');
       }
-
       const result = await response.json();
       if (result.status === 'connected') {
         setDbStatus('connected');
       } else {
-        const errorMsg = result.message || 'Backend reported DB not connected.';
-        setDbErrorMessage(errorMsg);
         setDbStatus('error');
+        setDbErrorMessage(result.message || 'Backend reported DB not connected.');
       }
     } catch (error) {
-      logToServer('error', `Setting DB status to error (fetch/logic failed): ${error.message}`);
       setDbStatus('error');
-      setDbErrorMessage(error.message || 'Could not verify server connection status.');
+      setDbErrorMessage(error.message || 'Could not connect to server.');
     }
   };
 
@@ -50,21 +35,8 @@ function App() {
     checkDbConnection();
   }, [activeTab]);
 
-  const tabStyles = {
-    padding: '10px 15px',
-    cursor: 'pointer',
-    border: '1px solid #ccc',
-    borderBottom: 'none',
-    marginRight: '5px',
-    background: '#f1f1f1',
-    borderRadius: '5px 5px 0 0'
-  };
-
-  const activeTabStyles = {
-    ...tabStyles,
-    background: 'white',
-    borderBottom: '1px solid white',
-  };
+  const tabStyles = { /* ... same as before ... */ };
+  const activeTabStyles = { /* ... same as before ... */ };
 
   return (
     <div className="App">
@@ -73,14 +45,9 @@ function App() {
       </header>
       <main style={{ padding: '20px' }}>
         <div style={{ marginBottom: '-1px' }}>
-          <button style={activeTab === 'uploader' ? activeTabStyles : tabStyles} onClick={() => setActiveTab('uploader')}>
-            Uploader
-          </button>
-          <button style={activeTab === 'report' ? activeTabStyles : tabStyles} onClick={() => setActiveTab('report')}>
-            Data Report
-          </button>
+          <button style={activeTab === 'uploader' ? activeTabStyles : tabStyles} onClick={() => setActiveTab('uploader')}>Uploader</button>
+          <button style={activeTab === 'report' ? activeTabStyles : tabStyles} onClick={() => setActiveTab('report')}>Data Report</button>
         </div>
-
         <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '0 5px 5px 5px' }}>
           {activeTab === 'uploader' && 
             <CsvUploader 
@@ -99,8 +66,9 @@ function App() {
         </div>
       </main>
       <footer style={{ marginTop: '30px', fontSize: '0.8em', color: '#555', textAlign: 'center' }}>
-         <p>Current Date/Time: {new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' })} | {new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila' })}
-       </p>
+       
+        <p>Current Date/Time: {new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' })} | {new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila' })}</p>
+      <p>All Rights Reserved (r) 2025 by Kenneth Advento</p>
       </footer>
     </div>
   );
