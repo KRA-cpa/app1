@@ -8,6 +8,35 @@ function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
   const [filterOptions, setFilterOptions] = useState({ projects: [], phasecodes: [], years: [] });
   const [selectedFilters, setSelectedFilters] = useState({ project: '', phasecode: '', year: '' });
 
+
+//Date/time format
+ // --- NEW: Helper function to format the date and time ---
+  const formatDateTime = (isoString) => {
+    if (!isoString) return 'N/A';
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) {
+      return 'Invalid Date';
+    }
+
+    const pad = (num) => num.toString().padStart(2, '0');
+
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    hours %= 12;
+    hours = hours || 12; // the hour '0' should be '12'
+
+    const formattedDate = `${pad(date.getMonth() + 1)}/${pad(date.getDate())}/${date.getFullYear()}`;
+    const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)} ${ampm}`;
+
+    return `${formattedDate} ${formattedTime}`;
+  };
+
+//End date/time format
+
+
   const fetchData = async () => {
     setIsLoading(true);
     setError(null);
@@ -126,9 +155,9 @@ function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
                 <td>{row.value}</td>
                 {/* --- NEW COLUMNS --- */}
                 <td>{row.userC}</td>
-                <td>{new Date(row.timestampC).toLocaleString()}</td>
+                <td>{formatDateTime(row.timestampC)}</td>
                 <td>{row.userM}</td>
-                <td>{new Date(row.timestampM).toLocaleString()}</td>
+                <td>{formatDateTime(row.timestampM)}</td>
               </tr>
             ))}
           </tbody>

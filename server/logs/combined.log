@@ -1684,3 +1684,331 @@
 2025-06-12T16:27:47.900Z info: [Frontend] DB status fetch completed with status: 200
 2025-06-12T16:27:47.908Z info: [Frontend] DB status response parsed
 2025-06-12T16:27:47.909Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:42:13 info: Received request for /api/db-status
+2025-06-13 00:42:13 info: DB status check successful.
+2025-06-12T16:42:13.318Z info: [Frontend] Checking DB connection status
+2025-06-13 00:42:13 info: Received request for /api/db-status
+2025-06-13 00:42:13 info: DB status check successful.
+2025-06-13 00:42:13 info: Received request for /api/db-status
+2025-06-13 00:42:13 info: DB status check successful.
+2025-06-12T16:42:13.322Z info: [Frontend] Checking DB connection status
+2025-06-13 00:42:13 info: Received request for /api/db-status
+2025-06-13 00:42:13 info: DB status check successful.
+2025-06-12T16:42:13.345Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:42:13.358Z info: [Frontend] DB status response parsed
+2025-06-12T16:42:13.359Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:42:14.534Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:42:14.561Z info: [Frontend] DB status response parsed
+2025-06-12T16:42:14.562Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:42:20 info: Received request for /api/pocdata/options
+2025-06-13 00:42:20 info: Received request for /api/pocdata with filters:
+2025-06-13 00:42:20 info: Executing SQL:
+2025-06-13 00:42:20 info: With Params:
+2025-06-13 00:42:20 info: Received request for /api/db-status
+2025-06-13 00:42:20 info: DB status check successful.
+2025-06-13 00:42:20 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:42:20 info: Releasing database connection for /api/pocdata
+2025-06-13 00:42:20 info: Received request for /api/pocdata with filters:
+2025-06-13 00:42:20 info: Executing SQL:
+2025-06-13 00:42:20 info: With Params:
+2025-06-13 00:42:20 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:42:20 info: Releasing database connection for /api/pocdata
+2025-06-13 00:42:20 info: Received request for /api/pocdata with filters:
+2025-06-13 00:42:20 info: Executing SQL:
+2025-06-13 00:42:20 info: With Params:
+2025-06-13 00:42:20 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:42:20 info: Releasing database connection for /api/pocdata
+2025-06-13 00:42:20 info: Received request for /api/pocdata/options
+2025-06-13 00:42:20 info: Received request for /api/pocdata with filters:
+2025-06-13 00:42:20 info: Executing SQL:
+2025-06-13 00:42:20 info: With Params:
+2025-06-13 00:42:20 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:42:20 info: Releasing database connection for /api/pocdata
+2025-06-13 00:42:20 info: Received request for /api/pocdata with filters:
+2025-06-13 00:42:20 info: Executing SQL:
+2025-06-13 00:42:20 info: With Params:
+2025-06-13 00:42:20 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:42:20 info: Releasing database connection for /api/pocdata
+2025-06-13 00:42:20 info: Received request for /api/pocdata/options
+2025-06-13 00:42:20 info: Received request for /api/pocdata with filters:
+2025-06-13 00:42:20 info: Executing SQL:
+2025-06-13 00:42:20 info: With Params:
+2025-06-13 00:42:20 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:42:20 info: Releasing database connection for /api/pocdata
+2025-06-12T16:42:32.151Z info: [Frontend] Checking DB connection status
+2025-06-13 00:42:32 info: Received request for /api/db-status
+2025-06-13 00:42:32 info: DB status check successful.
+2025-06-13 00:42:32 info: Received request for /api/db-status
+2025-06-13 00:42:32 info: DB status check successful.
+2025-06-12T16:42:32.152Z info: [Frontend] Checking DB connection status
+2025-06-13 00:42:32 info: Received request for /api/db-status
+2025-06-13 00:42:32 info: DB status check successful.
+2025-06-12T16:42:32.470Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:42:32.471Z info: [Frontend] DB status response parsed
+2025-06-12T16:42:32.472Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:42:32.474Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:42:32.477Z info: [Frontend] DB status response parsed
+2025-06-12T16:42:32.478Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:45:19 info: Received request for /api/pocdata/options
+2025-06-13 00:45:19 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:19 info: Executing SQL:
+2025-06-13 00:45:19 info: With Params:
+2025-06-13 00:45:19 info: Received request for /api/db-status
+2025-06-13 00:45:19 info: DB status check successful.
+2025-06-13 00:45:19 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:19 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:19 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:19 info: Executing SQL:
+2025-06-13 00:45:19 info: With Params:
+2025-06-13 00:45:19 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:19 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:19 info: Received request for /api/pocdata/options
+2025-06-13 00:45:19 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:19 info: Executing SQL:
+2025-06-13 00:45:19 info: With Params:
+2025-06-13 00:45:19 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:19 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:19 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:19 info: Executing SQL:
+2025-06-13 00:45:19 info: With Params:
+2025-06-13 00:45:19 info: Received request for /api/pocdata/options
+2025-06-13 00:45:19 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:19 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:19 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:19 info: Executing SQL:
+2025-06-13 00:45:19 info: With Params:
+2025-06-13 00:45:19 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:19 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:19 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:19 info: Executing SQL:
+2025-06-13 00:45:19 info: With Params:
+2025-06-13 00:45:19 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:19 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:24 info: Received request for /api/db-status
+2025-06-13 00:45:24 info: DB status check successful.
+2025-06-12T16:45:24.020Z info: [Frontend] Checking DB connection status
+2025-06-13 00:45:24 info: Received request for /api/db-status
+2025-06-13 00:45:24 info: DB status check successful.
+2025-06-12T16:45:24.022Z info: [Frontend] Checking DB connection status
+2025-06-13 00:45:24 info: Received request for /api/db-status
+2025-06-13 00:45:24 info: DB status check successful.
+2025-06-12T16:45:24.342Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:45:24.344Z info: [Frontend] DB status response parsed
+2025-06-12T16:45:24.344Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:45:24.348Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:45:24.348Z info: [Frontend] DB status response parsed
+2025-06-12T16:45:24.349Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:45:50 info: Received request for /api/pocdata/options
+2025-06-13 00:45:50 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:50 info: Executing SQL:
+2025-06-13 00:45:50 info: With Params:
+2025-06-13 00:45:50 info: Received request for /api/db-status
+2025-06-13 00:45:50 info: DB status check successful.
+2025-06-13 00:45:50 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:50 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:50 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:50 info: Executing SQL:
+2025-06-13 00:45:50 info: With Params:
+2025-06-13 00:45:50 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:50 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:50 info: Received request for /api/pocdata/options
+2025-06-13 00:45:50 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:50 info: Executing SQL:
+2025-06-13 00:45:50 info: With Params:
+2025-06-13 00:45:50 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:50 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:50 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:50 info: Executing SQL:
+2025-06-13 00:45:50 info: With Params:
+2025-06-13 00:45:50 info: Received request for /api/pocdata/options
+2025-06-13 00:45:50 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:50 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:50 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:50 info: Executing SQL:
+2025-06-13 00:45:50 info: With Params:
+2025-06-13 00:45:50 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:50 info: Releasing database connection for /api/pocdata
+2025-06-13 00:45:50 info: Received request for /api/pocdata with filters:
+2025-06-13 00:45:50 info: Executing SQL:
+2025-06-13 00:45:50 info: With Params:
+2025-06-13 00:45:50 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:45:50 info: Releasing database connection for /api/pocdata
+2025-06-12T16:45:59.822Z info: [Frontend] Checking DB connection status
+2025-06-13 00:45:59 info: Received request for /api/db-status
+2025-06-13 00:45:59 info: DB status check successful.
+2025-06-13 00:46:00 info: Received request for /api/db-status
+2025-06-13 00:46:00 info: DB status check successful.
+2025-06-12T16:45:59.825Z info: [Frontend] Checking DB connection status
+2025-06-13 00:46:00 info: Received request for /api/db-status
+2025-06-13 00:46:00 info: DB status check successful.
+2025-06-12T16:46:00.163Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:46:00.164Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:46:00.165Z info: [Frontend] DB status response parsed
+2025-06-12T16:46:00.166Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:46:00.166Z info: [Frontend] DB status response parsed
+2025-06-12T16:46:00.167Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:46:01 info: Received request for /api/pocdata/options
+2025-06-13 00:46:01 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:01 info: Executing SQL:
+2025-06-13 00:46:01 info: With Params:
+2025-06-13 00:46:01 info: Received request for /api/db-status
+2025-06-13 00:46:01 info: DB status check successful.
+2025-06-13 00:46:01 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:01 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:01 info: Received request for /api/pocdata/options
+2025-06-13 00:46:01 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:01 info: Executing SQL:
+2025-06-13 00:46:01 info: With Params:
+2025-06-13 00:46:01 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:01 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:01 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:01 info: Executing SQL:
+2025-06-13 00:46:01 info: With Params:
+2025-06-13 00:46:01 info: Received request for /api/pocdata/options
+2025-06-13 00:46:01 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:01 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:01 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:01 info: Executing SQL:
+2025-06-13 00:46:01 info: With Params:
+2025-06-13 00:46:01 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:01 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:01 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:01 info: Executing SQL:
+2025-06-13 00:46:01 info: With Params:
+2025-06-13 00:46:01 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:01 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:01 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:01 info: Executing SQL:
+2025-06-13 00:46:01 info: With Params:
+2025-06-13 00:46:01 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:01 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:44 info: Received request for /api/db-status
+2025-06-13 00:46:44 info: DB status check successful.
+2025-06-12T16:46:44.333Z info: [Frontend] Checking DB connection status
+2025-06-13 00:46:44 info: Received request for /api/db-status
+2025-06-13 00:46:44 info: DB status check successful.
+2025-06-12T16:46:44.334Z info: [Frontend] Checking DB connection status
+2025-06-13 00:46:44 info: Received request for /api/db-status
+2025-06-13 00:46:44 info: DB status check successful.
+2025-06-12T16:46:44.671Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:46:44.676Z info: [Frontend] DB status response parsed
+2025-06-12T16:46:44.677Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:46:44.680Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:46:44.681Z info: [Frontend] DB status response parsed
+2025-06-12T16:46:44.681Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:46:45 info: Received request for /api/pocdata/options
+2025-06-13 00:46:45 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:45 info: Executing SQL:
+2025-06-13 00:46:45 info: With Params:
+2025-06-13 00:46:45 info: Received request for /api/db-status
+2025-06-13 00:46:45 info: DB status check successful.
+2025-06-13 00:46:45 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:45 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:45 info: Received request for /api/pocdata/options
+2025-06-13 00:46:45 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:45 info: Executing SQL:
+2025-06-13 00:46:45 info: With Params:
+2025-06-13 00:46:45 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:45 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:45 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:45 info: Executing SQL:
+2025-06-13 00:46:45 info: With Params:
+2025-06-13 00:46:45 info: Received request for /api/pocdata/options
+2025-06-13 00:46:45 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:45 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:45 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:45 info: Executing SQL:
+2025-06-13 00:46:45 info: With Params:
+2025-06-13 00:46:45 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:45 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:45 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:45 info: Executing SQL:
+2025-06-13 00:46:45 info: With Params:
+2025-06-13 00:46:45 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:45 info: Releasing database connection for /api/pocdata
+2025-06-13 00:46:45 info: Received request for /api/pocdata with filters:
+2025-06-13 00:46:45 info: Executing SQL:
+2025-06-13 00:46:45 info: With Params:
+2025-06-13 00:46:45 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:46:45 info: Releasing database connection for /api/pocdata
+2025-06-13 00:50:52 info: Received request for /api/db-status
+2025-06-13 00:50:52 info: DB status check successful.
+2025-06-12T16:50:52.513Z info: [Frontend] Checking DB connection status
+2025-06-13 00:50:52 info: Received request for /api/db-status
+2025-06-13 00:50:52 info: DB status check successful.
+2025-06-13 00:50:52 info: Received request for /api/db-status
+2025-06-13 00:50:52 info: DB status check successful.
+2025-06-12T16:50:52.516Z info: [Frontend] Checking DB connection status
+2025-06-13 00:50:52 info: Received request for /api/db-status
+2025-06-13 00:50:52 info: DB status check successful.
+2025-06-12T16:50:52.536Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:50:52.542Z info: [Frontend] DB status response parsed
+2025-06-12T16:50:52.543Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:50:53.063Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:50:53.083Z info: [Frontend] DB status response parsed
+2025-06-12T16:50:53.083Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:50:54 info: Received request for /api/pocdata/options
+2025-06-13 00:50:54 info: Received request for /api/pocdata with filters:
+2025-06-13 00:50:54 info: Executing SQL:
+2025-06-13 00:50:54 info: With Params:
+2025-06-13 00:50:54 info: Received request for /api/db-status
+2025-06-13 00:50:54 info: DB status check successful.
+2025-06-13 00:50:54 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:50:54 info: Releasing database connection for /api/pocdata
+2025-06-13 00:50:54 info: Received request for /api/pocdata/options
+2025-06-13 00:50:54 info: Received request for /api/pocdata with filters:
+2025-06-13 00:50:54 info: Executing SQL:
+2025-06-13 00:50:54 info: With Params:
+2025-06-13 00:50:54 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:50:54 info: Releasing database connection for /api/pocdata
+2025-06-13 00:50:54 info: Received request for /api/pocdata with filters:
+2025-06-13 00:50:54 info: Executing SQL:
+2025-06-13 00:50:54 info: With Params:
+2025-06-13 00:50:54 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:50:54 info: Releasing database connection for /api/pocdata
+2025-06-13 00:50:54 info: Received request for /api/pocdata with filters:
+2025-06-13 00:50:54 info: Executing SQL:
+2025-06-13 00:50:54 info: With Params:
+2025-06-13 00:50:54 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:50:54 info: Releasing database connection for /api/pocdata
+2025-06-13 00:50:54 info: Received request for /api/pocdata/options
+2025-06-13 00:50:54 info: Received request for /api/pocdata with filters:
+2025-06-13 00:50:54 info: Executing SQL:
+2025-06-13 00:50:54 info: With Params:
+2025-06-13 00:50:54 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:50:54 info: Releasing database connection for /api/pocdata
+2025-06-13 00:50:54 info: Received request for /api/pocdata with filters:
+2025-06-13 00:50:54 info: Executing SQL:
+2025-06-13 00:50:54 info: With Params:
+2025-06-13 00:50:54 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:50:54 info: Releasing database connection for /api/pocdata
+2025-06-12T16:58:17.824Z info: [Frontend] Checking DB connection status
+2025-06-13 00:58:17 info: Received request for /api/db-status
+2025-06-13 00:58:17 info: DB status check successful.
+2025-06-13 00:58:18 info: Received request for /api/db-status
+2025-06-13 00:58:18 info: DB status check successful.
+2025-06-12T16:58:17.827Z info: [Frontend] Checking DB connection status
+2025-06-13 00:58:18 info: Received request for /api/db-status
+2025-06-13 00:58:18 info: DB status check successful.
+2025-06-12T16:58:18.190Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:58:18.194Z info: [Frontend] DB status response parsed
+2025-06-12T16:58:18.196Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:58:18.214Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:58:18.217Z info: [Frontend] DB status response parsed
+2025-06-12T16:58:18.219Z info: [Frontend] Setting DB status to connected
+2025-06-13 01:00:11 info: Received request for /api/db-status
+2025-06-13 01:00:11 info: DB status check successful.
+2025-06-12T17:00:11.888Z info: [Frontend] Checking DB connection status
+2025-06-13 01:00:11 info: Received request for /api/db-status
+2025-06-13 01:00:11 info: DB status check successful.
+2025-06-13 01:00:12 info: Received request for /api/db-status
+2025-06-13 01:00:12 info: DB status check successful.
+2025-06-12T17:00:11.891Z info: [Frontend] Checking DB connection status
+2025-06-13 01:00:12 info: Received request for /api/db-status
+2025-06-13 01:00:12 info: DB status check successful.
+2025-06-12T17:00:12.475Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T17:00:12.476Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T17:00:12.498Z info: [Frontend] DB status response parsed
+2025-06-12T17:00:12.498Z info: [Frontend] Setting DB status to connected
+2025-06-12T17:00:12.499Z info: [Frontend] DB status response parsed
+2025-06-12T17:00:12.500Z info: [Frontend] Setting DB status to connected
