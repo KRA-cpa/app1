@@ -1,4 +1,5 @@
 // client/src/components/DataDisplay.js
+
 import React, { useState, useEffect } from 'react';
 
 function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
@@ -10,11 +11,10 @@ function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
     setIsLoading(true);
     setError(null);
     try {
-      // --- FIXED: Calling the correct new endpoint ---
       const response = await fetch('/api/poc-data'); 
       if (!response.ok) {
-        const errData = await response.json().catch(() => ({ message: 'Failed to fetch data' }));
-        throw new Error(errData.message);
+        const errData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
+        throw new Error(errData.message || 'Failed to fetch data');
       }
       const jsonData = await response.json();
       setData(jsonData);
@@ -62,6 +62,7 @@ function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
       <table border="1" style={{ borderCollapse: 'collapse', width: '100%' }}>
           <thead>
               <tr>
+                  <th>ID</th>
                   <th>Project</th>
                   <th>Phase Code</th>
                   <th>Year</th>
@@ -70,8 +71,9 @@ function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
               </tr>
           </thead>
           <tbody>
-              {data.map((row, index) => (
-                  <tr key={row.ID || index}>
+              {data.map((row) => (
+                  <tr key={row.ID}>
+                      <td>{row.ID}</td>
                       <td>{row.project}</td>
                       <td>{row.phasecode}</td>
                       <td>{row.year}</td>

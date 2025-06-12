@@ -1173,3 +1173,9 @@
 2025-06-12T15:01:53.438Z info: [Frontend] Checking DB connection status from App.js
 2025-06-12 23:01:53 info: Received request for /api/db-status
 2025-06-12 23:01:53 info: DB status check successful.
+2025-06-12T15:04:51.627Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:04:51 info: Received request for /api/db-status
+2025-06-12 23:04:51 info: DB status check successful.
+2025-06-12T15:08:36.272Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:08:36 info: Received request for /api/db-status
+2025-06-12 23:08:36 info: DB status check successful.
