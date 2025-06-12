@@ -1,0 +1,8 @@
+*Create POC completion date table
+
+*Create project/phase data table
+
+*Validate against two new tables
+-- POC completion table per project/phase will not allow upload to POCpermonth
+a) if POC for project and phase is equal to above 100 after completion date
+b) POC for project and phase for month and year of completion date should be 100
