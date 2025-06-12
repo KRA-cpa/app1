@@ -1179,3 +1179,45 @@
 2025-06-12T15:08:36.272Z info: [Frontend] Checking DB connection status from App.js
 2025-06-12 23:08:36 info: Received request for /api/db-status
 2025-06-12 23:08:36 info: DB status check successful.
+2025-06-12T15:15:52.133Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:15:52 info: Received request for /api/db-status
+2025-06-12 23:15:52 info: DB status check successful.
+2025-06-12T15:28:32.878Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:28:33 info: Received request for /api/db-status
+2025-06-12 23:28:33 info: DB status check successful.
+2025-06-12T15:30:38.623Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:30:38 info: Received request for /api/db-status
+2025-06-12 23:30:38 info: DB status check successful.
+2025-06-12T15:30:39.544Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:30:39 info: Received request for /api/db-status
+2025-06-12 23:30:39 info: DB status check successful.
+2025-06-12T15:30:43.774Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:30:44 info: Received request for /api/db-status
+2025-06-12 23:30:44 info: DB status check successful.
+2025-06-12T15:30:43.776Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:30:44 info: Received request for /api/db-status
+2025-06-12 23:30:44 info: DB status check successful.
+2025-06-12T15:32:28.742Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:32:28 info: Received request for /api/db-status
+2025-06-12 23:32:28 info: DB status check successful.
+2025-06-12T15:32:28.745Z info: [Frontend] Checking DB connection status from App.js
+2025-06-12 23:32:29 info: Received request for /api/db-status
+2025-06-12 23:32:29 info: DB status check successful.
+2025-06-12T15:39:00.027Z info: [Frontend] Checking DB connection status
+2025-06-12 23:39:00 info: Received request for /api/db-status
+2025-06-12 23:39:00 info: DB status check successful.
+2025-06-12T15:39:00.045Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:39:00.048Z info: [Frontend] DB status response parsed
+2025-06-12T15:39:00.048Z info: [Frontend] Setting DB status to connected
+2025-06-12T15:39:06.645Z info: [Frontend] CSV file selected: POClong.csv
+2025-06-12T15:39:40.834Z info: [Frontend] Starting CSV upload: POClong.csv
+2025-06-12 23:39:41 info: Skipping assumed header row:
+2025-06-12 23:39:41 warn: Skipping invalid row (1) - Failed Validation (Positional 5-Col):
+2025-06-12 23:39:41 info: CSV processing complete (positional, 5 columns).
+2025-06-12T15:39:41.171Z info: [Frontend] CSV upload successful: POClong.csv
+2025-06-12T15:41:55.140Z info: [Frontend] Checking DB connection status
+2025-06-12 23:41:55 info: Received request for /api/db-status
+2025-06-12 23:41:55 info: DB status check successful.
+2025-06-12T15:41:55.150Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T15:41:55.152Z info: [Frontend] DB status response parsed
+2025-06-12T15:41:55.152Z info: [Frontend] Setting DB status to connected
