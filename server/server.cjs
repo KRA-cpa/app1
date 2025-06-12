@@ -11,9 +11,10 @@ const mysql = require('mysql2/promise'); // Use promise wrapper
 const fs = require('fs');
 const { Readable } = require('stream');
 const cors = require('cors');
+const db = require('./db');       // Make sure this path is correct for your project
+const logger = require('./logger'); // Make sure this path is correct for your project
 
 const port = process.env.API_PORT || 3001;
-
 
 
 // --- Configure Winston Logger ---
@@ -247,25 +248,12 @@ app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
             res.status(500).json({ message: 'Error parsing CSV file.' });
         });
 });
-
 // api/upload-csv ends here //
- 
+
+
+
 // Data Display
 // --- MODIFY your existing GET /api/pocdata route in server.cjs ---
-
-// --- NEW: Add this endpoint to serve data for the report tab ---
-app.get('/api/poc-data', async (req, res) => {
-  logger.info('GET /api/poc-data - Received request to fetch data.');
-  try {
-    const [rows] = await db.promise().query('SELECT * FROM pocpermonth ORDER BY project, phasecode, year, month');
-    logger.info(`GET /api/poc-data - Successfully fetched ${rows.length} rows.`);
-    res.json(rows);
-  } catch (error) {
-    // This log is crucial for debugging
-    logger.error('GET /api/poc-data - DATABASE ERROR:', error); 
-    res.status(500).json({ message: 'Database query failed. Check server logs for details.' });
-  }
-});
 
 
 app.get('/api/pocdata', async (req, res) => {

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import CsvUploader from './components/CsvUploader';
 import DataDisplay from './components/DataDisplay';
+import { logToServer } from './utils/logger';
 import './App.css';
 
 function App() {

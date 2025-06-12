@@ -1385,3 +1385,302 @@
     at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
     at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
     at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-12T16:15:26.924Z info: [Frontend] Checking DB connection status
+2025-06-13 00:15:26 info: Received request for /api/db-status
+2025-06-13 00:15:26 info: DB status check successful.
+2025-06-13 00:15:27 info: Received request for /api/db-status
+2025-06-13 00:15:27 info: DB status check successful.
+2025-06-12T16:15:26.926Z info: [Frontend] Checking DB connection status
+2025-06-13 00:15:27 info: Received request for /api/db-status
+2025-06-13 00:15:27 info: DB status check successful.
+2025-06-12T16:15:27.263Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:15:27.264Z info: [Frontend] DB status response parsed
+2025-06-12T16:15:27.265Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:15:27.273Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:15:27.274Z info: [Frontend] DB status response parsed
+2025-06-12T16:15:27.275Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:15:28 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:15:28 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:15:28 info: Received request for /api/db-status
+2025-06-13 00:15:28 info: DB status check successful.
+2025-06-13 00:15:28 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:15:28 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:15:28 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:15:28 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:16:46 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:16:46 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:16:47 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:16:47 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:17:35 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:17:35 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:17:37 info: Received request for /api/db-status
+2025-06-13 00:17:37 info: DB status check successful.
+2025-06-12T16:17:37.807Z info: [Frontend] Checking DB connection status
+2025-06-13 00:17:37 info: Received request for /api/db-status
+2025-06-13 00:17:37 info: DB status check successful.
+2025-06-13 00:17:37 info: Received request for /api/db-status
+2025-06-13 00:17:37 info: DB status check successful.
+2025-06-12T16:17:37.810Z info: [Frontend] Checking DB connection status
+2025-06-13 00:17:38 info: Received request for /api/db-status
+2025-06-13 00:17:38 info: DB status check successful.
+2025-06-12T16:17:37.830Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:17:37.838Z info: [Frontend] DB status response parsed
+2025-06-12T16:17:37.839Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:17:38.351Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:17:38.374Z info: [Frontend] DB status response parsed
+2025-06-12T16:17:38.374Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:17:39 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:17:39 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:17:39 info: Received request for /api/db-status
+2025-06-13 00:17:39 info: DB status check successful.
+2025-06-13 00:17:39 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:17:39 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:17:39 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:17:39 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:17:40 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:17:40 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-12T16:18:02.099Z info: [Frontend] Checking DB connection status
+2025-06-13 00:18:02 info: Received request for /api/db-status
+2025-06-13 00:18:02 info: DB status check successful.
+2025-06-13 00:18:02 info: Received request for /api/db-status
+2025-06-13 00:18:02 info: DB status check successful.
+2025-06-13 00:18:02 info: Received request for /api/db-status
+2025-06-13 00:18:02 info: DB status check successful.
+2025-06-12T16:18:02.101Z info: [Frontend] Checking DB connection status
+2025-06-13 00:18:02 info: Received request for /api/db-status
+2025-06-13 00:18:02 info: DB status check successful.
+2025-06-12T16:18:02.632Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:18:02.633Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:18:02.642Z info: [Frontend] DB status response parsed
+2025-06-12T16:18:02.642Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:18:02.644Z info: [Frontend] DB status response parsed
+2025-06-12T16:18:02.645Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:18:03 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:18:03 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:18:03 info: Received request for /api/db-status
+2025-06-13 00:18:03 info: DB status check successful.
+2025-06-13 00:18:03 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:18:03 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:18:03 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:18:03 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:18:04 info: GET /api/poc-data - Received request to fetch data.
+2025-06-13 00:18:04 error: ReferenceError: db is not defined
+    at Z:\Work Files\project\app1\server\server.cjs:260:20
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
+    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
+    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
+    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
+    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
+    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-13 00:22:28 info: Received request for /api/pocdata/options
+2025-06-13 00:22:28 info: Received request for /api/pocdata with filters:
+2025-06-13 00:22:28 info: Executing SQL:
+2025-06-13 00:22:28 info: With Params:
+2025-06-13 00:22:28 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:22:28 info: Releasing database connection for /api/pocdata
+2025-06-13 00:22:28 info: Received request for /api/pocdata with filters:
+2025-06-13 00:22:28 info: Executing SQL:
+2025-06-13 00:22:28 info: With Params:
+2025-06-13 00:22:28 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:22:28 info: Releasing database connection for /api/pocdata
+2025-06-13 00:22:35 info: Received request for /api/pocdata with filters:
+2025-06-13 00:22:35 info: Executing SQL:
+2025-06-13 00:22:35 info: With Params:
+2025-06-13 00:22:35 info: Fetched 1 rows from pocpermonth.
+2025-06-13 00:22:35 info: Releasing database connection for /api/pocdata
+2025-06-13 00:22:38 info: Received request for /api/pocdata with filters:
+2025-06-13 00:22:38 info: Executing SQL:
+2025-06-13 00:22:38 info: With Params:
+2025-06-13 00:22:38 info: Fetched 1 rows from pocpermonth.
+2025-06-13 00:22:38 info: Releasing database connection for /api/pocdata
+2025-06-13 00:22:39 info: Received request for /api/pocdata with filters:
+2025-06-13 00:22:39 info: Executing SQL:
+2025-06-13 00:22:39 info: With Params:
+2025-06-13 00:22:39 info: Fetched 1 rows from pocpermonth.
+2025-06-13 00:22:39 info: Releasing database connection for /api/pocdata
+2025-06-12T16:24:28.059Z info: [Frontend] Checking DB connection status
+2025-06-13 00:24:28 info: Received request for /api/db-status
+2025-06-13 00:24:28 info: DB status check successful.
+2025-06-13 00:24:28 info: Received request for /api/db-status
+2025-06-13 00:24:28 info: DB status check successful.
+2025-06-12T16:24:28.060Z info: [Frontend] Checking DB connection status
+2025-06-13 00:24:28 info: Received request for /api/db-status
+2025-06-13 00:24:28 info: DB status check successful.
+2025-06-12T16:24:28.398Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:24:28.400Z info: [Frontend] DB status response parsed
+2025-06-12T16:24:28.401Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:24:28.405Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:24:28.405Z info: [Frontend] DB status response parsed
+2025-06-12T16:24:28.406Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:25:14.754Z info: [Frontend] Checking DB connection status
+2025-06-13 00:25:14 info: Received request for /api/db-status
+2025-06-13 00:25:14 info: DB status check successful.
+2025-06-12T16:25:14.755Z info: [Frontend] Checking DB connection status
+2025-06-13 00:25:15 info: Received request for /api/db-status
+2025-06-13 00:25:15 info: DB status check successful.
+2025-06-12T16:25:14.771Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:25:14.771Z info: [Frontend] DB status response parsed
+2025-06-12T16:25:14.772Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:25:15.099Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:25:15.101Z info: [Frontend] DB status response parsed
+2025-06-12T16:25:15.102Z info: [Frontend] Setting DB status to connected
+2025-06-13 00:27:46 info: Received request for /api/db-status
+2025-06-13 00:27:46 info: DB status check successful.
+2025-06-13 00:27:46 info: Received request for /api/pocdata/options
+2025-06-13 00:27:46 info: Received request for /api/pocdata with filters:
+2025-06-13 00:27:46 info: Executing SQL:
+2025-06-13 00:27:46 info: With Params:
+2025-06-13 00:27:46 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:27:46 info: Releasing database connection for /api/pocdata
+2025-06-13 00:27:46 info: Received request for /api/pocdata with filters:
+2025-06-13 00:27:46 info: Executing SQL:
+2025-06-13 00:27:46 info: With Params:
+2025-06-13 00:27:46 info: Fetched 4 rows from pocpermonth.
+2025-06-13 00:27:46 info: Releasing database connection for /api/pocdata
+2025-06-13 00:27:47 info: Received request for /api/db-status
+2025-06-13 00:27:47 info: DB status check successful.
+2025-06-12T16:27:47.564Z info: [Frontend] Checking DB connection status
+2025-06-13 00:27:47 info: Received request for /api/db-status
+2025-06-13 00:27:47 info: DB status check successful.
+2025-06-12T16:27:47.565Z info: [Frontend] Checking DB connection status
+2025-06-13 00:27:47 info: Received request for /api/db-status
+2025-06-13 00:27:47 info: DB status check successful.
+2025-06-12T16:27:47.897Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:27:47.898Z info: [Frontend] DB status response parsed
+2025-06-12T16:27:47.899Z info: [Frontend] Setting DB status to connected
+2025-06-12T16:27:47.900Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-12T16:27:47.908Z info: [Frontend] DB status response parsed
+2025-06-12T16:27:47.909Z info: [Frontend] Setting DB status to connected
