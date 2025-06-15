@@ -2061,3 +2061,48 @@
 2025-06-15 22:25:54 info: Executing SQL:
 2025-06-15 22:25:54 info: Fetched 2 rows from pocpermonth.
 2025-06-15 22:25:54 info: Releasing database connection for /api/pocdata
+2025-06-15 22:42:02 info: Received request for /api/db-status
+2025-06-15 22:42:02 info: DB status check successful.
+2025-06-15T14:42:02.013Z info: [Frontend] Checking DB connection status
+2025-06-15 22:42:02 info: Received request for /api/db-status
+2025-06-15 22:42:02 info: DB status check successful.
+2025-06-15 22:42:02 info: Received request for /api/db-status
+2025-06-15 22:42:02 info: DB status check successful.
+2025-06-15T14:42:02.016Z info: [Frontend] Checking DB connection status
+2025-06-15 22:42:02 info: Received request for /api/db-status
+2025-06-15 22:42:02 info: DB status check successful.
+2025-06-15T14:42:02.050Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-15T14:42:02.152Z info: [Frontend] DB status response parsed
+2025-06-15T14:42:02.153Z info: [Frontend] Setting DB status to connected
+2025-06-15T14:42:02.678Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-15T14:42:02.700Z info: [Frontend] DB status response parsed
+2025-06-15T14:42:02.700Z info: [Frontend] Setting DB status to connected
+2025-06-15 22:42:03 info: Received request for /api/pocdata/options
+2025-06-15 22:42:03 info: Received request for /api/pocdata with filters:
+2025-06-15 22:42:03 info: Executing SQL:
+2025-06-15 22:42:03 info: Received request for /api/db-status
+2025-06-15 22:42:03 info: DB status check successful.
+2025-06-15 22:42:03 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:42:03 info: Releasing database connection for /api/pocdata
+2025-06-15 22:42:03 info: Received request for /api/pocdata with filters:
+2025-06-15 22:42:03 info: Executing SQL:
+2025-06-15 22:42:03 info: Received request for /api/pocdata/options
+2025-06-15 22:42:03 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:42:03 info: Releasing database connection for /api/pocdata
+2025-06-15 22:42:03 info: Received request for /api/pocdata with filters:
+2025-06-15 22:42:03 info: Executing SQL:
+2025-06-15 22:42:03 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:42:03 info: Releasing database connection for /api/pocdata
+2025-06-15 22:42:03 info: Received request for /api/pocdata with filters:
+2025-06-15 22:42:03 info: Executing SQL:
+2025-06-15 22:42:03 info: Received request for /api/pocdata/options
+2025-06-15 22:42:03 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:42:03 info: Releasing database connection for /api/pocdata
+2025-06-15 22:42:03 info: Received request for /api/pocdata with filters:
+2025-06-15 22:42:03 info: Executing SQL:
+2025-06-15 22:42:03 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:42:03 info: Releasing database connection for /api/pocdata
+2025-06-15 22:42:03 info: Received request for /api/pocdata with filters:
+2025-06-15 22:42:03 info: Executing SQL:
+2025-06-15 22:42:03 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:42:03 info: Releasing database connection for /api/pocdata
