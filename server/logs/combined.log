@@ -2012,3 +2012,52 @@
 2025-06-12T17:00:12.498Z info: [Frontend] Setting DB status to connected
 2025-06-12T17:00:12.499Z info: [Frontend] DB status response parsed
 2025-06-12T17:00:12.500Z info: [Frontend] Setting DB status to connected
+2025-06-15 22:25:38 info: Attempting to create MySQL connection pool...
+2025-06-15 22:25:38 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-15 22:25:38 info: MySQL Pool ready.
+2025-06-15 22:25:38 info: 🚀 Server listening on http://localhost:3001
+2025-06-15 22:25:48 info: Received request for /api/pocdata/options
+2025-06-15 22:25:48 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:48 info: Received request for /api/db-status
+2025-06-15 22:25:48 info: Executing SQL:
+2025-06-15 22:25:48 info: DB status check successful.
+2025-06-15 22:25:48 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:25:48 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:48 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:48 info: Executing SQL:
+2025-06-15 22:25:48 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:25:48 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:48 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:48 info: Executing SQL:
+2025-06-15 22:25:48 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:25:48 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:48 info: Received request for /api/pocdata/options
+2025-06-15 22:25:48 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:48 info: Executing SQL:
+2025-06-15 22:25:48 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:25:48 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:48 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:48 info: Executing SQL:
+2025-06-15 22:25:48 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:25:48 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:48 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:48 info: Executing SQL:
+2025-06-15 22:25:48 info: Fetched 4 rows from pocpermonth.
+2025-06-15 22:25:48 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:48 info: Received request for /api/pocdata/options
+2025-06-15 22:25:50 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:50 info: Executing SQL:
+2025-06-15 22:25:50 info: Fetched 1 rows from pocpermonth.
+2025-06-15 22:25:50 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:52 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:52 info: Executing SQL:
+2025-06-15 22:25:52 info: Fetched 1 rows from pocpermonth.
+2025-06-15 22:25:52 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:53 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:53 info: Executing SQL:
+2025-06-15 22:25:53 info: Fetched 1 rows from pocpermonth.
+2025-06-15 22:25:53 info: Releasing database connection for /api/pocdata
+2025-06-15 22:25:54 info: Received request for /api/pocdata with filters:
+2025-06-15 22:25:54 info: Executing SQL:
+2025-06-15 22:25:54 info: Fetched 2 rows from pocpermonth.
+2025-06-15 22:25:54 info: Releasing database connection for /api/pocdata
