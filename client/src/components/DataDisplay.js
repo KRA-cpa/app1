@@ -1,23 +1,24 @@
 // client/src/components/DataDisplay.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { logToServer } from '../utils/logger.js';
 
 function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
+
+// This component receives the shared 'cutoffDate' as a prop from App.js
+const DataDisplay = ({ cutoffDate }) => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [filterOptions, setFilterOptions] = useState({ projects: [], phasecodes: [], years: [] });
-  const [selectedFilters, setSelectedFilters] = useState({ project: '', phasecode: '', year: '' });
+  const [filters, setFilters] = useState({ project: '', phasecode: '', year: '' });
+  const [options, setOptions] = useState({ projects: [], phasecodes: [], years: [] });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-
-//Date/time format
- // --- NEW: Helper function to format the date and time ---
+  // CORRECTED: Moved this helper function to the main component scope so it's accessible by the JSX.
   const formatDateTime = (isoString) => {
     if (!isoString) return 'N/A';
     const date = new Date(isoString);
     if (isNaN(date.getTime())) {
       return 'Invalid Date';
     }
-
     const pad = (num) => num.toString().padStart(2, '0');
 
     let hours = date.getHours();
@@ -33,134 +34,129 @@ function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
 
     return `${formattedDate} ${formattedTime}`;
   };
-
-//End date/time format
-
-
-  const fetchData = async () => {
-    setIsLoading(true);
-    setError(null);
-    
-    const params = new URLSearchParams();
-    if (selectedFilters.project) params.append('project', selectedFilters.project);
-    if (selectedFilters.phasecode) params.append('phasecode', selectedFilters.phasecode);
-    if (selectedFilters.year) params.append('year', selectedFilters.year);
-
-    try {
-      const response = await fetch(`http://localhost:3001/api/pocdata?${params.toString()}`);
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.message || 'Failed to fetch data from server.');
-      }
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (err) {
-      console.error("Error fetching data:", err);
-      setError(err.message);
-      setData([]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
   
-  const fetchFilterOptions = async () => {
+  // This function fetches the options for the filter dropdowns.
+  const fetchOptions = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/pocdata/options');
-      if (!response.ok) throw new Error('Could not load filter options');
-      const jsonData = await response.json();
-      setFilterOptions(jsonData);
-    } catch (err) {
-      console.error("Error fetching filter options:", err);
+      const response = await fetch(`http://localhost:3001/api/pocdata/options`);
+      if (!response.ok) {
+     throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      setOptions(result);
+      logToServer({ level: 'info', message: 'Successfully fetched filter options for DataDisplay.' });
+      logToServer('info', 'Successfully fetched filter options for DataDisplay.', 'DataDisplay');
+    } catch (e) {
+      // CORRECT: Passing an object to logToServer
+      logToServer({ level: 'error', message: `Error fetching filter options: ${e.message}` });
+      logToServer('error', `Error fetching filter options: ${e.message}`, 'DataDisplay', { error: e });
     }
-  };
+  }, []); // Empty dependency array means this function is created once.
+
+  // CORRECTED: Moved the fetchData function to the correct scope.
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    setError('');
+    try {
+      const queryParams = new URLSearchParams();
+      if (filters.project) queryParams.append('project', filters.project);
+      if (filters.phasecode) queryParams.append('phasecode', filters.phasecode);
+      if (filters.year) queryParams.append('year', filters.year);
+
+      // Add the cutoffDate prop to the API request
+      if (cutoffDate) {
+        queryParams.append('cutoffDate', cutoffDate);
+      }
+
+      const response = await fetch(`http://localhost:3001/api/pocdata?${queryParams.toString()}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      setData(result);
+      logToServer({ level: 'info', message: 'Successfully fetched ${result.length} rows for DataDisplay.' });
+    } catch (e) {
+      setError('Failed to fetch data. Please check the console for more details.');
+      logToServer({ level: 'error', message: `Error fetching data for DataDisplay: ${e.message}` });
+    } finally {
+      setLoading(false);
+    }
+  }, [filters, cutoffDate]); // This function will be re-created if filters or cutoffDate change.
+
+  // CORRECTED: Consolidated into a single, clean useEffect hook.
+  useEffect(() => {
+    fetchOptions();
+  }, [fetchOptions]); // Fetches options only once on component mount.
 
   useEffect(() => {
-    if (dbStatus === 'connected') {
-      fetchFilterOptions();
-      fetchData();
-    }
-  }, [dbStatus]);
+    fetchData();
+  }, [fetchData]); // Fetches data on mount and whenever filters or cutoffDate change.
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-    setSelectedFilters(prev => ({ ...prev, [name]: value }));
+    setFilters(prev => ({ ...prev, [name]: value }));
   };
 
-  useEffect(() => {
-    if (dbStatus === 'connected') {
-      fetchData();
-    }
-  }, [selectedFilters, dbStatus]);
-  
-  const controlsDisabled = isLoading || dbStatus !== 'connected';
-
+  // CORRECTED: The JSX now only contains elements and variables defined within this component.
   return (
-    <div>
-      <h2>Data Report</h2>
-      <div style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
-        <strong>Database Status:</strong>
-        {dbStatus === 'checking' && <span style={{ marginLeft: '10px', color: '#888' }}> Checking...</span>}
-        {dbStatus === 'connected' && <span style={{ marginLeft: '10px', color: 'green', fontWeight: 'bold' }}> Connected</span>}
-        {dbStatus === 'error' && (
-          <>
-            <span style={{ marginLeft: '10px', color: 'red', fontWeight: 'bold' }}> Error</span>
-            <p style={{ color: 'red', fontSize: '0.9em', margin: '5px 0 0 0' }}>{dbErrorMessage}</p>
-            <button onClick={checkDbConnection} disabled={isLoading} style={{ marginLeft: '10px', fontSize: '0.8em' }}>Retry</button>
-          </>
-        )}
-      </div>
-
-      <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap' }}>
-        <select name="project" value={selectedFilters.project} onChange={handleFilterChange} disabled={controlsDisabled}>
-          <option value="">All Projects</option>
-          {filterOptions.projects.map(p => <option key={p} value={p}>{p}</option>)}
-        </select>
-        <select name="phasecode" value={selectedFilters.phasecode} onChange={handleFilterChange} disabled={controlsDisabled}>
-          <option value="">All Phases</option>
-          {filterOptions.phasecodes.map(p => <option key={p} value={p}>{p}</option>)}
-        </select>
-        <select name="year" value={selectedFilters.year} onChange={handleFilterChange} disabled={controlsDisabled}>
-          <option value="">All Years</option>
-          {filterOptions.years.map(y => <option key={y} value={y}>{y}</option>)}
-        </select>
-      </div>
-
-      {isLoading && <p>Loading data...</p>}
-      {error && <p style={{color: 'red'}}>Error loading data: {error}</p>}
+    <div className="data-display">
+      <h2>POC Per Month Report</h2>
       
-      <table border="1" style={{ borderCollapse: 'collapse', width: '100%', fontSize: '0.9em' }}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Project</th>
-              <th>Phase</th>
-              <th>Year</th>
-              <th>Month</th>
-              <th>Value</th>
-              {/* --- NEW COLUMNS --- */}
-              <th>Created By</th>
-              <th>Created At</th>
-              <th>Updated By</th>
-              <th>Updated At</th>
+      <div className="filters" style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap' }}>
+        <select name="project" value={filters.project} onChange={handleFilterChange} disabled={loading}>
+          <option value="">All Projects</option>
+          {options.projects.map(p => <option key={p} value={p}>{p}</option>)}
+        </select>
+        <select name="phasecode" value={filters.phasecode} onChange={handleFilterChange} disabled={loading}>
+          <option value="">All Phases</option>
+          {options.phasecodes.map(p => <option key={p} value={p}>{p}</option>)}
+        </select>
+        <select name="year" value={filters.year} onChange={handleFilterChange} disabled={loading}>
+          <option value="">All Years</option>
+          {options.years.map(y => <option key={y} value={y}>{y}</option>)}
+        </select>
+      </div>
+
+      {loading && <p>Loading data...</p>}
+      {error && <p style={{color: 'red'}}>Error: {error}</p>}
+      
+const cellStyle = {
+  border: '1px solid #ddd', // A common light grey border
+  padding: '8px',
+  textAlign: 'left',
+};
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Project</th>
+            <th>Phase</th>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Value</th>
+            <th>Created By</th>
+            <th>Created At</th>
+            <th>Updated By</th>
+            <th>Updated At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((row) => (
+            <tr key={row.ID}>
+              <td style={cellStyle}>{row.ID}</td>
+              <td style={cellStyle}>{row.project}</td>
+              <td style={cellStyle}>{row.phasecode}</td>
+              <td style={cellStyle}>{row.year}</td>
+              <td style={cellStyle}>{row.month}</td>
+              <td style={cellStyle}>{row.value}</td>
+              <td style={cellStyle}>{row.userC}</td>
+              <td style={cellStyle}>{formatDateTime(row.timestampC)}</td>
+              <td style={cellStyle}>{row.userM}</td>
+              <td style={cellStyle}>{formatDateTime(row.timestampM)}</td>
             </tr>
-          </thead>
-          <tbody>
-            {data.map((row) => (
-              <tr key={row.ID}>
-                <td>{row.ID}</td>
-                <td>{row.project}</td>
-                <td>{row.phasecode}</td>
-                <td>{row.year}</td>
-                <td>{row.month}</td>
-                <td>{row.value}</td>
-                {/* --- NEW COLUMNS --- */}
-                <td>{row.userC}</td>
-                <td>{formatDateTime(row.timestampC)}</td>
-                <td>{row.userM}</td>
-                <td>{formatDateTime(row.timestampM)}</td>
-              </tr>
-            ))}
-          </tbody>
+          ))}
+        </tbody>
       </table>
     </div>
   );
