@@ -29,30 +29,42 @@ router.get('/pocdata', async (req, res) => {
   let connection;
   try {
       connection = await pool.getConnection();
-      let baseSql = 'SELECT ID, cocode, project, phasecode, year, month, value, timestampC, userC, timestampM, userM FROM re.pocpermonth';
-      const whereClauses = ['(year < ? OR (year = ? AND month <= ?))']; 
+      
+      // Updated SQL to include JOIN with project_phase_validation for descriptions
+      let baseSql = `
+          SELECT 
+              p.ID, p.cocode, p.project, p.phasecode, p.year, p.month, p.value, 
+              p.timestampC, p.userC, p.timestampM, p.userM,
+              v.description 
+          FROM 
+              re.pocpermonth p
+          LEFT JOIN 
+              re.project_phase_validation v ON p.project = v.project AND p.phasecode = v.phasecode AND p.cocode = v.cocode
+      `;
+      
+      const whereClauses = ['(p.year < ? OR (p.year = ? AND p.month <= ?))']; 
       const params = [cutoffYear, cutoffYear, cutoffMonth];
 
       // Add company code filter if provided
       if (cocode) {
-          whereClauses.push('cocode = ?');
+          whereClauses.push('p.cocode = ?');
           params.push(cocode);
       }
       if (project) {
-          whereClauses.push('project = ?');
+          whereClauses.push('p.project = ?');
           params.push(project);
       }
       if (phasecode) {
-          whereClauses.push('phasecode = ?');
+          whereClauses.push('p.phasecode = ?');
           params.push(phasecode);
       }
       if (year) {
-          whereClauses.push('year = ?');
+          whereClauses.push('p.year = ?');
           params.push(parseInt(year, 10));
       }
 
       let sqlQuery = baseSql + ' WHERE ' + whereClauses.join(' AND ');
-      sqlQuery += ' ORDER BY project, phasecode, year DESC, month';
+      sqlQuery += ' ORDER BY p.project, p.phasecode, p.year DESC, p.month';
       
       const [rows] = await connection.execute(sqlQuery, params);
       res.status(200).json(rows);

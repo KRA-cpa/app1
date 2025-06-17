@@ -3120,3 +3120,243 @@
 2025-06-17T12:22:47.939Z info: [Frontend] DB status fetch completed with status: 200
 2025-06-17T12:22:47.942Z info: [Frontend] DB status response parsed
 2025-06-17T12:22:47.943Z info: [Frontend] Setting DB status to connected
+2025-06-17 20:52:52 info: Received request for /api/pocdata/options
+2025-06-17 20:52:52 info: Received request for /api/pocdata with filters:
+2025-06-17 20:52:52 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 20:52:52 info: Executing SQL:
+2025-06-17 20:52:52 info: With Params:
+2025-06-17 20:52:52 info: Fetched 4 rows from pocpermonth.
+2025-06-17 20:52:52 info: Received request for /api/pocdata with filters:
+2025-06-17 20:52:52 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 20:52:52 info: Executing SQL:
+2025-06-17 20:52:52 info: With Params:
+2025-06-17 20:52:52 info: Received request for /api/pocdata/options
+2025-06-17 20:52:52 info: Fetched 4 rows from pocpermonth.
+2025-06-17T12:52:52.782Z info: [Frontend] 
+2025-06-17T12:52:52.792Z info: [Frontend] 
+2025-06-17T12:52:52.800Z info: [Frontend] 
+2025-06-17T12:52:52.800Z info: [Frontend] 
+2025-06-17T13:06:01.805Z info: [Frontend] Checking DB connection status
+2025-06-17 21:06:02 info: Received request for /api/db-status
+2025-06-17 21:06:02 info: DB status check successful.
+2025-06-17T13:06:01.806Z info: [Frontend] Checking DB connection status
+2025-06-17 21:06:02 info: Received request for /api/db-status
+2025-06-17 21:06:02 info: DB status check successful.
+2025-06-17T13:06:02.164Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:06:02.165Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:06:02.165Z info: [Frontend] DB status response parsed
+2025-06-17T13:06:02.166Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:06:02.166Z info: [Frontend] DB status response parsed
+2025-06-17T13:06:02.167Z info: [Frontend] Setting DB status to connected
+2025-06-17 21:06:05 info: Received request for /api/db-status
+2025-06-17 21:06:05 info: DB status check successful.
+2025-06-17T13:06:05.025Z info: [Frontend] Checking DB connection status
+2025-06-17 21:06:05 info: Received request for /api/db-status
+2025-06-17 21:06:05 info: DB status check successful.
+2025-06-17 21:06:05 info: Received request for /api/db-status
+2025-06-17 21:06:05 info: DB status check successful.
+2025-06-17T13:06:05.029Z info: [Frontend] Checking DB connection status
+2025-06-17 21:06:05 info: Received request for /api/db-status
+2025-06-17 21:06:05 info: DB status check successful.
+2025-06-17T13:06:05.060Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:06:05.064Z info: [Frontend] DB status response parsed
+2025-06-17T13:06:05.065Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:06:05.912Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:06:05.934Z info: [Frontend] DB status response parsed
+2025-06-17T13:06:05.935Z info: [Frontend] Setting DB status to connected
+2025-06-17 21:08:14 info: Received request for /api/pocdata/options
+2025-06-17 21:08:14 info: Received request for /api/pocdata with filters:
+2025-06-17 21:08:14 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:08:14 info: Executing SQL:
+2025-06-17 21:08:14 info: With Params:
+2025-06-17 21:08:14 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:08:14 info: Received request for /api/pocdata with filters:
+2025-06-17 21:08:14 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:08:14 info: Executing SQL:
+2025-06-17 21:08:14 info: With Params:
+2025-06-17 21:08:14 info: Received request for /api/pocdata/options
+2025-06-17 21:08:14 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:08:14 info: Received request for /api/pocdata with filters:
+2025-06-17 21:08:14 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:08:14 info: Executing SQL:
+2025-06-17 21:08:14 info: With Params:
+2025-06-17 21:08:14 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:08:14.144Z info: [Frontend] 
+2025-06-17T13:08:14.156Z info: [Frontend] 
+2025-06-17T13:08:14.163Z info: [Frontend] 
+2025-06-17T13:08:14.164Z info: [Frontend] 
+2025-06-17T13:08:14.164Z info: [Frontend] 
+2025-06-17 21:08:23 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:08:23 info: Executing SQL:
+2025-06-17 21:08:23 info: With Params:
+2025-06-17 21:08:23 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:08:23 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:08:23 info: Executing SQL:
+2025-06-17 21:08:23 info: With Params:
+2025-06-17 21:08:23 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:08:23.139Z info: [Frontend] 
+2025-06-17T13:08:23.161Z info: [Frontend] 
+2025-06-17T13:08:28.858Z info: [Frontend] Checking DB connection status
+2025-06-17 21:08:29 info: Received request for /api/db-status
+2025-06-17 21:08:29 info: DB status check successful.
+2025-06-17T13:08:28.860Z info: [Frontend] Checking DB connection status
+2025-06-17 21:08:29 info: Received request for /api/db-status
+2025-06-17 21:08:29 info: DB status check successful.
+2025-06-17T13:08:29.187Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:08:29.188Z info: [Frontend] DB status response parsed
+2025-06-17T13:08:29.189Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:08:29.193Z info: [Frontend] DB status response parsed
+2025-06-17T13:08:29.194Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:08:29.193Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17 21:08:32 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:08:32 info: Executing SQL:
+2025-06-17 21:08:32 info: With Params:
+2025-06-17 21:08:32 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:08:32 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:08:32 info: Executing SQL:
+2025-06-17 21:08:32 info: With Params:
+2025-06-17 21:08:32 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:08:32.613Z info: [Frontend] 
+2025-06-17T13:08:32.636Z info: [Frontend] 
+2025-06-17T13:09:47.088Z info: [Frontend] Checking DB connection status
+2025-06-17 21:09:47 info: Received request for /api/db-status
+2025-06-17 21:09:47 info: DB status check successful.
+2025-06-17T13:09:47.088Z info: [Frontend] Checking DB connection status
+2025-06-17 21:09:47 info: Received request for /api/db-status
+2025-06-17 21:09:47 info: DB status check successful.
+2025-06-17T13:09:47.435Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:09:47.436Z info: [Frontend] DB status response parsed
+2025-06-17T13:09:47.437Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:09:47.440Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:09:47.442Z info: [Frontend] DB status response parsed
+2025-06-17T13:09:47.443Z info: [Frontend] Setting DB status to connected
+2025-06-17 21:09:56 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:09:56 info: Executing SQL:
+2025-06-17 21:09:56 info: With Params:
+2025-06-17 21:09:56 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:09:56 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:09:56 info: Executing SQL:
+2025-06-17 21:09:56 info: With Params:
+2025-06-17 21:09:56 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:09:56.683Z info: [Frontend] 
+2025-06-17T13:09:56.707Z info: [Frontend] 
+2025-06-17 21:09:59 info: Received request for /api/pocdata/options
+2025-06-17 21:09:59 info: Received request for /api/pocdata with filters:
+2025-06-17 21:09:59 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:09:59 info: Executing SQL:
+2025-06-17 21:09:59 info: With Params:
+2025-06-17 21:09:59 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:09:59 info: Received request for /api/pocdata with filters:
+2025-06-17 21:09:59 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:09:59 info: Executing SQL:
+2025-06-17 21:09:59 info: With Params:
+2025-06-17 21:09:59 info: Received request for /api/pocdata/options
+2025-06-17 21:09:59 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:09:59.030Z info: [Frontend] 
+2025-06-17 21:09:59 info: Received request for /api/pocdata with filters:
+2025-06-17 21:09:59 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:09:59 info: Executing SQL:
+2025-06-17 21:09:59 info: With Params:
+2025-06-17 21:09:59 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:09:59.042Z info: [Frontend] 
+2025-06-17T13:09:59.053Z info: [Frontend] 
+2025-06-17T13:09:59.062Z info: [Frontend] 
+2025-06-17T13:09:59.063Z info: [Frontend] 
+2025-06-17 21:09:59 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:09:59 info: Executing SQL:
+2025-06-17 21:09:59 info: With Params:
+2025-06-17 21:09:59 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:09:59 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:09:59 info: Executing SQL:
+2025-06-17 21:09:59 info: With Params:
+2025-06-17 21:09:59 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:09:59.637Z info: [Frontend] 
+2025-06-17T13:09:59.665Z info: [Frontend] 
+2025-06-17 21:10:00 info: Received request for /api/pocdata/options
+2025-06-17 21:10:00 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:00 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:00 info: Executing SQL:
+2025-06-17 21:10:00 info: With Params:
+2025-06-17 21:10:00 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:10:00 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:00 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:00 info: Executing SQL:
+2025-06-17 21:10:00 info: With Params:
+2025-06-17 21:10:00 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:10:00 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:00 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:00 info: Executing SQL:
+2025-06-17 21:10:00 info: With Params:
+2025-06-17 21:10:00 info: Received request for /api/pocdata/options
+2025-06-17T13:10:00.242Z info: [Frontend] 
+2025-06-17 21:10:00 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:10:00.257Z info: [Frontend] 
+2025-06-17T13:10:00.258Z info: [Frontend] 
+2025-06-17T13:10:00.268Z info: [Frontend] 
+2025-06-17T13:10:00.275Z info: [Frontend] 
+2025-06-17 21:10:01 info: Received request for /api/pocdata/options
+2025-06-17 21:10:01 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:01 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:01 info: Executing SQL:
+2025-06-17 21:10:01 info: With Params:
+2025-06-17 21:10:01 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:10:01 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:01 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:01 info: Executing SQL:
+2025-06-17 21:10:01 info: With Params:
+2025-06-17 21:10:01 info: Received request for /api/pocdata/options
+2025-06-17 21:10:01 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:10:01 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:01 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:01 info: Executing SQL:
+2025-06-17 21:10:01 info: With Params:
+2025-06-17 21:10:01 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:10:01.850Z info: [Frontend] 
+2025-06-17T13:10:01.851Z info: [Frontend] 
+2025-06-17T13:10:01.862Z info: [Frontend] 
+2025-06-17T13:10:01.871Z info: [Frontend] 
+2025-06-17T13:10:01.877Z info: [Frontend] 
+2025-06-17 21:10:10 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:10:10 info: Executing SQL:
+2025-06-17 21:10:10 info: With Params:
+2025-06-17 21:10:10 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:10:10 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:10:10 info: Executing SQL:
+2025-06-17 21:10:10 info: With Params:
+2025-06-17 21:10:10 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:10:10.078Z info: [Frontend] 
+2025-06-17T13:10:10.101Z info: [Frontend] 
+2025-06-17 21:10:13 info: Received request for /api/pocdata/options
+2025-06-17 21:10:13 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:13 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:13 info: Executing SQL:
+2025-06-17 21:10:13 info: With Params:
+2025-06-17 21:10:13 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:10:13 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:13 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:13 info: Executing SQL:
+2025-06-17 21:10:13 info: With Params:
+2025-06-17 21:10:13 info: Received request for /api/pocdata/options
+2025-06-17 21:10:13 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:10:13.817Z info: [Frontend] 
+2025-06-17 21:10:13 info: Received request for /api/pocdata with filters:
+2025-06-17 21:10:13 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:10:13 info: Executing SQL:
+2025-06-17 21:10:13 info: With Params:
+2025-06-17 21:10:13 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:10:13.835Z info: [Frontend] 
+2025-06-17T13:10:13.843Z info: [Frontend] 
+2025-06-17T13:10:13.844Z info: [Frontend] 
+2025-06-17T13:10:13.845Z info: [Frontend] 
+2025-06-17T13:10:15.938Z info: [Frontend] Checking DB connection status
+2025-06-17 21:10:16 info: Received request for /api/db-status
+2025-06-17 21:10:16 info: DB status check successful.
+2025-06-17T13:10:15.939Z info: [Frontend] Checking DB connection status
+2025-06-17 21:10:16 info: Received request for /api/db-status
+2025-06-17 21:10:16 info: DB status check successful.
+2025-06-17T13:10:16.263Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:10:16.264Z info: [Frontend] DB status response parsed
+2025-06-17T13:10:16.265Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:10:16.267Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:10:16.267Z info: [Frontend] DB status response parsed
+2025-06-17T13:10:16.268Z info: [Frontend] Setting DB status to connected

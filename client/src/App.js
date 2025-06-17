@@ -38,11 +38,14 @@ function App() {
   const [dbErrorMessage, setDbErrorMessage] = useState('');
   const [isCheckingDb, setIsCheckingDb] = useState(false);
 
+  // --- NEW: Function to handle company selection change ---
+  const handleCompanyChange = (e) => {
+    setSelectedCompany(e.target.value);
+    setRefreshKey(prevKey => prevKey + 1); // Refresh reports when company changes
+  };
+
   // --- NEW: Function to check the database connection from the backend ---
   const checkDbConnection = useCallback(async () => {
- 
-   
-
     setIsCheckingDb(true);
     setDbStatus('checking');
     try {
@@ -68,7 +71,6 @@ function App() {
     checkDbConnection();
   }, [checkDbConnection]);
 
-
   const handleUploadSuccess = () => {
     setRefreshKey(prevKey => prevKey + 1);
     setMainView('report');
@@ -91,12 +93,15 @@ function App() {
     border: 'none',
     background: 'none',
     fontSize: '16px',
-    fontWeight: mainView === tabName ? '600' : '500', // Was activeTab
-    color: mainView === tabName ? '#007bff' : '#555',   // Was activeTab
-    borderBottom: mainView === tabName ? '2px solid #007bff' : '2px solid transparent', // Was activeTab
+    fontWeight: mainView === tabName || reportView === tabName ? '600' : '500',
+    color: mainView === tabName || reportView === tabName ? '#007bff' : '#555',
+    borderBottom: mainView === tabName || reportView === tabName ? '2px solid #007bff' : '2px solid transparent',
     transition: 'all 0.3s ease',
     outline: 'none',
-    ...(hoveredTab === tabName && mainView !== tabName && { color: '#0056b3', borderBottom: '2px solid #aaccff' }), // Was activeTab
+    ...(hoveredTab === tabName && mainView !== tabName && reportView !== tabName && { 
+      color: '#0056b3', 
+      borderBottom: '2px solid #aaccff' 
+    }),
   });
 
   // This style object is defined but not currently used in the JSX.
@@ -104,9 +109,8 @@ function App() {
     padding: '20px',
     margin: '0 auto',
     transition: 'max-width 0.5s ease-in-out',
-    maxWidth: mainView === 'report' ? '90%' : '900px' // Was activeTab
+    maxWidth: mainView === 'report' ? '90%' : '900px'
   };
-
 
   return (
     <div className="App">
@@ -114,25 +118,34 @@ function App() {
         <h1>MEG Subs POC Data Management</h1>
       </header>
       <main>
-
- <div className="company-selector">
-          <label htmlFor="company">Company:</label>
-          <select id="company" value={selectedCompany} onChange={handleCompanyChange}>
+        {/* Company Selector - Persistent across all tabs */}
+        <div className="company-selector" style={{ margin: '20px 0', padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '5px', border: '1px solid #dee2e6' }}>
+          <label htmlFor="company" style={{ fontWeight: 'bold', marginRight: '10px' }}>Company:</label>
+          <select 
+            id="company" 
+            value={selectedCompany} 
+            onChange={handleCompanyChange}
+            style={{ padding: '8px 12px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc' }}
+          >
             {companies.map((company) => (
               <option key={company.code} value={company.code}>
-                {company.name}
+                {company.name} ({company.code})
               </option>
             ))}
           </select>
+          <span style={{ marginLeft: '15px', color: '#666', fontSize: '14px' }}>
+            Selected: <strong>{companies.find(c => c.code === selectedCompany)?.name}</strong>
+          </span>
         </div>
+
+        {/* Main Navigation */}
         <nav className="main-nav">
           <button
             onClick={() => setMainView('upload')}
             disabled={mainView === 'upload'}
-            // Example of how getTabStyles and hoveredTab state could be used:
-             style={getTabStyles('upload')}
-             onMouseEnter={() => setHoveredTab('upload')}
-             onMouseLeave={() => setHoveredTab(null)}
+            style={getTabStyles('upload')}
+            onMouseEnter={() => setHoveredTab('upload')}
+            onMouseLeave={() => setHoveredTab(null)}
           >
             Upload Data
           </button>
@@ -147,18 +160,14 @@ function App() {
           </button>
         </nav>
 
-<main>
-        {activeTab === 'upload' && <CsvUploader selectedCompany={selectedCompany} />}
-        {activeTab === 'report' && <DataDisplay selectedCompany={selectedCompany} />}
-      </main>
-
-
         <div className="view-container">
           {mainView === 'upload' ? (
-            <CsvUploader onUploadSuccess={handleUploadSuccess} />
+            <CsvUploader 
+              onUploadSuccess={handleUploadSuccess} 
+              cocode={selectedCompany}
+            />
           ) : (
             <div className="report-section">
-
               {/* --- NEW: JSX to display the database status --- */}
               <div className="status-bar" style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
                 <strong>Database Status:</strong>
@@ -186,18 +195,22 @@ function App() {
                   />
                 </div>
                 <div className="control-group">
-                  <button onClick={() => setReportView('poc')} disabled={reportView === 'poc'}
+                  <button 
+                    onClick={() => setReportView('poc')} 
+                    disabled={reportView === 'poc'}
                     style={getTabStyles('poc')}
                     onMouseEnter={() => setHoveredTab('poc')}
                     onMouseLeave={() => setHoveredTab(null)}
-                    >
+                  >
                     POC Per Month Report
                   </button>
-                  <button onClick={() => setReportView('pcomp')} disabled={reportView === 'pcomp'}
+                  <button 
+                    onClick={() => setReportView('pcomp')} 
+                    disabled={reportView === 'pcomp'}
                     style={getTabStyles('pcomp')}
                     onMouseEnter={() => setHoveredTab('pcomp')}
                     onMouseLeave={() => setHoveredTab(null)}
-                   >
+                  >
                     Completion Date Report
                   </button>
                 </div>
@@ -207,9 +220,17 @@ function App() {
               {dbStatus === 'connected' && (
                 <>
                   {reportView === 'poc' ? (
-                    <DataDisplay key={`poc-${refreshKey}`} cutoffDate={cutoffDate} />
+                    <DataDisplay 
+                      key={`poc-${refreshKey}`} 
+                      cutoffDate={cutoffDate} 
+                      cocode={selectedCompany}
+                    />
                   ) : (
-                    <PcompDataDisplay key={`pcomp-${refreshKey}`} cutoffDate={cutoffDate} />
+                    <PcompDataDisplay 
+                      key={`pcomp-${refreshKey}`} 
+                      cutoffDate={cutoffDate} 
+                      cocode={selectedCompany}
+                    />
                   )}
                 </>
               )}
@@ -221,7 +242,6 @@ function App() {
         <p>Current Date/Time: {new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' })} | {new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila' })}</p>
         <p>All Rights Reserved (r) 2025 by Kenneth Advento</p>
       </footer>
-
     </div>
   );
 }

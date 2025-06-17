@@ -1,7 +1,10 @@
+
+// client/src/components/PcompDataDisplay.js
+
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
-const PcompDataDisplay = ({ cutoffDate }) => {
+const PcompDataDisplay = ({ cutoffDate, cocode }) => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState({ project: '', phasecode: '', year: '', type: '' });
   const [loading, setLoading] = useState(false);
@@ -38,6 +41,7 @@ const PcompDataDisplay = ({ cutoffDate }) => {
       if (filters.year) queryParams.append('year', filters.year);
       if (filters.type) queryParams.append('type', filters.type);
       if (cutoffDate) queryParams.append('cutoffDate', cutoffDate);
+      if (cocode) queryParams.append('cocode', cocode);
       
       const url = `http://localhost:3001/api/pcompdata?${queryParams.toString()}`;
 
@@ -61,7 +65,7 @@ const PcompDataDisplay = ({ cutoffDate }) => {
 
   useEffect(() => {
     fetchData();
-  }, [filters, cutoffDate]);
+  }, [filters, cutoffDate, cocode]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -97,8 +101,10 @@ const PcompDataDisplay = ({ cutoffDate }) => {
         <thead>
           <tr>
             <th style={cellStyle}>ID</th>
+            <th style={cellStyle}>Company</th>
             <th style={cellStyle}>Project</th>
             <th style={cellStyle}>Phasecode</th>
+            <th style={cellStyle}>Description</th>
             <th style={cellStyle}>Type</th>
             <th style={cellStyle}>Completion Date</th>
             <th style={cellStyle}>Notes</th>
@@ -109,8 +115,10 @@ const PcompDataDisplay = ({ cutoffDate }) => {
           {data.map((row) => (
             <tr key={row.id}>
               <td style={cellStyle}>{row.id}</td>
+              <td style={cellStyle}>{row.cocode}</td>
               <td style={cellStyle}>{row.project}</td>
               <td style={cellStyle}>{row.phasecode}</td>
+              <td style={cellStyle}>{row.description || 'N/A'}</td>
               <td style={cellStyle}>{row.type === 'A' ? 'Actual' : 'Projected'}</td>
               <td style={cellStyle}>{formatDate(row.completion_date)}</td>
               <td style={cellStyle}>{row.notes}</td>

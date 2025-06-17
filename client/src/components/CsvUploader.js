@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
-function CsvUploader() {
+function CsvUploader({ onUploadSuccess, cocode }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -94,17 +94,21 @@ function CsvUploader() {
       setMessage('Cannot upload: Database is not connected.');
       return;
     }
+    if (!cocode) {
+      setMessage('Cannot upload: No company selected.');
+      return;
+    }
 
     setIsLoading(true);
     setMessage('Uploading...');
-    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType });
+    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType, cocode });
     setUploadSummary(null);
     setUploadTotals(null);
     
     const formData = new FormData();
     formData.append('csvFile', selectedFile);
     formData.append('uploadOption', uploadOption);
-    formData.append('cocode', selectedCompany); // Add cocode to the form data
+    formData.append('cocode', cocode); // Use the cocode prop
     
     if (uploadOption === 'poc') {
       formData.append('templateType', templateType);
@@ -131,6 +135,11 @@ function CsvUploader() {
         setSelectedFile(null);
         const fileInput = document.getElementById('csvFileInput');
         if (fileInput) fileInput.value = null;
+        
+        // Call the onUploadSuccess callback if provided
+        if (onUploadSuccess) {
+          onUploadSuccess();
+        }
       } else {
         setMessage(`Upload failed: ${result.message || response.statusText}`);
         setUploadSummary(null);
@@ -149,11 +158,18 @@ function CsvUploader() {
   };
 
   const controlsDisabled = isLoading || dbStatus !== 'connected';
-  const uploadButtonDisabled = !selectedFile || controlsDisabled;
+  const uploadButtonDisabled = !selectedFile || controlsDisabled || !cocode;
 
   return (
     <div>
       <h2>Upload CSV File</h2>
+
+      {/* Company Display */}
+      {cocode && (
+        <div style={{ margin: '15px 0', padding: '10px', backgroundColor: '#e8f4fd', border: '1px solid #007bff', borderRadius: '4px' }}>
+          <strong>Selected Company:</strong> <span style={{ color: '#007bff', fontWeight: 'bold' }}>{cocode}</span>
+        </div>
+      )}
 
       {/* Database Status Display */}
       <div style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
@@ -247,6 +263,13 @@ function CsvUploader() {
       >
         {isLoading ? 'Uploading...' : 'Upload to Server'}
       </button>
+
+      {/* Warning if no company selected */}
+      {!cocode && (
+        <p style={{ color: 'orange', fontWeight: 'bold', marginTop: '10px' }}>
+          Please select a company before uploading.
+        </p>
+      )}
 
       {/* Feedback Message Area & Upload Results */}
       {message && <p style={{ marginTop: '15px', fontWeight: 'bold', color: message.startsWith('Upload failed') || message.startsWith('Cannot upload') ? 'red' : 'green' }}>{message}</p>}

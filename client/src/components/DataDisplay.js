@@ -1,8 +1,9 @@
 // client/src/components/DataDisplay.js
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { logToServer } from '../utils/logger.js';
 
-const DataDisplay = ({ cutoffDate }) => {
+const DataDisplay = ({ cutoffDate, cocode }) => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState({ project: '', phasecode: '', year: '' });
   const [options, setOptions] = useState({ projects: [], phasecodes: [], years: [] });
@@ -30,10 +31,12 @@ const DataDisplay = ({ cutoffDate }) => {
         return `${month}/${day}/${year}`;
     };
 
-
   const fetchOptions = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/pocdata/options`);
+      const queryParams = new URLSearchParams();
+      if (cocode) queryParams.append('cocode', cocode);
+      
+      const response = await fetch(`http://localhost:3001/api/pocdata/options?${queryParams.toString()}`);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const result = await response.json();
       setOptions(result);
@@ -41,7 +44,7 @@ const DataDisplay = ({ cutoffDate }) => {
     } catch (e) {
       logToServer({ level: 'error', message: `Error fetching filter options: ${e.message}` });
     }
-  }, []);
+  }, [cocode]);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -52,6 +55,7 @@ const DataDisplay = ({ cutoffDate }) => {
       if (filters.phasecode) queryParams.append('phasecode', filters.phasecode);
       if (filters.year) queryParams.append('year', filters.year);
       if (cutoffDate) queryParams.append('cutoffDate', cutoffDate);
+      if (cocode) queryParams.append('cocode', cocode);
 
       const response = await fetch(`http://localhost:3001/api/pocdata?${queryParams.toString()}`);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -64,7 +68,7 @@ const DataDisplay = ({ cutoffDate }) => {
     } finally {
       setLoading(false);
     }
-  }, [filters, cutoffDate]);
+  }, [filters, cutoffDate, cocode]);
 
   useEffect(() => {
     fetchOptions();
@@ -73,6 +77,11 @@ const DataDisplay = ({ cutoffDate }) => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  // Reset filters when company changes
+  useEffect(() => {
+    setFilters({ project: '', phasecode: '', year: '' });
+  }, [cocode]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -113,8 +122,10 @@ const DataDisplay = ({ cutoffDate }) => {
         <thead>
           <tr>
             <th style={cellStyle}>ID</th>
+            <th style={cellStyle}>Company</th>
             <th style={cellStyle}>Project</th>
             <th style={cellStyle}>Phase</th>
+            <th style={cellStyle}>Description</th>
             <th style={cellStyle}>Year</th>
             <th style={cellStyle}>Month</th>
             <th style={cellStyle}>Value</th>
@@ -128,8 +139,10 @@ const DataDisplay = ({ cutoffDate }) => {
           {data.map((row) => (
             <tr key={row.ID}>
               <td style={cellStyle}>{row.ID}</td>
+              <td style={cellStyle}>{row.cocode}</td>
               <td style={cellStyle}>{row.project}</td>
               <td style={cellStyle}>{row.phasecode}</td>
+              <td style={cellStyle}>{row.description || 'N/A'}</td>
               <td style={cellStyle}>{row.year}</td>
               <td style={cellStyle}>{row.month}</td>
               <td style={cellStyle}>{row.value}</td>
