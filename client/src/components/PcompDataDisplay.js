@@ -1,17 +1,23 @@
-// kra-cpa/app1/app1-test1/client/src/components/PcompDataDisplay.js
-
 import React, { useState, useEffect } from 'react';
-import { logToServer } from '../utils/logger.js';
+import { logToServer } from '../utils/logger';
 
-// This new component is dedicated to the re.pcompdate table.
-// It receives the shared 'cutoffDate' as a prop.
 const PcompDataDisplay = ({ cutoffDate }) => {
   const [data, setData] = useState([]);
-  // --- NEW: Filters specific to this view ---
   const [filters, setFilters] = useState({ project: '', phasecode: '', year: '', type: '' });
-  // Options for filters can be fetched if needed, or hardcoded for 'type'
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+ const formatDateTime = (isoString) => {
+    if (!isoString) return 'N/A';
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) return 'Invalid Date';
+    return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    }).format(date);
+  };
+
+
 
   const fetchData = async () => {
     setLoading(true);
@@ -21,24 +27,24 @@ const PcompDataDisplay = ({ cutoffDate }) => {
       if (filters.project) queryParams.append('project', filters.project);
       if (filters.phasecode) queryParams.append('phasecode', filters.phasecode);
       if (filters.year) queryParams.append('year', filters.year);
-      if (filters.type) queryParams.append('type', filters.type); // Add type filter
-
-      // Add the shared cutoffDate to the API request
-      if (cutoffDate) {
-        queryParams.append('cutoffDate', cutoffDate);
-      }
+      if (filters.type) queryParams.append('type', filters.type);
+      if (cutoffDate) queryParams.append('cutoffDate', cutoffDate);
       
-      // --- NEW: Fetch from the /api/pcompdata endpoint ---
-      const response = await fetch(`http://localhost:3001/api/pcompdata?${queryParams.toString()}`);
+      const url = `http://localhost:3001/api/pcompdata?${queryParams.toString()}`;
+
+      // --- DEBUGGING: Log the URL to the browser's developer console ---
+      console.log("Fetching data from URL:", url);
+      
+      const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
       setData(result);
-      logToServer.info(`Successfully fetched ${result.length} rows for PcompDataDisplay.`);
+      logToServer({ level: 'info', message: `Fetched ${result.length} rows for PcompDataDisplay.` });
     } catch (e) {
       setError('Failed to fetch completion date data.');
-      logToServer.error('Error fetching data for PcompDataDisplay:', e);
+      logToServer({ level: 'error', message: `Error fetching data for PcompDataDisplay: ${e.message}` });
     } finally {
       setLoading(false);
     }
@@ -46,12 +52,18 @@ const PcompDataDisplay = ({ cutoffDate }) => {
 
   useEffect(() => {
     fetchData();
-    // Re-fetch data if any filter or the cutoffDate changes.
   }, [filters, cutoffDate]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters(prev => ({ ...prev, [name]: value }));
+  };
+  
+  const tableStyle = { borderCollapse: 'collapse', width: '100%' };
+  const cellStyle = {
+    border: '1px solid #ddd',
+    padding: '8px',
+    textAlign: 'left',
   };
 
   return (
@@ -62,7 +74,6 @@ const PcompDataDisplay = ({ cutoffDate }) => {
         <input name="project" value={filters.project} onChange={handleFilterChange} placeholder="Filter by Project" />
         <input name="phasecode" value={filters.phasecode} onChange={handleFilterChange} placeholder="Filter by Phasecode" />
         <input name="year" value={filters.year} onChange={handleFilterChange} placeholder="Filter by Year" />
-        {/* --- NEW: Filter for Type (Actual/Projected) --- */}
         <select name="type" value={filters.type} onChange={handleFilterChange}>
           <option value="">All Types</option>
           <option value="A">Actual</option>
@@ -73,22 +84,16 @@ const PcompDataDisplay = ({ cutoffDate }) => {
       {loading && <p>Loading...</p>}
       {error && <p className="error">{error}</p>}
       
-const cellStyle = {
-  border: '1px solid #ddd', // A common light grey border
-  padding: '8px',
-  textAlign: 'left',
-};
-
-      <table>
+      <table style={tableStyle}>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Project</th>
-            <th>Phasecode</th>
-            <th>Type</th>
-            <th>Completion Date</th>
-            <th>Notes</th>
-            <th>Created At</th>
+            <th style={cellStyle}>ID</th>
+            <th style={cellStyle}>Project</th>
+            <th style={cellStyle}>Phasecode</th>
+            <th style={cellStyle}>Type</th>
+            <th style={cellStyle}>Completion Date</th>
+            <th style={cellStyle}>Notes</th>
+            <th style={cellStyle}>Created At</th>
           </tr>
         </thead>
         <tbody>
@@ -100,13 +105,13 @@ const cellStyle = {
               <td style={cellStyle}>{row.type === 'A' ? 'Actual' : 'Projected'}</td>
               <td style={cellStyle}>{new Date(row.completion_date).toLocaleDateString()}</td>
               <td style={cellStyle}>{row.notes}</td>
-              <td style={cellStyle}>{new Date(row.created_at).toLocaleString()}</td>
+              <td style={cellStyle}>{formatDateTime(row.created_at)}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-}
+};
 
 export default PcompDataDisplay;

@@ -120,7 +120,7 @@ function App() {
             onMouseEnter={() => setHoveredTab('report')}
             onMouseLeave={() => setHoveredTab(null)}
           >
-            Data Report
+            Reports
           </button>
         </nav>
 

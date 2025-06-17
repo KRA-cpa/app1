@@ -2,9 +2,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { logToServer } from '../utils/logger.js';
 
-function DataDisplay({ dbStatus, dbErrorMessage, checkDbConnection }) {
-
-// This component receives the shared 'cutoffDate' as a prop from App.js
 const DataDisplay = ({ cutoffDate }) => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState({ project: '', phasecode: '', year: '' });
@@ -12,48 +9,28 @@ const DataDisplay = ({ cutoffDate }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // CORRECTED: Moved this helper function to the main component scope so it's accessible by the JSX.
   const formatDateTime = (isoString) => {
     if (!isoString) return 'N/A';
     const date = new Date(isoString);
-    if (isNaN(date.getTime())) {
-      return 'Invalid Date';
-    }
-    const pad = (num) => num.toString().padStart(2, '0');
-
-    let hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-
-    hours %= 12;
-    hours = hours || 12; // the hour '0' should be '12'
-
-    const formattedDate = `${pad(date.getMonth() + 1)}/${pad(date.getDate())}/${date.getFullYear()}`;
-    const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)} ${ampm}`;
-
-    return `${formattedDate} ${formattedTime}`;
+    if (isNaN(date.getTime())) return 'Invalid Date';
+    return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    }).format(date);
   };
   
-  // This function fetches the options for the filter dropdowns.
   const fetchOptions = useCallback(async () => {
     try {
       const response = await fetch(`http://localhost:3001/api/pocdata/options`);
-      if (!response.ok) {
-     throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const result = await response.json();
       setOptions(result);
-      logToServer({ level: 'info', message: 'Successfully fetched filter options for DataDisplay.' });
-      logToServer('info', 'Successfully fetched filter options for DataDisplay.', 'DataDisplay');
+      logToServer({ level: 'info', message: 'Successfully fetched filter options.' });
     } catch (e) {
-      // CORRECT: Passing an object to logToServer
       logToServer({ level: 'error', message: `Error fetching filter options: ${e.message}` });
-      logToServer('error', `Error fetching filter options: ${e.message}`, 'DataDisplay', { error: e });
     }
-  }, []); // Empty dependency array means this function is created once.
+  }, []);
 
-  // CORRECTED: Moved the fetchData function to the correct scope.
   const fetchData = useCallback(async () => {
     setLoading(true);
     setError('');
@@ -62,47 +39,47 @@ const DataDisplay = ({ cutoffDate }) => {
       if (filters.project) queryParams.append('project', filters.project);
       if (filters.phasecode) queryParams.append('phasecode', filters.phasecode);
       if (filters.year) queryParams.append('year', filters.year);
-
-      // Add the cutoffDate prop to the API request
-      if (cutoffDate) {
-        queryParams.append('cutoffDate', cutoffDate);
-      }
+      if (cutoffDate) queryParams.append('cutoffDate', cutoffDate);
 
       const response = await fetch(`http://localhost:3001/api/pocdata?${queryParams.toString()}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const result = await response.json();
       setData(result);
-      logToServer({ level: 'info', message: 'Successfully fetched ${result.length} rows for DataDisplay.' });
+      logToServer({ level: 'info', message: `Fetched ${result.length} rows for DataDisplay.` });
     } catch (e) {
-      setError('Failed to fetch data. Please check the console for more details.');
+      setError('Failed to fetch data.');
       logToServer({ level: 'error', message: `Error fetching data for DataDisplay: ${e.message}` });
     } finally {
       setLoading(false);
     }
-  }, [filters, cutoffDate]); // This function will be re-created if filters or cutoffDate change.
+  }, [filters, cutoffDate]);
 
-  // CORRECTED: Consolidated into a single, clean useEffect hook.
   useEffect(() => {
     fetchOptions();
-  }, [fetchOptions]); // Fetches options only once on component mount.
+  }, [fetchOptions]);
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]); // Fetches data on mount and whenever filters or cutoffDate change.
+  }, [fetchData]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters(prev => ({ ...prev, [name]: value }));
   };
+  
+  // --- CORRECTED: Define style objects before the return statement ---
+  const tableStyle = { borderCollapse: 'collapse', width: '100%' };
+  const cellStyle = {
+    border: '1px solid #ddd',
+    padding: '8px',
+    textAlign: 'left',
+  };
 
-  // CORRECTED: The JSX now only contains elements and variables defined within this component.
   return (
     <div className="data-display">
       <h2>POC Per Month Report</h2>
       
-      <div className="filters" style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap' }}>
+      <div className="filters">
         <select name="project" value={filters.project} onChange={handleFilterChange} disabled={loading}>
           <option value="">All Projects</option>
           {options.projects.map(p => <option key={p} value={p}>{p}</option>)}
@@ -120,25 +97,19 @@ const DataDisplay = ({ cutoffDate }) => {
       {loading && <p>Loading data...</p>}
       {error && <p style={{color: 'red'}}>Error: {error}</p>}
       
-const cellStyle = {
-  border: '1px solid #ddd', // A common light grey border
-  padding: '8px',
-  textAlign: 'left',
-};
-
-      <table>
+      <table style={tableStyle}>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Project</th>
-            <th>Phase</th>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Value</th>
-            <th>Created By</th>
-            <th>Created At</th>
-            <th>Updated By</th>
-            <th>Updated At</th>
+            <th style={cellStyle}>ID</th>
+            <th style={cellStyle}>Project</th>
+            <th style={cellStyle}>Phase</th>
+            <th style={cellStyle}>Year</th>
+            <th style={cellStyle}>Month</th>
+            <th style={cellStyle}>Value</th>
+            <th style={cellStyle}>Created By</th>
+            <th style={cellStyle}>Created At</th>
+            <th style={cellStyle}>Updated By</th>
+            <th style={cellStyle}>Updated At</th>
           </tr>
         </thead>
         <tbody>
@@ -160,6 +131,6 @@ const cellStyle = {
       </table>
     </div>
   );
-}
+};
 
 export default DataDisplay;
