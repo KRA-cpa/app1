@@ -1,5 +1,6 @@
 // client/src/components/CsvUploader.js
 
+
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
@@ -107,11 +108,21 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
   };
 
   const controlsDisabled = isLoading || dbStatus !== 'connected';
-  const uploadButtonDisabled = !selectedFile || controlsDisabled || !cocode;
+  const uploadButtonDisabled = !selectedFile || controlsDisabled || !cocode; // Require specific company for upload
 
   return (
     <div>
       <h2>Upload CSV File</h2>
+
+      {/* Show warning if "All Companies" is selected */}
+      {!cocode && (
+        <div style={{ margin: '15px 0', padding: '10px', backgroundColor: '#fff3cd', border: '1px solid #ffeaa7', borderRadius: '4px' }}>
+          <strong>🛑 Upload Requires Specific Company:</strong>
+          <p style={{ margin: '5px 0 0 0', color: '#856404' }}>
+            Please select a specific company to upload data. You cannot upload to "All Companies".
+          </p>
+        </div>
+      )}
 
       {/* Remove the duplicate company display since it's now shown in the header */}
 
@@ -196,12 +207,8 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
         {isLoading ? 'Uploading...' : 'Upload to Server'}
       </button>
 
-      {/* Warning if no company selected */}
-      {!cocode && (
-        <p style={{ color: 'orange', fontWeight: 'bold', marginTop: '10px' }}>
-          Please select a company before uploading.
-        </p>
-      )}
+      {/* Warning if no company selected - Removed duplicate warning */}
+      {/* This warning is now handled by the styled warning box above */}
 
       {/* Feedback Message Area & Upload Results */}
       {message && <p style={{ marginTop: '15px', fontWeight: 'bold', color: message.startsWith('Upload failed') || message.startsWith('Cannot upload') ? 'red' : 'green' }}>{message}</p>}

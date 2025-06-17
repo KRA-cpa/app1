@@ -3430,3 +3430,900 @@
 2025-06-17T13:18:11.176Z info: [Frontend] 
 2025-06-17T13:18:11.177Z info: [Frontend] 
 2025-06-17T13:18:11.178Z info: [Frontend] 
+2025-06-17 21:18:41 info: Received request for /api/db-status
+2025-06-17 21:18:41 info: DB status check successful.
+2025-06-17 21:18:43 info: Received request for /api/db-status
+2025-06-17 21:18:43 info: DB status check successful.
+2025-06-17 21:18:43 info: Received request for /api/pocdata/options
+2025-06-17 21:18:43 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:43 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:43 info: Executing SQL:
+2025-06-17 21:18:43 info: With Params:
+2025-06-17 21:18:43 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:18:43 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:43 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:43 info: Executing SQL:
+2025-06-17 21:18:43 info: With Params:
+2025-06-17 21:18:43 info: Received request for /api/pocdata/options
+2025-06-17 21:18:43 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:18:43 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:43 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:43 info: Executing SQL:
+2025-06-17 21:18:43 info: With Params:
+2025-06-17T13:18:43.275Z info: [Frontend] 
+2025-06-17 21:18:43 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:18:43.290Z info: [Frontend] 
+2025-06-17T13:18:43.298Z info: [Frontend] 
+2025-06-17T13:18:43.299Z info: [Frontend] 
+2025-06-17T13:18:43.299Z info: [Frontend] 
+2025-06-17 21:22:37 info: Received request for /api/pocdata/options
+2025-06-17 21:22:37 info: Received request for /api/pocdata with filters:
+2025-06-17 21:22:37 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:22:37 info: Executing SQL:
+2025-06-17 21:22:37 info: With Params:
+2025-06-17 21:22:37 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:22:37.438Z info: [Frontend] 
+2025-06-17T13:22:37.449Z info: [Frontend] 
+2025-06-17 21:23:03 info: Received request for /api/pocdata/options
+2025-06-17 21:23:03 info: Received request for /api/pocdata with filters:
+2025-06-17 21:23:03 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:23:03 info: Executing SQL:
+2025-06-17 21:23:03 info: With Params:
+2025-06-17 21:23:03 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:23:03 info: Received request for /api/pocdata with filters:
+2025-06-17 21:23:03 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:23:03 info: Executing SQL:
+2025-06-17 21:23:03 info: With Params:
+2025-06-17 21:23:03 info: Received request for /api/pocdata/options
+2025-06-17 21:23:03 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:23:03 info: Received request for /api/pocdata with filters:
+2025-06-17 21:23:03 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:23:03 info: Executing SQL:
+2025-06-17 21:23:03 info: With Params:
+2025-06-17 21:23:03 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:23:03.304Z info: [Frontend] 
+2025-06-17T13:23:03.306Z info: [Frontend] 
+2025-06-17T13:23:03.307Z info: [Frontend] 
+2025-06-17T13:23:03.309Z info: [Frontend] 
+2025-06-17T13:23:03.336Z info: [Frontend] 
+2025-06-17 21:23:26 info: Received request for /api/db-status
+2025-06-17 21:23:26 info: DB status check successful.
+2025-06-17 21:23:26 info: Received request for /api/db-status
+2025-06-17 21:23:26 info: DB status check successful.
+2025-06-17 21:23:29 info: Received request for /api/db-status
+2025-06-17 21:23:29 info: DB status check successful.
+2025-06-17 21:23:29 info: Received request for /api/pocdata/options
+2025-06-17 21:23:29 info: Received request for /api/pocdata with filters:
+2025-06-17 21:23:29 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:23:29 info: Executing SQL:
+2025-06-17 21:23:29 info: With Params:
+2025-06-17 21:23:29 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:23:29 info: Received request for /api/pocdata with filters:
+2025-06-17 21:23:29 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:23:29 info: Executing SQL:
+2025-06-17 21:23:29 info: With Params:
+2025-06-17 21:23:29 info: Received request for /api/pocdata/options
+2025-06-17 21:23:29 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:23:29 info: Received request for /api/pocdata with filters:
+2025-06-17 21:23:29 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:23:29 info: Executing SQL:
+2025-06-17 21:23:29 info: With Params:
+2025-06-17 21:23:29 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:23:29.825Z info: [Frontend] 
+2025-06-17T13:23:29.827Z info: [Frontend] 
+2025-06-17T13:23:29.852Z info: [Frontend] 
+2025-06-17T13:23:29.874Z info: [Frontend] 
+2025-06-17T13:23:29.875Z info: [Frontend] 
+2025-06-17 21:24:04 info: Received request for /api/pocdata/options
+2025-06-17 21:24:04 info: Received request for /api/pocdata with filters:
+2025-06-17 21:24:04 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:24:04 info: Executing SQL:
+2025-06-17 21:24:04 info: With Params:
+2025-06-17 21:24:04 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:24:04 info: Received request for /api/pocdata with filters:
+2025-06-17 21:24:04 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:24:04 info: Executing SQL:
+2025-06-17 21:24:04 info: With Params:
+2025-06-17 21:24:04 info: Received request for /api/pocdata/options
+2025-06-17 21:24:04 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:24:04 info: Received request for /api/pocdata with filters:
+2025-06-17 21:24:04 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:24:04 info: Executing SQL:
+2025-06-17 21:24:04 info: With Params:
+2025-06-17 21:24:04 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:24:04.916Z info: [Frontend] 
+2025-06-17T13:24:04.917Z info: [Frontend] 
+2025-06-17T13:24:04.919Z info: [Frontend] 
+2025-06-17T13:24:04.922Z info: [Frontend] 
+2025-06-17T13:24:04.947Z info: [Frontend] 
+2025-06-17 21:24:09 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:24:09 info: Executing SQL:
+2025-06-17 21:24:09 info: With Params:
+2025-06-17 21:24:09 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:24:09 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:24:09 info: Executing SQL:
+2025-06-17 21:24:09 info: With Params:
+2025-06-17 21:24:09 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:24:09.144Z info: [Frontend] 
+2025-06-17T13:24:09.145Z info: [Frontend] 
+2025-06-17 21:24:14 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:24:14 info: Executing SQL:
+2025-06-17 21:24:14 info: With Params:
+2025-06-17 21:24:14 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:24:14 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:24:14 info: Executing SQL:
+2025-06-17 21:24:14 info: With Params:
+2025-06-17 21:24:14 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:24:14.991Z info: [Frontend] 
+2025-06-17T13:24:14.992Z info: [Frontend] 
+2025-06-17 21:26:07 info: Received request for /api/db-status
+2025-06-17 21:26:07 info: DB status check successful.
+2025-06-17 21:26:07 info: Received request for /api/db-status
+2025-06-17 21:26:07 info: DB status check successful.
+2025-06-17 21:26:10 info: Received request for /api/db-status
+2025-06-17 21:26:10 info: DB status check successful.
+2025-06-17 21:26:10 info: Received request for /api/pocdata/options
+2025-06-17 21:26:10 info: Received request for /api/pocdata with filters:
+2025-06-17 21:26:10 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:26:10 info: Executing SQL:
+2025-06-17 21:26:10 info: With Params:
+2025-06-17 21:26:10 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:26:10 info: Received request for /api/pocdata with filters:
+2025-06-17 21:26:10 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:26:10 info: Executing SQL:
+2025-06-17 21:26:10 info: With Params:
+2025-06-17 21:26:10 info: Received request for /api/pocdata/options
+2025-06-17 21:26:10 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:26:10 info: Received request for /api/pocdata with filters:
+2025-06-17 21:26:10 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:26:10 info: Executing SQL:
+2025-06-17 21:26:10 info: With Params:
+2025-06-17 21:26:10 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:26:10.515Z info: [Frontend] 
+2025-06-17T13:26:10.517Z info: [Frontend] 
+2025-06-17T13:26:10.540Z info: [Frontend] 
+2025-06-17T13:26:10.560Z info: [Frontend] 
+2025-06-17T13:26:10.561Z info: [Frontend] 
+2025-06-17 21:26:35 info: Received request for /api/pocdata/options
+2025-06-17 21:26:35 info: Received request for /api/pocdata with filters:
+2025-06-17 21:26:35 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:26:35 info: Executing SQL:
+2025-06-17 21:26:35 info: With Params:
+2025-06-17 21:26:35 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:26:35 info: Received request for /api/pocdata with filters:
+2025-06-17 21:26:35 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:26:35 info: Executing SQL:
+2025-06-17 21:26:35 info: With Params:
+2025-06-17 21:26:35 info: Received request for /api/pocdata/options
+2025-06-17 21:26:35 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:26:35 info: Received request for /api/pocdata with filters:
+2025-06-17 21:26:35 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:26:35 info: Executing SQL:
+2025-06-17 21:26:35 info: With Params:
+2025-06-17 21:26:35 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:26:35.219Z info: [Frontend] 
+2025-06-17T13:26:35.221Z info: [Frontend] 
+2025-06-17T13:26:35.223Z info: [Frontend] 
+2025-06-17T13:26:35.224Z info: [Frontend] 
+2025-06-17T13:26:35.248Z info: [Frontend] 
+2025-06-17 21:26:38 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:26:38 info: Executing SQL:
+2025-06-17 21:26:38 info: With Params:
+2025-06-17 21:26:38 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:26:38 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:26:38 info: Executing SQL:
+2025-06-17 21:26:38 info: With Params:
+2025-06-17 21:26:38 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:26:38.957Z info: [Frontend] 
+2025-06-17T13:26:38.958Z info: [Frontend] 
+2025-06-17 21:26:42 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:26:42 info: Executing SQL:
+2025-06-17 21:26:42 info: With Params:
+2025-06-17 21:26:42 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:26:42 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:26:42 info: Executing SQL:
+2025-06-17 21:26:42 info: With Params:
+2025-06-17 21:26:42 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:26:42.846Z info: [Frontend] 
+2025-06-17T13:26:42.848Z info: [Frontend] 
+2025-06-17 21:31:42 info: Received request for /api/db-status
+2025-06-17 21:31:42 info: DB status check successful.
+2025-06-17 21:31:42 info: Received request for /api/db-status
+2025-06-17 21:31:42 info: DB status check successful.
+2025-06-17 21:31:46 info: Received request for /api/db-status
+2025-06-17 21:31:46 info: DB status check successful.
+2025-06-17 21:31:46 info: Received request for /api/pocdata/options
+2025-06-17 21:31:46 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:46 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:46 info: Executing SQL:
+2025-06-17 21:31:46 info: With Params:
+2025-06-17 21:31:46 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:31:46 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:46 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:46 info: Executing SQL:
+2025-06-17 21:31:46 info: With Params:
+2025-06-17 21:31:46 info: Received request for /api/pocdata/options
+2025-06-17 21:31:46 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:31:46.273Z info: [Frontend] 
+2025-06-17 21:31:46 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:46 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:46 info: Executing SQL:
+2025-06-17 21:31:46 info: With Params:
+2025-06-17 21:31:46 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:31:46.288Z info: [Frontend] 
+2025-06-17T13:31:46.299Z info: [Frontend] 
+2025-06-17T13:31:46.302Z info: [Frontend] 
+2025-06-17T13:31:46.302Z info: [Frontend] 
+2025-06-17 21:31:54 info: Received request for /api/pocdata/options
+2025-06-17 21:31:54 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:54 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:54 info: Executing SQL:
+2025-06-17 21:31:54 info: With Params:
+2025-06-17 21:31:54 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:31:54 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:54 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:54 info: Executing SQL:
+2025-06-17 21:31:54 info: With Params:
+2025-06-17 21:31:54 info: Received request for /api/pocdata/options
+2025-06-17 21:31:54 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:31:54 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:54 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:54 info: Executing SQL:
+2025-06-17 21:31:54 info: With Params:
+2025-06-17 21:31:54 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:31:54.173Z info: [Frontend] 
+2025-06-17T13:31:54.174Z info: [Frontend] 
+2025-06-17T13:31:54.185Z info: [Frontend] 
+2025-06-17T13:31:54.193Z info: [Frontend] 
+2025-06-17T13:31:54.202Z info: [Frontend] 
+2025-06-17 21:31:56 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:31:56 info: Executing SQL:
+2025-06-17 21:31:56 info: With Params:
+2025-06-17 21:31:56 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:31:56 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:31:56 info: Executing SQL:
+2025-06-17 21:31:56 info: With Params:
+2025-06-17 21:31:56 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:31:56.087Z info: [Frontend] 
+2025-06-17T13:31:56.112Z info: [Frontend] 
+2025-06-17 21:31:58 info: Received request for /api/pocdata/options
+2025-06-17 21:31:58 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:58 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:58 info: Executing SQL:
+2025-06-17 21:31:58 info: With Params:
+2025-06-17 21:31:58 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:31:58 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:58 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:58 info: Executing SQL:
+2025-06-17 21:31:58 info: With Params:
+2025-06-17 21:31:58 info: Received request for /api/pocdata/options
+2025-06-17 21:31:58 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:31:58.666Z info: [Frontend] 
+2025-06-17 21:31:58 info: Received request for /api/pocdata with filters:
+2025-06-17 21:31:58 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:31:58 info: Executing SQL:
+2025-06-17 21:31:58 info: With Params:
+2025-06-17 21:31:58 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:31:58.678Z info: [Frontend] 
+2025-06-17T13:31:58.686Z info: [Frontend] 
+2025-06-17T13:31:58.687Z info: [Frontend] 
+2025-06-17T13:31:58.687Z info: [Frontend] 
+2025-06-17 21:32:29 info: Received request for /api/db-status
+2025-06-17 21:32:29 info: DB status check successful.
+2025-06-17 21:32:29 info: Received request for /api/db-status
+2025-06-17 21:32:29 info: DB status check successful.
+2025-06-17 21:32:34 info: Received request for /api/db-status
+2025-06-17 21:32:34 info: DB status check successful.
+2025-06-17 21:32:34 info: Received request for /api/pocdata/options
+2025-06-17 21:32:34 info: Received request for /api/pocdata with filters:
+2025-06-17 21:32:34 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:32:34 info: Executing SQL:
+2025-06-17 21:32:34 info: With Params:
+2025-06-17 21:32:34 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:32:34 info: Received request for /api/pocdata/options
+2025-06-17 21:32:34 info: Received request for /api/pocdata with filters:
+2025-06-17 21:32:34 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:32:34 info: Executing SQL:
+2025-06-17 21:32:34 info: With Params:
+2025-06-17 21:32:34 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:32:34 info: Received request for /api/pocdata with filters:
+2025-06-17 21:32:34 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:32:34 info: Executing SQL:
+2025-06-17 21:32:34 info: With Params:
+2025-06-17 21:32:34 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:32:34.954Z info: [Frontend] 
+2025-06-17T13:32:34.956Z info: [Frontend] 
+2025-06-17T13:32:34.986Z info: [Frontend] 
+2025-06-17T13:32:34.987Z info: [Frontend] 
+2025-06-17T13:32:34.988Z info: [Frontend] 
+2025-06-17 21:33:13 info: Received request for /api/db-status
+2025-06-17 21:33:13 info: DB status check successful.
+2025-06-17 21:33:19 info: Received request for /api/db-status
+2025-06-17 21:33:19 info: DB status check successful.
+2025-06-17 21:33:19 info: Received request for /api/pocdata/options
+2025-06-17 21:33:19 info: Received request for /api/pocdata with filters:
+2025-06-17 21:33:19 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:33:19 info: Executing SQL:
+2025-06-17 21:33:19 info: With Params:
+2025-06-17 21:33:19 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:33:19 info: Received request for /api/pocdata with filters:
+2025-06-17 21:33:19 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:33:19 info: Executing SQL:
+2025-06-17 21:33:19 info: With Params:
+2025-06-17 21:33:19 info: Received request for /api/pocdata/options
+2025-06-17 21:33:19 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:33:19 info: Received request for /api/pocdata with filters:
+2025-06-17 21:33:19 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:33:19 info: Executing SQL:
+2025-06-17 21:33:19 info: With Params:
+2025-06-17 21:33:19 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:33:19.481Z info: [Frontend] 
+2025-06-17T13:33:19.483Z info: [Frontend] 
+2025-06-17T13:33:19.506Z info: [Frontend] 
+2025-06-17T13:33:19.531Z info: [Frontend] 
+2025-06-17T13:33:19.532Z info: [Frontend] 
+2025-06-17 21:35:40 info: Received request for /api/db-status
+2025-06-17 21:35:40 info: DB status check successful.
+2025-06-17 21:35:40 info: Received request for /api/db-status
+2025-06-17 21:35:40 info: DB status check successful.
+2025-06-17 21:36:04 info: Received request for /api/db-status
+2025-06-17 21:36:04 info: DB status check successful.
+2025-06-17 21:36:04 info: Received request for /api/pocdata/options
+2025-06-17 21:36:04 info: Received request for /api/pocdata with filters:
+2025-06-17 21:36:04 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:36:04 info: Executing SQL:
+2025-06-17 21:36:04 info: With Params:
+2025-06-17 21:36:04 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:36:04 info: Received request for /api/pocdata with filters:
+2025-06-17 21:36:04 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:36:04 info: Executing SQL:
+2025-06-17 21:36:04 info: With Params:
+2025-06-17 21:36:04 info: Received request for /api/pocdata/options
+2025-06-17 21:36:04 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:36:04.880Z info: [Frontend] 
+2025-06-17 21:36:04 info: Received request for /api/pocdata with filters:
+2025-06-17 21:36:04 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:36:04 info: Executing SQL:
+2025-06-17 21:36:04 info: With Params:
+2025-06-17 21:36:04 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:36:04.897Z info: [Frontend] 
+2025-06-17T13:36:04.906Z info: [Frontend] 
+2025-06-17T13:36:04.921Z info: [Frontend] 
+2025-06-17T13:36:04.922Z info: [Frontend] 
+2025-06-17 21:38:39 info: Attempting to create MySQL connection pool...
+2025-06-17 21:38:39 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-17 21:38:39 info: MySQL Pool ready.
+2025-06-17 21:38:40 info: 🚀 Server listening on http://localhost:3001
+2025-06-17 21:38:45 info: Received request for /api/db-status
+2025-06-17 21:38:45 info: DB status check successful.
+2025-06-17 21:38:45 info: Received request for /api/db-status
+2025-06-17 21:38:45 info: DB status check successful.
+2025-06-17 21:38:49 info: Received request for /api/db-status
+2025-06-17 21:38:49 info: DB status check successful.
+2025-06-17T13:38:49.180Z info: [Frontend] 
+2025-06-17T13:38:49.189Z info: [Frontend] 
+2025-06-17T13:38:49.197Z info: [Frontend] 
+2025-06-17T13:38:49.209Z info: [Frontend] 
+2025-06-17T13:38:49.213Z info: [Frontend] 
+2025-06-17T13:38:53.993Z info: [Frontend] 
+2025-06-17T13:38:53.994Z info: [Frontend] 
+2025-06-17T13:38:53.995Z info: [Frontend] 
+2025-06-17T13:38:54.003Z info: [Frontend] 
+2025-06-17T13:38:54.011Z info: [Frontend] 
+2025-06-17T13:38:58.520Z info: [Frontend] 
+2025-06-17T13:38:58.523Z info: [Frontend] 
+2025-06-17T13:39:03.091Z info: [Frontend] 
+2025-06-17T13:39:03.091Z info: [Frontend] 
+2025-06-17T13:39:04.469Z info: [Frontend] 
+2025-06-17T13:39:04.469Z info: [Frontend] 
+2025-06-17T13:39:05.885Z info: [Frontend] 
+2025-06-17T13:39:05.887Z info: [Frontend] 
+2025-06-17T13:39:07.106Z info: [Frontend] 
+2025-06-17T13:39:07.106Z info: [Frontend] 
+2025-06-17T13:39:08.879Z info: [Frontend] 
+2025-06-17T13:39:08.879Z info: [Frontend] 
+2025-06-17T13:39:10.615Z info: [Frontend] 
+2025-06-17T13:39:10.636Z info: [Frontend] 
+2025-06-17T13:39:19.590Z info: [Frontend] 
+2025-06-17T13:39:19.595Z info: [Frontend] 
+2025-06-17T13:39:30.039Z info: [Frontend] 
+2025-06-17T13:39:30.039Z info: [Frontend] 
+2025-06-17T13:39:31.893Z info: [Frontend] 
+2025-06-17T13:39:31.893Z info: [Frontend] 
+2025-06-17 21:42:37 info: Attempting to create MySQL connection pool...
+2025-06-17 21:42:37 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-17 21:42:37 info: MySQL Pool ready.
+2025-06-17 21:42:37 info: 🚀 Server listening on http://localhost:3001
+2025-06-17 21:43:17 info: Received request for /api/db-status
+2025-06-17 21:43:17 info: DB status check successful.
+2025-06-17 21:43:17 info: Received request for /api/db-status
+2025-06-17 21:43:17 info: DB status check successful.
+2025-06-17 21:43:22 info: Received request for /api/db-status
+2025-06-17 21:43:22 info: DB status check successful.
+2025-06-17T13:43:22.619Z info: [Frontend] 
+2025-06-17T13:43:22.626Z info: [Frontend] 
+2025-06-17T13:43:22.641Z info: [Frontend] 
+2025-06-17T13:43:22.647Z info: [Frontend] 
+2025-06-17T13:43:22.651Z info: [Frontend] 
+2025-06-17T13:43:25.899Z info: [Frontend] 
+2025-06-17T13:43:25.900Z info: [Frontend] 
+2025-06-17T13:43:25.906Z info: [Frontend] 
+2025-06-17T13:43:25.910Z info: [Frontend] 
+2025-06-17T13:43:25.910Z info: [Frontend] 
+2025-06-17T13:43:45.966Z info: [Frontend] 
+2025-06-17T13:43:45.969Z info: [Frontend] 
+2025-06-17T13:43:50.893Z info: [Frontend] 
+2025-06-17T13:43:51.024Z info: [Frontend] 
+2025-06-17T13:43:53.085Z info: [Frontend] 
+2025-06-17T13:43:53.185Z info: [Frontend] 
+2025-06-17T13:44:03.568Z info: [Frontend] 
+2025-06-17T13:44:03.569Z info: [Frontend] 
+2025-06-17T13:44:03.572Z info: [Frontend] 
+2025-06-17T13:44:03.575Z info: [Frontend] 
+2025-06-17T13:44:03.581Z info: [Frontend] 
+2025-06-17 21:44:09 info: Received request for /api/db-status
+2025-06-17 21:44:09 info: DB status check successful.
+2025-06-17 21:44:10 info: Received request for /api/db-status
+2025-06-17 21:44:10 info: DB status check successful.
+2025-06-17T13:44:10.113Z info: [Frontend] 
+2025-06-17T13:44:10.117Z info: [Frontend] 
+2025-06-17T13:44:10.120Z info: [Frontend] 
+2025-06-17T13:44:10.127Z info: [Frontend] 
+2025-06-17T13:44:10.128Z info: [Frontend] 
+2025-06-17T13:44:16.078Z info: [Frontend] 
+2025-06-17T13:44:16.357Z info: [Frontend] 
+2025-06-17T13:44:16.562Z info: [Frontend] 
+2025-06-17T13:44:16.677Z info: [Frontend] 
+2025-06-17 21:47:36 info: Received request for /api/db-status
+2025-06-17 21:47:36 info: DB status check successful.
+2025-06-17 21:47:50 info: Received request for /api/db-status
+2025-06-17 21:47:50 info: DB status check successful.
+2025-06-17 21:48:06 info: Received request for /api/db-status
+2025-06-17 21:48:06 info: DB status check successful.
+2025-06-17 21:49:30 info: Received request for /api/db-status
+2025-06-17 21:49:30 info: DB status check successful.
+2025-06-17 21:49:30 info: Received request for /api/db-status
+2025-06-17 21:49:30 info: DB status check successful.
+2025-06-17 21:49:36 info: Received request for /api/db-status
+2025-06-17 21:49:36 info: DB status check successful.
+2025-06-17T13:49:36.844Z info: [Frontend] 
+2025-06-17T13:49:36.868Z info: [Frontend] 
+2025-06-17T13:49:36.869Z info: [Frontend] 
+2025-06-17T13:49:36.870Z info: [Frontend] 
+2025-06-17T13:49:36.882Z info: [Frontend] 
+2025-06-17 21:51:00 info: Received request for /api/db-status
+2025-06-17 21:51:00 info: DB status check successful.
+2025-06-17T13:51:18.626Z info: [Frontend] CSV file selected: POClong.csv
+2025-06-17 21:53:47 info: Received request for /api/db-status
+2025-06-17 21:53:47 info: DB status check successful.
+2025-06-17T13:53:47.213Z info: [Frontend] 
+2025-06-17T13:53:47.223Z info: [Frontend] 
+2025-06-17T13:53:47.236Z info: [Frontend] 
+2025-06-17T13:53:47.236Z info: [Frontend] 
+2025-06-17T13:53:47.247Z info: [Frontend] 
+2025-06-17 21:53:55 info: Received request for /api/db-status
+2025-06-17 21:53:55 info: DB status check successful.
+2025-06-17 21:53:56 info: Received request for /api/db-status
+2025-06-17 21:53:56 info: DB status check successful.
+2025-06-17T13:53:56.542Z info: [Frontend] 
+2025-06-17T13:53:56.555Z info: [Frontend] 
+2025-06-17T13:53:56.567Z info: [Frontend] 
+2025-06-17T13:53:56.568Z info: [Frontend] 
+2025-06-17T13:53:56.575Z info: [Frontend] 
+2025-06-17 21:53:58 info: Received request for /api/db-status
+2025-06-17 21:53:58 info: DB status check successful.
+2025-06-17 21:54:00 info: Received request for /api/db-status
+2025-06-17 21:54:00 info: DB status check successful.
+2025-06-17T13:54:00.808Z info: [Frontend] 
+2025-06-17T13:54:00.809Z info: [Frontend] 
+2025-06-17T13:54:00.823Z info: [Frontend] 
+2025-06-17T13:54:00.824Z info: [Frontend] 
+2025-06-17T13:54:00.824Z info: [Frontend] 
+2025-06-17T13:54:42.860Z info: [Frontend] 
+2025-06-17T13:54:42.894Z info: [Frontend] 
+2025-06-17T13:54:44.153Z info: [Frontend] 
+2025-06-17T13:54:44.177Z info: [Frontend] 
+2025-06-17T13:54:44.191Z info: [Frontend] 
+2025-06-17T13:54:44.192Z info: [Frontend] 
+2025-06-17T13:54:44.193Z info: [Frontend] 
+2025-06-17T13:56:13.962Z info: [Frontend] 
+2025-06-17T13:56:13.985Z info: [Frontend] 
+2025-06-17T13:56:15.078Z info: [Frontend] 
+2025-06-17T13:56:15.079Z info: [Frontend] 
+2025-06-17T13:56:15.094Z info: [Frontend] 
+2025-06-17T13:56:15.095Z info: [Frontend] 
+2025-06-17T13:56:15.095Z info: [Frontend] 
+2025-06-17 21:56:17 info: Received request for /api/db-status
+2025-06-17 21:56:17 info: DB status check successful.
+2025-06-17 21:56:17 info: Received request for /api/db-status
+2025-06-17 21:56:17 info: DB status check successful.
+2025-06-17 21:56:28 info: Attempting to create MySQL connection pool...
+2025-06-17 21:56:28 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-17 21:56:28 info: MySQL Pool ready.
+2025-06-17 21:56:28 info: 🚀 Server listening on http://localhost:3001
+2025-06-17 21:56:36 info: Received request for /api/db-status
+2025-06-17 21:56:36 info: DB status check successful.
+2025-06-17T13:56:36.236Z info: [Frontend] 
+2025-06-17T13:56:36.241Z info: [Frontend] 
+2025-06-17T13:56:36.255Z info: [Frontend] 
+2025-06-17T13:56:36.264Z info: [Frontend] 
+2025-06-17T13:56:36.264Z info: [Frontend] 
+2025-06-17T13:56:45.487Z info: [Frontend] 
+2025-06-17T13:56:45.509Z info: [Frontend] 
+2025-06-17T13:56:46.510Z info: [Frontend] 
+2025-06-17T13:56:46.527Z info: [Frontend] 
+2025-06-17T13:56:46.537Z info: [Frontend] 
+2025-06-17T13:56:46.537Z info: [Frontend] 
+2025-06-17T13:56:46.539Z info: [Frontend] 
+2025-06-17T13:56:48.853Z info: [Frontend] 
+2025-06-17T13:56:48.854Z info: [Frontend] 
+2025-06-17T13:56:48.863Z info: [Frontend] 
+2025-06-17T13:56:48.872Z info: [Frontend] 
+2025-06-17T13:56:48.872Z info: [Frontend] 
+2025-06-17T14:02:00.010Z info: [Frontend] 
+2025-06-17T14:02:00.014Z info: [Frontend] 
+2025-06-17T14:02:04.759Z info: [Frontend] 
+2025-06-17T14:02:04.779Z info: [Frontend] 
+2025-06-17 22:04:36 info: Received request for /api/db-status
+2025-06-17 22:04:36 info: DB status check successful.
+2025-06-17 22:04:36 info: Received request for /api/db-status
+2025-06-17 22:04:36 info: DB status check successful.
+2025-06-17 22:04:39 info: Received request for /api/db-status
+2025-06-17 22:04:39 info: DB status check successful.
+2025-06-17T14:04:39.557Z info: [Frontend] 
+2025-06-17T14:04:39.557Z info: [Frontend] 
+2025-06-17T14:04:39.589Z info: [Frontend] 
+2025-06-17T14:04:39.589Z info: [Frontend] 
+2025-06-17T14:04:39.590Z info: [Frontend] 
+2025-06-17T14:05:17.121Z info: [Frontend] 
+2025-06-17T14:05:17.148Z info: [Frontend] 
+2025-06-17 22:07:38 info: Received request for /api/db-status
+2025-06-17 22:07:38 info: DB status check successful.
+2025-06-17 22:07:38 info: Received request for /api/db-status
+2025-06-17 22:07:38 info: DB status check successful.
+2025-06-17 22:07:40 info: Received request for /api/db-status
+2025-06-17 22:07:40 info: DB status check successful.
+2025-06-17T14:07:40.687Z info: [Frontend] 
+2025-06-17T14:07:40.704Z info: [Frontend] 
+2025-06-17T14:07:40.725Z info: [Frontend] 
+2025-06-17T14:07:40.727Z info: [Frontend] 
+2025-06-17T14:07:40.728Z info: [Frontend] 
+2025-06-17T14:07:44.107Z info: [Frontend] 
+2025-06-17T14:07:44.146Z info: [Frontend] 
+2025-06-17 23:15:41 info: Received request for /api/db-status
+2025-06-17 23:15:41 info: DB status check successful.
+2025-06-17 23:15:42 info: Received request for /api/db-status
+2025-06-17 23:15:42 info: DB status check successful.
+2025-06-17T15:15:42.401Z info: [Frontend] 
+2025-06-17T15:15:42.433Z info: [Frontend] 
+2025-06-17 23:17:02 info: Received request for /api/db-status
+2025-06-17 23:17:02 info: DB status check successful.
+2025-06-17 23:17:02 info: Received request for /api/db-status
+2025-06-17 23:17:02 info: DB status check successful.
+2025-06-17 23:17:03 info: Received request for /api/db-status
+2025-06-17 23:17:03 info: DB status check successful.
+2025-06-17T15:17:03.819Z info: [Frontend] 
+2025-06-17T15:17:03.835Z info: [Frontend] 
+2025-06-17T15:17:03.835Z info: [Frontend] 
+2025-06-17T15:17:03.837Z info: [Frontend] 
+2025-06-17T15:17:03.847Z info: [Frontend] 
+2025-06-17 23:19:38 info: Received request for /api/db-status
+2025-06-17T15:19:38.403Z info: [Frontend] 
+2025-06-17T15:19:38.408Z info: [Frontend] 
+2025-06-17 23:19:38 info: DB status check successful.
+2025-06-17T15:19:38.411Z info: [Frontend] 
+2025-06-17T15:19:38.435Z info: [Frontend] 
+2025-06-17T15:19:38.439Z info: [Frontend] 
+2025-06-17T15:19:38.442Z info: [Frontend] 
+2025-06-17T15:19:38.458Z info: [Frontend] 
+2025-06-17T15:19:38.459Z info: [Frontend] 
+2025-06-17T15:19:38.459Z info: [Frontend] 
+2025-06-17 23:19:46 info: Received request for /api/db-status
+2025-06-17 23:19:46 info: DB status check successful.
+2025-06-17 23:19:46 info: Received request for /api/db-status
+2025-06-17 23:19:46 info: DB status check successful.
+2025-06-17 23:19:48 info: Received request for /api/db-status
+2025-06-17 23:19:48 info: DB status check successful.
+2025-06-17T15:19:48.688Z info: [Frontend] 
+2025-06-17T15:19:48.695Z info: [Frontend] 
+2025-06-17T15:19:48.713Z info: [Frontend] 
+2025-06-17T15:19:48.714Z info: [Frontend] 
+2025-06-17T15:19:48.723Z info: [Frontend] 
+2025-06-17T15:19:52.319Z info: [Frontend] 
+2025-06-17T15:19:52.348Z info: [Frontend] 
+2025-06-17T15:19:52.932Z info: [Frontend] 
+2025-06-17T15:19:52.944Z info: [Frontend] 
+2025-06-17T15:19:52.956Z info: [Frontend] 
+2025-06-17T15:19:52.956Z info: [Frontend] 
+2025-06-17T15:19:52.957Z info: [Frontend] 
+2025-06-17T15:19:53.455Z info: [Frontend] 
+2025-06-17T15:19:53.486Z info: [Frontend] 
+2025-06-17T15:19:54.085Z info: [Frontend] 
+2025-06-17T15:19:54.085Z info: [Frontend] 
+2025-06-17T15:19:54.086Z info: [Frontend] 
+2025-06-17T15:19:54.086Z info: [Frontend] 
+2025-06-17T15:19:54.102Z info: [Frontend] 
+2025-06-17T15:19:57.930Z info: [Frontend] 
+2025-06-17T15:19:57.931Z info: [Frontend] 
+2025-06-17T15:19:57.932Z info: [Frontend] 
+2025-06-17T15:19:57.938Z info: [Frontend] 
+2025-06-17T15:19:57.947Z info: [Frontend] 
+2025-06-17T15:20:00.314Z info: [Frontend] 
+2025-06-17T15:20:00.334Z info: [Frontend] 
+2025-06-17 23:21:16 info: Received request for /api/db-status
+2025-06-17 23:21:16 info: DB status check successful.
+2025-06-17 23:21:16 info: Received request for /api/db-status
+2025-06-17 23:21:16 info: DB status check successful.
+2025-06-17 23:21:18 info: Received request for /api/db-status
+2025-06-17 23:21:18 info: DB status check successful.
+2025-06-17T15:21:18.152Z info: [Frontend] 
+2025-06-17T15:21:18.181Z info: [Frontend] 
+2025-06-17T15:21:18.234Z info: [Frontend] 
+2025-06-17T15:21:18.263Z info: [Frontend] 
+2025-06-17T15:21:18.264Z info: [Frontend] 
+2025-06-17 23:23:09 info: Received request for /api/db-status
+2025-06-17 23:23:09 info: DB status check successful.
+2025-06-17T15:23:09.499Z info: [Frontend] 
+2025-06-17T15:23:09.518Z info: [Frontend] 
+2025-06-17T15:23:09.531Z info: [Frontend] 
+2025-06-17T15:23:09.532Z info: [Frontend] 
+2025-06-17T15:23:09.533Z info: [Frontend] 
+2025-06-17 23:23:11 info: Received request for /api/db-status
+2025-06-17 23:23:11 info: DB status check successful.
+2025-06-17 23:23:11 info: Received request for /api/db-status
+2025-06-17 23:23:11 info: DB status check successful.
+2025-06-17 23:23:13 info: Received request for /api/db-status
+2025-06-17 23:23:13 info: DB status check successful.
+2025-06-17T15:23:13.243Z info: [Frontend] 
+2025-06-17T15:23:13.261Z info: [Frontend] 
+2025-06-17T15:23:13.271Z info: [Frontend] 
+2025-06-17T15:23:13.272Z info: [Frontend] 
+2025-06-17T15:23:13.273Z info: [Frontend] 
+2025-06-17 23:23:46 info: Received request for /api/db-status
+2025-06-17 23:23:46 info: DB status check successful.
+2025-06-17 23:23:46 info: Received request for /api/db-status
+2025-06-17 23:23:46 info: DB status check successful.
+2025-06-17 23:23:47 info: Received request for /api/db-status
+2025-06-17 23:23:47 info: DB status check successful.
+2025-06-17T15:23:48.012Z info: [Frontend] 
+2025-06-17T15:23:48.018Z info: [Frontend] 
+2025-06-17T15:23:48.077Z info: [Frontend] 
+2025-06-17T15:23:48.078Z info: [Frontend] 
+2025-06-17T15:23:48.079Z info: [Frontend] 
+2025-06-17 23:24:19 info: Received request for /api/db-status
+2025-06-17 23:24:19 info: DB status check successful.
+2025-06-17 23:24:19 info: Received request for /api/db-status
+2025-06-17 23:24:19 info: DB status check successful.
+2025-06-17 23:24:21 info: Received request for /api/db-status
+2025-06-17 23:24:21 info: DB status check successful.
+2025-06-17 23:24:21 info: Received request for /api/db-status
+2025-06-17 23:24:21 info: DB status check successful.
+2025-06-17 23:24:23 info: Received request for /api/db-status
+2025-06-17 23:24:23 info: DB status check successful.
+2025-06-17T15:24:23.689Z info: [Frontend] 
+2025-06-17T15:24:23.705Z info: [Frontend] 
+2025-06-17T15:24:23.706Z info: [Frontend] 
+2025-06-17T15:24:23.706Z info: [Frontend] 
+2025-06-17T15:24:23.707Z info: [Frontend] 
+2025-06-17 23:27:56 info: Received request for /api/db-status
+2025-06-17 23:27:56 info: DB status check successful.
+2025-06-17T15:27:56.481Z info: [Frontend] 
+2025-06-17T15:27:56.494Z info: [Frontend] 
+2025-06-17T15:27:56.507Z info: [Frontend] 
+2025-06-17T15:27:56.507Z info: [Frontend] 
+2025-06-17T15:27:56.508Z info: [Frontend] 
+2025-06-17 23:29:45 info: Received request for /api/db-status
+2025-06-17 23:29:45 info: DB status check successful.
+2025-06-17 23:29:45 info: Received request for /api/db-status
+2025-06-17 23:29:45 info: DB status check successful.
+2025-06-17 23:29:46 info: Received request for /api/db-status
+2025-06-17 23:29:46 info: DB status check successful.
+2025-06-17 23:29:46 info: Received request for /api/db-status
+2025-06-17 23:29:46 info: DB status check successful.
+2025-06-17 23:30:14 info: Received request for /api/db-status
+2025-06-17 23:30:14 info: DB status check successful.
+2025-06-17T15:30:14.078Z info: [Frontend] 
+2025-06-17T15:30:14.091Z info: [Frontend] 
+2025-06-17T15:30:14.100Z info: [Frontend] 
+2025-06-17T15:30:14.100Z info: [Frontend] 
+2025-06-17T15:30:14.101Z info: [Frontend] 
+2025-06-17 23:30:17 info: Received request for /api/db-status
+2025-06-17 23:30:17 info: DB status check successful.
+2025-06-17 23:30:18 info: Received request for /api/db-status
+2025-06-17 23:30:18 info: DB status check successful.
+2025-06-17T15:30:18.261Z info: [Frontend] 
+2025-06-17T15:30:18.276Z info: [Frontend] 
+2025-06-17T15:30:18.284Z info: [Frontend] 
+2025-06-17T15:30:18.285Z info: [Frontend] 
+2025-06-17T15:30:18.285Z info: [Frontend] 
+2025-06-17 23:30:20 info: Received request for /api/db-status
+2025-06-17 23:30:20 info: DB status check successful.
+2025-06-17T15:30:20.585Z info: [Frontend] 
+2025-06-17T15:30:20.625Z info: [Frontend] 
+2025-06-17T15:30:20.635Z info: [Frontend] 
+2025-06-17T15:30:20.640Z info: [Frontend] 
+2025-06-17T15:30:20.640Z info: [Frontend] 
+2025-06-17T15:30:22.998Z info: [Frontend] 
+2025-06-17T15:30:23.036Z info: [Frontend] 
+2025-06-17 23:35:13 info: Received request for /api/db-status
+2025-06-17 23:35:13 info: DB status check successful.
+2025-06-17 23:35:13 info: Received request for /api/db-status
+2025-06-17 23:35:13 info: DB status check successful.
+2025-06-17 23:35:18 info: Received request for /api/db-status
+2025-06-17 23:35:18 info: DB status check successful.
+2025-06-17 23:35:18 info: Received request for /api/db-status
+2025-06-17 23:35:18 info: DB status check successful.
+2025-06-17 23:35:48 info: Attempting to create MySQL connection pool...
+2025-06-17 23:35:48 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-17 23:35:48 info: MySQL Pool ready.
+2025-06-17 23:35:48 info: 🚀 Server listening on http://localhost:3001
+2025-06-17 23:36:10 info: Received request for /api/db-status
+2025-06-17 23:36:10 info: DB status check successful.
+2025-06-17 23:36:10 info: Received request for /api/db-status
+2025-06-17 23:36:10 info: DB status check successful.
+2025-06-17 23:36:17 info: Received request for /api/db-status
+2025-06-17 23:36:17 info: DB status check successful.
+2025-06-17 23:36:17 info: Received request for /api/db-status
+2025-06-17 23:36:17 info: DB status check successful.
+2025-06-17 23:37:10 info: Received request for /api/db-status
+2025-06-17 23:37:10 info: DB status check successful.
+2025-06-17 23:37:10 info: Received request for /api/db-status
+2025-06-17 23:37:10 info: DB status check successful.
+2025-06-17 23:37:35 info: Received request for /api/db-status
+2025-06-17 23:37:35 info: DB status check successful.
+2025-06-17T15:37:35.860Z info: [Frontend] 
+2025-06-17T15:37:35.868Z info: [Frontend] 
+2025-06-17T15:37:35.904Z info: [Frontend] 
+2025-06-17T15:37:35.905Z info: [Frontend] 
+2025-06-17T15:37:35.917Z info: [Frontend] 
+2025-06-17 23:37:42 info: Received request for /api/db-status
+2025-06-17 23:37:42 info: DB status check successful.
+2025-06-17 23:37:42 info: Received request for /api/db-status
+2025-06-17 23:37:42 info: DB status check successful.
+2025-06-17 23:37:51 info: Received request for /api/db-status
+2025-06-17 23:37:51 info: DB status check successful.
+2025-06-17 23:37:51 info: Received request for /api/db-status
+2025-06-17 23:37:51 info: DB status check successful.
+2025-06-17 23:38:06 info: Received request for /api/db-status
+2025-06-17 23:38:06 info: DB status check successful.
+2025-06-17 23:38:06 info: Received request for /api/db-status
+2025-06-17 23:38:06 info: DB status check successful.
+2025-06-17 23:38:12 info: Received request for /api/db-status
+2025-06-17 23:38:12 info: DB status check successful.
+2025-06-17 23:38:12 info: Received request for /api/db-status
+2025-06-17 23:38:12 info: DB status check successful.
+2025-06-17 23:40:16 info: Received request for /api/db-status
+2025-06-17 23:40:16 info: DB status check successful.
+2025-06-17T15:40:16.327Z info: [Frontend] 
+2025-06-17T15:40:16.349Z info: [Frontend] 
+2025-06-17T15:40:16.378Z info: [Frontend] 
+2025-06-17 23:40:27 info: Received request for /api/db-status
+2025-06-17 23:40:27 info: DB status check successful.
+2025-06-17 23:40:27 info: Received request for /api/db-status
+2025-06-17 23:40:27 info: DB status check successful.
+2025-06-17T15:40:27.385Z info: [Frontend] 
+2025-06-17T15:40:27.387Z info: [Frontend] 
+2025-06-17T15:40:27.429Z info: [Frontend] 
+2025-06-17T15:40:27.430Z info: [Frontend] 
+2025-06-17T15:40:27.458Z info: [Frontend] 
+2025-06-17T15:40:27.472Z info: [Frontend] 
+2025-06-17T15:40:27.472Z info: [Frontend] 
+2025-06-17 23:40:30 info: Received request for /api/db-status
+2025-06-17 23:40:30 info: DB status check successful.
+2025-06-17T15:40:30.479Z info: [Frontend] 
+2025-06-17 23:40:36 info: Received request for /api/db-status
+2025-06-17 23:40:36 info: DB status check successful.
+2025-06-17T15:40:36.048Z info: [Frontend] 
+2025-06-17T15:40:36.061Z info: [Frontend] 
+2025-06-17T15:40:36.066Z info: [Frontend] 
+2025-06-17T15:40:36.089Z info: [Frontend] 
+2025-06-17T15:40:36.106Z info: [Frontend] 
+2025-06-17T15:40:36.106Z info: [Frontend] 
+2025-06-17 23:40:39 info: Received request for /api/db-status
+2025-06-17 23:40:39 info: DB status check successful.
+2025-06-17T15:40:39.627Z info: [Frontend] 
+2025-06-17 23:40:57 info: Received request for /api/db-status
+2025-06-17 23:40:57 info: DB status check successful.
+2025-06-17T15:40:57.395Z info: [Frontend] 
+2025-06-17T15:40:57.397Z info: [Frontend] 
+2025-06-17T15:40:57.419Z info: [Frontend] 
+2025-06-17T15:40:57.420Z info: [Frontend] 
+2025-06-17T15:40:57.420Z info: [Frontend] 
+2025-06-17T15:40:57.421Z info: [Frontend] 
+2025-06-17T15:41:15.518Z info: [Frontend] 
+2025-06-17T15:41:15.573Z info: [Frontend] 
+2025-06-17T15:41:15.573Z info: [Frontend] 
+2025-06-17T15:41:15.582Z info: [Frontend] 
+2025-06-17 23:41:18 info: Received request for /api/db-status
+2025-06-17 23:41:18 info: DB status check successful.
+2025-06-17T15:41:18.495Z info: [Frontend] 
+2025-06-17T15:41:20.929Z info: [Frontend] 
+2025-06-17 23:41:25 info: Received request for /api/db-status
+2025-06-17 23:41:25 info: DB status check successful.
+2025-06-17T15:41:25.709Z info: [Frontend] 
+2025-06-17T15:41:25.712Z info: [Frontend] 
+2025-06-17T15:41:25.713Z info: [Frontend] 
+2025-06-17T15:41:25.739Z info: [Frontend] 
+2025-06-17T15:41:25.739Z info: [Frontend] 
+2025-06-17T15:41:25.740Z info: [Frontend] 
+2025-06-17 23:41:26 info: Received request for /api/db-status
+2025-06-17 23:41:26 info: DB status check successful.
+2025-06-17T15:41:26.710Z info: [Frontend] 
+2025-06-17 23:41:29 info: Received request for /api/db-status
+2025-06-17 23:41:29 info: DB status check successful.
+2025-06-17T15:41:29.259Z info: [Frontend] 
+2025-06-17T15:41:29.261Z info: [Frontend] 
+2025-06-17T15:41:29.277Z info: [Frontend] 
+2025-06-17T15:41:29.296Z info: [Frontend] 
+2025-06-17T15:41:29.296Z info: [Frontend] 
+2025-06-17T15:41:29.296Z info: [Frontend] 
+2025-06-17 23:41:30 info: Received request for /api/db-status
+2025-06-17 23:41:30 info: DB status check successful.
+2025-06-17T15:41:30.177Z info: [Frontend] 
+2025-06-17 23:41:30 info: Received request for /api/db-status
+2025-06-17 23:41:30 info: DB status check successful.
+2025-06-17T15:41:31.011Z info: [Frontend] 
+2025-06-17T15:41:31.013Z info: [Frontend] 
+2025-06-17T15:41:31.033Z info: [Frontend] 
+2025-06-17T15:41:31.050Z info: [Frontend] 
+2025-06-17T15:41:31.051Z info: [Frontend] 
+2025-06-17T15:41:31.051Z info: [Frontend] 
+2025-06-17 23:41:43 info: Received request for /api/db-status
+2025-06-17 23:41:43 info: DB status check successful.
+2025-06-17T15:41:43.541Z info: [Frontend] 
+2025-06-17 23:41:46 info: Received request for /api/db-status
+2025-06-17 23:41:46 info: DB status check successful.
+2025-06-17T15:41:46.079Z info: [Frontend] 
+2025-06-17T15:41:46.091Z info: [Frontend] 
+2025-06-17T15:41:46.109Z info: [Frontend] 
+2025-06-17T15:41:46.110Z info: [Frontend] 
+2025-06-17T15:41:46.124Z info: [Frontend] 
+2025-06-17T15:41:46.125Z info: [Frontend] 
+2025-06-17T15:41:53.972Z info: [Frontend] 
+2025-06-17T15:41:54.016Z info: [Frontend] 
+2025-06-17T15:42:06.149Z info: [Frontend] 
+2025-06-17T15:42:26.226Z info: [Frontend] 
+2025-06-17T15:42:27.797Z info: [Frontend] 
+2025-06-17T15:42:30.955Z info: [Frontend] 
+2025-06-17T15:42:32.483Z info: [Frontend] 
+2025-06-17T15:42:32.715Z info: [Frontend] 
+2025-06-17T15:42:41.288Z info: [Frontend] 
+2025-06-17T15:42:41.458Z info: [Frontend] 
+2025-06-17T15:42:41.835Z info: [Frontend] 
+2025-06-17T15:43:00.751Z info: [Frontend] 
+2025-06-17T15:43:00.821Z info: [Frontend] 
+2025-06-17T15:43:15.758Z info: [Frontend] 
+2025-06-17T15:43:15.801Z info: [Frontend] 
+2025-06-17T15:43:33.667Z info: [Frontend] 
+2025-06-17T15:43:33.667Z info: [Frontend] 
+2025-06-17T15:43:33.694Z info: [Frontend] 
+2025-06-17T15:43:33.705Z info: [Frontend] 
+2025-06-17T15:43:33.706Z info: [Frontend] 
+2025-06-17T15:43:45.498Z info: [Frontend] 
+2025-06-17T15:43:45.541Z info: [Frontend] 
+2025-06-17T15:47:35.661Z info: [Frontend] 
+2025-06-17T15:47:35.682Z info: [Frontend] 
+2025-06-17T15:47:35.683Z info: [Frontend] 
+2025-06-17T15:47:35.702Z info: [Frontend] 
+2025-06-17T15:47:35.712Z info: [Frontend] 
+2025-06-17T15:47:37.752Z info: [Frontend] 
+2025-06-17T15:47:37.777Z info: [Frontend] 
+2025-06-17 23:48:06 info: Received request for /api/db-status
+2025-06-17 23:48:06 info: DB status check successful.
+2025-06-17T15:48:06.457Z info: [Frontend] 
+2025-06-17 23:48:24 info: Received request for /api/db-status
+2025-06-17 23:48:24 info: DB status check successful.
+2025-06-17T15:48:24.899Z info: [Frontend] 
+2025-06-17T15:48:24.900Z info: [Frontend] 
+2025-06-17T15:48:24.937Z info: [Frontend] 
+2025-06-17 23:48:26 info: Received request for /api/db-status
+2025-06-17 23:48:26 info: DB status check successful.
+2025-06-17T15:48:26.449Z info: [Frontend] 
+2025-06-17 23:49:17 info: Received request for /api/db-status
+2025-06-17 23:49:17 info: DB status check successful.
+2025-06-17T15:49:17.742Z info: [Frontend] 
+2025-06-17T15:49:17.743Z info: [Frontend] 
+2025-06-17T15:49:17.778Z info: [Frontend] 
+2025-06-17 23:49:19 info: Received request for /api/db-status
+2025-06-17 23:49:19 info: DB status check successful.
+2025-06-17T15:49:19.489Z info: [Frontend] 

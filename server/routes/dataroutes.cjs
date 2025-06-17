@@ -1,5 +1,9 @@
 // routes/dataRoutes.cjs
 // This file handles all read-only API endpoints for fetching report data.
+// with debugging
+
+// routes/dataRoutes.cjs
+// This file handles all read-only API endpoints for fetching report data.
 
 const express = require('express');
 const { getPool } = require('../config/db.cjs');
@@ -30,16 +34,18 @@ router.get('/pocdata', async (req, res) => {
   try {
       connection = await pool.getConnection();
       
-      // Updated SQL to include JOIN with project_phase_validation for descriptions
+      // Restore SQL with JOIN to get project/phase descriptions
       let baseSql = `
           SELECT 
               p.ID, p.cocode, p.project, p.phasecode, p.year, p.month, p.value, 
               p.timestampC, p.userC, p.timestampM, p.userM,
-              v.description 
+              COALESCE(v.description, 'N/A') as description 
           FROM 
               re.pocpermonth p
           LEFT JOIN 
-              re.project_phase_validation v ON p.project = v.project AND p.phasecode = v.phasecode AND p.cocode = v.cocode
+              re.project_phase_validation v ON p.project = v.project 
+              AND p.phasecode = v.phasecode 
+              AND p.cocode = v.cocode
       `;
       
       const whereClauses = ['(p.year < ? OR (p.year = ? AND p.month <= ?))']; 
@@ -66,7 +72,20 @@ router.get('/pocdata', async (req, res) => {
       let sqlQuery = baseSql + ' WHERE ' + whereClauses.join(' AND ');
       sqlQuery += ' ORDER BY p.project, p.phasecode, p.year DESC, p.month';
       
+      // DEBUG: Log the final query and parameters
+      console.log('DEBUG - Final SQL Query:', sqlQuery);
+      console.log('DEBUG - Query Parameters:', params);
+      console.log('DEBUG - Received cocode:', cocode);
+      
       const [rows] = await connection.execute(sqlQuery, params);
+      
+      // DEBUG: Log the results
+      console.log('DEBUG - Query returned', rows.length, 'rows');
+      if (rows.length > 0) {
+        console.log('DEBUG - First row cocode:', rows[0].cocode);
+        console.log('DEBUG - All unique cocodes:', [...new Set(rows.map(r => r.cocode))]);
+      }
+      
       res.status(200).json(rows);
   } catch (error) {
       logger.error('Error fetching data from pocpermonth:', error);
@@ -156,7 +175,21 @@ router.get('/pcompdata', async (req, res) => {
         let sqlQuery = baseSql + ' WHERE ' + whereClauses.join(' AND ');
         sqlQuery += ' ORDER BY p.project, p.phasecode, p.completion_date DESC';
 
+        // DEBUG: Log the final query and parameters for pcompdate
+        console.log('DEBUG PCOMPDATE - Final SQL Query:', sqlQuery);
+        console.log('DEBUG PCOMPDATE - Query Parameters:', params);
+        console.log('DEBUG PCOMPDATE - Received cocode:', cocode);
+        console.log('DEBUG PCOMPDATE - Received cutoffDate:', effectiveCutoffDate);
+
         const [rows] = await connection.execute(sqlQuery, params);
+        
+        // DEBUG: Log the results for pcompdate
+        console.log('DEBUG PCOMPDATE - Query returned', rows.length, 'rows');
+        if (rows.length > 0) {
+            console.log('DEBUG PCOMPDATE - First row cocode:', rows[0].cocode);
+            console.log('DEBUG PCOMPDATE - All unique cocodes:', [...new Set(rows.map(r => r.cocode))]);
+        }
+        
         res.status(200).json(rows);
     } catch (error) {
         logger.error('Error fetching data from pcompdate:', error);
