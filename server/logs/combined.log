@@ -3062,3 +3062,61 @@
 2025-06-17 19:07:44 info: Fetched 20 rows from pcompdate.
 2025-06-17T11:07:44.379Z info: [Frontend] 
 2025-06-17T11:07:44.437Z info: [Frontend] 
+2025-06-17T12:18:20.378Z info: [Frontend] Checking DB connection status
+2025-06-17 20:18:20 info: Received request for /api/db-status
+2025-06-17 20:18:20 info: DB status check successful.
+2025-06-17T12:18:20.379Z info: [Frontend] Checking DB connection status
+2025-06-17 20:18:20 info: Received request for /api/db-status
+2025-06-17 20:18:20 info: DB status check successful.
+2025-06-17T12:18:20.729Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T12:18:20.732Z info: [Frontend] DB status response parsed
+2025-06-17T12:18:20.732Z info: [Frontend] Setting DB status to connected
+2025-06-17T12:18:20.734Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T12:18:20.735Z info: [Frontend] DB status response parsed
+2025-06-17T12:18:20.736Z info: [Frontend] Setting DB status to connected
+2025-06-17 20:18:21 info: Received request for /api/pcompdata with filters:
+2025-06-17 20:18:21 info: Executing SQL:
+2025-06-17 20:18:21 info: With Params:
+2025-06-17 20:18:21 info: Fetched 20 rows from pcompdate.
+2025-06-17 20:18:21 info: Received request for /api/pcompdata with filters:
+2025-06-17 20:18:21 info: Executing SQL:
+2025-06-17 20:18:21 info: With Params:
+2025-06-17 20:18:21 info: Fetched 20 rows from pcompdate.
+2025-06-17T12:18:21.362Z info: [Frontend] 
+2025-06-17T12:18:21.385Z info: [Frontend] 
+2025-06-17 20:22:43 info: Received request for /api/db-status
+2025-06-17 20:22:43 info: DB status check successful.
+2025-06-17T12:22:43.435Z info: [Frontend] Checking DB connection status
+2025-06-17 20:22:43 info: Received request for /api/db-status
+2025-06-17 20:22:43 info: DB status check successful.
+2025-06-17T12:22:43.487Z info: [Frontend] DB status response parsed
+2025-06-17T12:22:43.485Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T12:22:43.489Z info: [Frontend] Setting DB status to connected
+2025-06-17 20:22:46 info: Received request for /api/pocdata/options
+2025-06-17 20:22:46 info: Received request for /api/pocdata with filters:
+2025-06-17 20:22:46 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 20:22:46 info: Executing SQL:
+2025-06-17 20:22:46 info: With Params:
+2025-06-17 20:22:46 info: Fetched 4 rows from pocpermonth.
+2025-06-17 20:22:46 info: Received request for /api/pocdata with filters:
+2025-06-17 20:22:46 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 20:22:46 info: Executing SQL:
+2025-06-17 20:22:46 info: With Params:
+2025-06-17 20:22:46 info: Received request for /api/pocdata/options
+2025-06-17 20:22:46 info: Fetched 4 rows from pocpermonth.
+2025-06-17T12:22:46.578Z info: [Frontend] 
+2025-06-17T12:22:46.636Z info: [Frontend] 
+2025-06-17T12:22:46.640Z info: [Frontend] 
+2025-06-17T12:22:46.656Z info: [Frontend] 
+2025-06-17T12:22:47.565Z info: [Frontend] Checking DB connection status
+2025-06-17 20:22:47 info: Received request for /api/db-status
+2025-06-17 20:22:47 info: DB status check successful.
+2025-06-17T12:22:47.567Z info: [Frontend] Checking DB connection status
+2025-06-17 20:22:47 info: Received request for /api/db-status
+2025-06-17 20:22:47 info: DB status check successful.
+2025-06-17T12:22:47.920Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T12:22:47.923Z info: [Frontend] DB status response parsed
+2025-06-17T12:22:47.925Z info: [Frontend] Setting DB status to connected
+2025-06-17T12:22:47.939Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T12:22:47.942Z info: [Frontend] DB status response parsed
+2025-06-17T12:22:47.943Z info: [Frontend] Setting DB status to connected

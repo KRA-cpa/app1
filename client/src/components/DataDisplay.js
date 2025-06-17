@@ -19,6 +19,18 @@ const DataDisplay = ({ cutoffDate }) => {
     }).format(date);
   };
   
+ const formatDate = (dateString) => {
+        if (!dateString) {
+            return '';
+        }
+        const date = new Date(dateString);
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${month}/${day}/${year}`;
+    };
+
+
   const fetchOptions = useCallback(async () => {
     try {
       const response = await fetch(`http://localhost:3001/api/pocdata/options`);

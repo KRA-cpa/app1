@@ -17,7 +17,16 @@ const PcompDataDisplay = ({ cutoffDate }) => {
     }).format(date);
   };
 
-
+ const formatDate = (dateString) => {
+        if (!dateString) {
+            return '';
+        }
+        const date = new Date(dateString);
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${month}/${day}/${year}`;
+    };
 
   const fetchData = async () => {
     setLoading(true);
@@ -103,7 +112,7 @@ const PcompDataDisplay = ({ cutoffDate }) => {
               <td style={cellStyle}>{row.project}</td>
               <td style={cellStyle}>{row.phasecode}</td>
               <td style={cellStyle}>{row.type === 'A' ? 'Actual' : 'Projected'}</td>
-              <td style={cellStyle}>{new Date(row.completion_date).toLocaleDateString()}</td>
+              <td style={cellStyle}>{formatDate(row.completion_date)}</td>
               <td style={cellStyle}>{row.notes}</td>
               <td style={cellStyle}>{formatDateTime(row.created_at)}</td>
             </tr>

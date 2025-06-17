@@ -1,4 +1,5 @@
 // client/src/components/CsvUploader.js
+
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
@@ -103,6 +104,7 @@ function CsvUploader() {
     const formData = new FormData();
     formData.append('csvFile', selectedFile);
     formData.append('uploadOption', uploadOption);
+    formData.append('cocode', selectedCompany); // Add cocode to the form data
     
     if (uploadOption === 'poc') {
       formData.append('templateType', templateType);

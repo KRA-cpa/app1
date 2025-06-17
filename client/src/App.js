@@ -15,6 +15,18 @@ const getDefaultCutoff = () => {
 
 function App() {
   const [mainView, setMainView] = useState('upload'); 
+
+  const [selectedCompany, setSelectedCompany] = useState('MBPH'); // Default company
+  const companies = [
+    { code: 'MBPH', name: 'Bayshore' },
+    { code: 'MCTI', name: 'CapTown' },
+    { code: 'OPI', name: 'Oceantown' },
+    { code: 'SVCI', name: 'San Vicente' },
+    { code: 'NPI', name: 'Northwin' },
+    { code: 'API', name: 'Arcovia' },
+    { code: 'MBPI', name: 'MEG Bacolod' },
+  ];
+
   const [reportView, setReportView] = useState('poc'); 
   const [cutoffDate, setCutoffDate] = useState(getDefaultCutoff());
   const [refreshKey, setRefreshKey] = useState(0);
@@ -102,6 +114,17 @@ function App() {
         <h1>MEG Subs POC Data Management</h1>
       </header>
       <main>
+
+ <div className="company-selector">
+          <label htmlFor="company">Company:</label>
+          <select id="company" value={selectedCompany} onChange={handleCompanyChange}>
+            {companies.map((company) => (
+              <option key={company.code} value={company.code}>
+                {company.name}
+              </option>
+            ))}
+          </select>
+        </div>
         <nav className="main-nav">
           <button
             onClick={() => setMainView('upload')}
@@ -123,6 +146,12 @@ function App() {
             Reports
           </button>
         </nav>
+
+<main>
+        {activeTab === 'upload' && <CsvUploader selectedCompany={selectedCompany} />}
+        {activeTab === 'report' && <DataDisplay selectedCompany={selectedCompany} />}
+      </main>
+
 
         <div className="view-container">
           {mainView === 'upload' ? (
