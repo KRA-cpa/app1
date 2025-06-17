@@ -118,6 +118,22 @@ function App() {
         <h1>MEG Subs POC Data Management</h1>
       </header>
       <main>
+        {/* Database Status Display - Above everything else */}
+        <div className="status-bar" style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
+          <strong>Database Status:</strong>
+          {dbStatus === 'checking' && <span style={{ marginLeft: '10px', color: '#888' }}> Checking...</span>}
+          {dbStatus === 'connected' && <span style={{ marginLeft: '10px', color: 'green', fontWeight: 'bold' }}> Connected</span>}
+          {dbStatus === 'error' && (
+            <>
+              <span style={{ marginLeft: '10px', color: 'red', fontWeight: 'bold' }}> Error</span>
+              <p style={{ color: 'red', fontSize: '0.9em', margin: '5px 0 0 10px' }}>{dbErrorMessage}</p>
+              <button onClick={checkDbConnection} disabled={isCheckingDb} style={{ marginLeft: '10px', fontSize: '0.8em' }}>
+                Retry Connection
+              </button>
+            </>
+          )}
+        </div>
+
         {/* Company Selector - Persistent across all tabs */}
         <div className="company-selector" style={{ margin: '20px 0', padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '5px', border: '1px solid #dee2e6' }}>
           <label htmlFor="company" style={{ fontWeight: 'bold', marginRight: '10px' }}>Company:</label>
@@ -141,7 +157,10 @@ function App() {
         {/* Main Navigation */}
         <nav className="main-nav">
           <button
-            onClick={() => setMainView('upload')}
+            onClick={() => {
+              setMainView('upload');
+              checkDbConnection(); // Check DB when switching to upload
+            }}
             disabled={mainView === 'upload'}
             style={getTabStyles('upload')}
             onMouseEnter={() => setHoveredTab('upload')}
@@ -150,7 +169,10 @@ function App() {
             Upload Data
           </button>
           <button
-            onClick={() => setMainView('report')}
+            onClick={() => {
+              setMainView('report');
+              checkDbConnection(); // Check DB when switching to reports
+            }}
             disabled={mainView === 'report'}
             style={getTabStyles('report')}
             onMouseEnter={() => setHoveredTab('report')}
@@ -165,25 +187,13 @@ function App() {
             <CsvUploader 
               onUploadSuccess={handleUploadSuccess} 
               cocode={selectedCompany}
+              dbStatus={dbStatus}
+              dbErrorMessage={dbErrorMessage}
+              checkDbConnection={checkDbConnection}
+              isCheckingDb={isCheckingDb}
             />
           ) : (
             <div className="report-section">
-              {/* --- NEW: JSX to display the database status --- */}
-              <div className="status-bar" style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
-                <strong>Database Status:</strong>
-                {dbStatus === 'checking' && <span style={{ marginLeft: '10px', color: '#888' }}> Checking...</span>}
-                {dbStatus === 'connected' && <span style={{ marginLeft: '10px', color: 'green', fontWeight: 'bold' }}> Connected</span>}
-                {dbStatus === 'error' && (
-                  <>
-                    <span style={{ marginLeft: '10px', color: 'red', fontWeight: 'bold' }}> Error</span>
-                    <p style={{ color: 'red', fontSize: '0.9em', margin: '5px 0 0 10px' }}>{dbErrorMessage}</p>
-                    <button onClick={checkDbConnection} disabled={isCheckingDb} style={{ marginLeft: '10px', fontSize: '0.8em' }}>
-                      Retry Connection
-                    </button>
-                  </>
-                )}
-              </div>
-
               <div className="view-controls">
                 <div className="control-group">
                   <label htmlFor="cutoff-date">Cutoff Date: </label>
@@ -224,12 +234,14 @@ function App() {
                       key={`poc-${refreshKey}`} 
                       cutoffDate={cutoffDate} 
                       cocode={selectedCompany}
+                      dbStatus={dbStatus}
                     />
                   ) : (
                     <PcompDataDisplay 
                       key={`pcomp-${refreshKey}`} 
                       cutoffDate={cutoffDate} 
                       cocode={selectedCompany}
+                      dbStatus={dbStatus}
                     />
                   )}
                 </>

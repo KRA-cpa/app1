@@ -3360,3 +3360,73 @@
 2025-06-17T13:10:16.267Z info: [Frontend] DB status fetch completed with status: 200
 2025-06-17T13:10:16.267Z info: [Frontend] DB status response parsed
 2025-06-17T13:10:16.268Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:17:26.432Z info: [Frontend] Checking DB connection status
+2025-06-17 21:17:26 info: Received request for /api/db-status
+2025-06-17 21:17:26 info: DB status check successful.
+2025-06-17 21:17:26 info: Received request for /api/db-status
+2025-06-17 21:17:26 info: DB status check successful.
+2025-06-17T13:17:26.434Z info: [Frontend] Checking DB connection status
+2025-06-17 21:17:26 info: Received request for /api/db-status
+2025-06-17 21:17:26 info: DB status check successful.
+2025-06-17T13:17:26.564Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:17:26.565Z info: [Frontend] DB status response parsed
+2025-06-17T13:17:26.565Z info: [Frontend] Setting DB status to connected
+2025-06-17T13:17:26.751Z info: [Frontend] DB status fetch completed with status: 200
+2025-06-17T13:17:26.751Z info: [Frontend] DB status response parsed
+2025-06-17T13:17:26.752Z info: [Frontend] Setting DB status to connected
+2025-06-17 21:18:00 info: Received request for /api/db-status
+2025-06-17 21:18:00 info: DB status check successful.
+2025-06-17 21:18:00 info: Received request for /api/pocdata/options
+2025-06-17 21:18:00 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:00 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:00 info: Executing SQL:
+2025-06-17 21:18:00 info: With Params:
+2025-06-17 21:18:00 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:18:00 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:00 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:00 info: Executing SQL:
+2025-06-17 21:18:00 info: With Params:
+2025-06-17 21:18:00 info: Received request for /api/pocdata/options
+2025-06-17 21:18:00 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:18:00 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:00 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:00 info: Executing SQL:
+2025-06-17 21:18:00 info: With Params:
+2025-06-17 21:18:00 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:18:00.708Z info: [Frontend] 
+2025-06-17T13:18:00.719Z info: [Frontend] 
+2025-06-17T13:18:00.729Z info: [Frontend] 
+2025-06-17T13:18:00.730Z info: [Frontend] 
+2025-06-17T13:18:00.730Z info: [Frontend] 
+2025-06-17 21:18:09 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:18:09 info: Executing SQL:
+2025-06-17 21:18:09 info: With Params:
+2025-06-17 21:18:09 info: Fetched 20 rows from pcompdate.
+2025-06-17 21:18:09 info: Received request for /api/pcompdata with filters:
+2025-06-17 21:18:09 info: Executing SQL:
+2025-06-17 21:18:09 info: With Params:
+2025-06-17 21:18:09 info: Fetched 20 rows from pcompdate.
+2025-06-17T13:18:09.560Z info: [Frontend] 
+2025-06-17T13:18:09.578Z info: [Frontend] 
+2025-06-17 21:18:11 info: Received request for /api/pocdata/options
+2025-06-17 21:18:11 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:11 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:11 info: Executing SQL:
+2025-06-17 21:18:11 info: With Params:
+2025-06-17 21:18:11 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:18:11 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:11 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:11 info: Executing SQL:
+2025-06-17 21:18:11 info: With Params:
+2025-06-17 21:18:11 info: Received request for /api/pocdata/options
+2025-06-17 21:18:11 info: Fetched 4 rows from pocpermonth.
+2025-06-17 21:18:11 info: Received request for /api/pocdata with filters:
+2025-06-17 21:18:11 info: Applying cutoff for pocpermonth: year < 2025 OR (year = 2025 AND month <= 5)
+2025-06-17 21:18:11 info: Executing SQL:
+2025-06-17 21:18:11 info: With Params:
+2025-06-17T13:18:11.152Z info: [Frontend] 
+2025-06-17 21:18:11 info: Fetched 4 rows from pocpermonth.
+2025-06-17T13:18:11.164Z info: [Frontend] 
+2025-06-17T13:18:11.176Z info: [Frontend] 
+2025-06-17T13:18:11.177Z info: [Frontend] 
+2025-06-17T13:18:11.178Z info: [Frontend] 

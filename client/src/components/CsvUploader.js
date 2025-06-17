@@ -3,68 +3,17 @@
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
-function CsvUploader({ onUploadSuccess, cocode }) {
+function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkDbConnection, isCheckingDb }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [dbStatus, setDbStatus] = useState('checking');
-  const [dbErrorMessage, setDbErrorMessage] = useState('');
   const [uploadSummary, setUploadSummary] = useState(null);
   const [uploadTotals, setUploadTotals] = useState(null);
   const [uploadOption, setUploadOption] = useState('poc');
   const [templateType, setTemplateType] = useState('short'); // 'short' or 'long'
 
-  const checkDbConnection = async () => {
-    logToServer('info', 'Checking DB connection status', 'CsvUploader');
-    setDbStatus('checking');
-    setDbErrorMessage('');
-    setMessage('');
-    setUploadSummary(null);
-    setUploadTotals(null);
-
-    try {
-      const response = await fetch('/api/db-status', {
-        method: 'GET',
-        cache: 'no-store',
-        headers: {
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache',
-          'Expires': '0',
-        },
-      });
-      logToServer('info', `DB status fetch completed with status: ${response.status}`, 'CsvUploader');
-
-      if (!response.ok) {
-        let errorMsg = `Backend responded with status ${response.status}`;
-        try {
-          const errorResult = await response.json();
-          errorMsg = errorResult.message || errorMsg;
-        } catch (parseError) {}
-        throw new Error(errorMsg);
-      }
-
-      const result = await response.json();
-      logToServer('info', 'DB status response parsed', 'CsvUploader', { result });
-
-      if (result.status === 'connected') {
-        logToServer('info', 'Setting DB status to connected', 'CsvUploader');
-        setDbStatus('connected');
-      } else {
-        const errorMsg = result.message || 'Backend reported DB not connected.';
-        setDbErrorMessage(errorMsg);
-        logToServer('warn', `Setting DB status to error (backend report): ${errorMsg}`, 'CsvUploader');
-        setDbStatus('error');
-      }
-    } catch (error) {
-      logToServer('error', `Setting DB status to error (fetch/logic failed): ${error.message}`, 'CsvUploader');
-      setDbStatus('error');
-      setDbErrorMessage(error.message || 'Could not verify server connection status.');
-    }
-  };
-
-  useEffect(() => {
-    checkDbConnection();
-  }, []);
+  // Remove the local checkDbConnection function since it's now passed as a prop
+  // Remove the useEffect for checking DB connection since it's handled by parent
 
   const handleFileChange = (event) => {
     setMessage('');
@@ -164,26 +113,9 @@ function CsvUploader({ onUploadSuccess, cocode }) {
     <div>
       <h2>Upload CSV File</h2>
 
-      {/* Company Display */}
-      {cocode && (
-        <div style={{ margin: '15px 0', padding: '10px', backgroundColor: '#e8f4fd', border: '1px solid #007bff', borderRadius: '4px' }}>
-          <strong>Selected Company:</strong> <span style={{ color: '#007bff', fontWeight: 'bold' }}>{cocode}</span>
-        </div>
-      )}
+      {/* Remove the duplicate company display since it's now shown in the header */}
 
-      {/* Database Status Display */}
-      <div style={{ margin: '15px 0', padding: '10px', border: `1px solid ${dbStatus === 'connected' ? 'green' : (dbStatus === 'error' ? 'red' : '#ccc')}`, borderRadius: '4px' }}>
-        <strong>Database Status:</strong>
-        {dbStatus === 'checking' && <span style={{ marginLeft: '10px', color: '#888' }}> Checking connection...</span>}
-        {dbStatus === 'connected' && <span style={{ marginLeft: '10px', color: 'green', fontWeight: 'bold' }}> Connected</span>}
-        {dbStatus === 'error' && (
-          <>
-            <span style={{ marginLeft: '10px', color: 'red', fontWeight: 'bold' }}> Error</span>
-            <p style={{ color: 'red', fontSize: '0.9em', margin: '5px 0 0 0' }}>{dbErrorMessage || 'Could not connect to the database.'}</p>
-            <button onClick={checkDbConnection} disabled={isLoading} style={{ marginLeft: '10px', fontSize: '0.8em' }}>Retry Check</button>
-          </>
-        )}
-      </div>
+      {/* Remove the database status display since it's now shown in the header */}
 
       {/* Upload Options */}
       <div style={{ margin: '20px 0', border: '1px solid #eee', padding: '15px', borderRadius: '5px' }}>
