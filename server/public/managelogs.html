@@ -1,3 +1,5 @@
+<!-- new version of managelogs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,27 +26,31 @@
             padding: 20px;
         }
         
+        .header {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         .auth-container {
-            min-height: 100vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
         .auth-card {
-            max-width: 400px;
+            max-width: 500px;
+            width: 100%;
             padding: 40px;
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             text-align: center;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-            color: white;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .card {
@@ -74,6 +80,7 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
+            margin: 5px;
         }
         
         .btn-primary { background-color: #007bff; color: white; }
@@ -131,6 +138,18 @@
             border: 1px solid #f5c6cb;
         }
         
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
         .spinner {
             display: inline-block;
             width: 40px;
@@ -152,6 +171,8 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         
         .user-avatar {
@@ -163,32 +184,56 @@
     </style>
 </head>
 <body>
-    <div id="auth-section" class="auth-container">
-        <div class="auth-card">
-            <div style="margin-bottom: 30px;">
-                <div style="font-size: 48px; margin-bottom: 20px;">🔒</div>
-                <h2 style="margin-bottom: 10px; color: #2c3e50;">Server Log Management</h2>
-                <p style="color: #6c757d;">Secure access required to manage server logs</p>
+    <!-- Authentication Section (Shown when not logged in) -->
+    <div id="auth-section">
+        <div class="header">
+            <h1 style="font-size: 2.5rem;">🗂️ Server Log Management</h1>
+            <p style="opacity: 0.9;">Secure access required to manage server logs</p>
+        </div>
+        
+        <div class="auth-container">
+            <div class="auth-card">
+                <div style="margin-bottom: 30px;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🔒</div>
+                    <h2 style="margin-bottom: 10px; color: #2c3e50;">Google Authentication Required</h2>
+                    <p style="color: #6c757d;">Please sign in with your authorized Google account to access log management features.</p>
+                </div>
+                
+                <div id="auth-status" class="alert alert-info" style="margin-bottom: 20px;">
+                    Ready to authenticate. Click the Google Sign-In button below.
+                </div>
+                
+                <!-- Google Sign-In Button Container -->
+                <div id="google-signin-container" style="margin: 20px 0;">
+                    <div id="g_id_onload" 
+                         data-client_id="786876750589-ud6sjp2din21894ccioba9n34e15el5i.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleCredentialResponse"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" 
+                         data-type="standard" 
+                         data-size="large" 
+                         data-theme="outline" 
+                         data-text="sign_in_with"
+                         data-shape="rectangular" 
+                         data-logo_alignment="left">
+                    </div>
+                </div>
+                
+                <p style="font-size: 12px; color: #6c757d; margin-top: 20px;">
+                    Only authorized administrators can access this feature
+                </p>
             </div>
-            
-            <div id="error-message" class="alert alert-danger hidden"></div>
-            
-            <div id="g_id_onload"
-                 data-client_id="YOUR_GOOGLE_CLIENT_ID"
-                 data-callback="handleCredentialResponse">
-            </div>
-            <div class="g_id_signin" data-type="standard"></div>
-            
-            <p style="font-size: 12px; color: #6c757d; margin-top: 20px;">
-                Only authorized administrators can access this feature
-            </p>
         </div>
     </div>
 
+    <!-- Main Application (Shown when logged in) -->
     <div id="main-section" class="hidden">
-        <div class="header">
-            <div class="container">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container">
+            <div class="header">
+                <div class="user-info">
                     <div>
                         <h1 style="font-size: 2rem;">🗂️ Server Log Management</h1>
                         <p style="opacity: 0.9;">Secure log clearing and backup management</p>
@@ -205,20 +250,20 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container">
             <div id="message-area"></div>
             
+            <!-- Action Buttons -->
             <div style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
                 <button onclick="fetchLogInfo()" class="btn btn-primary">🔄 Refresh Log Info</button>
                 <button onclick="fetchBackups()" class="btn btn-secondary">📦 View Backups</button>
                 <button onclick="clearLogs()" class="btn btn-danger">🗑️ Clear All Logs</button>
             </div>
 
+            <!-- Current Log Files -->
             <div id="log-info-section" class="card hidden">
                 <div class="card-header">
-                    <h3>📋 Current Log Files</h3>
+                    <h3>📋 Log Files (Current & Backup)</h3>
                 </div>
                 <div class="card-body">
                     <div style="overflow-x: auto;">
@@ -239,6 +284,7 @@
                 </div>
             </div>
 
+            <!-- Backup Files -->
             <div id="backup-section" class="card hidden">
                 <div class="card-header">
                     <h3 id="backup-title">📦 Backup Files</h3>
@@ -260,6 +306,7 @@
                 </div>
             </div>
 
+            <!-- Loading Section -->
             <div id="loading-section" class="hidden" style="text-align: center; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 <div class="spinner"></div>
                 <p style="margin-top: 20px; color: #6c757d;">Loading...</p>
@@ -268,28 +315,53 @@
     </div>
 
     <script>
-        // Configuration - Update these values
-        const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID'; // Replace with your actual Google Client ID
-        const API_BASE_URL = '/api/logs'; // Adjust if your API is hosted elsewhere
+        // Configuration
+        const GOOGLE_CLIENT_ID = '786876750589-ud6sjp2din21894ccioba9n34e15el5i.apps.googleusercontent.com';
+        const API_BASE_URL = '/api/logs';
         
         let authToken = null;
         let currentUser = null;
 
+        function updateAuthStatus(message, type = 'info') {
+            const authStatus = document.getElementById('auth-status');
+            if (authStatus) {
+                authStatus.className = `alert alert-${type}`;
+                authStatus.textContent = message;
+            }
+        }
+
+        // Google Sign-In callback function
         function handleCredentialResponse(response) {
-            authToken = response.credential;
-            
-            // Decode JWT to get user info
-            const payload = JSON.parse(atob(response.credential.split('.')[1]));
-            currentUser = {
-                name: payload.name,
-                email: payload.email,
-                picture: payload.picture
-            };
-            
-            // Update UI
+            try {
+                if (!response || !response.credential) {
+                    throw new Error('No credential received from Google');
+                }
+
+                authToken = response.credential;
+
+                // Decode JWT to get user info
+                const payload = JSON.parse(atob(response.credential.split('.')[1]));
+                currentUser = {
+                    name: payload.name,
+                    email: payload.email,
+                    picture: payload.picture,
+                    sub: payload.sub
+                };
+
+                // Switch to main interface
+                showMainInterface();
+
+            } catch (error) {
+                updateAuthStatus(`Authentication error: ${error.message}`, 'danger');
+            }
+        }
+
+        function showMainInterface() {
+            // Hide auth section, show main section
             document.getElementById('auth-section').classList.add('hidden');
             document.getElementById('main-section').classList.remove('hidden');
             
+            // Update user info in header
             document.getElementById('user-name').textContent = currentUser.name;
             document.getElementById('user-email').textContent = currentUser.email;
             
@@ -299,19 +371,26 @@
                 avatar.style.display = 'block';
             }
             
-            showMessage(`Welcome, ${currentUser.name}! You can now manage server logs.`, 'success');
+            // Auto-load log info
             fetchLogInfo();
         }
 
         function signOut() {
             authToken = null;
             currentUser = null;
-            localStorage.removeItem('google_token');
             
+            // Show auth section, hide main section
             document.getElementById('main-section').classList.add('hidden');
             document.getElementById('auth-section').classList.remove('hidden');
             
+            // Clear any messages
             clearMessages();
+            updateAuthStatus('Signed out successfully. Please sign in again to access log management.', 'info');
+            
+            // Try to revoke Google session
+            if (window.google && google.accounts && google.accounts.id) {
+                google.accounts.id.disableAutoSelect();
+            }
         }
 
         function showMessage(message, type = 'success') {
@@ -321,11 +400,10 @@
         }
 
         function clearMessages() {
-            document.getElementById('message-area').innerHTML = '';
-        }
-
-        function showError(message) {
-            showMessage(message, 'error');
+            const messageArea = document.getElementById('message-area');
+            if (messageArea) {
+                messageArea.innerHTML = '';
+            }
         }
 
         function setLoading(isLoading) {
@@ -337,65 +415,65 @@
             }
         }
 
-        async function makeAuthenticatedRequest(url, options = {}) {
-            if (!authToken) {
-                throw new Error('No authentication token');
-            }
-
-            const response = await fetch(url, {
-                ...options,
-                headers: {
-                    'Authorization': `Bearer ${authToken}`,
-                    'Content-Type': 'application/json',
-                    ...options.headers,
-                },
-            });
-
-            if (response.status === 401 || response.status === 403) {
-                signOut();
-                throw new Error('Authentication expired or access denied');
-            }
-
-            return response;
-        }
-
         async function fetchLogInfo() {
+            if (!authToken) {
+                showMessage('Please sign in first', 'error');
+                return;
+            }
+
             try {
                 setLoading(true);
                 clearMessages();
                 
-                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/info`);
-                
+                const response = await fetch(`${API_BASE_URL}/info`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
                 if (response.ok) {
                     const data = await response.json();
                     displayLogInfo(data.logs);
+                    showMessage('Log information retrieved successfully!', 'success');
                 } else {
                     const errorData = await response.json();
-                    showError(errorData.message || 'Failed to fetch log information');
+                    showMessage(`Failed to fetch log information: ${errorData.message}`, 'error');
                 }
             } catch (err) {
-                showError(err.message || 'Error fetching log information');
+                showMessage(`Error fetching log information: ${err.message}`, 'error');
             } finally {
                 setLoading(false);
             }
         }
 
         async function fetchBackups() {
+            if (!authToken) {
+                showMessage('Please sign in first', 'error');
+                return;
+            }
+
             try {
                 setLoading(true);
                 clearMessages();
                 
-                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/backups`);
-                
+                const response = await fetch(`${API_BASE_URL}/backups`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
                 if (response.ok) {
                     const data = await response.json();
                     displayBackups(data.backups);
+                    showMessage('Backup information retrieved successfully!', 'success');
                 } else {
                     const errorData = await response.json();
-                    showError(errorData.message || 'Failed to fetch backup information');
+                    showMessage(`Failed to fetch backup information: ${errorData.message}`, 'error');
                 }
             } catch (err) {
-                showError(err.message || 'Error fetching backup information');
+                showMessage(`Error fetching backup information: ${err.message}`, 'error');
             } finally {
                 setLoading(false);
             }
@@ -406,14 +484,23 @@
                 return;
             }
 
+            if (!authToken) {
+                showMessage('Please sign in first', 'error');
+                return;
+            }
+
             try {
                 setLoading(true);
                 clearMessages();
                 
-                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/clear`, {
+                const response = await fetch(`${API_BASE_URL}/clear`, {
                     method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                        'Content-Type': 'application/json'
+                    }
                 });
-                
+
                 if (response.ok) {
                     const data = await response.json();
                     showMessage(`✅ ${data.message}`, 'success');
@@ -423,19 +510,28 @@
                     await fetchBackups();
                 } else {
                     const errorData = await response.json();
-                    showError(errorData.message || 'Failed to clear logs');
+                    showMessage(`Failed to clear logs: ${errorData.message}`, 'error');
                 }
             } catch (err) {
-                showError(err.message || 'Error clearing logs');
+                showMessage(`Error clearing logs: ${err.message}`, 'error');
             } finally {
                 setLoading(false);
             }
         }
 
         async function downloadLog(filename) {
+            if (!authToken) {
+                showMessage('Please sign in first', 'error');
+                return;
+            }
+
             try {
-                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/download/${filename}`);
-                
+                const response = await fetch(`${API_BASE_URL}/download/${filename}`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
                 if (response.ok) {
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
@@ -443,3 +539,105 @@
                     a.href = url;
                     a.download = filename;
                     document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    showMessage(`📥 Downloaded ${filename}`, 'success');
+                } else {
+                    const errorData = await response.json();
+                    showMessage(`Failed to download ${filename}: ${errorData.message}`, 'error');
+                }
+            } catch (err) {
+                showMessage(`Error downloading ${filename}: ${err.message}`, 'error');
+            }
+        }
+
+        function displayLogInfo(logs) {
+            const logSection = document.getElementById('log-info-section');
+            const tableBody = document.getElementById('log-table-body');
+            
+            tableBody.innerHTML = '';
+            
+            logs.forEach(log => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="font-weight: 500;">${log.file}</td>
+                    <td>
+                        <span style="padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; 
+                                     background-color: ${log.type === 'current' ? '#e3f2fd' : '#fff3cd'}; 
+                                     color: ${log.type === 'current' ? '#1565c0' : '#856404'};">
+                            ${log.type === 'current' ? 'CURRENT' : 'BACKUP'}
+                        </span>
+                    </td>
+                    <td>${log.size}</td>
+                    <td>${log.lastModified ? new Date(log.lastModified).toLocaleString() : 'N/A'}</td>
+                    <td>
+                        <span style="padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; 
+                                     background-color: ${log.exists ? '#d4edda' : '#f8d7da'}; 
+                                     color: ${log.exists ? '#155724' : '#721c24'};">
+                            ${log.exists ? 'EXISTS' : 'MISSING'}
+                        </span>
+                    </td>
+                    <td style="text-align: center;">
+                        ${log.exists ? `<button onclick="downloadLog('${log.file}')" class="btn btn-success" style="padding: 6px 12px; font-size: 12px;">📥 Download</button>` : ''}
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+            
+            logSection.classList.remove('hidden');
+        }
+
+        function displayBackups(backups) {
+            const backupSection = document.getElementById('backup-section');
+            const backupTitle = document.getElementById('backup-title');
+            const tableBody = document.getElementById('backup-table-body');
+            
+            backupTitle.textContent = `📦 Backup Files (${backups.length})`;
+            tableBody.innerHTML = '';
+            
+            backups.forEach(backup => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="font-family: monospace; font-size: 13px;">${backup.filename}</td>
+                    <td>${backup.size}</td>
+                    <td>${new Date(backup.created).toLocaleString()}</td>
+                    <td style="text-align: center;">
+                        <button onclick="downloadLog('${backup.filename}')" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                            📥 Download
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+            
+            backupSection.classList.remove('hidden');
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            // Initialize Google Sign-In
+            const googleOnload = document.getElementById('g_id_onload');
+            if (googleOnload) {
+                googleOnload.setAttribute('data-client_id', GOOGLE_CLIENT_ID);
+            }
+
+            // Wait for Google library to load
+            const checkGoogleReady = () => {
+                if (window.google && google.accounts && google.accounts.id) {
+                    google.accounts.id.initialize({
+                        client_id: GOOGLE_CLIENT_ID,
+                        callback: handleCredentialResponse,
+                        auto_select: false,
+                        cancel_on_tap_outside: false
+                    });
+                } else {
+                    setTimeout(checkGoogleReady, 500);
+                }
+            };
+            checkGoogleReady();
+        };
+    </script>
+</body>
+</html>

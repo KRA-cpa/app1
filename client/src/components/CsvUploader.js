@@ -1,6 +1,5 @@
 // client/src/components/CsvUploader.js
 
-
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
@@ -12,9 +11,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
   const [uploadTotals, setUploadTotals] = useState(null);
   const [uploadOption, setUploadOption] = useState('poc');
   const [templateType, setTemplateType] = useState('short'); // 'short' or 'long'
-
-  // Remove the local checkDbConnection function since it's now passed as a prop
-  // Remove the useEffect for checking DB connection since it's handled by parent
+  const [completionType, setCompletionType] = useState('A'); // 'A' for Actual, 'P' for Projected
 
   const handleFileChange = (event) => {
     setMessage('');
@@ -51,17 +48,22 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
 
     setIsLoading(true);
     setMessage('Uploading...');
-    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType, cocode });
+    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType, completionType, cocode });
     setUploadSummary(null);
     setUploadTotals(null);
+    
+    // Debug logging to ensure cocode is being sent
+    console.log('Upload parameters:', { uploadOption, templateType, completionType, cocode });
     
     const formData = new FormData();
     formData.append('csvFile', selectedFile);
     formData.append('uploadOption', uploadOption);
-    formData.append('cocode', cocode); // Use the cocode prop
+    formData.append('cocode', cocode);
     
     if (uploadOption === 'poc') {
       formData.append('templateType', templateType);
+    } else if (uploadOption === 'date') {
+      formData.append('completionType', completionType);
     }
 
     try {
@@ -86,7 +88,6 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
         const fileInput = document.getElementById('csvFileInput');
         if (fileInput) fileInput.value = null;
         
-        // Call the onUploadSuccess callback if provided
         if (onUploadSuccess) {
           onUploadSuccess();
         }
@@ -108,7 +109,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
   };
 
   const controlsDisabled = isLoading || dbStatus !== 'connected';
-  const uploadButtonDisabled = !selectedFile || controlsDisabled || !cocode; // Require specific company for upload
+  const uploadButtonDisabled = !selectedFile || controlsDisabled || !cocode;
 
   return (
     <div>
@@ -124,25 +125,51 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
         </div>
       )}
 
-      {/* Remove the duplicate company display since it's now shown in the header */}
-
-      {/* Remove the database status display since it's now shown in the header */}
-
       {/* Upload Options */}
       <div style={{ margin: '20px 0', border: '1px solid #eee', padding: '15px', borderRadius: '5px' }}>
         <strong>Select Upload Type:</strong>
         <div style={{ marginTop: '10px' }}>
-          <label style={{ marginRight: '20px', cursor: 'not-allowed', color: '#999' }}>
+          <label style={{ marginRight: '20px', cursor: 'pointer' }}>
             <input
               type="radio"
               name="uploadOption"
               value="date"
               checked={uploadOption === 'date'}
               onChange={() => setUploadOption('date')}
-              disabled={true}
+              disabled={controlsDisabled}
             />
-            Upload (not Update) Completion Date
+            Upload Completion Date
+
+            {/* Conditional Completion Type Selection */}
+            {uploadOption === 'date' && (
+              <div style={{ padding: '10px 0 0 25px', fontSize: '0.9em' }}>
+                <strong>Select Completion Type:</strong>
+                <label style={{ marginLeft: '10px', marginRight: '15px', cursor: 'pointer' }}>
+                  <input
+                    type="radio"
+                    name="completionType"
+                    value="A"
+                    checked={completionType === 'A'}
+                    onChange={() => setCompletionType('A')}
+                    disabled={controlsDisabled}
+                  />
+                  Actual (Default)
+                </label>
+                <label style={{cursor: 'pointer'}}>
+                  <input
+                    type="radio"
+                    name="completionType"
+                    value="P"
+                    checked={completionType === 'P'}
+                    onChange={() => setCompletionType('P')}
+                    disabled={controlsDisabled}
+                  />
+                  Projected
+                </label>
+              </div>
+            )}
           </label>
+          
           <label style={{ cursor: 'pointer' }}>
             <input
               type="radio"
@@ -152,7 +179,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
               onChange={() => setUploadOption('poc')}
               disabled={controlsDisabled}
             />
-            Upload (not Update) POC Data
+            Upload POC Data
 
             {/* Conditional Template Selection */}
             {uploadOption === 'poc' && (
@@ -184,9 +211,45 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
             )}
           </label>
         </div>
+
+        {/* Template Information */}
+        {uploadOption === 'date' && (
+          <div style={{ marginTop: '15px', padding: '10px', backgroundColor: '#f8f9fa', borderRadius: '4px', fontSize: '0.9em' }}>
+            <strong>📋 Completion Date Template Format:</strong>
+            <ul style={{ margin: '5px 0', paddingLeft: '20px' }}>
+              <li>Column 1: Project</li>
+              <li>Column 2: Phase</li>
+              <li>Column 3: Completion Date (MM/DD/YYYY format, month-end dates only)</li>
+            </ul>
+            <p style={{ margin: '5px 0', color: '#6c757d' }}>
+              Example: TUEC,0000,12/31/2024
+            </p>
+          </div>
+        )}
+
+        {uploadOption === 'poc' && (
+          <div style={{ marginTop: '15px', padding: '10px', backgroundColor: '#f8f9fa', borderRadius: '4px', fontSize: '0.9em' }}>
+            <strong>📋 POC Template Format:</strong>
+            {templateType === 'short' ? (
+              <ul style={{ margin: '5px 0', paddingLeft: '20px' }}>
+                <li>Column 1: Project</li>
+                <li>Column 2: Phase</li>
+                <li>Column 3: Year</li>
+                <li>Column 4: POC Value</li>
+              </ul>
+            ) : (
+              <ul style={{ margin: '5px 0', paddingLeft: '20px' }}>
+                <li>Column 1: Project</li>
+                <li>Column 2: Phase</li>
+                <li>Column 3: Year</li>
+                <li>Columns 4-15: Monthly POC Values (Jan-Dec)</li>
+              </ul>
+            )}
+          </div>
+        )}
       </div>
 
-      {/* MODIFIED: File Input and selected file text are centered */}
+      {/* File Input */}
       <div style={{ textAlign: 'center', margin: '20px 0 10px 0' }}>
           <input
             id="csvFileInput"
@@ -206,9 +269,6 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
       >
         {isLoading ? 'Uploading...' : 'Upload to Server'}
       </button>
-
-      {/* Warning if no company selected - Removed duplicate warning */}
-      {/* This warning is now handled by the styled warning box above */}
 
       {/* Feedback Message Area & Upload Results */}
       {message && <p style={{ marginTop: '15px', fontWeight: 'bold', color: message.startsWith('Upload failed') || message.startsWith('Cannot upload') ? 'red' : 'green' }}>{message}</p>}
