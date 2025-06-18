@@ -6,9 +6,33 @@ import PcompDataDisplay from './components/PcompDataDisplay';
 import CsvUploader from './components/CsvUploader';
 import { logToServer } from './utils/logger';
 
+// Calculate last month's end date dynamically in UTC+8 timezone
+const getLastMonthEndDate = () => {
+  // Get current date
+  const now = new Date();
+  
+  // Convert to UTC+8 timezone (Philippines)
+  const utc8Offset = 8 * 60; // UTC+8 in minutes
+  const localTime = now.getTime();
+  const localOffset = now.getTimezoneOffset() * 60000; // Convert to milliseconds
+  const utc = localTime + localOffset;
+  const utc8Time = utc + (utc8Offset * 60000);
+  const utc8Date = new Date(utc8Time);
+  
+  // Get last day of previous month by using current month and day 0
+  // This automatically handles leap years and month boundaries
+  const lastMonthEnd = new Date(utc8Date.getFullYear(), utc8Date.getMonth(), 0);
+  
+  // Format as YYYY-MM-DD
+  return lastMonthEnd.getFullYear() + '-' + 
+    String(lastMonthEnd.getMonth() + 1).padStart(2, '0') + '-' + 
+    String(lastMonthEnd.getDate()).padStart(2, '0');
+};
+
 const App = () => {
   const [dbStatus, setDbStatus] = useState('checking');
-  const [cutoffDate, setCutoffDate] = useState('2025-05-31');
+  const [lastDbCheck, setLastDbCheck] = useState(null);
+  const [cutoffDate, setCutoffDate] = useState(getLastMonthEndDate());
   const [selectedCompany, setSelectedCompany] = useState(''); // Start with 'All Companies'
   const [activeTab, setActiveTab] = useState('upload');
   const [activeReport, setActiveReport] = useState('poc');
@@ -66,6 +90,9 @@ const App = () => {
   const checkDbStatus = async () => {
     try {
       const response = await fetch('http://localhost:3001/api/db-status');
+      const now = new Date();
+      setLastDbCheck(now);
+      
       if (response.ok) {
         setDbStatus('connected');
         logToServer({ level: 'info', message: 'Database connection successful.' });
@@ -74,6 +101,9 @@ const App = () => {
         logToServer({ level: 'error', message: 'Database connection failed.' });
       }
     } catch (error) {
+      const now = new Date();
+      setLastDbCheck(now);
+      
       setDbStatus('error');
       logToServer({ level: 'error', message: `Database connection error: ${error.message}` });
     }
@@ -116,6 +146,22 @@ const App = () => {
     }
   };
 
+  const formatDateTime = (date) => {
+    if (!date) return '';
+    
+    const options = {
+      day: '2-digit',
+      month: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone: 'Asia/Manila' // UTC+8 Philippines timezone
+    };
+    
+    return date.toLocaleString('en-US', options);
+  };
+
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -124,88 +170,110 @@ const App = () => {
     }}>
       {/* Header */}
       <div style={{ 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: '#003DA5', // Megaworld Blue
+        // background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
-        padding: '20px',
+        padding: '10px',
         textAlign: 'center',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        display: 'flex', // Add this
+        alignItems: 'center', // Corrected property
+        justifyContent: 'center' // Add this to center the h1 content
       }}>
-        <h1 style={{ margin: 0, fontSize: '2.5rem' }}>MEG Subs POC Data Management</h1>
+        <h1 style={{ margin: 0, fontSize: '2.5rem', display: 'flex', alignItems: 'center' }}>
+      <img src = "/logo2019-v2-white_0.png" alt="MEG Logo" width="25%" height="25%" />&nbsp;POC Data Management</h1>
       </div>
 
-      {/* Database Status Bar */}
-      <div style={{ 
-        padding: '15px 20px', 
-        backgroundColor: 'white',
-        borderBottom: '1px solid #dee2e6',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <span style={{ marginRight: '20px', fontWeight: 'bold', color: '#495057' }}>
-          Database Status:
-        </span>
-        <span style={{ 
-          color: getStatusColor(),
-          fontWeight: 'bold',
-          padding: '5px 10px',
-          borderRadius: '15px',
-          backgroundColor: `${getStatusColor()}20`,
-          border: `1px solid ${getStatusColor()}`
-        }}>
-          {getStatusText()}
-        </span>
-        {dbStatus === 'error' && (
-          <button 
-            onClick={checkDbStatus} 
-            style={{ 
-              marginLeft: '15px', 
-              padding: '5px 10px', 
-              fontSize: '12px',
-              backgroundColor: '#dc3545',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
-          >
-            Retry
-          </button>
-        )}
-      </div>
-
-      {/* Company Selector Bar */}
+      {/* Combined Company Selector and Database Status Bar */}
       <div style={{ 
         padding: '20px', 
         backgroundColor: 'white',
         borderBottom: '1px solid #dee2e6',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '15px'
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}>
-        <label style={{ fontWeight: 'bold', color: '#495057' }}>Company:</label>
-        <select 
-          value={selectedCompany} 
-          onChange={handleCompanyChange}
-          style={{
-            padding: '8px 12px',
-            border: '1px solid #ced4da',
-            borderRadius: '4px',
-            fontSize: '14px',
-            backgroundColor: 'white',
-            cursor: 'pointer'
-          }}
-        >
-          {companies.map(company => (
-            <option key={company.code} value={company.code}>
-              {company.name}
-            </option>
-          ))}
-        </select>
-        <span style={{ marginLeft: '15px', color: '#666', fontSize: '14px' }}>
-          Selected: <strong>{companies.find(c => c.code === selectedCompany)?.name || 'All Companies'}</strong>
-        </span>
+        {/* Company Selector - Left Side */}
+        <div style={{ 
+          display: 'flex',
+          alignItems: 'center',
+          gap: '15px'
+        }}>
+          <label style={{ fontWeight: 'bold', color: '#495057' }}>Company:</label>
+          <select 
+            value={selectedCompany} 
+            onChange={handleCompanyChange}
+            style={{
+              padding: '8px 12px',
+              border: '1px solid #ced4da',
+              borderRadius: '4px',
+              fontSize: '14px',
+              backgroundColor: 'white',
+              cursor: 'pointer'
+            }}
+          >
+            {companies.map(company => (
+              <option key={company.code} value={company.code}>
+                {company.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Database Status - Right Side */}
+        <div style={{ 
+          display: 'flex',
+          alignItems: 'center',
+          gap: '15px'
+        }}>
+          <div style={{ 
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-end',
+            gap: '5px'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ fontWeight: 'bold', color: '#495057' }}>
+                Database Status:
+              </span>
+              <span style={{ 
+                color: getStatusColor(),
+                fontWeight: 'bold',
+                padding: '5px 10px',
+                borderRadius: '15px',
+                backgroundColor: `${getStatusColor()}20`,
+                border: `1px solid ${getStatusColor()}`
+              }}>
+                {getStatusText()}
+              </span>
+              {dbStatus === 'error' && (
+                <button 
+                  onClick={checkDbStatus} 
+                  style={{ 
+                    padding: '5px 10px', 
+                    fontSize: '12px',
+                    backgroundColor: '#dc3545',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Retry
+                </button>
+              )}
+            </div>
+            {lastDbCheck && (
+              <div style={{ 
+                fontSize: '12px', 
+                color: '#6c757d',
+                fontStyle: 'italic'
+              }}>
+                Last checked: {formatDateTime(lastDbCheck)}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Navigation Tabs */}
@@ -414,6 +482,12 @@ const App = () => {
           </div>
         )}
       </div>
+      
+      {/* Footer */}
+      <footer style={{ marginTop: '30px', fontSize: '0.8em', color: '#555', textAlign: 'center' }}>
+        <p>Current Date/Time: {new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' })} | {new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila' })}</p>
+        <p>All Rights Reserved (r) 2025 by Kenneth Advento</p>
+      </footer>
     </div>
   );
 };

@@ -4327,3 +4327,657 @@
 2025-06-17 23:49:19 info: Received request for /api/db-status
 2025-06-17 23:49:19 info: DB status check successful.
 2025-06-17T15:49:19.489Z info: [Frontend] 
+2025-06-17 23:57:38 info: Received request for /api/db-status
+2025-06-17 23:57:38 info: DB status check successful.
+2025-06-17T15:57:38.378Z info: [Frontend] 
+2025-06-17T15:57:38.379Z info: [Frontend] 
+2025-06-17T15:57:38.380Z info: [Frontend] 
+2025-06-17 23:57:44 info: Received request for /api/db-status
+2025-06-17 23:57:44 info: DB status check successful.
+2025-06-17T15:57:44.488Z info: [Frontend] 
+2025-06-17 23:57:45 info: Received request for /api/db-status
+2025-06-17 23:57:45 info: DB status check successful.
+2025-06-17T15:57:45.258Z info: [Frontend] 
+2025-06-17T15:57:45.263Z info: [Frontend] 
+2025-06-17T15:57:45.306Z info: [Frontend] 
+2025-06-17T15:57:46.671Z info: [Frontend] 
+2025-06-17T15:57:46.675Z info: [Frontend] 
+2025-06-17T15:57:46.697Z info: [Frontend] 
+2025-06-17T15:57:46.698Z info: [Frontend] 
+2025-06-17T15:57:46.700Z info: [Frontend] 
+2025-06-17 23:57:50 info: Received request for /api/db-status
+2025-06-17 23:57:50 info: DB status check successful.
+2025-06-17 23:57:50 info: Received request for /api/db-status
+2025-06-17 23:57:50 info: DB status check successful.
+2025-06-17T15:57:50.370Z info: [Frontend] 
+2025-06-17T15:57:50.372Z info: [Frontend] 
+2025-06-17T15:57:50.420Z info: [Frontend] 
+2025-06-17T15:57:50.421Z info: [Frontend] 
+2025-06-17T15:57:50.439Z info: [Frontend] 
+2025-06-17T15:57:50.439Z info: [Frontend] 
+2025-06-17T15:57:50.440Z info: [Frontend] 
+2025-06-17 23:57:52 info: Received request for /api/db-status
+2025-06-17 23:57:52 info: DB status check successful.
+2025-06-17T15:57:52.555Z info: [Frontend] 
+2025-06-17 23:57:53 info: Received request for /api/db-status
+2025-06-17 23:57:53 info: DB status check successful.
+2025-06-17T15:57:53.697Z info: [Frontend] 
+2025-06-17T15:57:53.700Z info: [Frontend] 
+2025-06-17T15:57:53.700Z info: [Frontend] 
+2025-06-17T15:57:53.721Z info: [Frontend] 
+2025-06-17T15:57:53.721Z info: [Frontend] 
+2025-06-17T15:57:53.721Z info: [Frontend] 
+2025-06-17T15:57:55.669Z info: [Frontend] 
+2025-06-17T15:57:55.669Z info: [Frontend] 
+2025-06-17 23:57:56 info: Received request for /api/db-status
+2025-06-17 23:57:56 info: DB status check successful.
+2025-06-17T15:57:56.612Z info: [Frontend] 
+2025-06-17 23:57:57 info: Received request for /api/db-status
+2025-06-17 23:57:57 info: DB status check successful.
+2025-06-17T15:57:57.600Z info: [Frontend] 
+2025-06-17T15:57:57.631Z info: [Frontend] 
+2025-06-17T15:57:57.631Z info: [Frontend] 
+2025-06-17T15:58:01.404Z info: [Frontend] 
+2025-06-17T15:58:01.409Z info: [Frontend] 
+2025-06-17T15:58:01.425Z info: [Frontend] 
+2025-06-17T15:58:01.437Z info: [Frontend] 
+2025-06-17T15:58:01.445Z info: [Frontend] 
+2025-06-17T15:58:05.964Z info: [Frontend] 
+2025-06-17T15:58:06.001Z info: [Frontend] 
+2025-06-17T15:58:07.320Z info: [Frontend] 
+2025-06-17T15:58:07.359Z info: [Frontend] 
+2025-06-18 00:11:58 info: Received request for /api/db-status
+2025-06-18 00:11:58 info: DB status check successful.
+2025-06-18 00:11:58 info: Received request for /api/db-status
+2025-06-18 00:11:58 info: DB status check successful.
+2025-06-17T16:11:58.610Z info: [Frontend] 
+2025-06-17T16:11:58.611Z info: [Frontend] 
+2025-06-17T16:11:58.672Z info: [Frontend] 
+2025-06-17T16:11:58.701Z info: [Frontend] 
+2025-06-17T16:11:58.676Z info: [Frontend] 
+2025-06-17T16:11:58.701Z info: [Frontend] 
+2025-06-17T16:11:58.896Z info: [Frontend] 
+2025-06-18 00:12:05 info: Received request for /api/db-status
+2025-06-18 00:12:05 info: DB status check successful.
+2025-06-18 00:12:05 info: Received request for /api/db-status
+2025-06-18 00:12:05 info: DB status check successful.
+2025-06-17T16:12:05.773Z info: [Frontend] 
+2025-06-17T16:12:05.782Z info: [Frontend] 
+2025-06-17T16:12:05.818Z info: [Frontend] 
+2025-06-17T16:12:05.818Z info: [Frontend] 
+2025-06-17T16:12:05.838Z info: [Frontend] 
+2025-06-17T16:12:05.863Z info: [Frontend] 
+2025-06-17T16:12:05.863Z info: [Frontend] 
+2025-06-18 00:12:07 info: Received request for /api/db-status
+2025-06-18 00:12:07 info: DB status check successful.
+2025-06-17T16:12:07.710Z info: [Frontend] 
+2025-06-18 00:19:44 info: Received request for /api/db-status
+2025-06-18 00:19:44 info: DB status check successful.
+2025-06-18 00:19:44 info: Received request for /api/db-status
+2025-06-18 00:19:44 info: DB status check successful.
+2025-06-17T16:19:44.470Z info: [Frontend] 
+2025-06-17T16:19:44.476Z info: [Frontend] 
+2025-06-18 00:21:25 info: Received request for /api/db-status
+2025-06-18 00:21:25 info: DB status check successful.
+2025-06-17T16:21:25.823Z info: [Frontend] 
+2025-06-17T16:21:25.830Z info: [Frontend] 
+2025-06-17T16:21:25.831Z info: [Frontend] 
+2025-06-17T16:21:25.833Z info: [Frontend] 
+2025-06-17T16:21:25.834Z info: [Frontend] 
+2025-06-17T16:21:25.875Z info: [Frontend] 
+2025-06-17T16:21:27.549Z info: [Frontend] 
+2025-06-17T16:21:27.585Z info: [Frontend] 
+2025-06-17T16:21:28.500Z info: [Frontend] 
+2025-06-17T16:21:28.501Z info: [Frontend] 
+2025-06-17T16:21:28.515Z info: [Frontend] 
+2025-06-17T16:21:28.530Z info: [Frontend] 
+2025-06-17T16:21:28.531Z info: [Frontend] 
+2025-06-17T16:21:30.841Z info: [Frontend] 
+2025-06-17T16:21:30.873Z info: [Frontend] 
+2025-06-18 00:21:31 info: Received request for /api/db-status
+2025-06-18 00:21:31 info: DB status check successful.
+2025-06-17T16:21:31.280Z info: [Frontend] 
+2025-06-18 00:21:31 info: Received request for /api/db-status
+2025-06-18 00:21:31 info: DB status check successful.
+2025-06-17T16:21:32.015Z info: [Frontend] 
+2025-06-17T16:21:32.017Z info: [Frontend] 
+2025-06-17T16:21:32.070Z info: [Frontend] 
+2025-06-17T16:21:32.832Z info: [Frontend] 
+2025-06-17T16:21:32.833Z info: [Frontend] 
+2025-06-17T16:21:32.847Z info: [Frontend] 
+2025-06-17T16:21:32.862Z info: [Frontend] 
+2025-06-17T16:21:32.863Z info: [Frontend] 
+2025-06-18 00:23:34 info: Received request for /api/db-status
+2025-06-18 00:23:34 info: DB status check successful.
+2025-06-18 00:23:34 info: Received request for /api/db-status
+2025-06-18 00:23:34 info: DB status check successful.
+2025-06-17T16:23:34.157Z info: [Frontend] 
+2025-06-17T16:23:34.205Z info: [Frontend] 
+2025-06-17T16:23:34.246Z info: [Frontend] 
+2025-06-17T16:23:34.248Z info: [Frontend] 
+2025-06-17T16:23:34.278Z info: [Frontend] 
+2025-06-17T16:23:34.279Z info: [Frontend] 
+2025-06-17T16:23:34.280Z info: [Frontend] 
+2025-06-18 00:23:36 info: Received request for /api/db-status
+2025-06-18 00:23:36 info: DB status check successful.
+2025-06-18 00:23:36 info: Received request for /api/db-status
+2025-06-18 00:23:36 info: DB status check successful.
+2025-06-17T16:23:36.045Z info: [Frontend] 
+2025-06-17T16:23:36.048Z info: [Frontend] 
+2025-06-17T16:23:36.083Z info: [Frontend] 
+2025-06-17T16:23:36.084Z info: [Frontend] 
+2025-06-17T16:23:36.112Z info: [Frontend] 
+2025-06-17T16:23:36.112Z info: [Frontend] 
+2025-06-17T16:23:36.113Z info: [Frontend] 
+2025-06-18 00:26:42 info: Received request for /api/db-status
+2025-06-18 00:26:42 info: DB status check successful.
+2025-06-18 00:26:42 info: Received request for /api/db-status
+2025-06-18 00:26:42 info: DB status check successful.
+2025-06-17T16:26:42.361Z info: [Frontend] 
+2025-06-17T16:26:42.365Z info: [Frontend] 
+2025-06-17T16:26:42.473Z info: [Frontend] 
+2025-06-17T16:26:42.511Z info: [Frontend] 
+2025-06-17T16:26:42.561Z info: [Frontend] 
+2025-06-17T16:26:42.562Z info: [Frontend] 
+2025-06-17T16:26:42.595Z info: [Frontend] 
+2025-06-18 00:26:48 info: Received request for /api/db-status
+2025-06-18 00:26:48 info: DB status check successful.
+2025-06-18 00:26:48 info: Received request for /api/db-status
+2025-06-18 00:26:48 info: DB status check successful.
+2025-06-17T16:26:48.118Z info: [Frontend] 
+2025-06-17T16:26:48.124Z info: [Frontend] 
+2025-06-17T16:26:49.684Z info: [Frontend] 
+2025-06-17T16:26:49.685Z info: [Frontend] 
+2025-06-17T16:26:49.686Z info: [Frontend] 
+2025-06-17T16:26:49.687Z info: [Frontend] 
+2025-06-17T16:26:49.688Z info: [Frontend] 
+2025-06-18 00:27:08 info: Received request for /api/db-status
+2025-06-18 00:27:08 info: DB status check successful.
+2025-06-18 00:27:08 info: Received request for /api/db-status
+2025-06-18 00:27:08 info: DB status check successful.
+2025-06-17T16:27:08.034Z info: [Frontend] 
+2025-06-17T16:27:08.072Z info: [Frontend] 
+2025-06-17T16:27:08.126Z info: [Frontend] 
+2025-06-17T16:27:08.129Z info: [Frontend] 
+2025-06-17T16:27:08.176Z info: [Frontend] 
+2025-06-17T16:27:08.177Z info: [Frontend] 
+2025-06-17T16:27:08.181Z info: [Frontend] 
+2025-06-18 00:27:17 info: Received request for /api/db-status
+2025-06-18 00:27:17 info: DB status check successful.
+2025-06-18 00:27:17 info: Received request for /api/db-status
+2025-06-18 00:27:17 info: DB status check successful.
+2025-06-17T16:27:17.551Z info: [Frontend] 
+2025-06-17T16:27:17.604Z info: [Frontend] 
+2025-06-17T16:27:17.729Z info: [Frontend] 
+2025-06-17T16:27:17.732Z info: [Frontend] 
+2025-06-17T16:27:17.738Z info: [Frontend] 
+2025-06-17T16:27:17.740Z info: [Frontend] 
+2025-06-17T16:27:21.013Z info: [Frontend] 
+2025-06-18 00:28:44 info: Received request for /api/db-status
+2025-06-18 00:28:44 info: DB status check successful.
+2025-06-18 00:28:44 info: Received request for /api/db-status
+2025-06-18 00:28:44 info: DB status check successful.
+2025-06-17T16:28:44.437Z info: [Frontend] 
+2025-06-17T16:28:44.441Z info: [Frontend] 
+2025-06-17T16:28:44.519Z info: [Frontend] 
+2025-06-17T16:28:44.520Z info: [Frontend] 
+2025-06-17T16:28:44.521Z info: [Frontend] 
+2025-06-17T16:28:44.522Z info: [Frontend] 
+2025-06-17T16:28:44.549Z info: [Frontend] 
+2025-06-18 00:36:15 info: Received request for /api/db-status
+2025-06-18 00:36:15 info: DB status check successful.
+2025-06-18 00:36:15 info: Received request for /api/db-status
+2025-06-18 00:36:15 info: DB status check successful.
+2025-06-17T16:36:15.371Z info: [Frontend] 
+2025-06-17T16:36:15.378Z info: [Frontend] 
+2025-06-17T16:36:15.408Z info: [Frontend] 
+2025-06-17T16:36:15.455Z info: [Frontend] 
+2025-06-18 00:37:30 info: Received request for /api/db-status
+2025-06-18 00:37:30 info: DB status check successful.
+2025-06-18 00:37:30 info: Received request for /api/db-status
+2025-06-18 00:37:30 info: DB status check successful.
+2025-06-17T16:37:30.259Z info: [Frontend] 
+2025-06-17T16:37:30.260Z info: [Frontend] 
+2025-06-17T16:37:30.296Z info: [Frontend] 
+2025-06-17T16:37:30.376Z info: [Frontend] 
+2025-06-18 00:37:52 info: Received request for /api/db-status
+2025-06-18 00:37:52 info: DB status check successful.
+2025-06-18 00:37:52 info: Received request for /api/db-status
+2025-06-18 00:37:52 info: DB status check successful.
+2025-06-17T16:37:52.590Z info: [Frontend] 
+2025-06-17T16:37:52.591Z info: [Frontend] 
+2025-06-17T16:37:52.620Z info: [Frontend] 
+2025-06-17T16:37:52.651Z info: [Frontend] 
+2025-06-18 00:38:07 info: Received request for /api/db-status
+2025-06-18 00:38:07 info: DB status check successful.
+2025-06-18 00:38:07 info: Received request for /api/db-status
+2025-06-18 00:38:07 info: DB status check successful.
+2025-06-17T16:38:07.534Z info: [Frontend] 
+2025-06-17T16:38:07.545Z info: [Frontend] 
+2025-06-17T16:38:07.568Z info: [Frontend] 
+2025-06-17T16:38:07.597Z info: [Frontend] 
+2025-06-18 00:38:29 info: Received request for /api/db-status
+2025-06-18 00:38:29 info: DB status check successful.
+2025-06-18 00:38:29 info: Received request for /api/db-status
+2025-06-18 00:38:29 info: DB status check successful.
+2025-06-17T16:38:29.200Z info: [Frontend] 
+2025-06-17T16:38:29.202Z info: [Frontend] 
+2025-06-17T16:38:29.721Z info: [Frontend] 
+2025-06-17T16:38:29.745Z info: [Frontend] 
+2025-06-18 00:42:23 info: Received request for /api/db-status
+2025-06-18 00:42:23 info: DB status check successful.
+2025-06-18 00:42:23 info: Received request for /api/db-status
+2025-06-18 00:42:23 info: DB status check successful.
+2025-06-17T16:42:23.127Z info: [Frontend] 
+2025-06-17T16:42:23.128Z info: [Frontend] 
+2025-06-17T16:42:23.178Z info: [Frontend] 
+2025-06-17T16:42:23.277Z info: [Frontend] 
+2025-06-18 00:44:52 info: Received request for /api/db-status
+2025-06-18 00:44:52 info: DB status check successful.
+2025-06-18 00:44:52 info: Received request for /api/db-status
+2025-06-18 00:44:52 info: DB status check successful.
+2025-06-17T16:44:52.174Z info: [Frontend] 
+2025-06-17T16:44:52.175Z info: [Frontend] 
+2025-06-17T16:44:52.210Z info: [Frontend] 
+2025-06-17T16:44:52.241Z info: [Frontend] 
+2025-06-18 00:51:09 info: Received request for /api/db-status
+2025-06-18 00:51:09 info: DB status check successful.
+2025-06-18 00:51:09 info: Received request for /api/db-status
+2025-06-18 00:51:09 info: DB status check successful.
+2025-06-17T16:51:09.854Z info: [Frontend] 
+2025-06-17T16:51:09.857Z info: [Frontend] 
+2025-06-17T16:51:09.892Z info: [Frontend] 
+2025-06-17T16:51:09.924Z info: [Frontend] 
+2025-06-18 00:53:25 info: Received request for /api/db-status
+2025-06-18 00:53:25 info: DB status check successful.
+2025-06-18 00:53:25 info: Received request for /api/db-status
+2025-06-18 00:53:25 info: DB status check successful.
+2025-06-17T16:53:25.694Z info: [Frontend] 
+2025-06-17T16:53:25.695Z info: [Frontend] 
+2025-06-17T16:53:25.722Z info: [Frontend] 
+2025-06-17T16:53:25.756Z info: [Frontend] 
+2025-06-18 01:03:20 info: Received request for /api/db-status
+2025-06-18 01:03:20 info: DB status check successful.
+2025-06-17T17:03:20.707Z info: [Frontend] 
+2025-06-18 01:05:54 info: Received request for /api/db-status
+2025-06-18 01:05:54 info: DB status check successful.
+2025-06-17T17:05:54.723Z info: [Frontend] 
+2025-06-17T17:05:54.737Z info: [Frontend] 
+2025-06-17T17:05:54.779Z info: [Frontend] 
+2025-06-18 01:06:04 info: Received request for /api/db-status
+2025-06-18 01:06:04 info: DB status check successful.
+2025-06-17T17:06:04.580Z info: [Frontend] 
+2025-06-17T17:06:09.896Z info: [Frontend] 
+2025-06-18 01:06:15 info: Received request for /api/db-status
+2025-06-18 01:06:15 info: DB status check successful.
+2025-06-17T17:06:15.304Z info: [Frontend] 
+2025-06-17T17:06:15.307Z info: [Frontend] 
+2025-06-17T17:06:15.337Z info: [Frontend] 
+2025-06-17T17:07:14.419Z info: [Frontend] 
+2025-06-17T17:07:14.445Z info: [Frontend] 
+2025-06-18 01:07:35 info: Received request for /api/db-status
+2025-06-18 01:07:35 info: DB status check successful.
+2025-06-17T17:07:35.611Z info: [Frontend] 
+2025-06-18 01:10:16 info: Received request for /api/db-status
+2025-06-18 01:10:16 info: DB status check successful.
+2025-06-17T17:10:16.670Z info: [Frontend] 
+2025-06-17T17:10:16.681Z info: [Frontend] 
+2025-06-17T17:10:16.705Z info: [Frontend] 
+2025-06-18 01:13:40 info: Received request for /api/db-status
+2025-06-18 01:13:40 info: DB status check successful.
+2025-06-17T17:13:40.814Z info: [Frontend] 
+2025-06-18 01:13:42 info: Received request for /api/db-status
+2025-06-18 01:13:42 info: DB status check successful.
+2025-06-17T17:13:42.569Z info: [Frontend] 
+2025-06-17T17:13:42.579Z info: [Frontend] 
+2025-06-17T17:13:42.619Z info: [Frontend] 
+2025-06-18 01:13:52 info: Received request for /api/db-status
+2025-06-18 01:13:52 info: DB status check successful.
+2025-06-17T17:13:52.351Z info: [Frontend] 
+2025-06-18 01:14:54 info: Received request for /api/db-status
+2025-06-18 01:14:54 info: DB status check successful.
+2025-06-17T17:14:54.120Z info: [Frontend] 
+2025-06-17T17:14:54.121Z info: [Frontend] 
+2025-06-17T17:14:54.155Z info: [Frontend] 
+2025-06-18 01:14:54 info: Received request for /api/db-status
+2025-06-18 01:14:54 info: DB status check successful.
+2025-06-17T17:14:54.702Z info: [Frontend] 
+2025-06-18 01:15:13 info: Received request for /api/db-status
+2025-06-18 01:15:13 info: DB status check successful.
+2025-06-18 01:15:13 info: Received request for /api/db-status
+2025-06-18 01:15:13 info: DB status check successful.
+2025-06-17T17:15:13.628Z info: [Frontend] 
+2025-06-17T17:15:13.631Z info: [Frontend] 
+2025-06-18 01:19:25 info: Received request for /api/db-status
+2025-06-18 01:19:25 info: DB status check successful.
+2025-06-17T17:19:25.461Z info: [Frontend] 
+2025-06-18 01:21:26 info: Received request for /api/db-status
+2025-06-18 01:21:26 info: DB status check successful.
+2025-06-18 01:21:26 info: Received request for /api/db-status
+2025-06-18 01:21:26 info: DB status check successful.
+2025-06-17T17:21:26.348Z info: [Frontend] 
+2025-06-17T17:21:26.350Z info: [Frontend] 
+2025-06-18 01:21:30 info: Received request for /api/db-status
+2025-06-18 01:21:30 info: DB status check successful.
+2025-06-17T17:21:30.830Z info: [Frontend] 
+2025-06-17T17:21:30.844Z info: [Frontend] 
+2025-06-17T17:21:30.852Z info: [Frontend] 
+2025-06-17T17:21:30.875Z info: [Frontend] 
+2025-06-17T17:21:30.876Z info: [Frontend] 
+2025-06-17T17:21:30.887Z info: [Frontend] 
+2025-06-18 01:21:32 info: Received request for /api/db-status
+2025-06-18 01:21:32 info: DB status check successful.
+2025-06-17T17:21:32.657Z info: [Frontend] 
+2025-06-18 01:21:34 info: Received request for /api/db-status
+2025-06-18 01:21:34 info: DB status check successful.
+2025-06-17T17:21:34.050Z info: [Frontend] 
+2025-06-17T17:21:34.059Z info: [Frontend] 
+2025-06-17T17:21:34.059Z info: [Frontend] 
+2025-06-17T17:21:34.060Z info: [Frontend] 
+2025-06-17T17:21:34.078Z info: [Frontend] 
+2025-06-17T17:21:34.094Z info: [Frontend] 
+2025-06-17T17:21:36.296Z info: [Frontend] 
+2025-06-17T17:21:36.340Z info: [Frontend] 
+2025-06-17T17:21:37.503Z info: [Frontend] 
+2025-06-17T17:21:37.506Z info: [Frontend] 
+2025-06-17T17:21:37.527Z info: [Frontend] 
+2025-06-17T17:21:37.538Z info: [Frontend] 
+2025-06-17T17:21:37.538Z info: [Frontend] 
+2025-06-17T17:21:38.171Z info: [Frontend] 
+2025-06-17T17:21:38.204Z info: [Frontend] 
+2025-06-17T17:21:39.105Z info: [Frontend] 
+2025-06-17T17:21:39.106Z info: [Frontend] 
+2025-06-17T17:21:39.125Z info: [Frontend] 
+2025-06-17T17:21:39.134Z info: [Frontend] 
+2025-06-17T17:21:39.135Z info: [Frontend] 
+2025-06-17T17:21:41.143Z info: [Frontend] 
+2025-06-17T17:21:42.919Z info: [Frontend] 
+2025-06-17T17:21:44.987Z info: [Frontend] 
+2025-06-17T17:21:47.717Z info: [Frontend] 
+2025-06-17T17:21:51.334Z info: [Frontend] 
+2025-06-17T17:21:51.371Z info: [Frontend] 
+2025-06-17T17:21:52.140Z info: [Frontend] 
+2025-06-17T17:21:52.142Z info: [Frontend] 
+2025-06-17T17:21:52.144Z info: [Frontend] 
+2025-06-17T17:21:52.163Z info: [Frontend] 
+2025-06-17T17:21:52.171Z info: [Frontend] 
+2025-06-17T17:21:53.256Z info: [Frontend] 
+2025-06-17T17:21:53.288Z info: [Frontend] 
+2025-06-18 01:21:53 info: Received request for /api/db-status
+2025-06-18 01:21:53 info: DB status check successful.
+2025-06-17T17:21:53.911Z info: [Frontend] 
+2025-06-18 01:21:54 info: Received request for /api/db-status
+2025-06-18 01:21:54 info: DB status check successful.
+2025-06-17T17:21:54.763Z info: [Frontend] 
+2025-06-17T17:21:54.771Z info: [Frontend] 
+2025-06-17T17:21:54.801Z info: [Frontend] 
+2025-06-17T17:21:56.379Z info: [Frontend] 
+2025-06-17T17:21:56.379Z info: [Frontend] 
+2025-06-17T17:21:56.395Z info: [Frontend] 
+2025-06-17T17:21:56.412Z info: [Frontend] 
+2025-06-17T17:21:56.413Z info: [Frontend] 
+2025-06-17T17:21:56.995Z info: [Frontend] 
+2025-06-17T17:21:57.018Z info: [Frontend] 
+2025-06-17T17:22:01.251Z info: [Frontend] 
+2025-06-17T17:22:01.265Z info: [Frontend] 
+2025-06-17T17:22:01.281Z info: [Frontend] 
+2025-06-17T17:22:01.293Z info: [Frontend] 
+2025-06-17T17:22:01.293Z info: [Frontend] 
+2025-06-17T17:22:01.808Z info: [Frontend] 
+2025-06-17T17:22:01.829Z info: [Frontend] 
+2025-06-17T17:22:03.625Z info: [Frontend] 
+2025-06-17T17:22:03.626Z info: [Frontend] 
+2025-06-17T17:22:03.641Z info: [Frontend] 
+2025-06-17T17:22:03.655Z info: [Frontend] 
+2025-06-17T17:22:03.665Z info: [Frontend] 
+2025-06-17T17:22:05.300Z info: [Frontend] 
+2025-06-17T17:22:05.330Z info: [Frontend] 
+2025-06-17T17:22:05.709Z info: [Frontend] 
+2025-06-17T17:22:05.712Z info: [Frontend] 
+2025-06-17T17:22:05.736Z info: [Frontend] 
+2025-06-17T17:22:05.737Z info: [Frontend] 
+2025-06-17T17:22:05.750Z info: [Frontend] 
+2025-06-17T17:22:06.207Z info: [Frontend] 
+2025-06-17T17:22:06.241Z info: [Frontend] 
+2025-06-17T17:22:06.754Z info: [Frontend] 
+2025-06-17T17:22:06.767Z info: [Frontend] 
+2025-06-17T17:22:06.783Z info: [Frontend] 
+2025-06-17T17:22:06.793Z info: [Frontend] 
+2025-06-17T17:22:06.794Z info: [Frontend] 
+2025-06-18 01:22:07 info: Received request for /api/db-status
+2025-06-18 01:22:07 info: DB status check successful.
+2025-06-17T17:22:07.660Z info: [Frontend] 
+2025-06-18 01:22:08 info: Received request for /api/db-status
+2025-06-18 01:22:08 info: DB status check successful.
+2025-06-17T17:22:08.244Z info: [Frontend] 
+2025-06-17T17:22:08.262Z info: [Frontend] 
+2025-06-17T17:22:08.275Z info: [Frontend] 
+2025-06-17T17:22:08.276Z info: [Frontend] 
+2025-06-17T17:22:08.293Z info: [Frontend] 
+2025-06-17T17:22:08.294Z info: [Frontend] 
+2025-06-18 01:22:11 info: Received request for /api/db-status
+2025-06-18 01:22:11 info: DB status check successful.
+2025-06-17T17:22:11.341Z info: [Frontend] 
+2025-06-18 01:22:12 info: Received request for /api/db-status
+2025-06-18 01:22:12 info: DB status check successful.
+2025-06-17T17:22:12.299Z info: [Frontend] 
+2025-06-17T17:22:12.311Z info: [Frontend] 
+2025-06-17T17:22:12.312Z info: [Frontend] 
+2025-06-17T17:22:12.326Z info: [Frontend] 
+2025-06-17T17:22:12.327Z info: [Frontend] 
+2025-06-17T17:22:12.342Z info: [Frontend] 
+2025-06-18 01:22:12 info: Received request for /api/db-status
+2025-06-18 01:22:12 info: DB status check successful.
+2025-06-17T17:22:12.815Z info: [Frontend] 
+2025-06-18 01:22:13 info: Received request for /api/db-status
+2025-06-18 01:22:13 info: DB status check successful.
+2025-06-17T17:22:13.247Z info: [Frontend] 
+2025-06-17T17:22:13.259Z info: [Frontend] 
+2025-06-17T17:22:13.260Z info: [Frontend] 
+2025-06-17T17:22:13.275Z info: [Frontend] 
+2025-06-17T17:22:13.294Z info: [Frontend] 
+2025-06-17T17:22:13.295Z info: [Frontend] 
+2025-06-18 01:22:13 info: Received request for /api/db-status
+2025-06-18 01:22:13 info: DB status check successful.
+2025-06-17T17:22:13.744Z info: [Frontend] 
+2025-06-18 01:22:14 info: Received request for /api/db-status
+2025-06-18 01:22:14 info: DB status check successful.
+2025-06-17T17:22:14.183Z info: [Frontend] 
+2025-06-17T17:22:14.197Z info: [Frontend] 
+2025-06-17T17:22:14.212Z info: [Frontend] 
+2025-06-17T17:22:14.213Z info: [Frontend] 
+2025-06-17T17:22:14.230Z info: [Frontend] 
+2025-06-17T17:22:14.230Z info: [Frontend] 
+2025-06-18 01:22:14 info: Received request for /api/db-status
+2025-06-18 01:22:14 info: DB status check successful.
+2025-06-17T17:22:14.658Z info: [Frontend] 
+2025-06-18 01:22:15 info: Received request for /api/db-status
+2025-06-18 01:22:15 info: DB status check successful.
+2025-06-17T17:22:15.061Z info: [Frontend] 
+2025-06-18 01:22:16 info: Received request for /api/db-status
+2025-06-18 01:22:16 info: DB status check successful.
+2025-06-17T17:22:16.080Z info: [Frontend] 
+2025-06-17T17:22:16.092Z info: [Frontend] 
+2025-06-17T17:22:16.093Z info: [Frontend] 
+2025-06-17T17:22:16.107Z info: [Frontend] 
+2025-06-17T17:22:16.123Z info: [Frontend] 
+2025-06-17T17:22:16.124Z info: [Frontend] 
+2025-06-18 01:22:16 info: Received request for /api/db-status
+2025-06-18 01:22:16 info: DB status check successful.
+2025-06-17T17:22:16.626Z info: [Frontend] 
+2025-06-18 01:22:17 info: Received request for /api/db-status
+2025-06-18 01:22:17 info: DB status check successful.
+2025-06-17T17:22:17.082Z info: [Frontend] 
+2025-06-17T17:22:17.099Z info: [Frontend] 
+2025-06-17T17:22:17.116Z info: [Frontend] 
+2025-06-17T17:22:17.118Z info: [Frontend] 
+2025-06-17T17:22:17.131Z info: [Frontend] 
+2025-06-17T17:22:17.132Z info: [Frontend] 
+2025-06-18 01:22:19 info: Received request for /api/db-status
+2025-06-18 01:22:19 info: DB status check successful.
+2025-06-17T17:22:19.922Z info: [Frontend] 
+2025-06-18 01:22:20 info: Received request for /api/db-status
+2025-06-18 01:22:20 info: DB status check successful.
+2025-06-17T17:22:21.008Z info: [Frontend] 
+2025-06-17T17:22:21.019Z info: [Frontend] 
+2025-06-17T17:22:21.020Z info: [Frontend] 
+2025-06-17T17:22:21.035Z info: [Frontend] 
+2025-06-17T17:22:21.052Z info: [Frontend] 
+2025-06-17T17:22:21.052Z info: [Frontend] 
+2025-06-18 01:22:30 info: Received request for /api/db-status
+2025-06-18 01:22:30 info: DB status check successful.
+2025-06-17T17:22:30.847Z info: [Frontend] 
+2025-06-18 01:22:34 info: Received request for /api/db-status
+2025-06-18 01:22:34 info: DB status check successful.
+2025-06-17T17:22:34.539Z info: [Frontend] 
+2025-06-17T17:22:34.551Z info: [Frontend] 
+2025-06-17T17:22:34.566Z info: [Frontend] 
+2025-06-17T17:22:34.585Z info: [Frontend] 
+2025-06-17T17:22:34.595Z info: [Frontend] 
+2025-06-17T17:22:34.596Z info: [Frontend] 
+2025-06-18 01:22:38 info: Received request for /api/db-status
+2025-06-18 01:22:38 info: DB status check successful.
+2025-06-17T17:22:38.811Z info: [Frontend] 
+2025-06-18 01:22:39 info: Received request for /api/db-status
+2025-06-18 01:22:39 info: DB status check successful.
+2025-06-17T17:22:39.729Z info: [Frontend] 
+2025-06-17T17:22:39.738Z info: [Frontend] 
+2025-06-17T17:22:39.738Z info: [Frontend] 
+2025-06-17T17:22:39.756Z info: [Frontend] 
+2025-06-17T17:22:39.782Z info: [Frontend] 
+2025-06-17T17:22:39.783Z info: [Frontend] 
+2025-06-18 01:23:06 info: Received request for /api/db-status
+2025-06-18 01:23:06 info: DB status check successful.
+2025-06-18 01:23:06 info: Received request for /api/db-status
+2025-06-18 01:23:06 info: DB status check successful.
+2025-06-17T17:23:06.558Z info: [Frontend] 
+2025-06-17T17:23:06.572Z info: [Frontend] 
+2025-06-17T17:23:06.609Z info: [Frontend] 
+2025-06-17T17:23:06.610Z info: [Frontend] 
+2025-06-17T17:23:06.611Z info: [Frontend] 
+2025-06-17T17:23:06.627Z info: [Frontend] 
+2025-06-17T17:23:06.646Z info: [Frontend] 
+2025-06-18 01:23:07 info: Received request for /api/db-status
+2025-06-18 01:23:07 info: DB status check successful.
+2025-06-17T17:23:07.930Z info: [Frontend] 
+2025-06-18 01:23:08 info: Received request for /api/db-status
+2025-06-18 01:23:08 info: DB status check successful.
+2025-06-17T17:23:08.741Z info: [Frontend] 
+2025-06-17T17:23:08.755Z info: [Frontend] 
+2025-06-17T17:23:08.774Z info: [Frontend] 
+2025-06-17T17:23:08.774Z info: [Frontend] 
+2025-06-17T17:23:08.794Z info: [Frontend] 
+2025-06-17T17:23:08.810Z info: [Frontend] 
+2025-06-18 01:26:12 info: Received request for /api/db-status
+2025-06-18 01:26:12 info: DB status check successful.
+2025-06-17T17:26:12.207Z info: [Frontend] 
+2025-06-18 01:27:19 info: Received request for /api/db-status
+2025-06-18 01:27:19 info: DB status check successful.
+2025-06-17T17:27:19.999Z info: [Frontend] 
+2025-06-17T17:27:20.008Z info: [Frontend] 
+2025-06-17T17:27:20.009Z info: [Frontend] 
+2025-06-17T17:27:20.027Z info: [Frontend] 
+2025-06-17T17:27:20.027Z info: [Frontend] 
+2025-06-17T17:27:20.051Z info: [Frontend] 
+2025-06-18 01:27:22 info: Received request for /api/db-status
+2025-06-18 01:27:22 info: DB status check successful.
+2025-06-17T17:27:22.077Z info: [Frontend] 
+2025-06-18 01:29:11 info: Received request for /api/db-status
+2025-06-18 01:29:11 info: DB status check successful.
+2025-06-17T17:29:11.926Z info: [Frontend] 
+2025-06-17T17:29:11.936Z info: [Frontend] 
+2025-06-17T17:29:11.936Z info: [Frontend] 
+2025-06-17T17:29:11.937Z info: [Frontend] 
+2025-06-17T17:29:11.951Z info: [Frontend] 
+2025-06-17T17:29:11.952Z info: [Frontend] 
+2025-06-18 01:29:12 info: Received request for /api/db-status
+2025-06-18 01:29:12 info: DB status check successful.
+2025-06-17T17:29:12.793Z info: [Frontend] 
+2025-06-18 01:29:13 info: Received request for /api/db-status
+2025-06-18 01:29:13 info: DB status check successful.
+2025-06-17T17:29:13.244Z info: [Frontend] 
+2025-06-18 01:29:17 info: Received request for /api/db-status
+2025-06-18 01:29:17 info: DB status check successful.
+2025-06-17T17:29:17.076Z info: [Frontend] 
+2025-06-17T17:29:17.097Z info: [Frontend] 
+2025-06-17T17:29:17.098Z info: [Frontend] 
+2025-06-17T17:29:17.099Z info: [Frontend] 
+2025-06-17T17:29:17.115Z info: [Frontend] 
+2025-06-17T17:29:17.116Z info: [Frontend] 
+2025-06-18 01:29:18 info: Received request for /api/db-status
+2025-06-18 01:29:18 info: DB status check successful.
+2025-06-17T17:29:18.298Z info: [Frontend] 
+2025-06-18 01:29:24 info: Received request for /api/db-status
+2025-06-18 01:29:24 info: DB status check successful.
+2025-06-17T17:29:24.168Z info: [Frontend] 
+2025-06-17T17:29:24.180Z info: [Frontend] 
+2025-06-17T17:29:24.184Z info: [Frontend] 
+2025-06-17T17:29:24.185Z info: [Frontend] 
+2025-06-17T17:29:24.197Z info: [Frontend] 
+2025-06-17T17:29:24.212Z info: [Frontend] 
+2025-06-18 01:29:25 info: Received request for /api/db-status
+2025-06-18 01:29:25 info: DB status check successful.
+2025-06-17T17:29:25.845Z info: [Frontend] 
+2025-06-18 01:29:36 info: Received request for /api/db-status
+2025-06-18 01:29:36 info: DB status check successful.
+2025-06-17T17:29:36.390Z info: [Frontend] 
+2025-06-17T17:29:36.409Z info: [Frontend] 
+2025-06-17T17:29:36.410Z info: [Frontend] 
+2025-06-17T17:29:36.411Z info: [Frontend] 
+2025-06-17T17:29:36.411Z info: [Frontend] 
+2025-06-17T17:29:36.430Z info: [Frontend] 
+2025-06-18 01:29:37 info: Received request for /api/db-status
+2025-06-18 01:29:37 info: DB status check successful.
+2025-06-17T17:29:37.314Z info: [Frontend] 
+2025-06-18 01:29:48 info: Received request for /api/db-status
+2025-06-18 01:29:48 info: DB status check successful.
+2025-06-17T17:29:48.505Z info: [Frontend] 
+2025-06-17T17:29:48.519Z info: [Frontend] 
+2025-06-17T17:29:48.520Z info: [Frontend] 
+2025-06-17T17:29:48.551Z info: [Frontend] 
+2025-06-17T17:29:48.555Z info: [Frontend] 
+2025-06-17T17:29:48.574Z info: [Frontend] 
+2025-06-18 02:11:14 info: Received request for /api/db-status
+2025-06-18 02:11:14 info: DB status check successful.
+2025-06-17T18:11:14.536Z info: [Frontend] 
+2025-06-18 02:11:15 info: Received request for /api/db-status
+2025-06-18 02:11:15 info: DB status check successful.
+2025-06-17T18:11:15.511Z info: [Frontend] 
+2025-06-17T18:11:15.537Z info: [Frontend] 
+2025-06-17T18:11:15.539Z info: [Frontend] 
+2025-06-17T18:11:15.560Z info: [Frontend] 
+2025-06-17T18:11:15.588Z info: [Frontend] 
+2025-06-17T18:11:15.589Z info: [Frontend] 
+2025-06-18 02:11:18 info: Received request for /api/db-status
+2025-06-18 02:11:18 info: DB status check successful.
+2025-06-18 02:11:18 info: Received request for /api/db-status
+2025-06-18 02:11:18 info: DB status check successful.
+2025-06-17T18:11:18.302Z info: [Frontend] 
+2025-06-17T18:11:18.322Z info: [Frontend] 
+2025-06-17T18:11:18.405Z info: [Frontend] 
+2025-06-17T18:11:18.407Z info: [Frontend] 
+2025-06-17T18:11:18.408Z info: [Frontend] 
+2025-06-17T18:11:18.437Z info: [Frontend] 
+2025-06-17T18:11:18.465Z info: [Frontend] 
+2025-06-18 02:11:20 info: Received request for /api/db-status
+2025-06-18 02:11:20 info: DB status check successful.
+2025-06-17T18:11:20.186Z info: [Frontend] 
+2025-06-18 02:11:21 info: Received request for /api/db-status
+2025-06-18 02:11:21 info: DB status check successful.
+2025-06-17T18:11:21.538Z info: [Frontend] 
+2025-06-17T18:11:21.556Z info: [Frontend] 
+2025-06-17T18:11:21.583Z info: [Frontend] 
+2025-06-17T18:11:21.617Z info: [Frontend] 
+2025-06-17T18:11:21.837Z info: [Frontend] 
+2025-06-17T18:11:21.838Z info: [Frontend] 
+2025-06-17T18:11:26.394Z info: [Frontend] 
+2025-06-17T18:11:26.449Z info: [Frontend] 
+2025-06-17T18:11:27.976Z info: [Frontend] 
+2025-06-17T18:11:28.018Z info: [Frontend] 
+2025-06-17T18:11:29.308Z info: [Frontend] 
+2025-06-17T18:11:29.349Z info: [Frontend] 
+2025-06-17T18:11:32.355Z info: [Frontend] 
+2025-06-17T18:11:32.400Z info: [Frontend] 
+2025-06-18 02:11:56 info: Received request for /api/db-status
+2025-06-18 02:11:56 info: DB status check successful.
+2025-06-17T18:11:56.194Z info: [Frontend] 
