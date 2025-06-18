@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Log Management</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .auth-card {
+            max-width: 400px;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .card-header {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary { background-color: #007bff; color: white; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-success { background-color: #28a745; color: white; }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+        
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden { display: none; }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div id="auth-section" class="auth-container">
+        <div class="auth-card">
+            <div style="margin-bottom: 30px;">
+                <div style="font-size: 48px; margin-bottom: 20px;">🔒</div>
+                <h2 style="margin-bottom: 10px; color: #2c3e50;">Server Log Management</h2>
+                <p style="color: #6c757d;">Secure access required to manage server logs</p>
+            </div>
+            
+            <div id="error-message" class="alert alert-danger hidden"></div>
+            
+            <div id="g_id_onload"
+                 data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                 data-callback="handleCredentialResponse">
+            </div>
+            <div class="g_id_signin" data-type="standard"></div>
+            
+            <p style="font-size: 12px; color: #6c757d; margin-top: 20px;">
+                Only authorized administrators can access this feature
+            </p>
+        </div>
+    </div>
+
+    <div id="main-section" class="hidden">
+        <div class="header">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1 style="font-size: 2rem;">🗂️ Server Log Management</h1>
+                        <p style="opacity: 0.9;">Secure log clearing and backup management</p>
+                    </div>
+                    <div class="user-info">
+                        <div style="text-align: right;">
+                            <div id="user-name" style="font-weight: bold;"></div>
+                            <div id="user-email" style="font-size: 14px; opacity: 0.8;"></div>
+                        </div>
+                        <img id="user-avatar" class="user-avatar" style="display: none;">
+                        <button onclick="signOut()" class="btn" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);">
+                            Sign Out
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="message-area"></div>
+            
+            <div style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+                <button onclick="fetchLogInfo()" class="btn btn-primary">🔄 Refresh Log Info</button>
+                <button onclick="fetchBackups()" class="btn btn-secondary">📦 View Backups</button>
+                <button onclick="clearLogs()" class="btn btn-danger">🗑️ Clear All Logs</button>
+            </div>
+
+            <div id="log-info-section" class="card hidden">
+                <div class="card-header">
+                    <h3>📋 Current Log Files</h3>
+                </div>
+                <div class="card-body">
+                    <div style="overflow-x: auto;">
+                        <table class="table" id="log-table">
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Type</th>
+                                    <th>Size</th>
+                                    <th>Last Modified</th>
+                                    <th>Status</th>
+                                    <th style="text-align: center;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="log-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="backup-section" class="card hidden">
+                <div class="card-header">
+                    <h3 id="backup-title">📦 Backup Files</h3>
+                </div>
+                <div class="card-body">
+                    <div style="overflow-x: auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Backup File</th>
+                                    <th>Size</th>
+                                    <th>Created</th>
+                                    <th style="text-align: center;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="backup-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loading-section" class="hidden" style="text-align: center; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div class="spinner"></div>
+                <p style="margin-top: 20px; color: #6c757d;">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration - Update these values
+        const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID'; // Replace with your actual Google Client ID
+        const API_BASE_URL = '/api/logs'; // Adjust if your API is hosted elsewhere
+        
+        let authToken = null;
+        let currentUser = null;
+
+        function handleCredentialResponse(response) {
+            authToken = response.credential;
+            
+            // Decode JWT to get user info
+            const payload = JSON.parse(atob(response.credential.split('.')[1]));
+            currentUser = {
+                name: payload.name,
+                email: payload.email,
+                picture: payload.picture
+            };
+            
+            // Update UI
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('main-section').classList.remove('hidden');
+            
+            document.getElementById('user-name').textContent = currentUser.name;
+            document.getElementById('user-email').textContent = currentUser.email;
+            
+            if (currentUser.picture) {
+                const avatar = document.getElementById('user-avatar');
+                avatar.src = currentUser.picture;
+                avatar.style.display = 'block';
+            }
+            
+            showMessage(`Welcome, ${currentUser.name}! You can now manage server logs.`, 'success');
+            fetchLogInfo();
+        }
+
+        function signOut() {
+            authToken = null;
+            currentUser = null;
+            localStorage.removeItem('google_token');
+            
+            document.getElementById('main-section').classList.add('hidden');
+            document.getElementById('auth-section').classList.remove('hidden');
+            
+            clearMessages();
+        }
+
+        function showMessage(message, type = 'success') {
+            const messageArea = document.getElementById('message-area');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            messageArea.innerHTML = `<div class="alert ${alertClass}">${message}</div>`;
+        }
+
+        function clearMessages() {
+            document.getElementById('message-area').innerHTML = '';
+        }
+
+        function showError(message) {
+            showMessage(message, 'error');
+        }
+
+        function setLoading(isLoading) {
+            const loadingSection = document.getElementById('loading-section');
+            if (isLoading) {
+                loadingSection.classList.remove('hidden');
+            } else {
+                loadingSection.classList.add('hidden');
+            }
+        }
+
+        async function makeAuthenticatedRequest(url, options = {}) {
+            if (!authToken) {
+                throw new Error('No authentication token');
+            }
+
+            const response = await fetch(url, {
+                ...options,
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json',
+                    ...options.headers,
+                },
+            });
+
+            if (response.status === 401 || response.status === 403) {
+                signOut();
+                throw new Error('Authentication expired or access denied');
+            }
+
+            return response;
+        }
+
+        async function fetchLogInfo() {
+            try {
+                setLoading(true);
+                clearMessages();
+                
+                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/info`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayLogInfo(data.logs);
+                } else {
+                    const errorData = await response.json();
+                    showError(errorData.message || 'Failed to fetch log information');
+                }
+            } catch (err) {
+                showError(err.message || 'Error fetching log information');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        async function fetchBackups() {
+            try {
+                setLoading(true);
+                clearMessages();
+                
+                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/backups`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayBackups(data.backups);
+                } else {
+                    const errorData = await response.json();
+                    showError(errorData.message || 'Failed to fetch backup information');
+                }
+            } catch (err) {
+                showError(err.message || 'Error fetching backup information');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        async function clearLogs() {
+            if (!confirm('Are you sure you want to clear all server logs? Current logs will be saved as .bak files.')) {
+                return;
+            }
+
+            try {
+                setLoading(true);
+                clearMessages();
+                
+                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/clear`, {
+                    method: 'POST',
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showMessage(`✅ ${data.message}`, 'success');
+                    
+                    // Refresh data
+                    await fetchLogInfo();
+                    await fetchBackups();
+                } else {
+                    const errorData = await response.json();
+                    showError(errorData.message || 'Failed to clear logs');
+                }
+            } catch (err) {
+                showError(err.message || 'Error clearing logs');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        async function downloadLog(filename) {
+            try {
+                const response = await makeAuthenticatedRequest(`${API_BASE_URL}/download/${filename}`);
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);

@@ -1,11 +1,12 @@
-// server.cjs
-require('dotenv').config();
+// server/server.cjs - Add this route to your existing server
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const { connectToDatabase, getPool } = require('./config/db.cjs');
 const logger = require('./config/logger.cjs');
 const uploadRoutes = require('./routes/uploadRoutes.cjs');
 const dataRoutes = require('./routes/dataRoutes.cjs');
+const logRoutes = require('./routes/logRoutes.cjs');
 
 const app = express();
 const port = process.env.API_PORT || 3001;
@@ -15,8 +16,9 @@ app.use(cors());
 app.use(express.json());
 
 // --- API Routes ---
-app.use('/api', uploadRoutes); // All routes from uploadRoutes will be prefixed with /api
-app.use('/api', dataRoutes);   // All routes from dataRoutes will be prefixed with /api
+app.use('/api', uploadRoutes);
+app.use('/api', dataRoutes);
+app.use('/api/logs', logRoutes);
 
 // --- General Routes ---
 app.get('/api/db-status', async (req, res) => {
@@ -46,6 +48,31 @@ app.post('/api/log', (req, res) => {
   res.sendStatus(204);
 });
 
+// --- Serve static files from React build (in production) ---
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  
+  // Special route for log management
+  app.get('/managelogs', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+  
+  // All other routes serve the main React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+}
+
+// --- Development: Proxy React dev server ---
+if (process.env.NODE_ENV !== 'production') {
+  // In development, the React dev server handles routing
+  // Just ensure CORS allows requests from localhost:3000
+  
+  app.get('/managelogs', (req, res) => {
+    res.redirect('http://localhost:3000/managelogs');
+  });
+}
+
 // --- Generic Error Handling Middleware ---
 app.use((err, req, res, next) => {
   logger.error('Unhandled Error:', err);
@@ -59,10 +86,12 @@ async function startServer() {
     if (pool) {
         app.listen(port, () => {
             logger.info(`🚀 Server listening on http://localhost:${port}`);
+            logger.info(`📊 Main app: http://localhost:3000`);
+            logger.info(`🗂️ Log management: http://localhost:3000/managelogs`);
         });
     } else {
         logger.error('❌ Server could not start because database connection failed.');
-        process.exit(1); // Exit the process with an error code
+        process.exit(1);
     }
 }
 
