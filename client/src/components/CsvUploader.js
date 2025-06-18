@@ -1,4 +1,7 @@
 // client/src/components/CsvUploader.js
+// with debugging
+
+// client/src/components/CsvUploader.js
 
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
