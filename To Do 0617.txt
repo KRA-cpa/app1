@@ -1,0 +1,24 @@
+To Do:
+
+
+
+2) Upload Completion Date, with Actual or Projected selection (Actual default)
+Template:
+Project - Project/Phase combination should be in re.project_phase_validation
+Phase
+Completion Date (accept month end date only)
+
+
+1) Cut-off Date in Reports should be month end only
+
+3) Upload POC
+a) Implement cut-off date (month end only) for (3b), from Reports Tab [unify Cut-off Date selection]
+b) Based on cut-off date, POC for upload will be set as Actual (type A) or Projected (type P)
+
+4) UI improvements for Upload Data Tab
+===
+
+
+5) Option to Clear server side logs using a separate URL. If possible to implement google login and hardcode the google account that can clear logs. Clearing log logs will be the starting point of the refreshed log
+
+6) Improve Upload and Reports activity shown in server side and recorded to logs to be more human readable and easier to debug, wherever possible. Include all parameters, selection set.

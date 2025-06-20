@@ -2015,3 +2015,1273 @@
 2025-06-20 18:53:51 info: Received request for /api/db-status
 2025-06-20 18:53:51 info: DB status check successful.
 2025-06-20T10:53:51.725Z info: [Frontend] 
+2025-06-20 18:54:51 info: Received request for /api/db-status
+2025-06-20 18:54:51 info: DB status check successful.
+2025-06-20T10:54:51.704Z info: [Frontend] 
+2025-06-20 18:55:51 info: Received request for /api/db-status
+2025-06-20 18:55:51 info: DB status check successful.
+2025-06-20T10:55:51.818Z info: [Frontend] 
+2025-06-20 18:56:51 info: Received request for /api/db-status
+2025-06-20 18:56:51 info: DB status check successful.
+2025-06-20T10:56:51.799Z info: [Frontend] 
+2025-06-20 18:57:51 info: Received request for /api/db-status
+2025-06-20 18:57:51 info: DB status check successful.
+2025-06-20T10:57:51.969Z info: [Frontend] 
+2025-06-20 18:59:55 info: Attempting to create MySQL connection pool...
+2025-06-20 18:59:55 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 18:59:55 info: MySQL Pool ready.
+2025-06-20 18:59:55 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 18:59:55 info: 📊 Main React app: http://localhost:3000
+2025-06-20 18:59:55 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 18:59:55 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:01:57 info: Attempting to create MySQL connection pool...
+2025-06-20 19:01:57 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:01:57 info: MySQL Pool ready.
+2025-06-20 19:01:57 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:01:57 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:01:57 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:01:57 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:02:07 info: Attempting to create MySQL connection pool...
+2025-06-20 19:02:07 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:02:07 info: MySQL Pool ready.
+2025-06-20 19:02:07 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:02:07 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:02:07 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:02:07 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:03:10 info: Attempting to create MySQL connection pool...
+2025-06-20 19:03:10 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:03:10 info: MySQL Pool ready.
+2025-06-20 19:03:10 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:03:10 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:03:10 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:03:10 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:03:51 info: Received request for /api/db-status
+2025-06-20 19:03:51 info: DB status check successful.
+2025-06-20T11:03:51.696Z info: [Frontend] 
+2025-06-20T11:03:51.726Z info: [Frontend] 
+2025-06-20T11:03:51.747Z info: [Frontend] 
+2025-06-20 19:04:44 info: Attempting to create MySQL connection pool...
+2025-06-20 19:04:44 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:04:44 info: MySQL Pool ready.
+2025-06-20 19:04:44 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:04:44 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:04:44 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:04:44 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:04:51 info: Received request for /api/db-status
+2025-06-20 19:04:51 info: DB status check successful.
+2025-06-20T11:04:51.694Z info: [Frontend] 
+2025-06-20 19:09:56 info: Attempting to create MySQL connection pool...
+2025-06-20 19:09:56 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:09:56 info: MySQL Pool ready.
+2025-06-20 19:09:56 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:09:56 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:09:56 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:09:56 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:10:04 info: Attempting to create MySQL connection pool...
+2025-06-20 19:10:04 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:10:04 info: MySQL Pool ready.
+2025-06-20 19:10:04 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:10:04 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:10:04 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:10:04 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:11:20 info: Attempting to create MySQL connection pool...
+2025-06-20 19:11:20 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:11:20 info: MySQL Pool ready.
+2025-06-20 19:11:20 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:11:20 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:11:20 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:11:20 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:11:51 info: Received request for /api/db-status
+2025-06-20 19:11:51 info: DB status check successful.
+2025-06-20T11:11:51.682Z info: [Frontend] 
+2025-06-20T11:11:51.712Z info: [Frontend] 
+2025-06-20T11:11:51.732Z info: [Frontend] 
+2025-06-20 19:12:27 info: Attempting to create MySQL connection pool...
+2025-06-20 19:12:27 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:12:27 info: MySQL Pool ready.
+2025-06-20 19:12:27 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:12:27 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:12:27 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:12:27 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:15:32 info: Attempting to create MySQL connection pool...
+2025-06-20 19:15:32 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:15:32 info: MySQL Pool ready.
+2025-06-20 19:15:32 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:15:32 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:15:32 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:15:32 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:15:40 info: Attempting to create MySQL connection pool...
+2025-06-20 19:15:40 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:15:40 info: MySQL Pool ready.
+2025-06-20 19:15:40 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:15:40 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:15:40 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:15:40 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:16:37 info: Attempting to create MySQL connection pool...
+2025-06-20 19:16:37 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:16:37 info: MySQL Pool ready.
+2025-06-20 19:16:37 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:16:37 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:16:37 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:16:37 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:16:51 info: Received request for /api/db-status
+2025-06-20 19:16:51 info: DB status check successful.
+2025-06-20T11:16:51.705Z info: [Frontend] 
+2025-06-20T11:16:51.742Z info: [Frontend] 
+2025-06-20T11:16:51.790Z info: [Frontend] 
+2025-06-20 19:16:54 info: Attempting to create MySQL connection pool...
+2025-06-20 19:16:54 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:16:54 info: MySQL Pool ready.
+2025-06-20 19:16:54 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:16:54 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:16:54 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:16:54 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:17:16 info: Attempting to create MySQL connection pool...
+2025-06-20 19:17:17 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:17:17 info: MySQL Pool ready.
+2025-06-20 19:17:17 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:17:17 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:17:17 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:17:17 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:18:04 info: Attempting to create MySQL connection pool...
+2025-06-20 19:18:04 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:18:04 info: MySQL Pool ready.
+2025-06-20 19:18:04 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:18:04 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:18:04 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:18:04 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:18:43 info: Attempting to create MySQL connection pool...
+2025-06-20 19:18:43 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:18:43 info: MySQL Pool ready.
+2025-06-20 19:18:43 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:18:43 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:18:43 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:18:43 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:18:51 info: Received request for /api/db-status
+2025-06-20 19:18:51 info: DB status check successful.
+2025-06-20T11:18:51.767Z info: [Frontend] 
+2025-06-20T11:18:51.793Z info: [Frontend] 
+2025-06-20T11:18:51.822Z info: [Frontend] 
+2025-06-20 19:19:13 info: Attempting to create MySQL connection pool...
+2025-06-20 19:19:13 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:19:13 info: MySQL Pool ready.
+2025-06-20 19:19:13 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:19:13 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:19:13 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:19:13 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:19:18 info: Attempting to create MySQL connection pool...
+2025-06-20 19:19:18 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:19:18 info: MySQL Pool ready.
+2025-06-20 19:19:18 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:19:18 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:19:18 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:19:18 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:21:02 info: Attempting to create MySQL connection pool...
+2025-06-20 19:21:02 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:21:02 info: MySQL Pool ready.
+2025-06-20 19:21:02 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:21:02 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:21:02 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:21:02 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:21:08 info: Attempting to create MySQL connection pool...
+2025-06-20 19:21:08 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:21:08 info: MySQL Pool ready.
+2025-06-20 19:21:08 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:21:08 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:21:08 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:21:08 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:21:39 info: Attempting to create MySQL connection pool...
+2025-06-20 19:21:39 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:21:39 info: MySQL Pool ready.
+2025-06-20 19:21:39 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:21:39 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:21:39 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:21:39 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:21:45 info: Received request for /api/db-status
+2025-06-20 19:21:45 info: DB status check successful.
+2025-06-20T11:21:45.223Z info: [Frontend] 
+2025-06-20T11:21:45.249Z info: [Frontend] 
+2025-06-20T11:21:45.275Z info: [Frontend] 
+2025-06-20 19:21:51 info: Received request for /api/db-status
+2025-06-20 19:21:51 info: DB status check successful.
+2025-06-20T11:21:51.229Z info: [Frontend] 
+2025-06-20 19:21:56 info: Received request for /api/db-status
+2025-06-20 19:21:56 info: DB status check successful.
+2025-06-20T11:21:56.399Z info: [Frontend] 
+2025-06-20T11:21:58.423Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20 19:21:59 info: Received request for /api/db-status
+2025-06-20 19:21:59 info: DB status check successful.
+2025-06-20 19:21:59 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 19:21:59 error: Error: Column count doesn't match value count at row 1
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:277:45)
+    at CsvParser.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-06-20T11:21:59.312Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T11:21:59.376Z error: [Frontend] CSV upload failed (backend error): Failed to save data to the database.
+2025-06-20 19:22:26 info: Received request for /api/db-status
+2025-06-20 19:22:26 info: DB status check successful.
+2025-06-20T11:22:26.390Z info: [Frontend] 
+2025-06-20 19:22:56 info: Received request for /api/db-status
+2025-06-20 19:22:56 info: DB status check successful.
+2025-06-20T11:22:56.671Z info: [Frontend] 
+2025-06-20 19:23:26 info: Received request for /api/db-status
+2025-06-20 19:23:26 info: DB status check successful.
+2025-06-20T11:23:26.675Z info: [Frontend] 
+2025-06-20 19:23:58 info: Received request for /api/db-status
+2025-06-20 19:23:58 info: DB status check successful.
+2025-06-20T11:23:58.791Z info: [Frontend] 
+2025-06-20 19:24:26 info: Received request for /api/db-status
+2025-06-20 19:24:26 info: DB status check successful.
+2025-06-20T11:24:26.670Z info: [Frontend] 
+2025-06-20 19:24:56 info: Received request for /api/db-status
+2025-06-20 19:24:56 info: DB status check successful.
+2025-06-20T11:24:56.381Z info: [Frontend] 
+2025-06-20 19:24:56 info: Received request for /api/db-status
+2025-06-20 19:24:56 info: DB status check successful.
+2025-06-20 19:24:56 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 19:24:56 error: Error: Column count doesn't match value count at row 1
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:277:45)
+    at CsvParser.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-06-20T11:24:56.853Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T11:24:56.896Z error: [Frontend] CSV upload failed (backend error): Failed to save data to the database.
+2025-06-20 19:25:06 info: Attempting to create MySQL connection pool...
+2025-06-20 19:25:06 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:25:06 info: MySQL Pool ready.
+2025-06-20 19:25:06 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:25:06 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:25:06 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:25:06 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:25:11 info: Received request for /api/db-status
+2025-06-20 19:25:11 info: DB status check successful.
+2025-06-20T11:25:11.286Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20 19:25:11 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 19:25:11 info: Database insertion completed - Affected rows: 1, Changed rows: 0
+2025-06-20T11:25:11.358Z info: [Frontend] CSV upload successful: Book1.csv
+2025-06-20 19:25:15 info: Received request for /api/db-status
+2025-06-20 19:25:15 info: DB status check successful.
+2025-06-20T11:25:15.603Z info: [Frontend] 
+2025-06-20T11:25:15.616Z info: [Frontend] 
+2025-06-20T11:25:15.655Z info: [Frontend] 
+2025-06-20 19:25:26 info: Received request for /api/db-status
+2025-06-20 19:25:26 info: DB status check successful.
+2025-06-20T11:25:26.380Z info: [Frontend] 
+2025-06-20 19:25:56 info: Received request for /api/db-status
+2025-06-20 19:25:56 info: DB status check successful.
+2025-06-20T11:25:56.682Z info: [Frontend] 
+2025-06-20 19:26:26 info: Received request for /api/db-status
+2025-06-20 19:26:26 info: DB status check successful.
+2025-06-20T11:26:26.672Z info: [Frontend] 
+2025-06-20 19:27:51 info: Received request for /api/db-status
+2025-06-20 19:27:51 info: DB status check successful.
+2025-06-20T11:27:51.728Z info: [Frontend] 
+2025-06-20 19:28:51 info: Received request for /api/db-status
+2025-06-20 19:28:51 info: DB status check successful.
+2025-06-20T11:28:51.673Z info: [Frontend] 
+2025-06-20 19:29:51 info: Received request for /api/db-status
+2025-06-20 19:29:51 info: DB status check successful.
+2025-06-20T11:29:51.771Z info: [Frontend] 
+2025-06-20 19:30:51 info: Received request for /api/db-status
+2025-06-20 19:30:51 info: DB status check successful.
+2025-06-20T11:30:51.754Z info: [Frontend] 
+2025-06-20 19:31:51 info: Received request for /api/db-status
+2025-06-20 19:31:51 info: DB status check successful.
+2025-06-20T11:31:51.676Z info: [Frontend] 
+2025-06-20 19:32:32 info: Attempting to create MySQL connection pool...
+2025-06-20 19:32:32 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:32:32 info: MySQL Pool ready.
+2025-06-20 19:32:32 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:32:32 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:32:32 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:32:32 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:32:43 info: Received request for /api/db-status
+2025-06-20 19:32:43 info: DB status check successful.
+2025-06-20T11:32:43.734Z info: [Frontend] 
+2025-06-20 19:32:47 info: Received request for /api/db-status
+2025-06-20 19:32:47 info: DB status check successful.
+2025-06-20 19:32:47 info: Received request for /api/db-status
+2025-06-20 19:32:47 info: DB status check successful.
+2025-06-20T11:32:47.675Z info: [Frontend] 
+2025-06-20T11:32:47.678Z info: [Frontend] 
+2025-06-20T11:32:47.743Z info: [Frontend] 
+2025-06-20T11:32:47.806Z info: [Frontend] 
+2025-06-20T11:33:02.820Z info: [Frontend] 
+2025-06-20T11:33:03.139Z info: [Frontend] 
+2025-06-20T11:33:03.396Z info: [Frontend] 
+2025-06-20 19:33:17 info: Received request for /api/db-status
+2025-06-20 19:33:17 info: DB status check successful.
+2025-06-20T11:33:17.679Z info: [Frontend] 
+2025-06-20 19:33:47 info: Received request for /api/db-status
+2025-06-20 19:33:47 info: DB status check successful.
+2025-06-20T11:33:47.685Z info: [Frontend] 
+2025-06-20 19:34:17 info: Received request for /api/db-status
+2025-06-20 19:34:17 info: DB status check successful.
+2025-06-20T11:34:17.675Z info: [Frontend] 
+2025-06-20 19:34:48 info: Received request for /api/db-status
+2025-06-20 19:34:48 info: DB status check successful.
+2025-06-20T11:34:48.680Z info: [Frontend] 
+2025-06-20 19:35:18 info: Received request for /api/db-status
+2025-06-20 19:35:18 info: DB status check successful.
+2025-06-20T11:35:18.668Z info: [Frontend] 
+2025-06-20 19:35:48 info: Received request for /api/db-status
+2025-06-20 19:35:48 info: DB status check successful.
+2025-06-20T11:35:48.677Z info: [Frontend] 
+2025-06-20 19:36:51 info: Received request for /api/db-status
+2025-06-20 19:36:51 info: DB status check successful.
+2025-06-20T11:36:51.672Z info: [Frontend] 
+2025-06-20 19:37:51 info: Received request for /api/db-status
+2025-06-20 19:37:51 info: DB status check successful.
+2025-06-20T11:37:51.675Z info: [Frontend] 
+2025-06-20 19:38:51 info: Received request for /api/db-status
+2025-06-20 19:38:51 info: DB status check successful.
+2025-06-20T11:38:51.683Z info: [Frontend] 
+2025-06-20 19:38:54 info: Received request for /api/db-status
+2025-06-20 19:38:54 info: DB status check successful.
+2025-06-20T11:38:54.593Z info: [Frontend] 
+2025-06-20T11:39:03.805Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20T11:39:10.778Z info: [Frontend] 
+2025-06-20 19:39:14 info: Received request for /api/db-status
+2025-06-20 19:39:14 info: DB status check successful.
+2025-06-20 19:39:14 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20T11:39:14.674Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20T11:39:14.725Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 19:39:17 info: Received request for /api/db-status
+2025-06-20 19:39:17 info: DB status check successful.
+2025-06-20T11:39:17.655Z info: [Frontend] 
+2025-06-20 19:39:47 info: Received request for /api/db-status
+2025-06-20 19:39:47 info: DB status check successful.
+2025-06-20T11:39:47.677Z info: [Frontend] 
+2025-06-20 19:40:18 info: Received request for /api/db-status
+2025-06-20 19:40:18 info: DB status check successful.
+2025-06-20T11:40:18.652Z info: [Frontend] 
+2025-06-20 19:40:48 info: Received request for /api/db-status
+2025-06-20 19:40:48 info: DB status check successful.
+2025-06-20T11:40:48.667Z info: [Frontend] 
+2025-06-20 19:40:51 info: Received request for /api/db-status
+2025-06-20 19:40:51 info: DB status check successful.
+2025-06-20T11:40:51.260Z info: [Frontend] 
+2025-06-20T11:40:51.273Z info: [Frontend] 
+2025-06-20T11:40:51.284Z info: [Frontend] 
+2025-06-20 19:41:17 info: Received request for /api/db-status
+2025-06-20 19:41:17 info: DB status check successful.
+2025-06-20T11:41:17.666Z info: [Frontend] 
+2025-06-20 19:41:47 info: Received request for /api/db-status
+2025-06-20 19:41:47 info: DB status check successful.
+2025-06-20T11:41:47.664Z info: [Frontend] 
+2025-06-20 19:42:17 info: Received request for /api/db-status
+2025-06-20 19:42:17 info: DB status check successful.
+2025-06-20T11:42:17.663Z info: [Frontend] 
+2025-06-20 19:42:51 info: Received request for /api/db-status
+2025-06-20 19:42:51 info: DB status check successful.
+2025-06-20T11:42:51.665Z info: [Frontend] 
+2025-06-20 19:43:51 info: Received request for /api/db-status
+2025-06-20 19:43:51 info: DB status check successful.
+2025-06-20T11:43:51.668Z info: [Frontend] 
+2025-06-20 19:44:24 info: Attempting to create MySQL connection pool...
+2025-06-20 19:44:24 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:44:24 info: MySQL Pool ready.
+2025-06-20 19:44:24 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:44:24 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:44:24 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:44:24 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:44:30 info: Received request for /api/db-status
+2025-06-20 19:44:30 info: DB status check successful.
+2025-06-20T11:44:30.840Z info: [Frontend] 
+2025-06-20 19:44:32 info: Received request for /api/db-status
+2025-06-20 19:44:32 info: DB status check successful.
+2025-06-20T11:44:32.865Z info: [Frontend] 
+2025-06-20T11:44:37.896Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 19:44:39 info: Received request for /api/db-status
+2025-06-20 19:44:39 info: DB status check successful.
+2025-06-20T11:44:39.067Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20 19:44:39 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:44:39 info: Database insertion completed - Affected rows: 95, Changed rows: 0
+2025-06-20T11:44:39.265Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 19:44:47 info: Received request for /api/db-status
+2025-06-20 19:44:47 info: DB status check successful.
+2025-06-20T11:44:47.676Z info: [Frontend] 
+2025-06-20 19:44:55 info: Received request for /api/db-status
+2025-06-20 19:44:55 info: DB status check successful.
+2025-06-20T11:44:55.350Z info: [Frontend] 
+2025-06-20T11:44:55.366Z info: [Frontend] 
+2025-06-20T11:44:55.381Z info: [Frontend] 
+2025-06-20T11:45:05.012Z info: [Frontend] 
+2025-06-20T11:45:05.039Z info: [Frontend] 
+2025-06-20T11:45:05.049Z info: [Frontend] 
+2025-06-20T11:45:05.052Z info: [Frontend] 
+2025-06-20T11:45:05.063Z info: [Frontend] 
+2025-06-20T11:45:07.430Z info: [Frontend] 
+2025-06-20T11:45:11.002Z info: [Frontend] 
+2025-06-20T11:45:12.657Z info: [Frontend] 
+2025-06-20 19:45:17 info: Received request for /api/db-status
+2025-06-20 19:45:17 info: DB status check successful.
+2025-06-20T11:45:17.674Z info: [Frontend] 
+2025-06-20T11:45:30.848Z info: [Frontend] 
+2025-06-20T11:45:32.495Z info: [Frontend] 
+2025-06-20T11:45:42.243Z info: [Frontend] 
+2025-06-20T11:45:43.854Z info: [Frontend] 
+2025-06-20T11:45:46.039Z info: [Frontend] 
+2025-06-20 19:45:47 info: Received request for /api/db-status
+2025-06-20 19:45:47 info: DB status check successful.
+2025-06-20T11:45:47.669Z info: [Frontend] 
+2025-06-20 19:46:17 info: Received request for /api/db-status
+2025-06-20 19:46:17 info: DB status check successful.
+2025-06-20T11:46:17.676Z info: [Frontend] 
+2025-06-20 19:46:48 info: Received request for /api/db-status
+2025-06-20 19:46:48 info: DB status check successful.
+2025-06-20T11:46:48.657Z info: [Frontend] 
+2025-06-20 19:47:51 info: Received request for /api/db-status
+2025-06-20 19:47:51 info: DB status check successful.
+2025-06-20T11:47:51.669Z info: [Frontend] 
+2025-06-20 19:48:51 info: Received request for /api/db-status
+2025-06-20 19:48:51 info: DB status check successful.
+2025-06-20T11:48:51.671Z info: [Frontend] 
+2025-06-20 19:49:51 info: Received request for /api/db-status
+2025-06-20 19:49:51 info: DB status check successful.
+2025-06-20T11:49:51.660Z info: [Frontend] 
+2025-06-20 19:50:51 info: Received request for /api/db-status
+2025-06-20 19:50:51 info: DB status check successful.
+2025-06-20T11:50:51.657Z info: [Frontend] 
+2025-06-20 19:51:51 info: Received request for /api/db-status
+2025-06-20 19:51:51 info: DB status check successful.
+2025-06-20T11:51:51.653Z info: [Frontend] 
+2025-06-20 19:52:51 info: Received request for /api/db-status
+2025-06-20 19:52:51 info: DB status check successful.
+2025-06-20T11:52:51.695Z info: [Frontend] 
+2025-06-20 19:53:50 info: Received request for /api/db-status
+2025-06-20 19:53:50 info: DB status check successful.
+2025-06-20T11:53:50.044Z info: [Frontend] 
+2025-06-20 19:54:08 info: Attempting to create MySQL connection pool...
+2025-06-20 19:54:08 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:54:08 info: MySQL Pool ready.
+2025-06-20 19:54:08 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:54:08 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:54:08 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:54:08 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:54:13 info: Received request for /api/db-status
+2025-06-20 19:54:13 info: DB status check successful.
+2025-06-20T11:54:13.930Z info: [Frontend] 
+2025-06-20 19:54:17 info: Received request for /api/db-status
+2025-06-20 19:54:17 info: DB status check successful.
+2025-06-20 19:54:17 info: Received request for /api/db-status
+2025-06-20 19:54:17 info: DB status check successful.
+2025-06-20T11:54:17.021Z info: [Frontend] 
+2025-06-20T11:54:17.028Z info: [Frontend] 
+2025-06-20T11:54:20.954Z info: [Frontend] 
+2025-06-20T11:54:26.165Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 19:54:27 info: Received request for /api/db-status
+2025-06-20 19:54:27 info: DB status check successful.
+2025-06-20 19:54:27 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/11: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/12: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/2: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/3: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/4: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/5: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/6: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/7: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/8: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/9: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/10: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/2: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/3: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/4: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/5: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/7: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/8: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/9: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/12: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/2: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/3: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/4: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/5: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/6: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/7: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/8: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/9: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/11: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/12: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/2: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/3: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/4: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/5: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/7: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/8: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/10: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/11: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/12: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/2: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/3: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/4: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/5: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/6: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/7: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/8: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/9: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/10: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/11: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2022/12: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2019/11: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/6: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2018/10: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2020/10: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/6: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: POC Type determined for P12- 2021/9: A (cutoff: 2025-05-31)
+2025-06-20 19:54:27 info: Database insertion completed - Affected rows: 55, Changed rows: 0
+2025-06-20T11:54:27.589Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20T11:54:27.752Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 19:54:37 info: Received request for /api/db-status
+2025-06-20 19:54:37 info: DB status check successful.
+2025-06-20T11:54:37.160Z info: [Frontend] 
+2025-06-20T11:54:37.175Z info: [Frontend] 
+2025-06-20T11:54:37.261Z info: [Frontend] 
+2025-06-20T11:54:37.262Z info: [Frontend] 
+2025-06-20T11:54:37.263Z info: [Frontend] 
+2025-06-20T11:54:37.263Z info: [Frontend] 
+2025-06-20 19:54:47 info: Received request for /api/db-status
+2025-06-20 19:54:47 info: DB status check successful.
+2025-06-20T11:54:47.019Z info: [Frontend] 
+2025-06-20 19:55:17 info: Received request for /api/db-status
+2025-06-20 19:55:17 info: DB status check successful.
+2025-06-20T11:55:17.658Z info: [Frontend] 
+2025-06-20 19:55:47 info: Received request for /api/db-status
+2025-06-20 19:55:47 info: DB status check successful.
+2025-06-20T11:55:47.667Z info: [Frontend] 
+2025-06-20 19:56:17 info: Received request for /api/db-status
+2025-06-20 19:56:17 info: DB status check successful.
+2025-06-20T11:56:17.655Z info: [Frontend] 
+2025-06-20 19:56:47 info: Received request for /api/db-status
+2025-06-20 19:56:47 info: DB status check successful.
+2025-06-20T11:56:47.662Z info: [Frontend] 
+2025-06-20 19:57:17 info: Received request for /api/db-status
+2025-06-20 19:57:17 info: DB status check successful.
+2025-06-20T11:57:17.672Z info: [Frontend] 
+2025-06-20T11:57:40.761Z info: [Frontend] 
+2025-06-20 19:57:47 info: Received request for /api/db-status
+2025-06-20 19:57:47 info: DB status check successful.
+2025-06-20T11:57:47.661Z info: [Frontend] 
+2025-06-20 19:58:17 info: Received request for /api/db-status
+2025-06-20 19:58:17 info: DB status check successful.
+2025-06-20T11:58:17.650Z info: [Frontend] 
+2025-06-20 19:58:28 info: Attempting to create MySQL connection pool...
+2025-06-20 19:58:28 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 19:58:28 info: MySQL Pool ready.
+2025-06-20 19:58:28 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 19:58:28 info: 📊 Main React app: http://localhost:3000
+2025-06-20 19:58:28 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 19:58:28 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 19:58:36 info: Received request for /api/db-status
+2025-06-20 19:58:36 info: DB status check successful.
+2025-06-20 19:58:36 info: Received request for /api/db-status
+2025-06-20 19:58:36 info: DB status check successful.
+2025-06-20T11:58:36.179Z info: [Frontend] 
+2025-06-20T11:58:36.199Z info: [Frontend] 
+2025-06-20T11:58:36.240Z info: [Frontend] 
+2025-06-20T11:58:36.245Z info: [Frontend] 
+2025-06-20T11:58:36.857Z info: [Frontend] 
+2025-06-20T11:58:36.857Z info: [Frontend] 
+2025-06-20T11:58:36.858Z info: [Frontend] 
+2025-06-20T11:58:39.904Z info: [Frontend] 
+2025-06-20T11:58:40.137Z info: [Frontend] 
+2025-06-20T11:58:40.138Z info: [Frontend] 
+2025-06-20T11:58:40.210Z info: [Frontend] 
+2025-06-20T11:58:45.374Z info: [Frontend] 
+2025-06-20 19:59:06 info: Received request for /api/db-status
+2025-06-20 19:59:06 info: DB status check successful.
+2025-06-20T11:59:06.161Z info: [Frontend] 
+2025-06-20 19:59:36 info: Received request for /api/db-status
+2025-06-20 19:59:36 info: DB status check successful.
+2025-06-20T11:59:36.809Z info: [Frontend] 
+2025-06-20 20:00:06 info: Received request for /api/db-status
+2025-06-20 20:00:06 info: DB status check successful.
+2025-06-20T12:00:06.682Z info: [Frontend] 
+2025-06-20 20:00:36 info: Received request for /api/db-status
+2025-06-20 20:00:36 info: DB status check successful.
+2025-06-20T12:00:36.652Z info: [Frontend] 
+2025-06-20 20:01:06 info: Received request for /api/db-status
+2025-06-20 20:01:06 info: DB status check successful.
+2025-06-20T12:01:06.673Z info: [Frontend] 
+2025-06-20 20:01:28 info: Received request for /api/db-status
+2025-06-20 20:01:28 info: DB status check successful.
+2025-06-20T12:01:29.008Z info: [Frontend] 
+2025-06-20T12:01:34.947Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 20:01:36 info: Received request for /api/db-status
+2025-06-20 20:01:36 info: DB status check successful.
+2025-06-20T12:01:36.160Z info: [Frontend] 
+2025-06-20 20:01:36 info: Received request for /api/db-status
+2025-06-20 20:01:36 info: DB status check successful.
+2025-06-20 20:01:36 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/2: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/11: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/12: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/2: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/3: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/4: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/5: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/6: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/7: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/8: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/9: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/10: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/11: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2019/12: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/2: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/3: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/4: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/5: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/6: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/7: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/8: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/9: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/10: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/11: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2020/12: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/2: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/3: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/4: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/5: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/6: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/7: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/8: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/9: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/10: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/8: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/7: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/9: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/10: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/11: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2021/12: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/3: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/4: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/5: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/6: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/7: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/9: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/10: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/11: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/12: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/3: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/4: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/5: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2018/6: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/2: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: POC Type determined for P12- 2022/8: A (cutoff: 2025-05-31)
+2025-06-20 20:01:36 info: Database insertion completed - Affected rows: 95, Changed rows: 0
+2025-06-20T12:01:36.236Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20T12:01:36.525Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 20:01:47 info: Received request for /api/db-status
+2025-06-20 20:01:47 info: DB status check successful.
+2025-06-20T12:01:47.955Z info: [Frontend] 
+2025-06-20T12:01:47.964Z info: [Frontend] 
+2025-06-20T12:01:48.094Z info: [Frontend] 
+2025-06-20T12:01:48.094Z info: [Frontend] 
+2025-06-20T12:01:48.095Z info: [Frontend] 
+2025-06-20T12:01:48.095Z info: [Frontend] 
+2025-06-20 20:02:06 info: Received request for /api/db-status
+2025-06-20 20:02:06 info: DB status check successful.
+2025-06-20T12:02:06.741Z info: [Frontend] 
+2025-06-20 20:02:36 info: Received request for /api/db-status
+2025-06-20 20:02:36 info: DB status check successful.
+2025-06-20T12:02:36.659Z info: [Frontend] 
+2025-06-20 20:03:51 info: Received request for /api/db-status
+2025-06-20 20:03:51 info: DB status check successful.
+2025-06-20T12:03:51.654Z info: [Frontend] 
+2025-06-20 20:04:51 info: Received request for /api/db-status
+2025-06-20 20:04:51 info: DB status check successful.
+2025-06-20T12:04:51.667Z info: [Frontend] 
+2025-06-20 20:05:15 info: Received request for /api/db-status
+2025-06-20 20:05:15 info: DB status check successful.
+2025-06-20T12:05:15.323Z info: [Frontend] 
+2025-06-20 20:05:36 info: Received request for /api/db-status
+2025-06-20 20:05:36 info: DB status check successful.
+2025-06-20T12:05:36.163Z info: [Frontend] 
+2025-06-20 20:06:06 info: Received request for /api/db-status
+2025-06-20 20:06:06 info: DB status check successful.
+2025-06-20T12:06:06.653Z info: [Frontend] 
+2025-06-20 20:06:36 info: Received request for /api/db-status
+2025-06-20 20:06:36 info: DB status check successful.
+2025-06-20T12:06:36.659Z info: [Frontend] 
+2025-06-20 20:07:51 info: Received request for /api/db-status
+2025-06-20 20:07:51 info: DB status check successful.
+2025-06-20T12:07:51.653Z info: [Frontend] 
+2025-06-20 20:08:51 info: Received request for /api/db-status
+2025-06-20 20:08:51 info: DB status check successful.
+2025-06-20T12:08:51.652Z info: [Frontend] 
+2025-06-20 20:09:51 info: Received request for /api/db-status
+2025-06-20 20:09:51 info: DB status check successful.
+2025-06-20T12:09:51.667Z info: [Frontend] 
+2025-06-20 20:10:35 info: Received request for /api/db-status
+2025-06-20 20:10:35 info: DB status check successful.
+2025-06-20T12:10:35.300Z info: [Frontend] 
+2025-06-20 20:10:37 info: Received request for /api/db-status
+2025-06-20 20:10:37 info: DB status check successful.
+2025-06-20T12:10:37.471Z info: [Frontend] 
+2025-06-20T12:10:42.145Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 20:10:43 info: Received request for /api/db-status
+2025-06-20 20:10:43 info: DB status check successful.
+2025-06-20 20:10:43 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/2: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/3: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/4: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/5: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/6: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/7: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/8: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/11: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/12: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/2: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/3: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/4: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/5: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/6: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/8: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/9: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/10: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/12: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/2: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/4: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/5: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/6: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/8: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/9: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/10: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/11: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/12: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/2: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/3: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/5: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/6: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/7: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/9: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2018/10: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/7: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2019/11: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/3: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2020/7: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/4: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/8: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/9: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/10: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/11: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2021/12: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/2: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/3: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/4: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/5: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/6: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/7: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/8: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/10: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/11: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/12: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: POC Type determined for P12- 2022/9: A (cutoff: 2025-05-31)
+2025-06-20 20:10:43 info: Database insertion completed - Affected rows: 99, Changed rows: 0
+2025-06-20T12:10:43.265Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20T12:10:43.352Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 20:11:06 info: Received request for /api/db-status
+2025-06-20 20:11:06 info: DB status check successful.
+2025-06-20T12:11:06.659Z info: [Frontend] 
+2025-06-20 20:11:36 info: Received request for /api/db-status
+2025-06-20 20:11:36 info: DB status check successful.
+2025-06-20T12:11:36.661Z info: [Frontend] 
+2025-06-20 20:11:41 info: Received request for /api/db-status
+2025-06-20 20:11:41 info: DB status check successful.
+2025-06-20T12:11:41.732Z info: [Frontend] 
+2025-06-20T12:11:41.757Z info: [Frontend] 
+2025-06-20T12:11:41.971Z info: [Frontend] 
+2025-06-20T12:11:42.132Z info: [Frontend] 
+2025-06-20T12:11:42.133Z info: [Frontend] 
+2025-06-20T12:11:42.133Z info: [Frontend] 
+2025-06-20T12:11:53.917Z info: [Frontend] 
+2025-06-20T12:12:00.313Z info: [Frontend] 
+2025-06-20T12:12:02.343Z info: [Frontend] 
+2025-06-20T12:12:03.735Z info: [Frontend] 
+2025-06-20 20:12:06 info: Received request for /api/db-status
+2025-06-20 20:12:06 info: DB status check successful.
+2025-06-20T12:12:06.159Z info: [Frontend] 
+2025-06-20 20:12:36 info: Received request for /api/db-status
+2025-06-20 20:12:36 info: DB status check successful.
+2025-06-20T12:12:36.649Z info: [Frontend] 
+2025-06-20 20:13:06 info: Received request for /api/db-status
+2025-06-20 20:13:06 info: DB status check successful.
+2025-06-20T12:13:06.658Z info: [Frontend] 
+2025-06-20 20:13:36 info: Received request for /api/db-status
+2025-06-20 20:13:36 info: DB status check successful.
+2025-06-20T12:13:36.654Z info: [Frontend] 
+2025-06-20 20:14:06 info: Received request for /api/db-status
+2025-06-20 20:14:06 info: DB status check successful.
+2025-06-20T12:14:06.157Z info: [Frontend] 
+2025-06-20 20:14:36 info: Received request for /api/db-status
+2025-06-20 20:14:36 info: DB status check successful.
+2025-06-20T12:14:36.648Z info: [Frontend] 
+2025-06-20T12:15:04.545Z info: [Frontend] 
+2025-06-20 20:15:06 info: Received request for /api/db-status
+2025-06-20 20:15:06 info: DB status check successful.
+2025-06-20T12:15:06.164Z info: [Frontend] 
+2025-06-20 20:15:07 info: Received request for /api/db-status
+2025-06-20 20:15:07 info: DB status check successful.
+2025-06-20T12:15:07.804Z info: [Frontend] 
+2025-06-20T12:15:13.292Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 20:15:14 info: Received request for /api/db-status
+2025-06-20 20:15:14 info: DB status check successful.
+2025-06-20T12:15:14.247Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20 20:15:14 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/2: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/3: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/4: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/5: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/6: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/7: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/8: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/11: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/2: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/3: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/4: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/5: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/6: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/7: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/8: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/9: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/10: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/2: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/3: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/4: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/5: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/6: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/7: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/8: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/9: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/10: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/11: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/12: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/9: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/10: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2018/12: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/11: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2019/12: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/2: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/3: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/4: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/5: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/6: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/7: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/8: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/9: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/10: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/11: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2021/12: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/2: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/3: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/5: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/6: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/8: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/9: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/10: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/12: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/4: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/7: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: POC Type determined for P12- 2022/11: A (cutoff: 2025-05-31)
+2025-06-20 20:15:14 info: Database insertion completed - Affected rows: 50, Changed rows: 0
+2025-06-20T12:15:14.332Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 20:15:36 info: Received request for /api/db-status
+2025-06-20 20:15:36 info: DB status check successful.
+2025-06-20T12:15:36.154Z info: [Frontend] 
+2025-06-20 20:16:06 info: Received request for /api/db-status
+2025-06-20 20:16:06 info: DB status check successful.
+2025-06-20T12:16:06.647Z info: [Frontend] 
+2025-06-20 20:16:36 info: Received request for /api/db-status
+2025-06-20 20:16:36 info: DB status check successful.
+2025-06-20T12:16:36.656Z info: [Frontend] 
+2025-06-20 20:17:06 info: Received request for /api/db-status
+2025-06-20 20:17:06 info: DB status check successful.
+2025-06-20T12:17:06.654Z info: [Frontend] 
+2025-06-20 20:17:36 info: Received request for /api/db-status
+2025-06-20 20:17:36 info: DB status check successful.
+2025-06-20T12:17:36.652Z info: [Frontend] 
+2025-06-20 20:18:06 info: Received request for /api/db-status
+2025-06-20 20:18:06 info: DB status check successful.
+2025-06-20T12:18:06.661Z info: [Frontend] 
+2025-06-20 20:18:51 info: Received request for /api/db-status
+2025-06-20 20:18:51 info: DB status check successful.
+2025-06-20T12:18:51.697Z info: [Frontend] 
+2025-06-20 20:19:28 info: Received request for /api/db-status
+2025-06-20 20:19:28 info: DB status check successful.
+2025-06-20T12:19:28.022Z info: [Frontend] 
+2025-06-20T12:19:32.617Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 20:19:34 info: Received request for /api/db-status
+2025-06-20 20:19:34 info: DB status check successful.
+2025-06-20 20:19:34 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/3: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/2: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/4: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/5: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/6: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/7: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/8: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/11: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/3: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/5: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/6: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/7: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/8: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/9: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/10: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/11: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/2: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/3: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/4: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/5: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/6: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/7: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/8: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/9: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/10: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/11: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2020/12: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/2: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/3: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/4: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/5: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/6: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/9: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/10: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/12: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/9: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/10: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2018/12: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/2: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/4: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2019/12: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/7: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/8: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2021/11: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/2: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/3: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/4: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/5: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/6: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/8: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/9: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/10: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/11: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/12: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: POC Type determined for P12- 2022/7: A (cutoff: 2025-05-31)
+2025-06-20 20:19:34 info: Database insertion completed - Affected rows: 50, Changed rows: 0
+2025-06-20T12:19:34.326Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20T12:19:34.412Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 20:19:36 info: Received request for /api/db-status
+2025-06-20 20:19:36 info: DB status check successful.
+2025-06-20T12:19:36.154Z info: [Frontend] 
+2025-06-20 20:20:00 info: Attempting to create MySQL connection pool...
+2025-06-20 20:20:01 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 20:20:01 info: MySQL Pool ready.
+2025-06-20 20:20:01 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 20:20:01 info: 📊 Main React app: http://localhost:3000
+2025-06-20 20:20:01 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 20:20:01 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 20:20:06 info: Received request for /api/db-status
+2025-06-20 20:20:06 info: DB status check successful.
+2025-06-20T12:20:06.169Z info: [Frontend] 
+2025-06-20T12:20:08.157Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 20:20:09 info: Received request for /api/db-status
+2025-06-20 20:20:09 info: DB status check successful.
+2025-06-20 20:20:09 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: Records prepared for insert: 1
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/11: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/12: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/2: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/3: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/4: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/5: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/6: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/7: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/8: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/9: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/10: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/11: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2019/12: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/2: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/3: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/4: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/2: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/3: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/4: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/5: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/9: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/10: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/6: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/5: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/6: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/7: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/8: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/9: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/10: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/11: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2020/12: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/2: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/3: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/4: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/5: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/6: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/8: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/9: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/11: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/12: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/2: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/3: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/4: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/5: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/6: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/7: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/8: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/9: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/10: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/11: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2022/12: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/7: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2018/8: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/7: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: POC Type determined for P12- 2021/10: A (cutoff: 2025-05-31)
+2025-06-20 20:20:09 info: Database insertion completed - Affected rows: 50, Changed rows: 0
+2025-06-20T12:20:09.483Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20T12:20:09.631Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 20:20:36 info: Received request for /api/db-status
+2025-06-20 20:20:36 info: DB status check successful.
+2025-06-20T12:20:36.653Z info: [Frontend] 
+2025-06-20 20:21:06 info: Received request for /api/db-status
+2025-06-20 20:21:06 info: DB status check successful.
+2025-06-20T12:21:06.658Z info: [Frontend] 
+2025-06-20 20:21:51 info: Received request for /api/db-status
+2025-06-20 20:21:51 info: DB status check successful.
+2025-06-20T12:21:51.650Z info: [Frontend] 
+2025-06-20 20:22:51 info: Received request for /api/db-status
+2025-06-20 20:22:51 info: DB status check successful.
+2025-06-20T12:22:51.724Z info: [Frontend] 
+2025-06-20 20:23:51 info: Received request for /api/db-status
+2025-06-20 20:23:51 info: DB status check successful.
+2025-06-20T12:23:51.739Z info: [Frontend] 
+2025-06-20 20:24:51 info: Received request for /api/db-status
+2025-06-20 20:24:51 info: DB status check successful.
+2025-06-20T12:24:51.666Z info: [Frontend] 
+2025-06-20 20:25:51 info: Received request for /api/db-status
+2025-06-20 20:25:51 info: DB status check successful.
+2025-06-20T12:25:51.648Z info: [Frontend] 
+2025-06-20 20:26:51 info: Received request for /api/db-status
+2025-06-20 20:26:51 info: DB status check successful.
+2025-06-20T12:26:51.655Z info: [Frontend] 
+2025-06-20 20:27:51 info: Received request for /api/db-status
+2025-06-20 20:27:51 info: DB status check successful.
+2025-06-20T12:27:51.667Z info: [Frontend] 
+2025-06-20 20:28:51 info: Received request for /api/db-status
+2025-06-20 20:28:51 info: DB status check successful.
+2025-06-20T12:28:51.664Z info: [Frontend] 
+2025-06-20 20:29:51 info: Received request for /api/db-status
+2025-06-20 20:29:51 info: DB status check successful.
+2025-06-20T12:29:51.656Z info: [Frontend] 
+2025-06-20 20:30:51 info: Received request for /api/db-status
+2025-06-20 20:30:51 info: DB status check successful.
+2025-06-20T12:30:51.674Z info: [Frontend] 
+2025-06-20 20:31:51 info: Received request for /api/db-status
+2025-06-20 20:31:51 info: DB status check successful.
+2025-06-20T12:31:51.667Z info: [Frontend] 
+2025-06-20 20:32:27 info: Received request for /api/db-status
+2025-06-20 20:32:27 info: DB status check successful.
+2025-06-20T12:32:27.467Z info: [Frontend] 
+2025-06-20 20:32:37 info: Attempting to create MySQL connection pool...
+2025-06-20 20:32:37 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 20:32:37 info: MySQL Pool ready.
+2025-06-20 20:32:37 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 20:32:37 info: 📊 Main React app: http://localhost:3000
+2025-06-20 20:32:37 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 20:32:37 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 20:32:37 info: Received request for /api/db-status
+2025-06-20 20:32:37 info: DB status check successful.
+2025-06-20T12:32:37.947Z info: [Frontend] 
+2025-06-20 20:32:44 info: Received request for /api/db-status
+2025-06-20 20:32:44 info: DB status check successful.
+2025-06-20 20:32:44 info: Received request for /api/db-status
+2025-06-20 20:32:44 info: DB status check successful.
+2025-06-20T12:32:44.703Z info: [Frontend] 
+2025-06-20T12:32:44.706Z info: [Frontend] 
+2025-06-20T12:32:47.657Z info: [Frontend] 
+2025-06-20T12:32:59.352Z info: [Frontend] CSV file selected: P12.csv
+2025-06-20 20:33:05 info: Received request for /api/db-status
+2025-06-20 20:33:05 info: DB status check successful.
+2025-06-20T12:33:05.662Z info: [Frontend] Starting CSV upload: P12.csv
+2025-06-20 20:33:05 info: Upload request received - Option: poc, Cocode: MCTI, CompletionType: undefined, CutoffDate: 2025-05-31
+2025-06-20 20:33:05 info: Starting CSV parsing...
+2025-06-20 20:33:05 info: CSV parsed successfully. Processing 60 data rows...
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/1: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/2: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/3: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/4: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/5: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/6: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/7: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/8: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/9: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/10: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/11: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2018/12: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/1: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/2: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/3: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/4: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/5: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/6: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/7: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/8: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/9: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/10: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/11: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2019/12: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/1: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/2: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/3: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/4: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/5: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/6: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/7: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/8: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/9: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/10: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/11: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2020/12: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/1: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/2: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/3: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/4: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/5: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/6: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/7: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/8: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/9: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/10: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/11: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2021/12: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/1: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/2: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/3: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/4: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/5: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/6: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/7: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/8: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/9: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/10: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/11: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: POC Type determined for P12- 2022/12: A (cutoff: 2025-05-31)
+2025-06-20 20:33:05 info: Validation completed. Records to insert: 60, Errors: 0
+2025-06-20 20:33:05 info: Database insertion completed - Affected rows: 60, Changed rows: 0
+2025-06-20T12:33:05.786Z info: [Frontend] CSV upload successful: P12.csv
+2025-06-20 20:33:15 info: Received request for /api/db-status
+2025-06-20 20:33:15 info: DB status check successful.
+2025-06-20T12:33:15.654Z info: [Frontend] 
+2025-06-20 20:33:18 info: Received request for /api/db-status
+2025-06-20 20:33:18 info: DB status check successful.
+2025-06-20T12:33:18.094Z info: [Frontend] 
+2025-06-20T12:33:18.112Z info: [Frontend] 
+2025-06-20T12:33:18.123Z info: [Frontend] 
+2025-06-20T12:33:18.232Z info: [Frontend] 
+2025-06-20T12:33:18.233Z info: [Frontend] 
+2025-06-20T12:33:18.234Z info: [Frontend] 
+2025-06-20 20:33:45 info: Received request for /api/db-status
+2025-06-20 20:33:45 info: DB status check successful.
+2025-06-20T12:33:45.647Z info: [Frontend] 
+2025-06-20 20:34:15 info: Received request for /api/db-status
+2025-06-20 20:34:15 info: DB status check successful.
+2025-06-20T12:34:15.688Z info: [Frontend] 

@@ -1,10 +1,5 @@
-// routes/uploadRoutes.cjs
-// Completion Date upload activated + project is flowing through
-// Actual/Projected added
-// Better error handling and summary display for completion dates
-
 // routes/uploadRoutes.cjs - FIXED VERSION
-// Better error handling and summary display for completion dates
+// Properly handles async operations in CSV processing
 
 const express = require('express');
 const multer = require('multer');
@@ -18,71 +13,176 @@ const upload = multer({ dest: 'uploads/' });
 
 // Helper function to validate and convert MM/DD/YYYY to YYYY-MM-DD
 const parseAndValidateDate = (dateStr) => {
-    // Handle MM/DD/YYYY format (from Excel)
     const mmddyyyyRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
     const match = dateStr.match(mmddyyyyRegex);
-    
+
     if (!match) {
         return { isValid: false, error: 'Invalid date format. Expected MM/DD/YYYY format.' };
     }
-    
+
     const month = parseInt(match[1], 10);
     const day = parseInt(match[2], 10);
     const year = parseInt(match[3], 10);
-    
-    // Basic validation
+
     if (month < 1 || month > 12) {
         return { isValid: false, error: `Invalid month (${month}). Must be 1-12.` };
     }
-    
+
     if (day < 1 || day > 31) {
         return { isValid: false, error: `Invalid day (${day}). Must be 1-31.` };
     }
-    
-    // Create date object to validate and check if it's month-end
+
     const date = new Date(year, month - 1, day);
-    
-    // Check if the date is valid
+
     if (date.getFullYear() !== year || date.getMonth() !== (month - 1) || date.getDate() !== day) {
         return { isValid: false, error: `Invalid date: ${dateStr}. Please check the date is valid.` };
     }
-    
-    // Check if it's a month-end date
+
     const lastDayOfMonth = new Date(year, month, 0).getDate();
     if (day !== lastDayOfMonth) {
         return { isValid: false, error: `Date ${dateStr} is not a month-end date. Expected last day of ${month}/${year} which is ${month}/${lastDayOfMonth}/${year}.` };
     }
-    
-    // Convert to YYYY-MM-DD format for database storage
+
     const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-    
     return { isValid: true, formattedDate };
 };
 
-// Helper function to determine if POC should be Actual (A) or Projected (P) based on cut-off date
+// Helper function to determine if POC should be Actual (A) or Projected (P)
 const getPocType = (year, month, cutoffDate) => {
-    if (!cutoffDate) return 'A'; // Default to Actual if no cutoff date
-    
+    if (!cutoffDate) return 'A';
+
     const cutoffDateObj = new Date(cutoffDate);
     const cutoffYear = cutoffDateObj.getFullYear();
-    const cutoffMonth = cutoffDateObj.getMonth() + 1; // getMonth() returns 0-11
-    
-    // Compare year and month with cutoff
+    const cutoffMonth = cutoffDateObj.getMonth() + 1;
+
     if (year < cutoffYear) {
-        return 'A'; // Actual - year is before cutoff year
+        return 'A';
     } else if (year === cutoffYear && month <= cutoffMonth) {
-        return 'A'; // Actual - same year but month is equal or before cutoff month
+        return 'A';
     } else {
-        return 'P'; // Projected - year/month is after cutoff
+        return 'P';
     }
 };
 
-// --- Combined Route for both 'pocpermonth' and 'pcompdate' tables ---
+// Helper function to read and parse CSV completely before processing
+const parseCSVFile = (filePath) => {
+    return new Promise((resolve, reject) => {
+        const results = [];
+        const stream = fs.createReadStream(filePath);
+        
+        stream
+            .pipe(csv({ headers: false }))
+            .on('data', (row) => {
+                results.push(row);
+            })
+            .on('end', () => {
+                resolve(results);
+            })
+            .on('error', (error) => {
+                reject(error);
+            });
+    });
+};
+
+// Validation function for POC data
+const validatePocRow = async (row, rowIndex, cocode, pool) => {
+    const project = row[0]?.toString().trim();
+    const phasecode = row[1]?.toString().trim();
+    const year = parseInt(row[2], 10);
+
+    if (!project) {
+        return { isValid: false, error: `Row ${rowIndex + 1}: Project cannot be empty.` };
+    }
+    if (isNaN(year) || year < 2011) {
+        return { isValid: false, error: `Row ${rowIndex + 1}: Invalid or missing Year (must be 2011 or later).` };
+    }
+
+    try {
+        let validationQuery;
+        let queryParams;
+
+        if (phasecode === '') {
+            validationQuery = `
+                SELECT 1 FROM \`project_phase_validation\`
+                WHERE project = ?
+                AND (phasecode IS NULL OR phasecode = '')
+                AND cocode = ?`;
+            queryParams = [project, cocode];
+        } else {
+            validationQuery = `
+                SELECT 1 FROM \`project_phase_validation\`
+                WHERE project = ? AND phasecode = ? AND cocode = ?`;
+            queryParams = [project, phasecode, cocode];
+        }
+
+        const [results] = await pool.query(validationQuery, queryParams);
+
+        if (results.length === 0) {
+            return { isValid: false, error: `Row ${rowIndex + 1}: Project '${project}' with Phasecode '${phasecode}' not found for company ${cocode}.` };
+        }
+    } catch (dbError) {
+        logger.error('Database validation error for POC:', dbError);
+        return { isValid: false, error: `Row ${rowIndex + 1}: Database error during validation.` };
+    }
+
+    return { isValid: true, error: null };
+};
+
+// Validation function for Completion Date data
+const validateCompletionRow = async (row, rowIndex, cocode, pool) => {
+    const project = row[0]?.toString().trim();
+    const phasecode = row[1]?.toString().trim();
+    const completionDate = row[2]?.toString().trim();
+
+    if (!project) {
+        return { isValid: false, error: `Row ${rowIndex + 1}: Project cannot be empty.` };
+    }
+
+    if (!completionDate) {
+        return { isValid: false, error: `Row ${rowIndex + 1}: Completion date cannot be empty.` };
+    }
+
+    const dateValidation = parseAndValidateDate(completionDate);
+    if (!dateValidation.isValid) {
+        return { isValid: false, error: `Row ${rowIndex + 1}: ${dateValidation.error}` };
+    }
+
+    try {
+        let validationQuery;
+        let queryParams;
+
+        if (phasecode === '') {
+            validationQuery = `
+                SELECT 1 FROM \`project_phase_validation\`
+                WHERE project = ?
+                AND (phasecode IS NULL OR phasecode = '')
+                AND cocode = ?`;
+            queryParams = [project, cocode];
+        } else {
+            validationQuery = `
+                SELECT 1 FROM \`project_phase_validation\`
+                WHERE project = ? AND phasecode = ? AND cocode = ?`;
+            queryParams = [project, phasecode, cocode];
+        }
+
+        const [results] = await pool.query(validationQuery, queryParams);
+
+        if (results.length === 0) {
+            return { isValid: false, error: `Row ${rowIndex + 1}: Project '${project}' with Phasecode '${phasecode}' not found for company ${cocode}.` };
+        }
+    } catch (dbError) {
+        logger.error('Database validation error for Completion Date:', dbError);
+        return { isValid: false, error: `Row ${rowIndex + 1}: Database error during validation.` };
+    }
+
+    return { isValid: true, error: null, formattedDate: dateValidation.formattedDate };
+};
+
+// Main upload route
 router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
     const filePath = req.file.path;
     const { uploadOption, templateType, completionType, cocode, cutoffDate } = req.body;
 
-    // Debug logging to ensure all parameters are received
     logger.info(`Upload request received - Option: ${uploadOption}, Cocode: ${cocode}, CompletionType: ${completionType}, CutoffDate: ${cutoffDate}`);
 
     if (!req.file) {
@@ -105,104 +205,40 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
         return res.status(503).json({ message: 'Database not connected. Please try again later.' });
     }
 
-    // Validation function for POC data
-    const validatePocRow = async (row, rowIndex) => {
-        const project = row[0]?.toString().trim();
-        const phasecode = row[1]?.toString().trim();
-        const year = parseInt(row[2], 10);
-
-        if (!project || !phasecode) {
-            return { isValid: false, error: `Row ${rowIndex + 1}: Project and Phasecode cannot be empty.` };
-        }
-        if (isNaN(year) || year < 2011) {
-            return { isValid: false, error: `Row ${rowIndex + 1}: Invalid or missing Year (must be 2011 or later).` };
-        }
-
-        try {
-            const [results] = await pool.query(
-                'SELECT 1 FROM `project_phase_validation` WHERE project = ? AND phasecode = ? AND cocode = ?',
-                [project, phasecode, cocode]
-            );
-            if (results.length === 0) {
-                 return { isValid: false, error: `Row ${rowIndex + 1}: Project/Phasecode combination '${project}/${phasecode}' not found for company ${cocode}.` };
-            }
-        } catch (dbError) {
-            logger.error('Database validation error:', dbError);
-            return { isValid: false, error: `Row ${rowIndex + 1}: Database error during validation.` };
-        }
+    try {
+        // Step 1: Parse the entire CSV file first
+        logger.info('Starting CSV parsing...');
+        const csvRows = await parseCSVFile(filePath);
         
-        return { isValid: true, error: null };
-    };
-
-    // Validation function for Completion Date data
-    const validateCompletionRow = async (row, rowIndex) => {
-        const project = row[0]?.toString().trim();
-        const phasecode = row[1]?.toString().trim();
-        const completionDate = row[2]?.toString().trim();
-
-        if (!project || !phasecode) {
-            return { isValid: false, error: `Row ${rowIndex + 1}: Project and Phasecode cannot be empty.` };
-        }
-
-        if (!completionDate) {
-            return { isValid: false, error: `Row ${rowIndex + 1}: Completion date cannot be empty.` };
-        }
-
-        const dateValidation = parseAndValidateDate(completionDate);
-        if (!dateValidation.isValid) {
-            return { isValid: false, error: `Row ${rowIndex + 1}: ${dateValidation.error}` };
-        }
-
-        try {
-            const [results] = await pool.query(
-                'SELECT 1 FROM `project_phase_validation` WHERE project = ? AND phasecode = ? AND cocode = ?',
-                [project, phasecode, cocode]
-            );
-            if (results.length === 0) {
-                 return { isValid: false, error: `Row ${rowIndex + 1}: Project/Phasecode combination '${project}/${phasecode}' not found for company ${cocode}.` };
-            }
-        } catch (dbError) {
-            logger.error('Database validation error:', dbError);
-            return { isValid: false, error: `Row ${rowIndex + 1}: Database error during validation.` };
-        }
+        // Remove the file immediately after reading
+        fs.unlinkSync(filePath);
         
-        return { isValid: true, error: null, formattedDate: dateValidation.formattedDate };
-    };
+        // Step 2: Skip header row and process data rows
+        const dataRows = csvRows.slice(1); // Skip header row
+        logger.info(`CSV parsed successfully. Processing ${dataRows.length} data rows...`);
 
-    const results = [];
-    const errors = [];
-    const recordsToInsert = [];
-    let rowCounter = 0;
-    const fileStream = fs.createReadStream(filePath);
+        // Step 3: Process all rows sequentially with proper async handling
+        const recordsToInsert = [];
+        const errors = [];
 
-    fileStream
-        .pipe(csv({ headers: false }))
-        .on('data', async (row) => {
-            fileStream.pause();
-            
-            if (rowCounter === 0) { // Skip header row
-                rowCounter++;
-                fileStream.resume();
-                return;
-            }
+        for (let i = 0; i < dataRows.length; i++) {
+            const row = dataRows[i];
+            const rowIndex = i + 1; // +1 because we skipped header, so row 1 is first data row
 
-            const rowIndex = rowCounter++;
             let validationResult;
 
             if (uploadOption === 'poc') {
-                validationResult = await validatePocRow(row, rowIndex);
+                validationResult = await validatePocRow(row, rowIndex, cocode, pool);
             } else if (uploadOption === 'date') {
-                validationResult = await validateCompletionRow(row, rowIndex);
+                validationResult = await validateCompletionRow(row, rowIndex, cocode, pool);
             } else {
                 errors.push(`Row ${rowIndex + 1}: Unknown upload option: ${uploadOption}`);
-                fileStream.resume();
-                return;
+                continue;
             }
 
             if (!validationResult.isValid) {
                 errors.push(validationResult.error);
-                fileStream.resume();
-                return;
+                continue;
             }
 
             const project = row[0]?.toString().trim();
@@ -210,31 +246,32 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
 
             if (uploadOption === 'poc') {
                 const year = parseInt(row[2], 10);
-                
+
                 if (templateType === 'short') {
-                    const pocValue = row[3];
+                    const month = parseInt(row[3], 10);
+                    const pocValue = row[4];
+
+                    if (isNaN(month) || month < 1 || month > 12) {
+                        errors.push(`Row ${rowIndex + 1}: Invalid or missing Month (must be 1-12).`);
+                        continue;
+                    }
+
                     if (pocValue !== null && pocValue.toString().trim() !== '') {
-                        // Determine POC type based on cut-off date (month 1 for short template)
-                        const pocType = getPocType(year, 1, cutoffDate);
-                        recordsToInsert.push([cocode, project, phasecode, year, 1, pocValue, pocType]);
-                        
-                        // Debug logging for POC type determination
-                        logger.info(`POC Type determined for ${project}-${phasecode} ${year}/1: ${pocType} (cutoff: ${cutoffDate})`);
+                        const pocType = getPocType(year, month, cutoffDate);
+                        recordsToInsert.push([cocode, project, phasecode, year, month, pocValue, pocType]);
+                        logger.info(`POC Type determined for ${project}-${phasecode} ${year}/${month}: ${pocType} (cutoff: ${cutoffDate})`);
                     } else {
-                        errors.push(`Row ${rowIndex + 1}: No POC value found in short template.`);
+                        errors.push(`Row ${rowIndex + 1}: No POC value found for month ${month}.`);
                     }
                 } else if (templateType === 'long') {
                     let hasMonthData = false;
-                    for (let i = 0; i < 12; i++) {
-                        const month = i + 1;
-                        const pocValue = row[i + 3];
+                    for (let monthIndex = 0; monthIndex < 12; monthIndex++) {
+                        const month = monthIndex + 1;
+                        const pocValue = row[monthIndex + 3];
                         if (pocValue !== null && pocValue.toString().trim() !== '') {
                             hasMonthData = true;
-                            // Determine POC type based on cut-off date for each month
                             const pocType = getPocType(year, month, cutoffDate);
                             recordsToInsert.push([cocode, project, phasecode, year, month, pocValue, pocType]);
-                            
-                            // Debug logging for POC type determination
                             logger.info(`POC Type determined for ${project}-${phasecode} ${year}/${month}: ${pocType} (cutoff: ${cutoffDate})`);
                         }
                     }
@@ -243,112 +280,110 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                     }
                 }
             } else if (uploadOption === 'date') {
-                const completionDate = validationResult.formattedDate; // Use the formatted date from validation
-                const type = completionType || 'A'; // Default to Actual
-                recordsToInsert.push([cocode, project, phasecode, type, completionDate]);
+                const completionDate = validationResult.formattedDate;
+                const type = completionType || 'A';
+                recordsToInsert.push([cocode, project, phasecode, type, completionDate, new Date()]);
             }
+        }
 
-            fileStream.resume();
-        })
-        .on('end', async () => {
-            fs.unlinkSync(filePath);
-            const processedRowCount = rowCounter > 0 ? rowCounter - 1 : 0;
+        logger.info(`Validation completed. Records to insert: ${recordsToInsert.length}, Errors: ${errors.length}`);
 
-            if (recordsToInsert.length === 0) {
-                return res.status(400).json({
-                    message: `Upload finished. No valid data found to process. ${errors.length > 0 ? 'See errors below.' : ''}`,
-                    totalRowsProcessed: processedRowCount,
-                    totalInserted: 0,
-                    totalUpdated: 0,
-                    totalErrors: errors.length,
-                    errors: errors 
-                });
-            }
+        if (recordsToInsert.length === 0) {
+            return res.status(400).json({
+                message: 'No valid data found to upload.',
+                totalRowsProcessed: dataRows.length,
+                totalErrors: errors.length,
+                errors: errors
+            });
+        }
 
+        // Step 4: Insert records in a transaction for data consistency
+        await pool.query('START TRANSACTION');
+
+        try {
             let query;
             if (uploadOption === 'poc') {
-                // Updated query to include POC type
                 query = 'INSERT INTO `pocpermonth` (cocode, project, phasecode, year, month, value, type) VALUES ? ON DUPLICATE KEY UPDATE value = VALUES(value), type = VALUES(type), timestampM = CURRENT_TIMESTAMP, userM = "CSV_UPLOAD"';
             } else if (uploadOption === 'date') {
-                query = 'INSERT INTO `pcompdate` (cocode, project, phasecode, type, completion_date) VALUES ? ON DUPLICATE KEY UPDATE completion_date = VALUES(completion_date), type = VALUES(type), created_at = CURRENT_TIMESTAMP';
+                query = 'INSERT INTO pcompdate (cocode, project, phasecode, type, completion_date, created_at) VALUES ? ON DUPLICATE KEY UPDATE completion_date = VALUES(completion_date), type = VALUES(type)';
             }
 
-            try {
-                const [result] = await pool.query(query, [recordsToInsert]);
-                
-                // Debug logging for database insertion
-                logger.info(`Database insertion completed - Affected rows: ${result.affectedRows}, Changed rows: ${result.changedRows || 0}`);
-                
-                // Create summary by project/phase for response
-                const summary = {};
-                recordsToInsert.forEach(record => {
-                    const key = `${record[1]}-${record[2]}`; // project-phasecode
-                    if (!summary[key]) {
-                        summary[key] = { 
-                            project: record[1], 
-                            phasecode: record[2], 
-                            inserted: 0, 
-                            updated: 0,
-                            actualCount: 0,
-                            projectedCount: 0,
-                            completionType: uploadOption === 'date' ? (completionType || 'A') : null
-                        };
-                    }
-                    summary[key].inserted++; // This is a simplification
-                    
-                    // Count Actual vs Projected for POC uploads
-                    if (uploadOption === 'poc' && record[6]) { // POC type is at index 6
-                        if (record[6] === 'A') {
-                            summary[key].actualCount++;
-                        } else if (record[6] === 'P') {
-                            summary[key].projectedCount++;
-                        }
-                    }
-                    
-                    // For completion dates, set the type
-                    if (uploadOption === 'date') {
-                        summary[key].completionType = record[3]; // Type is at index 3 for completion dates
-                    }
-                });
+            const [result] = await pool.query(query, [recordsToInsert]);
+            await pool.query('COMMIT');
 
-                // Prepare response message based on upload type
-                let responseMessage = `CSV processed successfully. ${uploadOption === 'poc' ? 'POC data' : 'Completion dates'} uploaded for company ${cocode}.`;
-                if (uploadOption === 'poc') {
-                    const totalActual = Object.values(summary).reduce((sum, item) => sum + item.actualCount, 0);
-                    const totalProjected = Object.values(summary).reduce((sum, item) => sum + item.projectedCount, 0);
-                    responseMessage += ` Classification: ${totalActual} Actual, ${totalProjected} Projected (based on cut-off date ${cutoffDate}).`;
-                } else if (uploadOption === 'date') {
-                    const totalRecords = recordsToInsert.length;
-                    const typeText = completionType === 'A' ? 'Actual' : 'Projected';
-                    responseMessage += ` All ${totalRecords} completion dates marked as ${typeText}.`;
+            logger.info(`Database insertion completed - Affected rows: ${result.affectedRows}, Changed rows: ${result.changedRows || 0}`);
+
+            // Create summary by project/phase for response
+            const summary = {};
+            recordsToInsert.forEach(record => {
+                const key = `${record[1]}-${record[2]}`;
+                if (!summary[key]) {
+                    summary[key] = {
+                        project: record[1],
+                        phasecode: record[2],
+                        inserted: 0,
+                        updated: 0,
+                        actualCount: 0,
+                        projectedCount: 0,
+                        completionType: uploadOption === 'date' ? (completionType || 'A') : null
+                    };
+                }
+                summary[key].inserted++;
+
+                if (uploadOption === 'poc' && record[6]) {
+                    if (record[6] === 'A') {
+                        summary[key].actualCount++;
+                    } else if (record[6] === 'P') {
+                        summary[key].projectedCount++;
+                    }
                 }
 
-                res.status(200).json({
-                    message: responseMessage,
-                    totalRowsProcessed: processedRowCount,
-                    totalInserted: result.affectedRows - (result.changedRows || 0),
-                    totalUpdated: result.changedRows || 0,
-                    totalErrors: errors.length,
-                    summary: Object.values(summary),
-                    cutoffDate: cutoffDate, // Include cutoff date in response
-                    completionType: completionType, // Include completion type in response
-                    errors: errors
-                });
-            } catch (dbError) {
-                logger.error('Bulk insert failed:', dbError);
-                res.status(500).json({ 
-                    message: 'Failed to save data to the database.', 
-                    error: dbError.message,
-                    totalErrors: errors.length,
-                    errors: errors
-                });
+                if (uploadOption === 'date') {
+                    summary[key].completionType = record[3];
+                }
+            });
+
+            // Prepare response message
+            let responseMessage = `CSV processed successfully. ${uploadOption === 'poc' ? 'POC data' : 'Completion dates'} uploaded for company ${cocode}.`;
+            if (uploadOption === 'poc') {
+                const totalActual = Object.values(summary).reduce((sum, item) => sum + item.actualCount, 0);
+                const totalProjected = Object.values(summary).reduce((sum, item) => sum + item.projectedCount, 0);
+                responseMessage += ` Classification: ${totalActual} Actual, ${totalProjected} Projected (based on cut-off date ${cutoffDate}).`;
+            } else if (uploadOption === 'date') {
+                const totalRecords = recordsToInsert.length;
+                const typeText = completionType === 'A' ? 'Actual' : 'Projected';
+                responseMessage += ` All ${totalRecords} completion dates marked as ${typeText}.`;
             }
-        })
-        .on('error', (error) => {
+
+            res.status(200).json({
+                message: responseMessage,
+                totalRowsProcessed: dataRows.length,
+                totalInserted: result.affectedRows - (result.changedRows || 0),
+                totalUpdated: result.changedRows || 0,
+                totalErrors: errors.length,
+                summary: Object.values(summary),
+                cutoffDate: cutoffDate,
+                completionType: completionType,
+                errors: errors
+            });
+
+        } catch (dbError) {
+            await pool.query('ROLLBACK');
+            throw dbError;
+        }
+
+    } catch (error) {
+        // Ensure file is cleaned up even if there's an error
+        if (fs.existsSync(filePath)) {
             fs.unlinkSync(filePath);
-            logger.error('CSV parsing error:', error);
-            res.status(500).json({ message: 'Error parsing CSV file.', error: error.message });
+        }
+        
+        logger.error('Upload processing error:', error);
+        res.status(500).json({
+            message: 'Error processing upload.',
+            error: error.message
         });
+    }
 });
 
 module.exports = router;
