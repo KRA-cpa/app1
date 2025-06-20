@@ -11,6 +11,13 @@ const logger = require('../config/logger.cjs');
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
 
+// 1. Add 'source' to destructuring (line ~35)
+const { uploadOption, templateType, completionType, cocode, cutoffDate, source } = req.body;
+
+// 2. Add source tracking variables (after the destructuring)
+const uploadSource = source === 'manual_entry' ? 'Manual Entry Form' : 'CSV File Upload';
+const logPrefix = source === 'manual_entry' ? '[MANUAL]' : '[CSV]';
+
 // Helper function to validate and convert MM/DD/YYYY to YYYY-MM-DD
 const parseAndValidateDate = (dateStr) => {
     const mmddyyyyRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;

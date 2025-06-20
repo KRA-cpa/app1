@@ -1,9 +1,8 @@
 // routes/dataRoutes.cjs
 // This file handles all read-only API endpoints for fetching report data.
 // with debugging
+// Select all project-phase for Manual entry
 
-// routes/dataRoutes.cjs
-// This file handles all read-only API endpoints for fetching report data.
 
 const express = require('express');
 const { getPool } = require('../config/db.cjs');
@@ -274,5 +273,58 @@ router.get('/pcompdata/options', async (req, res) => {
         if (connection) connection.release();
     }
 });
+
+// --- Route for project/phase validation options (reuses existing validation table) ---
+router.get('/validation-options', async (req, res) => {
+    const { cocode } = req.query;
+    
+    if (!cocode) {
+        return res.status(400).json({ 
+            message: 'Company code (cocode) is required for validation options.' 
+        });
+    }
+
+    const pool = getPool();
+    if (!pool) return res.status(503).json({ message: 'Database not connected.' });
+
+    let connection;
+    try {
+        connection = await pool.getConnection();
+
+        // Get distinct projects for the company from the same validation table used by CsvUploader
+        const [projectRows] = await connection.execute(
+            'SELECT DISTINCT project FROM re.project_phase_validation WHERE cocode = ? ORDER BY project',
+            [cocode]
+        );
+
+        // Get all project/phase combinations for the company (same validation as CsvUploader)
+        const [phaseRows] = await connection.execute(
+            'SELECT project, phasecode FROM re.project_phase_validation WHERE cocode = ? ORDER BY project, phasecode',
+            [cocode]
+        );
+
+        const projects = projectRows.map(row => ({ project: row.project }));
+        const phases = phaseRows.map(row => ({ 
+            project: row.project, 
+            phasecode: row.phasecode || '' // Handle null phasecodes same as CsvUploader
+        }));
+
+        logger.info(`Manual entry validation options fetched for company ${cocode}: ${projects.length} projects, ${phases.length} phase combinations`);
+
+        res.status(200).json({
+            projects: projects,
+            phases: phases
+        });
+    } catch (error) {
+        logger.error('Error fetching validation options for manual entry:', error);
+        res.status(500).json({ 
+            message: 'Failed to fetch validation options.', 
+            error: error.message 
+        });
+    } finally {
+        if (connection) connection.release();
+    }
+});
+
 
 module.exports = router;

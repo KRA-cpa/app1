@@ -1,9 +1,11 @@
 // kra-cpa/app1/app1-test1/client/src/App.js
 
+
 import React, { useState, useEffect } from 'react';
 import DataDisplay from './components/DataDisplay';
 import PcompDataDisplay from './components/PcompDataDisplay';
 import CsvUploader from './components/CsvUploader';
+import ManualPcompEntry from './components/ManualPcompEntry';
 import { logToServer } from './utils/logger';
 
 // Calculate last month's end date dynamically in UTC+8 timezone
@@ -167,6 +169,8 @@ const App = () => {
       if (path.includes('/completion')) {
         setActiveReport('completion');
       }
+    } else if (path.includes('/manual-entry')) {
+      setActiveTab('manual-entry');
     }
   }, []);
 
@@ -186,6 +190,8 @@ const App = () => {
       }
     } else if (tab === 'upload') {
       url = '/upload';
+    } else if (tab === 'manual-entry') {
+      url = '/manual-entry';
     }
     
     window.history.pushState(null, '', url);
@@ -250,9 +256,13 @@ const App = () => {
     updateURL(tab, activeReport);
     checkDbStatus(); // Check DB when switching tabs
     
-    // Re-validate cutoff date for the new tab
-    const validation = tab === 'upload' ? validateForUpload(cutoffDate) : validateForReports(cutoffDate);
-    setCutoffError(validation.error);
+    // Re-validate cutoff date for the new tab (only for upload/reports tabs)
+    if (tab === 'upload' || tab === 'reports') {
+      const validation = tab === 'upload' ? validateForUpload(cutoffDate) : validateForReports(cutoffDate);
+      setCutoffError(validation.error);
+    } else {
+      setCutoffError(null); // Clear cutoff error for manual entry tab
+    }
   };
 
   const handleReportChange = (report) => {
@@ -325,7 +335,7 @@ const App = () => {
         justifyContent: 'space-between',
         alignItems: 'flex-start'
       }}>
-        {/* Left Side: Company Selector + Cutoff Date */}
+        {/* Left Side: Company Selector + Cutoff Date (only show cutoff date for upload/reports) */}
         <div style={{ 
           display: 'flex',
           alignItems: 'flex-start',
@@ -360,80 +370,82 @@ const App = () => {
             </select>
           </div>
 
-          {/* UNIFIED Cutoff Date with Error Display */}
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column',
-            gap: '8px'
-          }}>
+          {/* UNIFIED Cutoff Date with Error Display - only show for upload/reports tabs */}
+          {(activeTab === 'upload' || activeTab === 'reports') && (
             <div style={{ 
               display: 'flex', 
-              alignItems: 'center', 
-              gap: '15px',
-              backgroundColor: isCurrentlyValid ? 'rgba(40, 167, 69, 0.1)' : 'rgba(220, 53, 69, 0.1)',
-              padding: '8px 15px',
-              borderRadius: '8px',
-              border: isCurrentlyValid ? '1px solid #28a745' : '1px solid #dc3545'
+              flexDirection: 'column',
+              gap: '8px'
             }}>
-              <label style={{ 
-                fontSize: '14px', 
-                fontWeight: 'bold', 
-                color: '#495057',
-                whiteSpace: 'nowrap'
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '15px',
+                backgroundColor: isCurrentlyValid ? 'rgba(40, 167, 69, 0.1)' : 'rgba(220, 53, 69, 0.1)',
+                padding: '8px 15px',
+                borderRadius: '8px',
+                border: isCurrentlyValid ? '1px solid #28a745' : '1px solid #dc3545'
               }}>
-                📅 Cutoff Date:
-              </label>
-              <input
-                type="date"
-                value={cutoffDate}
-                onChange={handleCutoffDateChange}
-                style={{
-                  padding: '6px 10px',
-                  border: '1px solid #ced4da',
-                  borderRadius: '4px',
+                <label style={{ 
+                  fontSize: '14px', 
+                  fontWeight: 'bold', 
+                  color: '#495057',
+                  whiteSpace: 'nowrap'
+                }}>
+                  📅 Cutoff Date:
+                </label>
+                <input
+                  type="date"
+                  value={cutoffDate}
+                  onChange={handleCutoffDateChange}
+                  style={{
+                    padding: '6px 10px',
+                    border: '1px solid #ced4da',
+                    borderRadius: '4px',
+                    fontSize: '14px',
+                    backgroundColor: 'white',
+                    minWidth: '140px'
+                  }}
+                />
+                <div style={{
                   fontSize: '14px',
-                  backgroundColor: 'white',
-                  minWidth: '140px'
-                }}
-              />
-              <div style={{
-                fontSize: '14px',
-                fontWeight: 'bold',
-                color: isCurrentlyValid ? '#28a745' : '#dc3545'
-              }}>
-                {isCurrentlyValid ? '✅' : '❌'}
+                  fontWeight: 'bold',
+                  color: isCurrentlyValid ? '#28a745' : '#dc3545'
+                }}>
+                  {isCurrentlyValid ? '✅' : '❌'}
+                </div>
               </div>
-            </div>
-            
-            {/* Error Message */}
-            {cutoffError && (
+              
+              {/* Error Message */}
+              {cutoffError && (
+                <div style={{
+                  backgroundColor: '#f8d7da',
+                  color: '#721c24',
+                  padding: '8px 12px',
+                  borderRadius: '4px',
+                  fontSize: '12px',
+                  fontWeight: '500',
+                  border: '1px solid #f5c6cb',
+                  maxWidth: '350px'
+                }}>
+                  ⚠️ {cutoffError}
+                </div>
+              )}
+              
+              {/* Helpful hint */}
               <div style={{
-                backgroundColor: '#f8d7da',
-                color: '#721c24',
-                padding: '8px 12px',
-                borderRadius: '4px',
-                fontSize: '12px',
-                fontWeight: '500',
-                border: '1px solid #f5c6cb',
+                fontSize: '11px',
+                color: '#6c757d',
+                fontStyle: 'italic',
                 maxWidth: '350px'
               }}>
-                ⚠️ {cutoffError}
+                {activeTab === 'upload' 
+                  ? 'Upload: Month-end dates only, no future dates'
+                  : 'Reports: Month-end dates only, future dates allowed'
+                }
               </div>
-            )}
-            
-            {/* Helpful hint */}
-            <div style={{
-              fontSize: '11px',
-              color: '#6c757d',
-              fontStyle: 'italic',
-              maxWidth: '350px'
-            }}>
-              {activeTab === 'upload' 
-                ? 'Upload: Month-end dates only, no future dates'
-                : 'Reports: Month-end dates only, future dates allowed'
-              }
             </div>
-          </div>
+          )}
         </div>
 
         {/* Right Side: Database Status */}
@@ -534,6 +546,22 @@ const App = () => {
           Upload Data
         </button>
         <button
+          onClick={() => handleTabChange('manual-entry')}
+          style={{
+            padding: '15px 30px',
+            border: 'none',
+            backgroundColor: 'transparent',
+            color: activeTab === 'manual-entry' ? '#007bff' : '#6c757d',
+            fontWeight: activeTab === 'manual-entry' ? 'bold' : 'normal',
+            fontSize: '16px',
+            cursor: 'pointer',
+            borderBottom: activeTab === 'manual-entry' ? '3px solid #007bff' : '3px solid transparent',
+            transition: 'all 0.2s ease'
+          }}
+        >
+          Manual Entry
+        </button>
+        <button
           onClick={() => handleTabChange('reports')}
           style={{
             padding: '15px 30px',
@@ -566,6 +594,19 @@ const App = () => {
           </div>
         )}
 
+        {/* Manual Entry Tab */}
+        {activeTab === 'manual-entry' && (
+          <div style={{ padding: '30px' }}>
+            <ManualPcompEntry 
+              selectedCompany={selectedCompany} 
+              cocode={selectedCompany}
+              dbStatus={dbStatus}
+              cutoffDate={cutoffDate}
+              validateCutoffDate={() => ({ isValid: true, error: null })} // Manual entry doesn't need cutoff validation
+            />
+          </div>
+        )}
+
         {/* Reports Tab */}
         {activeTab === 'reports' && (
           <div style={{ padding: '30px' }}>
@@ -578,7 +619,7 @@ const App = () => {
               paddingBottom: '20px',
               borderBottom: '2px solid #e9ecef'
             }}>
-              {/* Report Selector Tabs */}
+              {/* Report Selector Tabs - Back to original 2 tabs */}
               <div style={{ display: 'flex', gap: '30px' }}>
                 <button 
                   onClick={() => handleReportChange('poc')}
