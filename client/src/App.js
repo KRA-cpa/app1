@@ -1,6 +1,8 @@
 // kra-cpa/app1/app1-test1/client/src/App.js
 
 
+// kra-cpa/app1/app1-test1/client/src/App.js
+
 import React, { useState, useEffect } from 'react';
 import DataDisplay from './components/DataDisplay';
 import PcompDataDisplay from './components/PcompDataDisplay';
@@ -135,10 +137,10 @@ const App = () => {
 
   const companies = [
     { code: '', name: 'All Companies' },
-    { code: 'MBPH', name: 'Bayshore' },
-    { code: 'MCTI', name: 'CapTown' },
+    { code: 'MBPH', name: 'Manila Bayshore' },
+    { code: 'MCTI', name: 'Capital Town' },
     { code: 'OPI', name: 'Oceantown' },
-    { code: 'SVCI', name: 'San Vicente' },
+    { code: 'SVCI', name: 'San Vicente Coast' },
     { code: 'NPI', name: 'Northwin' },
     { code: 'API', name: 'Arcovia' },
     { code: 'MBPI', name: 'MEG Bacolod' },
@@ -153,7 +155,7 @@ const App = () => {
     }
   };
 
-  // URL parameter handling
+  // URL parameter handling with /completiondate support
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab') || 'upload';
@@ -169,8 +171,10 @@ const App = () => {
       if (path.includes('/completion')) {
         setActiveReport('completion');
       }
-    } else if (path.includes('/manual-entry')) {
+    } else if (path.includes('/manual-entry') || path.includes('/completiondate')) {
       setActiveTab('manual-entry');
+    } else if (path.includes('/upload')) {
+      setActiveTab('upload');
     }
   }, []);
 
@@ -180,7 +184,7 @@ const App = () => {
     setCutoffError(validation.error);
   }, [activeTab, cutoffDate]);
 
-  // Update URL when tab/report changes
+  // Update URL when tab/report changes with /completiondate support
   const updateURL = (tab, report = null) => {
     let url = '/';
     if (tab === 'reports') {
@@ -191,7 +195,7 @@ const App = () => {
     } else if (tab === 'upload') {
       url = '/upload';
     } else if (tab === 'manual-entry') {
-      url = '/manual-entry';
+      url = '/completiondate';
     }
     
     window.history.pushState(null, '', url);
@@ -559,7 +563,7 @@ const App = () => {
             transition: 'all 0.2s ease'
           }}
         >
-          Manual Entry
+          Completion Date Entry
         </button>
         <button
           onClick={() => handleTabChange('reports')}

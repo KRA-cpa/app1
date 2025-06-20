@@ -1,5 +1,6 @@
 // routes/uploadRoutes.cjs - FIXED VERSION
-// Properly handles async operations in CSV processing
+// Properly handles async operations in CSV processing and Manual entry
+
 
 const express = require('express');
 const multer = require('multer');
@@ -10,13 +11,6 @@ const logger = require('../config/logger.cjs');
 
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
-
-// 1. Add 'source' to destructuring (line ~35)
-const { uploadOption, templateType, completionType, cocode, cutoffDate, source } = req.body;
-
-// 2. Add source tracking variables (after the destructuring)
-const uploadSource = source === 'manual_entry' ? 'Manual Entry Form' : 'CSV File Upload';
-const logPrefix = source === 'manual_entry' ? '[MANUAL]' : '[CSV]';
 
 // Helper function to validate and convert MM/DD/YYYY to YYYY-MM-DD
 const parseAndValidateDate = (dateStr) => {
@@ -188,9 +182,16 @@ const validateCompletionRow = async (row, rowIndex, cocode, pool) => {
 // Main upload route
 router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
     const filePath = req.file.path;
-    const { uploadOption, templateType, completionType, cocode, cutoffDate } = req.body;
+    
+    // ✅ FIXED: Properly extract source parameter and set up tracking
+    const { uploadOption, templateType, completionType, cocode, cutoffDate, source } = req.body;
+    
+    // ✅ FIXED: Source tracking variables properly placed inside route handler
+    const uploadSource = source === 'manual_entry' ? 'Manual Entry Form' : 'CSV File Upload';
+    const logPrefix = source === 'manual_entry' ? '[MANUAL]' : '[CSV]';
 
-    logger.info(`Upload request received - Option: ${uploadOption}, Cocode: ${cocode}, CompletionType: ${completionType}, CutoffDate: ${cutoffDate}`);
+    // ✅ FIXED: Enhanced logging with source information
+    logger.info(`${logPrefix} Upload request received - Option: ${uploadOption}, Cocode: ${cocode}, CompletionType: ${completionType}, CutoffDate: ${cutoffDate}, Source: ${uploadSource}`);
 
     if (!req.file) {
         return res.status(400).json({ message: 'No file uploaded.' });
@@ -214,7 +215,7 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
 
     try {
         // Step 1: Parse the entire CSV file first
-        logger.info('Starting CSV parsing...');
+        logger.info(`${logPrefix} Starting CSV parsing...`);
         const csvRows = await parseCSVFile(filePath);
         
         // Remove the file immediately after reading
@@ -222,7 +223,7 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
         
         // Step 2: Skip header row and process data rows
         const dataRows = csvRows.slice(1); // Skip header row
-        logger.info(`CSV parsed successfully. Processing ${dataRows.length} data rows...`);
+        logger.info(`${logPrefix} CSV parsed successfully. Processing ${dataRows.length} data rows...`);
 
         // Step 3: Process all rows sequentially with proper async handling
         const recordsToInsert = [];
@@ -266,7 +267,7 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                     if (pocValue !== null && pocValue.toString().trim() !== '') {
                         const pocType = getPocType(year, month, cutoffDate);
                         recordsToInsert.push([cocode, project, phasecode, year, month, pocValue, pocType]);
-                        logger.info(`POC Type determined for ${project}-${phasecode} ${year}/${month}: ${pocType} (cutoff: ${cutoffDate})`);
+                        logger.info(`${logPrefix} POC Type determined for ${project}-${phasecode} ${year}/${month}: ${pocType} (cutoff: ${cutoffDate})`);
                     } else {
                         errors.push(`Row ${rowIndex + 1}: No POC value found for month ${month}.`);
                     }
@@ -279,7 +280,7 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                             hasMonthData = true;
                             const pocType = getPocType(year, month, cutoffDate);
                             recordsToInsert.push([cocode, project, phasecode, year, month, pocValue, pocType]);
-                            logger.info(`POC Type determined for ${project}-${phasecode} ${year}/${month}: ${pocType} (cutoff: ${cutoffDate})`);
+                            logger.info(`${logPrefix} POC Type determined for ${project}-${phasecode} ${year}/${month}: ${pocType} (cutoff: ${cutoffDate})`);
                         }
                     }
                     if (!hasMonthData) {
@@ -293,14 +294,15 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
             }
         }
 
-        logger.info(`Validation completed. Records to insert: ${recordsToInsert.length}, Errors: ${errors.length}`);
+        logger.info(`${logPrefix} Validation completed. Records to insert: ${recordsToInsert.length}, Errors: ${errors.length}`);
 
         if (recordsToInsert.length === 0) {
             return res.status(400).json({
                 message: 'No valid data found to upload.',
                 totalRowsProcessed: dataRows.length,
                 totalErrors: errors.length,
-                errors: errors
+                errors: errors,
+                source: uploadSource // ✅ FIXED: Include source in response
             });
         }
 
@@ -310,15 +312,25 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
         try {
             let query;
             if (uploadOption === 'poc') {
-                query = 'INSERT INTO `pocpermonth` (cocode, project, phasecode, year, month, value, type) VALUES ? ON DUPLICATE KEY UPDATE value = VALUES(value), type = VALUES(type), timestampM = CURRENT_TIMESTAMP, userM = "CSV_UPLOAD"';
+                query = `INSERT INTO \`pocpermonth\` (cocode, project, phasecode, year, month, value, type) 
+                         VALUES ? 
+                         ON DUPLICATE KEY UPDATE 
+                            value = VALUES(value), 
+                            type = VALUES(type), 
+                            timestampM = CURRENT_TIMESTAMP, 
+                            userM = "${uploadSource}"`;  // ✅ FIXED: Track source in userM field
             } else if (uploadOption === 'date') {
-                query = 'INSERT INTO pcompdate (cocode, project, phasecode, type, completion_date, created_at) VALUES ? ON DUPLICATE KEY UPDATE completion_date = VALUES(completion_date), type = VALUES(type)';
+                query = `INSERT INTO pcompdate (cocode, project, phasecode, type, completion_date, created_at) 
+                         VALUES ? 
+                         ON DUPLICATE KEY UPDATE 
+                            completion_date = VALUES(completion_date), 
+                            type = VALUES(type)`;
             }
 
             const [result] = await pool.query(query, [recordsToInsert]);
             await pool.query('COMMIT');
 
-            logger.info(`Database insertion completed - Affected rows: ${result.affectedRows}, Changed rows: ${result.changedRows || 0}`);
+            logger.info(`${logPrefix} Database insertion completed - Affected rows: ${result.affectedRows}, Changed rows: ${result.changedRows || 0}`);
 
             // Create summary by project/phase for response
             const summary = {};
@@ -350,8 +362,8 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                 }
             });
 
-            // Prepare response message
-            let responseMessage = `CSV processed successfully. ${uploadOption === 'poc' ? 'POC data' : 'Completion dates'} uploaded for company ${cocode}.`;
+            // ✅ FIXED: Enhanced response message with source information
+            let responseMessage = `${uploadSource} processed successfully. ${uploadOption === 'poc' ? 'POC data' : 'Completion dates'} uploaded for company ${cocode}.`;
             if (uploadOption === 'poc') {
                 const totalActual = Object.values(summary).reduce((sum, item) => sum + item.actualCount, 0);
                 const totalProjected = Object.values(summary).reduce((sum, item) => sum + item.projectedCount, 0);
@@ -371,6 +383,7 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                 summary: Object.values(summary),
                 cutoffDate: cutoffDate,
                 completionType: completionType,
+                source: uploadSource, // ✅ FIXED: Include source in response
                 errors: errors
             });
 
@@ -385,10 +398,11 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
             fs.unlinkSync(filePath);
         }
         
-        logger.error('Upload processing error:', error);
+        logger.error(`${logPrefix} Upload processing error:`, error);
         res.status(500).json({
             message: 'Error processing upload.',
-            error: error.message
+            error: error.message,
+            source: uploadSource // ✅ FIXED: Include source in error response
         });
     }
 });

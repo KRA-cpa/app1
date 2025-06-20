@@ -1,12 +1,15 @@
 // client/src/components/ManualPcompEntry.js
 
+
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
-function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, validateCutoffDate }) {
+function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, validateCutoffDate }) {
   const [projectOptions, setProjectOptions] = useState([]);
   const [phaseOptions, setPhaseOptions] = useState([]);
   const [filteredPhases, setFilteredPhases] = useState([]);
+  const [selectedProjectDescription, setSelectedProjectDescription] = useState('');
+  const [selectedPhaseDescription, setSelectedPhaseDescription] = useState('');
   const [formData, setFormData] = useState({
     project: '',
     phasecode: '',
@@ -17,10 +20,22 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Debug logging for API calls
+  useEffect(() => {
+    console.log('ManualPcompEntry - Props received:', { selectedCompany, cocode, dbStatus });
+  }, [selectedCompany, cocode, dbStatus]);
+
   // Fetch project/phase options from validation table (same table used by CsvUploader)
   useEffect(() => {
     if (dbStatus === 'connected' && cocode) {
+      console.log('ManualPcompEntry - Fetching validation options for cocode:', cocode);
       fetchValidationOptions();
+    } else {
+      console.log('ManualPcompEntry - Not fetching options:', { dbStatus, cocode });
+      // Clear options when no company selected
+      setProjectOptions([]);
+      setPhaseOptions([]);
+      setFilteredPhases([]);
     }
   }, [dbStatus, cocode]);
 
@@ -32,32 +47,68 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
       );
       setFilteredPhases(validPhasesForProject);
       
+      // Set project description
+      const selectedProject = projectOptions.find(p => p.project === formData.project);
+      setSelectedProjectDescription(selectedProject?.description || '');
+      
       // Reset phase selection if current phase is not valid for new project
       if (formData.phasecode && !validPhasesForProject.some(p => p.phasecode === formData.phasecode)) {
         setFormData(prev => ({ ...prev, phasecode: '' }));
+        setSelectedPhaseDescription('');
       }
     } else {
       setFilteredPhases([]);
+      setSelectedProjectDescription('');
+      setSelectedPhaseDescription('');
       setFormData(prev => ({ ...prev, phasecode: '' }));
     }
-  }, [formData.project, phaseOptions]);
+  }, [formData.project, phaseOptions, projectOptions]);
+
+  // Update phase description when phase changes
+  useEffect(() => {
+    if (formData.phasecode && filteredPhases.length > 0) {
+      const selectedPhase = filteredPhases.find(p => p.phasecode === formData.phasecode);
+      setSelectedPhaseDescription(selectedPhase?.description || '');
+    } else {
+      setSelectedPhaseDescription('');
+    }
+  }, [formData.phasecode, filteredPhases]);
 
   const fetchValidationOptions = async () => {
     try {
       setIsLoading(true);
-      // Fetch from the same project_phase_validation table that CsvUploader uses
-      const response = await fetch(`http://localhost:3001/api/validation-options?cocode=${cocode}`);
+      setMessage('');
+      
+      const url = `http://localhost:3001/api/validation-options?cocode=${cocode}`;
+      console.log('ManualPcompEntry - Fetching from URL:', url);
+      
+      const response = await fetch(url);
+      
+      console.log('ManualPcompEntry - Response status:', response.status);
       
       if (response.ok) {
         const data = await response.json();
+        console.log('ManualPcompEntry - Received data:', data);
+        
         setProjectOptions(data.projects || []);
         setPhaseOptions(data.phases || []);
+        
+        if (data.projects && data.projects.length > 0) {
+          console.log('ManualPcompEntry - Successfully loaded', data.projects.length, 'projects');
+        } else {
+          console.warn('ManualPcompEntry - No projects found for company:', cocode);
+          setMessage('No projects found for the selected company. Please check if projects are configured for this company.');
+        }
       } else {
-        throw new Error(`Failed to fetch validation options: ${response.status}`);
+        const errorText = await response.text();
+        console.error('ManualPcompEntry - API Error:', response.status, errorText);
+        throw new Error(`API Error ${response.status}: ${errorText}`);
       }
     } catch (error) {
-      console.error('Error fetching validation options:', error);
-      setMessage('Error loading project/phase options from validation table. Please refresh and try again.');
+      console.error('ManualPcompEntry - Error fetching validation options:', error);
+      setMessage(`Error loading project/phase options: ${error.message}. Please refresh and try again.`);
+      setProjectOptions([]);
+      setPhaseOptions([]);
     } finally {
       setIsLoading(false);
     }
@@ -138,9 +189,9 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
         setMessage(`✅ Completion date saved successfully! ${result.message}`);
         logToServer({ 
           level: 'info', 
-          message: `Manual completion date entry successful: ${formData.project}-${formData.phasecode} (same validation as CsvUploader)`,
+          message: `Manual completion date entry successful: ${formData.project}-${formData.phasecode} (${selectedProjectDescription})`,
           component: 'ManualPcompEntry',
-          data: formData
+          data: { ...formData, projectDescription: selectedProjectDescription, phaseDescription: selectedPhaseDescription }
         });
         
         // Reset form
@@ -150,6 +201,8 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
           completionDate: '',
           completionType: 'A'
         });
+        setSelectedProjectDescription('');
+        setSelectedPhaseDescription('');
       } else {
         setMessage(`❌ Failed to save completion date: ${result.message}`);
         logToServer({ 
@@ -176,7 +229,7 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
   const submitDisabled = controlsDisabled || !cocode || !formData.project || !formData.phasecode || !formData.completionDate;
 
   return (
-    <div className="manual-completion-entry-container">
+    <div className="csv-uploader-container">
       <h2>Manual Completion Date Entry</h2>
 
       {!cocode && (
@@ -188,20 +241,50 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
         </div>
       )}
 
+      {/* Debug Info for Development */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{ 
+          fontSize: '12px', 
+          color: '#6c757d', 
+          backgroundColor: '#f8f9fa', 
+          padding: '10px', 
+          borderRadius: '4px',
+          marginBottom: '20px'
+        }}>
+          <strong>Debug Info:</strong> Company: {cocode || 'None'} | DB: {dbStatus} | Projects: {projectOptions.length} | Phases: {phaseOptions.length}
+        </div>
+      )}
+
       {isLoading && (
-        <div style={{ padding: '20px', textAlign: 'center', color: '#6c757d' }}>
-          🔄 Loading project and phase options...
+        <div style={{ 
+          padding: '20px', 
+          textAlign: 'center', 
+          color: '#6c757d',
+          backgroundColor: '#f8f9fa',
+          borderRadius: '8px',
+          border: '1px solid #dee2e6'
+        }}>
+          🔄 Loading project and phase options from validation table...
         </div>
       )}
 
       {!isLoading && cocode && (
-        <form onSubmit={handleSubmit} className="manual-entry-form">
-          <div className="form-section">
-            <h3>Project Information</h3>
+        <form onSubmit={handleSubmit}>
+          {/* Project/Phase Selection Section */}
+          <div className="upload-options-group">
+            <strong className="option-title">Project & Phase Selection</strong>
             
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="project"><strong>Project:</strong></label>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '15px' }}>
+              {/* Project Selection */}
+              <div style={{ flex: '1', minWidth: '250px' }}>
+                <label htmlFor="project" style={{ 
+                  display: 'block', 
+                  fontWeight: 'bold', 
+                  marginBottom: '8px',
+                  color: '#495057'
+                }}>
+                  Project: <span style={{ color: '#dc3545' }}>*</span>
+                </label>
                 <select
                   id="project"
                   name="project"
@@ -209,7 +292,15 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
                   onChange={handleInputChange}
                   disabled={controlsDisabled}
                   required
-                  className="form-select"
+                  style={{
+                    width: '100%',
+                    padding: '10px 12px',
+                    border: '1px solid #ced4da',
+                    borderRadius: '4px',
+                    fontSize: '14px',
+                    backgroundColor: controlsDisabled ? '#e9ecef' : 'white',
+                    cursor: controlsDisabled ? 'not-allowed' : 'pointer'
+                  }}
                 >
                   <option value="">-- Select Project --</option>
                   {projectOptions.map((proj, index) => (
@@ -218,10 +309,32 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
                     </option>
                   ))}
                 </select>
+                {selectedProjectDescription && (
+                  <div style={{ 
+                    fontSize: '12px', 
+                    color: '#6c757d', 
+                    fontStyle: 'italic', 
+                    marginTop: '5px',
+                    padding: '8px',
+                    backgroundColor: '#f8f9fa',
+                    borderRadius: '4px',
+                    border: '1px solid #e9ecef'
+                  }}>
+                    📋 {selectedProjectDescription}
+                  </div>
+                )}
               </div>
 
-              <div className="form-group">
-                <label htmlFor="phasecode"><strong>Phase:</strong></label>
+              {/* Phase Selection */}
+              <div style={{ flex: '1', minWidth: '250px' }}>
+                <label htmlFor="phasecode" style={{ 
+                  display: 'block', 
+                  fontWeight: 'bold', 
+                  marginBottom: '8px',
+                  color: '#495057'
+                }}>
+                  Phase: <span style={{ color: '#dc3545' }}>*</span>
+                </label>
                 <select
                   id="phasecode"
                   name="phasecode"
@@ -229,7 +342,15 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
                   onChange={handleInputChange}
                   disabled={controlsDisabled || !formData.project}
                   required
-                  className="form-select"
+                  style={{
+                    width: '100%',
+                    padding: '10px 12px',
+                    border: '1px solid #ced4da',
+                    borderRadius: '4px',
+                    fontSize: '14px',
+                    backgroundColor: (controlsDisabled || !formData.project) ? '#e9ecef' : 'white',
+                    cursor: (controlsDisabled || !formData.project) ? 'not-allowed' : 'pointer'
+                  }}
                 >
                   <option value="">-- Select Phase --</option>
                   {filteredPhases.map((phase, index) => (
@@ -239,20 +360,52 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
                   ))}
                 </select>
                 {formData.project && filteredPhases.length === 0 && (
-                  <small style={{ color: '#6c757d', fontStyle: 'italic' }}>
-                    No phases available for selected project
-                  </small>
+                  <div style={{ 
+                    fontSize: '12px', 
+                    color: '#856404', 
+                    fontStyle: 'italic', 
+                    marginTop: '5px',
+                    padding: '8px',
+                    backgroundColor: '#fff3cd',
+                    borderRadius: '4px',
+                    border: '1px solid #ffeaa7'
+                  }}>
+                    ⚠️ No phases available for selected project
+                  </div>
+                )}
+                {selectedPhaseDescription && (
+                  <div style={{ 
+                    fontSize: '12px', 
+                    color: '#6c757d', 
+                    fontStyle: 'italic', 
+                    marginTop: '5px',
+                    padding: '8px',
+                    backgroundColor: '#f8f9fa',
+                    borderRadius: '4px',
+                    border: '1px solid #e9ecef'
+                  }}>
+                    📋 {selectedPhaseDescription}
+                  </div>
                 )}
               </div>
             </div>
           </div>
 
-          <div className="form-section">
-            <h3>Completion Details</h3>
+          {/* Completion Details Section */}
+          <div className="upload-options-group">
+            <strong className="option-title">Completion Details</strong>
             
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="completionDate"><strong>Completion Date:</strong></label>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '15px' }}>
+              {/* Completion Date */}
+              <div style={{ flex: '1', minWidth: '250px' }}>
+                <label htmlFor="completionDate" style={{ 
+                  display: 'block', 
+                  fontWeight: 'bold', 
+                  marginBottom: '8px',
+                  color: '#495057'
+                }}>
+                  Completion Date: <span style={{ color: '#dc3545' }}>*</span>
+                </label>
                 <input
                   type="date"
                   id="completionDate"
@@ -261,56 +414,127 @@ function ManualPCompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
                   onChange={handleInputChange}
                   disabled={controlsDisabled}
                   required
-                  className="form-input"
+                  style={{
+                    width: '100%',
+                    padding: '10px 12px',
+                    border: '1px solid #ced4da',
+                    borderRadius: '4px',
+                    fontSize: '14px',
+                    backgroundColor: controlsDisabled ? '#e9ecef' : 'white',
+                    cursor: controlsDisabled ? 'not-allowed' : 'text'
+                  }}
                 />
-                <small style={{ color: '#6c757d', fontStyle: 'italic' }}>
-                  Must be a month-end date (last day of the month)
-                </small>
+                <div style={{ 
+                  fontSize: '12px', 
+                  color: '#6c757d', 
+                  fontStyle: 'italic', 
+                  marginTop: '5px'
+                }}>
+                  📅 Must be a month-end date (last day of the month)
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="completionType"><strong>Completion Type:</strong></label>
+              {/* Completion Type */}
+              <div style={{ flex: '1', minWidth: '250px' }}>
+                <label htmlFor="completionType" style={{ 
+                  display: 'block', 
+                  fontWeight: 'bold', 
+                  marginBottom: '8px',
+                  color: '#495057'
+                }}>
+                  Completion Type:
+                </label>
                 <select
                   id="completionType"
                   name="completionType"
                   value={formData.completionType}
                   onChange={handleInputChange}
                   disabled={controlsDisabled}
-                  className="form-select"
+                  style={{
+                    width: '100%',
+                    padding: '10px 12px',
+                    border: '1px solid #ced4da',
+                    borderRadius: '4px',
+                    fontSize: '14px',
+                    backgroundColor: controlsDisabled ? '#e9ecef' : 'white',
+                    cursor: controlsDisabled ? 'not-allowed' : 'pointer'
+                  }}
                 >
                   <option value="A">Actual Completion</option>
                   <option value="P">Projected Completion</option>
                 </select>
+                <div style={{ 
+                  fontSize: '12px', 
+                  color: '#6c757d', 
+                  fontStyle: 'italic', 
+                  marginTop: '5px'
+                }}>
+                  🎯 {formData.completionType === 'A' ? 'Actual completion date' : 'Projected completion date'}
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="form-actions">
+          {/* Submit Button */}
+          <div style={{ textAlign: 'center', marginTop: '30px' }}>
             <button
               type="submit"
               disabled={submitDisabled}
-              className="submit-button"
+              className="upload-button"
+              style={{
+                padding: '12px 30px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                backgroundColor: submitDisabled ? '#cccccc' : '#28a745',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: submitDisabled ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s ease',
+                transform: submitDisabled ? 'none' : 'translateY(0)',
+              }}
+              onMouseOver={(e) => {
+                if (!submitDisabled) {
+                  e.target.style.backgroundColor = '#218838';
+                  e.target.style.transform = 'translateY(-1px)';
+                }
+              }}
+              onMouseOut={(e) => {
+                if (!submitDisabled) {
+                  e.target.style.backgroundColor = '#28a745';
+                  e.target.style.transform = 'translateY(0)';
+                }
+              }}
             >
-              {isSubmitting ? 'Saving...' : 'Save Completion Date'}
+              {isSubmitting ? '⏳ Saving...' : '💾 Save Completion Date'}
             </button>
           </div>
         </form>
       )}
 
+      {/* Message Display */}
       {message && (
         <div className={`feedback-message ${message.startsWith('❌') || message.includes('Failed') || message.includes('Error') ? 'error-message' : 'success-message'}`}>
-          {message}
+          <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{message}</pre>
         </div>
       )}
 
-      <div className="info-section">
-        <h4>ℹ️ Information</h4>
-        <ul>
+      {/* Information Section */}
+      <div style={{ 
+        marginTop: '40px',
+        padding: '20px',
+        backgroundColor: '#e8f4fd',
+        border: '1px solid #007bff',
+        borderRadius: '8px'
+      }}>
+        <h4 style={{ color: '#0056b3', marginTop: 0 }}>ℹ️ Information</h4>
+        <ul style={{ marginBottom: 0, color: '#495057' }}>
           <li>Completion dates must be month-end dates (last day of the month)</li>
-          <li>The system will automatically set the creation timestamp</li>
+          <li>The system automatically sets the creation timestamp</li>
           <li>This uses the same validation and upload process as CSV upload</li>
-          <li>Project/phase combinations are validated against the same table as CSV uploads</li>
+          <li>Project/phase combinations are validated against the validation table</li>
           <li>If a completion date already exists for this project/phase combination, it will be updated</li>
+          <li>All entries are logged with source tracking for audit purposes</li>
         </ul>
       </div>
     </div>
