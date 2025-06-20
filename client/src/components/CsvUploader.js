@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
 
-function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkDbConnection, isCheckingDb }) {
+function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkDbConnection, isCheckingDb, cutoffDate, validateCutoffDate }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -11,6 +11,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
   const [uploadTotals, setUploadTotals] = useState(null);
   const [uploadOption, setUploadOption] = useState('poc');
   const [templateType, setTemplateType] = useState('short'); // 'short' or 'long'
+  const [completionType, setCompletionType] = useState('A'); // 'A' for Actual, 'P' for Projected
 
   const handleFileChange = (event) => {
     setMessage('');
@@ -45,28 +46,63 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
       return;
     }
 
+    // Validate cutoff date for POC uploads
+    if (uploadOption === 'poc') {
+      const validation = validateCutoffDate();
+      if (!validation.isValid) {
+        setMessage(`Cannot upload: ${validation.error}`);
+        return;
+      }
+    }
+
     setIsLoading(true);
     setMessage('Uploading...');
-    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType, cocode });
+    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType, completionType, cocode });
     setUploadSummary(null);
     setUploadTotals(null);
 
     const formData = new FormData();
     formData.append('csvFile', selectedFile);
     formData.append('uploadOption', uploadOption);
-    formData.append('cocode', cocode); // Use the cocode prop
+    formData.append('cocode', cocode);
 
     if (uploadOption === 'poc') {
       formData.append('templateType', templateType);
+      formData.append('cutoffDate', cutoffDate);
+    } else if (uploadOption === 'date') {
+      formData.append('completionType', completionType);
     }
 
+    // STEP 1: Test backend connectivity first
     try {
-      const response = await fetch('/api/upload-csv', {
+      console.log('Testing backend connectivity...');
+      const testResponse = await fetch('http://localhost:3001/api/db-status');
+      if (!testResponse.ok) {
+        throw new Error(`Backend test failed: ${testResponse.status}`);
+      }
+      console.log('Backend connectivity test: SUCCESS');
+    } catch (testError) {
+      console.error('Backend connectivity test: FAILED', testError);
+      setMessage(`Upload failed: Cannot connect to backend server (${testError.message}). Please check if server is running on port 3001.`);
+      setIsLoading(false);
+      return;
+    }
+
+    // STEP 2: Attempt the actual upload
+    const uploadUrl = 'http://localhost:3001/api/upload-csv';
+    console.log('Uploading to:', uploadUrl);
+    
+    try {
+      const response = await fetch(uploadUrl, {
         method: 'POST',
         body: formData,
       });
 
+      console.log('Upload response status:', response.status);
+      console.log('Upload response ok:', response.ok);
+
       const result = await response.json();
+      console.log('Upload result:', result);
 
       if (response.ok) {
         setMessage(result.message || 'File uploaded successfully!');
@@ -89,14 +125,42 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
         setMessage(`Upload failed: ${result.message || response.statusText}`);
         setUploadSummary(null);
         setUploadTotals(null);
+        
+        // Display specific errors if available
+        if (result.errors && result.errors.length > 0) {
+          const errorList = result.errors.slice(0, 5).join('\n'); // Show first 5 errors
+          setMessage(`Upload failed: ${result.message}\n\nFirst few errors:\n${errorList}${result.errors.length > 5 ? '\n...and more' : ''}`);
+        }
+        
         logToServer('error', `CSV upload failed (backend error): ${result.message || response.statusText}`, 'CsvUploader', { response: result, fileName: selectedFile?.name });
       }
     } catch (error) {
-      console.error('Upload error:', error);
-      setMessage(`Upload failed: ${error.message}. Check network or server availability.`);
+      console.error('Upload fetch error:', error);
+      
+      // Enhanced error handling
+      let errorMessage = `Upload failed: ${error.message}`;
+      
+      if (error.message.includes('Failed to fetch')) {
+        errorMessage = `Upload failed: Cannot connect to server. Please check:
+        
+1. Backend server is running (should see "Server listening on http://localhost:3001")
+2. No firewall blocking port 3001
+3. Try refreshing the page and uploading again
+        
+Technical error: ${error.message}`;
+      }
+      
+      setMessage(errorMessage);
       setUploadSummary(null);
       setUploadTotals(null);
-      logToServer('error', `CSV upload failed (network/fetch error): ${error.message}`, 'CsvUploader', { error, fileName: selectedFile?.name });
+      logToServer('error', `CSV upload failed (network/fetch error): ${error.message}`, 'CsvUploader', { 
+        error: {
+          name: error.name,
+          message: error.message
+        }, 
+        fileName: selectedFile?.name,
+        uploadUrl: uploadUrl
+      });
     } finally {
       setIsLoading(false);
     }
@@ -128,7 +192,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
               value="date"
               checked={uploadOption === 'date'}
               onChange={() => setUploadOption('date')}
-              disabled={controlsDisabled} /* Changed from disabled={true} */
+              disabled={controlsDisabled}
             />
             Upload Completion Date
           </label>
@@ -145,6 +209,48 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
           </label>
         </div>
 
+        {/* Completion Type Selection for Completion Date Upload */}
+        {uploadOption === 'date' && (
+          <div className="template-selection-group">
+            <strong className="option-title"><i>Select Completion Type</i></strong>
+            <div className="radio-group">
+              <label className={`radio-label ${controlsDisabled ? 'disabled-option' : ''}`}>
+                <input
+                  type="radio"
+                  name="completionType"
+                  value="A"
+                  checked={completionType === 'A'}
+                  onChange={() => setCompletionType('A')}
+                  disabled={controlsDisabled}
+                />
+                Actual Completion
+              </label>
+              <label className={`radio-label ${controlsDisabled ? 'disabled-option' : ''}`}>
+                <input
+                  type="radio"
+                  name="completionType"
+                  value="P"
+                  checked={completionType === 'P'}
+                  onChange={() => setCompletionType('P')}
+                  disabled={controlsDisabled}
+                />
+                Projected Completion
+              </label>
+            </div>
+            <div style={{ 
+              fontSize: '12px', 
+              color: '#6c757d', 
+              fontStyle: 'italic', 
+              marginTop: '10px',
+              paddingLeft: '25px'
+            }}>
+              📋 Expected format: Project, Phase, Completion Date (MM/DD/YYYY)<br/>
+              ⚠️ Completion dates must be month-end dates (last day of the month)
+            </div>
+          </div>
+        )}
+
+        {/* Template Type Selection for POC Upload */}
         {uploadOption === 'poc' && (
           <div className="template-selection-group">
             <strong className="option-title"><i>Select Template Type</i></strong>
@@ -172,6 +278,16 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
                 Long Template
               </label>
             </div>
+            <div style={{ 
+              fontSize: '12px', 
+              color: '#6c757d', 
+              fontStyle: 'italic', 
+              marginTop: '10px',
+              paddingLeft: '25px'
+            }}>
+              📋 Short: Project, Phase, Year, POC<br/>
+              📋 Long: Project, Phase, Year, Jan, Feb, Mar, ..., Dec
+            </div>
           </div>
         )}
       </div>
@@ -186,7 +302,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
           accept=".csv"
           onChange={handleFileChange}
           disabled={controlsDisabled}
-          style={{ display: 'none' }} /* Hide the default input */
+          style={{ display: 'none' }}
         />
         {selectedFile && <p className="selected-file-name">Selected: {selectedFile.name}</p>}
       </div>
@@ -200,10 +316,11 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
       </button>
 
       {message && (
-        <p className={`feedback-message ${message.startsWith('Upload failed') || message.startsWith('Cannot upload') ? 'error-message' : 'success-message'}`}>
-          {message}
-        </p>
+        <div className={`feedback-message ${message.startsWith('Upload failed') || message.startsWith('Cannot upload') ? 'error-message' : 'success-message'}`}>
+          <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{message}</pre>
+        </div>
       )}
+      
       {uploadTotals && (
         <div className="upload-results-summary">
           <h4>Upload Results:</h4>
@@ -221,8 +338,16 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
                   <tr>
                     <th>Project</th>
                     <th>Phase Code</th>
-                    <th>Inserted</th>
-                    <th>Updated</th>
+                    <th>Records</th>
+                    {uploadOption === 'poc' && (
+                      <>
+                        <th>Actual</th>
+                        <th>Projected</th>
+                      </>
+                    )}
+                    {uploadOption === 'date' && (
+                      <th>Type</th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
@@ -230,8 +355,16 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
                     <tr key={`${item.project}-${item.phasecode}-${index}`}>
                       <td>{item.project}</td>
                       <td>{item.phasecode}</td>
-                      <td className="text-right">{item.inserted}</td>
-                      <td className="text-right">{item.updated}</td>
+                      <td className="text-right">{item.inserted + (item.updated || 0)}</td>
+                      {uploadOption === 'poc' && (
+                        <>
+                          <td className="text-right">{item.actualCount || 0}</td>
+                          <td className="text-right">{item.projectedCount || 0}</td>
+                        </>
+                      )}
+                      {uploadOption === 'date' && (
+                        <td>{completionType === 'A' ? 'Actual' : 'Projected'}</td>
+                      )}
                     </tr>
                   ))}
                 </tbody>

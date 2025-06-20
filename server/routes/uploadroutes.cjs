@@ -1,6 +1,10 @@
 // routes/uploadRoutes.cjs
 // Completion Date upload activated + project is flowing through
 // Actual/Projected added
+// Better error handling and summary display for completion dates
+
+// routes/uploadRoutes.cjs - FIXED VERSION
+// Better error handling and summary display for completion dates
 
 const express = require('express');
 const multer = require('multer');
@@ -19,7 +23,7 @@ const parseAndValidateDate = (dateStr) => {
     const match = dateStr.match(mmddyyyyRegex);
     
     if (!match) {
-        return { isValid: false, error: 'Invalid date format. Use MM/DD/YYYY.' };
+        return { isValid: false, error: 'Invalid date format. Expected MM/DD/YYYY format.' };
     }
     
     const month = parseInt(match[1], 10);
@@ -28,11 +32,11 @@ const parseAndValidateDate = (dateStr) => {
     
     // Basic validation
     if (month < 1 || month > 12) {
-        return { isValid: false, error: 'Invalid month (must be 1-12).' };
+        return { isValid: false, error: `Invalid month (${month}). Must be 1-12.` };
     }
     
     if (day < 1 || day > 31) {
-        return { isValid: false, error: 'Invalid day.' };
+        return { isValid: false, error: `Invalid day (${day}). Must be 1-31.` };
     }
     
     // Create date object to validate and check if it's month-end
@@ -40,13 +44,13 @@ const parseAndValidateDate = (dateStr) => {
     
     // Check if the date is valid
     if (date.getFullYear() !== year || date.getMonth() !== (month - 1) || date.getDate() !== day) {
-        return { isValid: false, error: 'Invalid date.' };
+        return { isValid: false, error: `Invalid date: ${dateStr}. Please check the date is valid.` };
     }
     
     // Check if it's a month-end date
     const lastDayOfMonth = new Date(year, month, 0).getDate();
     if (day !== lastDayOfMonth) {
-        return { isValid: false, error: 'Completion date must be a month-end date.' };
+        return { isValid: false, error: `Date ${dateStr} is not a month-end date. Expected last day of ${month}/${year} which is ${month}/${lastDayOfMonth}/${year}.` };
     }
     
     // Convert to YYYY-MM-DD format for database storage
@@ -103,8 +107,8 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
 
     // Validation function for POC data
     const validatePocRow = async (row, rowIndex) => {
-        const project = row[0];
-        const phasecode = row[1];
+        const project = row[0]?.toString().trim();
+        const phasecode = row[1]?.toString().trim();
         const year = parseInt(row[2], 10);
 
         if (!project || !phasecode) {
@@ -116,11 +120,11 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
 
         try {
             const [results] = await pool.query(
-                'SELECT 1 FROM `re.project_phase_validation` WHERE project = ? AND phasecode = ? AND cocode = ?',
+                'SELECT 1 FROM `project_phase_validation` WHERE project = ? AND phasecode = ? AND cocode = ?',
                 [project, phasecode, cocode]
             );
             if (results.length === 0) {
-                 return { isValid: false, error: `Row ${rowIndex + 1}: Project/Phasecode combination not found for company ${cocode}.` };
+                 return { isValid: false, error: `Row ${rowIndex + 1}: Project/Phasecode combination '${project}/${phasecode}' not found for company ${cocode}.` };
             }
         } catch (dbError) {
             logger.error('Database validation error:', dbError);
@@ -132,9 +136,9 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
 
     // Validation function for Completion Date data
     const validateCompletionRow = async (row, rowIndex) => {
-        const project = row[0];
-        const phasecode = row[1];
-        const completionDate = row[2];
+        const project = row[0]?.toString().trim();
+        const phasecode = row[1]?.toString().trim();
+        const completionDate = row[2]?.toString().trim();
 
         if (!project || !phasecode) {
             return { isValid: false, error: `Row ${rowIndex + 1}: Project and Phasecode cannot be empty.` };
@@ -144,18 +148,18 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
             return { isValid: false, error: `Row ${rowIndex + 1}: Completion date cannot be empty.` };
         }
 
-        const dateValidation = parseAndValidateDate(completionDate.toString().trim());
+        const dateValidation = parseAndValidateDate(completionDate);
         if (!dateValidation.isValid) {
             return { isValid: false, error: `Row ${rowIndex + 1}: ${dateValidation.error}` };
         }
 
         try {
             const [results] = await pool.query(
-                'SELECT 1 FROM `re.project_phase_validation` WHERE project = ? AND phasecode = ? AND cocode = ?',
+                'SELECT 1 FROM `project_phase_validation` WHERE project = ? AND phasecode = ? AND cocode = ?',
                 [project, phasecode, cocode]
             );
             if (results.length === 0) {
-                 return { isValid: false, error: `Row ${rowIndex + 1}: Project/Phasecode combination not found for company ${cocode}.` };
+                 return { isValid: false, error: `Row ${rowIndex + 1}: Project/Phasecode combination '${project}/${phasecode}' not found for company ${cocode}.` };
             }
         } catch (dbError) {
             logger.error('Database validation error:', dbError);
@@ -201,15 +205,15 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                 return;
             }
 
-            const project = row[0];
-            const phasecode = row[1];
+            const project = row[0]?.toString().trim();
+            const phasecode = row[1]?.toString().trim();
 
             if (uploadOption === 'poc') {
                 const year = parseInt(row[2], 10);
                 
                 if (templateType === 'short') {
                     const pocValue = row[3];
-                    if (pocValue !== null && pocValue.trim() !== '') {
+                    if (pocValue !== null && pocValue.toString().trim() !== '') {
                         // Determine POC type based on cut-off date (month 1 for short template)
                         const pocType = getPocType(year, 1, cutoffDate);
                         recordsToInsert.push([cocode, project, phasecode, year, 1, pocValue, pocType]);
@@ -224,7 +228,7 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                     for (let i = 0; i < 12; i++) {
                         const month = i + 1;
                         const pocValue = row[i + 3];
-                        if (pocValue !== null && pocValue.trim() !== '') {
+                        if (pocValue !== null && pocValue.toString().trim() !== '') {
                             hasMonthData = true;
                             // Determine POC type based on cut-off date for each month
                             const pocType = getPocType(year, month, cutoffDate);
@@ -264,9 +268,9 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
             let query;
             if (uploadOption === 'poc') {
                 // Updated query to include POC type
-                query = 'INSERT INTO `re.pocpermonth` (cocode, project, phasecode, year, month, value, type) VALUES ? ON DUPLICATE KEY UPDATE value = VALUES(value), type = VALUES(type), timestampM = CURRENT_TIMESTAMP, userM = "CSV_UPLOAD"';
+                query = 'INSERT INTO `pocpermonth` (cocode, project, phasecode, year, month, value, type) VALUES ? ON DUPLICATE KEY UPDATE value = VALUES(value), type = VALUES(type), timestampM = CURRENT_TIMESTAMP, userM = "CSV_UPLOAD"';
             } else if (uploadOption === 'date') {
-                query = 'INSERT INTO `re.pcompdate` (cocode, project, phasecode, type, completion_date) VALUES ? ON DUPLICATE KEY UPDATE completion_date = VALUES(completion_date), created_at = CURRENT_TIMESTAMP';
+                query = 'INSERT INTO `pcompdate` (cocode, project, phasecode, type, completion_date) VALUES ? ON DUPLICATE KEY UPDATE completion_date = VALUES(completion_date), type = VALUES(type), created_at = CURRENT_TIMESTAMP';
             }
 
             try {
@@ -275,7 +279,7 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                 // Debug logging for database insertion
                 logger.info(`Database insertion completed - Affected rows: ${result.affectedRows}, Changed rows: ${result.changedRows || 0}`);
                 
-                // Create summary by project/phase for response with POC type breakdown
+                // Create summary by project/phase for response
                 const summary = {};
                 recordsToInsert.forEach(record => {
                     const key = `${record[1]}-${record[2]}`; // project-phasecode
@@ -286,7 +290,8 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                             inserted: 0, 
                             updated: 0,
                             actualCount: 0,
-                            projectedCount: 0
+                            projectedCount: 0,
+                            completionType: uploadOption === 'date' ? (completionType || 'A') : null
                         };
                     }
                     summary[key].inserted++; // This is a simplification
@@ -299,6 +304,11 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                             summary[key].projectedCount++;
                         }
                     }
+                    
+                    // For completion dates, set the type
+                    if (uploadOption === 'date') {
+                        summary[key].completionType = record[3]; // Type is at index 3 for completion dates
+                    }
                 });
 
                 // Prepare response message based on upload type
@@ -307,6 +317,10 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                     const totalActual = Object.values(summary).reduce((sum, item) => sum + item.actualCount, 0);
                     const totalProjected = Object.values(summary).reduce((sum, item) => sum + item.projectedCount, 0);
                     responseMessage += ` Classification: ${totalActual} Actual, ${totalProjected} Projected (based on cut-off date ${cutoffDate}).`;
+                } else if (uploadOption === 'date') {
+                    const totalRecords = recordsToInsert.length;
+                    const typeText = completionType === 'A' ? 'Actual' : 'Projected';
+                    responseMessage += ` All ${totalRecords} completion dates marked as ${typeText}.`;
                 }
 
                 res.status(200).json({
@@ -317,17 +331,23 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                     totalErrors: errors.length,
                     summary: Object.values(summary),
                     cutoffDate: cutoffDate, // Include cutoff date in response
+                    completionType: completionType, // Include completion type in response
                     errors: errors
                 });
             } catch (dbError) {
                 logger.error('Bulk insert failed:', dbError);
-                res.status(500).json({ message: 'Failed to save data to the database.', error: dbError.message });
+                res.status(500).json({ 
+                    message: 'Failed to save data to the database.', 
+                    error: dbError.message,
+                    totalErrors: errors.length,
+                    errors: errors
+                });
             }
         })
         .on('error', (error) => {
             fs.unlinkSync(filePath);
             logger.error('CSV parsing error:', error);
-            res.status(500).json({ message: 'Error parsing CSV file.' });
+            res.status(500).json({ message: 'Error parsing CSV file.', error: error.message });
         });
 });
 

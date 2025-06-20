@@ -1510,3 +1510,508 @@
 2025-06-20 17:45:15 info: Received request for /api/db-status
 2025-06-20 17:45:15 info: DB status check successful.
 2025-06-20T09:45:15.786Z info: [Frontend] 
+2025-06-20 17:45:44 info: Received request for /api/db-status
+2025-06-20 17:45:44 info: DB status check successful.
+2025-06-20T09:45:44.800Z info: [Frontend] 
+2025-06-20 17:46:15 info: Received request for /api/db-status
+2025-06-20 17:46:15 info: DB status check successful.
+2025-06-20T09:46:15.779Z info: [Frontend] 
+2025-06-20 17:46:45 info: Received request for /api/db-status
+2025-06-20 17:46:45 info: DB status check successful.
+2025-06-20T09:46:45.791Z info: [Frontend] 
+2025-06-20T09:46:56.004Z info: [Frontend] 
+2025-06-20T09:46:56.020Z info: [Frontend] 
+2025-06-20T09:46:56.029Z info: [Frontend] 
+2025-06-20T09:46:56.040Z info: [Frontend] 
+2025-06-20T09:46:56.047Z info: [Frontend] 
+2025-06-20T09:46:59.020Z info: [Frontend] 
+2025-06-20T09:46:59.057Z info: [Frontend] 
+2025-06-20T09:46:59.440Z info: [Frontend] 
+2025-06-20T09:46:59.700Z info: [Frontend] 
+2025-06-20T09:46:59.766Z info: [Frontend] 
+2025-06-20T09:46:59.768Z info: [Frontend] 
+2025-06-20T09:46:59.768Z info: [Frontend] 
+2025-06-20T09:46:59.769Z info: [Frontend] 
+2025-06-20T09:46:59.775Z info: [Frontend] 
+2025-06-20T09:47:00.718Z info: [Frontend] 
+2025-06-20T09:47:04.426Z info: [Frontend] 
+2025-06-20T09:47:04.478Z info: [Frontend] 
+2025-06-20T09:47:04.481Z info: [Frontend] 
+2025-06-20T09:47:04.481Z info: [Frontend] 
+2025-06-20T09:47:04.487Z info: [Frontend] 
+2025-06-20T09:47:04.496Z info: [Frontend] 
+2025-06-20 17:47:08 info: Received request for /api/db-status
+2025-06-20 17:47:08 info: DB status check successful.
+2025-06-20T09:47:08.263Z info: [Frontend] 
+2025-06-20 17:47:15 info: Received request for /api/db-status
+2025-06-20 17:47:15 info: DB status check successful.
+2025-06-20T09:47:15.018Z info: [Frontend] 
+2025-06-20T09:47:20.926Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20T09:47:22.298Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T09:47:22.694Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 17:47:44 info: Received request for /api/db-status
+2025-06-20 17:47:44 info: DB status check successful.
+2025-06-20T09:47:44.795Z info: [Frontend] 
+2025-06-20 17:48:15 info: Received request for /api/db-status
+2025-06-20 17:48:15 info: DB status check successful.
+2025-06-20T09:48:15.789Z info: [Frontend] 
+2025-06-20 17:48:41 info: Received request for /api/db-status
+2025-06-20 17:48:41 info: DB status check successful.
+2025-06-20T09:48:41.234Z info: [Frontend] 
+2025-06-20T09:48:41.251Z info: [Frontend] 
+2025-06-20T09:48:41.254Z info: [Frontend] 
+2025-06-20T09:48:41.256Z info: [Frontend] 
+2025-06-20T09:48:41.267Z info: [Frontend] 
+2025-06-20T09:48:41.274Z info: [Frontend] 
+2025-06-20 17:48:44 info: Received request for /api/db-status
+2025-06-20 17:48:44 info: DB status check successful.
+2025-06-20T09:48:44.802Z info: [Frontend] 
+2025-06-20T09:48:49.598Z info: [Frontend] 
+2025-06-20T09:48:49.631Z info: [Frontend] 
+2025-06-20T09:48:56.763Z info: [Frontend] 
+2025-06-20T09:48:56.824Z info: [Frontend] 
+2025-06-20 17:49:15 info: Received request for /api/db-status
+2025-06-20 17:49:15 info: DB status check successful.
+2025-06-20T09:49:15.782Z info: [Frontend] 
+2025-06-20 17:49:44 info: Received request for /api/db-status
+2025-06-20 17:49:44 info: DB status check successful.
+2025-06-20T09:49:44.815Z info: [Frontend] 
+2025-06-20 17:50:51 info: Received request for /api/db-status
+2025-06-20 17:50:51 info: DB status check successful.
+2025-06-20T09:50:51.775Z info: [Frontend] 
+2025-06-20 17:51:51 info: Received request for /api/db-status
+2025-06-20 17:51:51 info: DB status check successful.
+2025-06-20T09:51:51.774Z info: [Frontend] 
+2025-06-20 17:52:51 info: Received request for /api/db-status
+2025-06-20 17:52:51 info: DB status check successful.
+2025-06-20T09:52:51.766Z info: [Frontend] 
+2025-06-20 17:53:51 info: Received request for /api/db-status
+2025-06-20 17:53:51 info: DB status check successful.
+2025-06-20T09:53:51.761Z info: [Frontend] 
+2025-06-20 17:54:51 info: Received request for /api/db-status
+2025-06-20 17:54:51 info: DB status check successful.
+2025-06-20T09:54:51.771Z info: [Frontend] 
+2025-06-20 17:55:51 info: Received request for /api/db-status
+2025-06-20 17:55:51 info: DB status check successful.
+2025-06-20T09:55:51.768Z info: [Frontend] 
+2025-06-20 17:56:51 info: Received request for /api/db-status
+2025-06-20 17:56:51 info: DB status check successful.
+2025-06-20T09:56:51.768Z info: [Frontend] 
+2025-06-20 17:57:51 info: Received request for /api/db-status
+2025-06-20 17:57:51 info: DB status check successful.
+2025-06-20T09:57:51.758Z info: [Frontend] 
+2025-06-20 17:58:51 info: Received request for /api/db-status
+2025-06-20 17:58:51 info: DB status check successful.
+2025-06-20T09:58:51.773Z info: [Frontend] 
+2025-06-20 17:59:51 info: Received request for /api/db-status
+2025-06-20 17:59:51 info: DB status check successful.
+2025-06-20T09:59:51.764Z info: [Frontend] 
+2025-06-20 18:00:51 info: Received request for /api/db-status
+2025-06-20 18:00:51 info: DB status check successful.
+2025-06-20T10:00:51.761Z info: [Frontend] 
+2025-06-20 18:01:51 info: Received request for /api/db-status
+2025-06-20 18:01:51 info: DB status check successful.
+2025-06-20T10:01:51.777Z info: [Frontend] 
+2025-06-20 18:02:51 info: Received request for /api/db-status
+2025-06-20 18:02:51 info: DB status check successful.
+2025-06-20T10:02:51.774Z info: [Frontend] 
+2025-06-20 18:03:51 info: Received request for /api/db-status
+2025-06-20 18:03:51 info: DB status check successful.
+2025-06-20T10:03:51.769Z info: [Frontend] 
+2025-06-20 18:04:51 info: Received request for /api/db-status
+2025-06-20 18:04:51 info: DB status check successful.
+2025-06-20T10:04:51.749Z info: [Frontend] 
+2025-06-20 18:05:51 info: Received request for /api/db-status
+2025-06-20 18:05:51 info: DB status check successful.
+2025-06-20T10:05:51.752Z info: [Frontend] 
+2025-06-20 18:06:51 info: Received request for /api/db-status
+2025-06-20 18:06:51 info: DB status check successful.
+2025-06-20T10:06:51.745Z info: [Frontend] 
+2025-06-20 18:07:51 info: Received request for /api/db-status
+2025-06-20 18:07:51 info: DB status check successful.
+2025-06-20T10:07:51.740Z info: [Frontend] 
+2025-06-20 18:08:51 info: Received request for /api/db-status
+2025-06-20 18:08:51 info: DB status check successful.
+2025-06-20T10:08:51.741Z info: [Frontend] 
+2025-06-20 18:09:51 info: Received request for /api/db-status
+2025-06-20 18:09:51 info: DB status check successful.
+2025-06-20T10:09:51.750Z info: [Frontend] 
+2025-06-20 18:10:51 info: Received request for /api/db-status
+2025-06-20 18:10:51 info: DB status check successful.
+2025-06-20T10:10:51.729Z info: [Frontend] 
+2025-06-20 18:11:15 info: Received request for /api/db-status
+2025-06-20 18:11:15 info: DB status check successful.
+2025-06-20T10:11:15.732Z info: [Frontend] 
+2025-06-20 18:11:32 info: Received request for /api/db-status
+2025-06-20 18:11:32 info: DB status check successful.
+2025-06-20T10:11:32.665Z info: [Frontend] 
+2025-06-20 18:11:44 info: Received request for /api/db-status
+2025-06-20 18:11:44 info: DB status check successful.
+2025-06-20T10:11:44.738Z info: [Frontend] 
+2025-06-20T10:11:53.974Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20T10:11:56.123Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T10:11:56.455Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:12:14 info: Received request for /api/db-status
+2025-06-20 18:12:14 info: DB status check successful.
+2025-06-20T10:12:14.741Z info: [Frontend] 
+2025-06-20 18:12:45 info: Received request for /api/db-status
+2025-06-20 18:12:45 info: DB status check successful.
+2025-06-20T10:12:45.731Z info: [Frontend] 
+2025-06-20 18:13:15 info: Received request for /api/db-status
+2025-06-20 18:13:15 info: DB status check successful.
+2025-06-20T10:13:15.719Z info: [Frontend] 
+2025-06-20 18:13:51 info: Received request for /api/db-status
+2025-06-20 18:13:51 info: DB status check successful.
+2025-06-20T10:13:51.739Z info: [Frontend] 
+2025-06-20 18:14:17 info: Received request for /api/db-status
+2025-06-20 18:14:17 info: DB status check successful.
+2025-06-20T10:14:17.340Z info: [Frontend] 
+2025-06-20T10:14:22.171Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T10:14:22.485Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20T10:14:28.832Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T10:14:29.158Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20 18:14:45 info: Received request for /api/db-status
+2025-06-20 18:14:45 info: DB status check successful.
+2025-06-20T10:14:45.721Z info: [Frontend] 
+2025-06-20 18:15:15 info: Received request for /api/db-status
+2025-06-20 18:15:15 info: DB status check successful.
+2025-06-20T10:15:15.734Z info: [Frontend] 
+2025-06-20 18:15:51 info: Received request for /api/db-status
+2025-06-20 18:15:51 info: DB status check successful.
+2025-06-20T10:15:51.729Z info: [Frontend] 
+2025-06-20 18:16:42 info: Received request for /api/db-status
+2025-06-20 18:16:42 info: DB status check successful.
+2025-06-20 18:17:19 info: Attempting to create MySQL connection pool...
+2025-06-20 18:17:19 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 18:17:19 info: MySQL Pool ready.
+2025-06-20 18:17:19 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 18:17:19 info: 📊 Main React app: http://localhost:3000
+2025-06-20 18:17:19 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 18:17:19 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 18:17:24 info: Received request for /api/db-status
+2025-06-20 18:17:24 info: DB status check successful.
+2025-06-20T10:17:24.159Z info: [Frontend] 
+2025-06-20 18:17:44 info: Received request for /api/db-status
+2025-06-20 18:17:44 info: DB status check successful.
+2025-06-20T10:17:44.746Z info: [Frontend] 
+2025-06-20 18:18:14 info: Received request for /api/db-status
+2025-06-20 18:18:14 info: DB status check successful.
+2025-06-20T10:18:14.736Z info: [Frontend] 
+2025-06-20T10:18:39.201Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T10:18:39.515Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20 18:18:44 info: Received request for /api/db-status
+2025-06-20 18:18:44 info: DB status check successful.
+2025-06-20T10:18:44.734Z info: [Frontend] 
+2025-06-20 18:19:15 info: Received request for /api/db-status
+2025-06-20 18:19:15 info: DB status check successful.
+2025-06-20T10:19:15.720Z info: [Frontend] 
+2025-06-20 18:19:45 info: Received request for /api/db-status
+2025-06-20 18:19:45 info: DB status check successful.
+2025-06-20T10:19:45.712Z info: [Frontend] 
+2025-06-20 18:20:51 info: Received request for /api/db-status
+2025-06-20 18:20:51 info: DB status check successful.
+2025-06-20T10:20:51.723Z info: [Frontend] 
+2025-06-20 18:21:51 info: Received request for /api/db-status
+2025-06-20 18:21:51 info: DB status check successful.
+2025-06-20T10:21:51.719Z info: [Frontend] 
+2025-06-20 18:22:51 info: Received request for /api/db-status
+2025-06-20 18:22:51 info: DB status check successful.
+2025-06-20T10:22:51.726Z info: [Frontend] 
+2025-06-20 18:23:51 info: Received request for /api/db-status
+2025-06-20 18:23:51 info: DB status check successful.
+2025-06-20T10:23:51.708Z info: [Frontend] 
+2025-06-20 18:24:14 info: Received request for /api/db-status
+2025-06-20 18:24:14 info: DB status check successful.
+2025-06-20T10:24:14.734Z info: [Frontend] 
+2025-06-20 18:24:16 info: Received request for /api/db-status
+2025-06-20 18:24:16 info: DB status check successful.
+2025-06-20 18:24:16 info: Received request for /api/db-status
+2025-06-20 18:24:16 info: DB status check successful.
+2025-06-20T10:24:16.603Z info: [Frontend] 
+2025-06-20T10:24:16.608Z info: [Frontend] 
+2025-06-20T10:24:23.709Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20T10:24:38.934Z info: [Frontend] 
+2025-06-20T10:24:44.776Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20T10:24:46.109Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20 18:24:46 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 18:24:46 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:153:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:191:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20 18:24:46 info: Received request for /api/db-status
+2025-06-20 18:24:46 info: DB status check successful.
+2025-06-20T10:24:46.488Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20T10:24:46.602Z info: [Frontend] 
+2025-06-20 18:25:16 info: Received request for /api/db-status
+2025-06-20 18:25:16 info: DB status check successful.
+2025-06-20T10:25:16.710Z info: [Frontend] 
+2025-06-20 18:25:46 info: Received request for /api/db-status
+2025-06-20 18:25:46 info: DB status check successful.
+2025-06-20T10:25:46.735Z info: [Frontend] 
+2025-06-20 18:26:16 info: Received request for /api/db-status
+2025-06-20 18:26:16 info: DB status check successful.
+2025-06-20T10:26:16.703Z info: [Frontend] 
+2025-06-20 18:26:46 info: Received request for /api/db-status
+2025-06-20 18:26:46 info: DB status check successful.
+2025-06-20T10:26:46.711Z info: [Frontend] 
+2025-06-20 18:27:16 info: Received request for /api/db-status
+2025-06-20 18:27:16 info: DB status check successful.
+2025-06-20T10:27:16.716Z info: [Frontend] 
+2025-06-20 18:27:51 info: Received request for /api/db-status
+2025-06-20 18:27:51 info: DB status check successful.
+2025-06-20T10:27:51.706Z info: [Frontend] 
+2025-06-20 18:28:51 info: Received request for /api/db-status
+2025-06-20 18:28:51 info: DB status check successful.
+2025-06-20T10:28:51.718Z info: [Frontend] 
+2025-06-20 18:29:51 info: Received request for /api/db-status
+2025-06-20 18:29:51 info: DB status check successful.
+2025-06-20T10:29:51.714Z info: [Frontend] 
+2025-06-20 18:30:36 info: Received request for /api/db-status
+2025-06-20 18:30:36 info: DB status check successful.
+2025-06-20T10:30:36.175Z info: [Frontend] 
+2025-06-20 18:30:46 info: Received request for /api/db-status
+2025-06-20 18:30:46 info: DB status check successful.
+2025-06-20T10:30:46.706Z info: [Frontend] 
+2025-06-20 18:31:16 info: Received request for /api/db-status
+2025-06-20 18:31:16 info: DB status check successful.
+2025-06-20T10:31:16.758Z info: [Frontend] 
+2025-06-20 18:31:51 info: Received request for /api/db-status
+2025-06-20 18:31:51 info: DB status check successful.
+2025-06-20T10:31:51.719Z info: [Frontend] 
+2025-06-20T10:32:15.769Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20 18:32:16 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 18:32:16 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:153:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:191:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20T10:32:16.135Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:32:16 info: Received request for /api/db-status
+2025-06-20 18:32:16 info: DB status check successful.
+2025-06-20T10:32:16.591Z info: [Frontend] 
+2025-06-20 18:33:16 info: Attempting to create MySQL connection pool...
+2025-06-20 18:33:17 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 18:33:17 info: MySQL Pool ready.
+2025-06-20 18:33:17 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 18:33:17 info: 📊 Main React app: http://localhost:3000
+2025-06-20 18:33:17 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 18:33:17 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 18:33:17 info: Received request for /api/db-status
+2025-06-20 18:33:17 info: DB status check successful.
+2025-06-20T10:33:17.245Z info: [Frontend] 
+2025-06-20 18:33:23 info: Received request for /api/db-status
+2025-06-20 18:33:23 info: DB status check successful.
+2025-06-20 18:33:23 info: Received request for /api/db-status
+2025-06-20 18:33:23 info: DB status check successful.
+2025-06-20T10:33:23.689Z info: [Frontend] 
+2025-06-20T10:33:23.695Z info: [Frontend] 
+2025-06-20T10:33:29.557Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20T10:33:34.263Z info: [Frontend] 
+2025-06-20 18:33:53 info: Received request for /api/db-status
+2025-06-20 18:33:53 info: DB status check successful.
+2025-06-20T10:33:53.705Z info: [Frontend] 
+2025-06-20T10:33:55.863Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20 18:33:56 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 18:33:56 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:157:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:195:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20T10:33:56.220Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:34:23 info: Received request for /api/db-status
+2025-06-20 18:34:23 info: DB status check successful.
+2025-06-20T10:34:23.699Z info: [Frontend] 
+2025-06-20 18:34:53 info: Received request for /api/db-status
+2025-06-20 18:34:53 info: DB status check successful.
+2025-06-20T10:34:53.748Z info: [Frontend] 
+2025-06-20 18:35:23 info: Received request for /api/db-status
+2025-06-20 18:35:23 info: DB status check successful.
+2025-06-20T10:35:23.729Z info: [Frontend] 
+2025-06-20 18:35:53 info: Received request for /api/db-status
+2025-06-20 18:35:53 info: DB status check successful.
+2025-06-20T10:35:53.714Z info: [Frontend] 
+2025-06-20 18:36:23 info: Received request for /api/db-status
+2025-06-20 18:36:23 info: DB status check successful.
+2025-06-20T10:36:23.689Z info: [Frontend] 
+2025-06-20 18:36:53 info: Received request for /api/db-status
+2025-06-20 18:36:53 info: DB status check successful.
+2025-06-20T10:36:53.694Z info: [Frontend] 
+2025-06-20 18:37:51 info: Received request for /api/db-status
+2025-06-20 18:37:51 info: DB status check successful.
+2025-06-20T10:37:51.840Z info: [Frontend] 
+2025-06-20 18:38:12 info: Received request for /api/db-status
+2025-06-20 18:38:12 info: DB status check successful.
+2025-06-20T10:38:12.317Z info: [Frontend] 
+2025-06-20T10:38:13.949Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20 18:38:14 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 18:38:14 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:157:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:195:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20T10:38:14.293Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:38:54 info: Attempting to create MySQL connection pool...
+2025-06-20 18:38:54 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 18:38:54 info: MySQL Pool ready.
+2025-06-20 18:38:54 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 18:38:54 info: 📊 Main React app: http://localhost:3000
+2025-06-20 18:38:54 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 18:38:54 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 18:38:54 info: Received request for /api/db-status
+2025-06-20 18:38:54 info: DB status check successful.
+2025-06-20T10:38:54.731Z info: [Frontend] 
+2025-06-20T10:38:58.300Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20 18:38:58 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20T10:38:58.684Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:39:23 info: Received request for /api/db-status
+2025-06-20 18:39:23 info: DB status check successful.
+2025-06-20T10:39:23.685Z info: [Frontend] 
+2025-06-20 18:39:53 info: Received request for /api/db-status
+2025-06-20 18:39:53 info: DB status check successful.
+2025-06-20T10:39:53.698Z info: [Frontend] 
+2025-06-20 18:40:28 info: Received request for /api/db-status
+2025-06-20 18:40:28 info: DB status check successful.
+2025-06-20T10:40:28.131Z info: [Frontend] 
+2025-06-20T10:40:28.882Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T10:40:29.190Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20 18:40:53 info: Received request for /api/db-status
+2025-06-20 18:40:53 info: DB status check successful.
+2025-06-20T10:40:53.685Z info: [Frontend] 
+2025-06-20 18:41:23 info: Received request for /api/db-status
+2025-06-20 18:41:23 info: DB status check successful.
+2025-06-20T10:41:23.695Z info: [Frontend] 
+2025-06-20 18:41:53 info: Received request for /api/db-status
+2025-06-20 18:41:53 info: DB status check successful.
+2025-06-20T10:41:53.742Z info: [Frontend] 
+2025-06-20 18:42:23 info: Received request for /api/db-status
+2025-06-20 18:42:23 info: DB status check successful.
+2025-06-20T10:42:23.690Z info: [Frontend] 
+2025-06-20 18:43:06 info: Received request for /api/db-status
+2025-06-20 18:43:06 info: DB status check successful.
+2025-06-20T10:43:06.236Z info: [Frontend] 
+2025-06-20 18:43:23 info: Received request for /api/db-status
+2025-06-20 18:43:23 info: DB status check successful.
+2025-06-20T10:43:23.693Z info: [Frontend] 
+2025-06-20 18:43:53 info: Received request for /api/db-status
+2025-06-20 18:43:53 info: DB status check successful.
+2025-06-20T10:43:53.687Z info: [Frontend] 
+2025-06-20 18:44:23 info: Received request for /api/db-status
+2025-06-20 18:44:23 info: DB status check successful.
+2025-06-20T10:44:23.709Z info: [Frontend] 
+2025-06-20 18:44:53 info: Received request for /api/db-status
+2025-06-20 18:44:53 info: DB status check successful.
+2025-06-20T10:44:53.697Z info: [Frontend] 
+2025-06-20 18:45:23 info: Received request for /api/db-status
+2025-06-20 18:45:23 info: DB status check successful.
+2025-06-20T10:45:23.690Z info: [Frontend] 
+2025-06-20 18:45:53 info: Received request for /api/db-status
+2025-06-20 18:45:53 info: DB status check successful.
+2025-06-20T10:45:53.686Z info: [Frontend] 
+2025-06-20 18:46:51 info: Received request for /api/db-status
+2025-06-20 18:46:51 info: DB status check successful.
+2025-06-20T10:46:51.699Z info: [Frontend] 
+2025-06-20 18:47:28 info: Received request for /api/db-status
+2025-06-20 18:47:28 info: DB status check successful.
+2025-06-20T10:47:28.398Z info: [Frontend] 
+2025-06-20 18:47:48 info: Received request for /api/db-status
+2025-06-20 18:47:48 info: DB status check successful.
+2025-06-20T10:47:48.082Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T10:47:48.092Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20 18:47:53 info: Received request for /api/db-status
+2025-06-20 18:47:53 info: DB status check successful.
+2025-06-20T10:47:53.687Z info: [Frontend] 
+2025-06-20 18:47:56 info: Received request for /api/db-status
+2025-06-20 18:47:56 info: DB status check successful.
+2025-06-20 18:47:56 info: Received request for /api/db-status
+2025-06-20 18:47:56 info: DB status check successful.
+2025-06-20T10:47:56.409Z info: [Frontend] 
+2025-06-20T10:47:56.411Z info: [Frontend] 
+2025-06-20T10:48:06.736Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20T10:48:15.461Z info: [Frontend] CSV file selected: Book1.csv
+2025-06-20T10:48:18.483Z info: [Frontend] 
+2025-06-20 18:48:25 info: Received request for /api/db-status
+2025-06-20 18:48:25 info: DB status check successful.
+2025-06-20T10:48:25.286Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20 18:48:25 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 18:48:25 error: Error: Table 're.re.pcompdate' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:277:45)
+    at CsvParser.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-06-20T10:48:25.326Z error: [Frontend] CSV upload failed (backend error): Failed to save data to the database.
+2025-06-20 18:48:26 info: Received request for /api/db-status
+2025-06-20 18:48:26 info: DB status check successful.
+2025-06-20T10:48:26.407Z info: [Frontend] 
+2025-06-20 18:48:56 info: Received request for /api/db-status
+2025-06-20 18:48:56 info: DB status check successful.
+2025-06-20T10:48:56.679Z info: [Frontend] 
+2025-06-20 18:49:26 info: Received request for /api/db-status
+2025-06-20 18:49:26 info: DB status check successful.
+2025-06-20T10:49:26.413Z info: [Frontend] 
+2025-06-20 18:49:35 info: Attempting to create MySQL connection pool...
+2025-06-20 18:49:35 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-20 18:49:35 info: MySQL Pool ready.
+2025-06-20 18:49:35 info: 🚀 Server listening on http://localhost:3001
+2025-06-20 18:49:35 info: 📊 Main React app: http://localhost:3000
+2025-06-20 18:49:35 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-20 18:49:35 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-20 18:49:50 info: Received request for /api/db-status
+2025-06-20 18:49:50 info: DB status check successful.
+2025-06-20 18:49:50 info: Upload request received - Option: date, Cocode: MBPH, CompletionType: A, CutoffDate: undefined
+2025-06-20 18:49:50 info: Database insertion completed - Affected rows: 1, Changed rows: 0
+2025-06-20T10:49:50.826Z info: [Frontend] Starting CSV upload: Book1.csv
+2025-06-20T10:49:50.914Z info: [Frontend] CSV upload successful: Book1.csv
+2025-06-20 18:49:56 info: Received request for /api/db-status
+2025-06-20 18:49:56 info: DB status check successful.
+2025-06-20T10:49:56.407Z info: [Frontend] 
+2025-06-20 18:49:59 info: Received request for /api/db-status
+2025-06-20 18:49:59 info: DB status check successful.
+2025-06-20T10:49:59.938Z info: [Frontend] 
+2025-06-20T10:49:59.958Z info: [Frontend] 
+2025-06-20T10:49:59.967Z info: [Frontend] 
+2025-06-20T10:49:59.981Z info: [Frontend] 
+2025-06-20T10:49:59.981Z info: [Frontend] 
+2025-06-20T10:49:59.992Z info: [Frontend] 
+2025-06-20T10:50:13.048Z info: [Frontend] 
+2025-06-20T10:50:13.079Z info: [Frontend] 
+2025-06-20 18:50:26 info: Received request for /api/db-status
+2025-06-20 18:50:26 info: DB status check successful.
+2025-06-20T10:50:26.406Z info: [Frontend] 
+2025-06-20 18:50:56 info: Received request for /api/db-status
+2025-06-20 18:50:56 info: DB status check successful.
+2025-06-20T10:50:56.694Z info: [Frontend] 
+2025-06-20 18:51:26 info: Received request for /api/db-status
+2025-06-20 18:51:26 info: DB status check successful.
+2025-06-20T10:51:26.784Z info: [Frontend] 
+2025-06-20 18:52:51 info: Received request for /api/db-status
+2025-06-20 18:52:51 info: DB status check successful.
+2025-06-20T10:52:51.697Z info: [Frontend] 
+2025-06-20 18:53:51 info: Received request for /api/db-status
+2025-06-20 18:53:51 info: DB status check successful.
+2025-06-20T10:53:51.725Z info: [Frontend] 
