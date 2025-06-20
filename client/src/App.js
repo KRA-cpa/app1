@@ -29,13 +29,107 @@ const getLastMonthEndDate = () => {
     String(lastMonthEnd.getDate()).padStart(2, '0');
 };
 
+/**
+ * Checks if a date is the last day of its month (month-end date)
+ * @param {string} dateString - The date string to validate (YYYY-MM-DD format)
+ * @returns {boolean} - True if it's a month-end date, false otherwise
+ */
+const isMonthEndDate = (dateString) => {
+  if (!dateString || typeof dateString !== 'string') {
+    return false;
+  }
+
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!dateRegex.test(dateString)) {
+    return false;
+  }
+
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) {
+    return false;
+  }
+
+  // Create a new date with the next day
+  const nextDay = new Date(date);
+  nextDay.setDate(date.getDate() + 1);
+  
+  // If the next day is the 1st, then the current date is month-end
+  return nextDay.getDate() === 1;
+};
+
+/**
+ * Checks if a date is in the future (compared to today)
+ * @param {string} dateString - The date string to check
+ * @returns {boolean} - True if it's a future date
+ */
+const isFutureDate = (dateString) => {
+  if (!dateString) return false;
+  
+  const inputDate = new Date(dateString);
+  const today = new Date();
+  
+  // Set time to start of day for comparison
+  today.setHours(0, 0, 0, 0);
+  inputDate.setHours(0, 0, 0, 0);
+  
+  return inputDate > today;
+};
+
+/**
+ * Validates cutoff date for Upload tab (month-end, not future)
+ * @param {string} dateString - The date string to validate
+ * @returns {object} - {isValid: boolean, error: string}
+ */
+const validateForUpload = (dateString) => {
+  if (!dateString) {
+    return { isValid: false, error: 'Please select a cutoff date' };
+  }
+
+  if (!isMonthEndDate(dateString)) {
+    return { isValid: false, error: 'Upload requires a month-end date (last day of the month)' };
+  }
+
+  if (isFutureDate(dateString)) {
+    return { isValid: false, error: 'Upload does not allow future dates' };
+  }
+
+  return { isValid: true, error: null };
+};
+
+/**
+ * Validates cutoff date for Reports tab (month-end, can be future)
+ * @param {string} dateString - The date string to validate
+ * @returns {object} - {isValid: boolean, error: string}
+ */
+const validateForReports = (dateString) => {
+  if (!dateString) {
+    return { isValid: false, error: 'Please select a cutoff date' };
+  }
+
+  if (!isMonthEndDate(dateString)) {
+    return { isValid: false, error: 'Reports require a month-end date (last day of the month)' };
+  }
+
+  return { isValid: true, error: null };
+};
+
+/**
+ * General validation - checks if it's a month-end date
+ * @param {string} dateString - The date string to validate
+ * @returns {boolean} - True if valid month-end date
+ */
+const validateCutoffDate = (dateString) => {
+  return isMonthEndDate(dateString);
+};
+
 const App = () => {
   const [dbStatus, setDbStatus] = useState('checking');
   const [lastDbCheck, setLastDbCheck] = useState(null);
-  const [cutoffDate, setCutoffDate] = useState(getLastMonthEndDate());
+  const [cutoffDate, setCutoffDate] = useState(getLastMonthEndDate()); // UNIFIED cutoff date
   const [selectedCompany, setSelectedCompany] = useState(''); // Start with 'All Companies'
   const [activeTab, setActiveTab] = useState('upload');
   const [activeReport, setActiveReport] = useState('poc');
+  const [cutoffError, setCutoffError] = useState(null);
 
   const companies = [
     { code: '', name: 'All Companies' },
@@ -47,6 +141,15 @@ const App = () => {
     { code: 'API', name: 'Arcovia' },
     { code: 'MBPI', name: 'MEG Bacolod' },
   ];
+
+  // Get current validation based on active tab
+  const getCurrentValidation = () => {
+    if (activeTab === 'upload') {
+      return validateForUpload(cutoffDate);
+    } else {
+      return validateForReports(cutoffDate);
+    }
+  };
 
   // URL parameter handling
   useEffect(() => {
@@ -67,6 +170,12 @@ const App = () => {
     }
   }, []);
 
+  // Update validation when tab changes
+  useEffect(() => {
+    const validation = getCurrentValidation();
+    setCutoffError(validation.error);
+  }, [activeTab, cutoffDate]);
+
   // Update URL when tab/report changes
   const updateURL = (tab, report = null) => {
     let url = '/';
@@ -82,9 +191,16 @@ const App = () => {
     window.history.pushState(null, '', url);
   };
 
-  // Check database status on component mount
+  // Check database status
   useEffect(() => {
     checkDbStatus();
+    
+    // Set up periodic checks
+    const statusInterval = setInterval(checkDbStatus, 30000); // Check every 30 seconds
+    
+    return () => {
+      clearInterval(statusInterval);
+    };
   }, []);
 
   const checkDbStatus = async () => {
@@ -110,8 +226,18 @@ const App = () => {
   };
 
   const handleCutoffDateChange = (e) => {
-    setCutoffDate(e.target.value);
-    logToServer({ level: 'info', message: `Cutoff date changed to: ${e.target.value}` });
+    const value = e.target.value;
+    setCutoffDate(value); // This will update for BOTH tabs
+    
+    // Validate based on current tab
+    const validation = activeTab === 'upload' ? validateForUpload(value) : validateForReports(value);
+    setCutoffError(validation.error);
+    
+    if (validation.isValid) {
+      logToServer({ level: 'info', message: `Cutoff date changed to: ${value}` });
+    } else {
+      logToServer({ level: 'warn', message: `Invalid cutoff date: ${value} - ${validation.error}` });
+    }
   };
 
   const handleCompanyChange = (e) => {
@@ -123,6 +249,10 @@ const App = () => {
     setActiveTab(tab);
     updateURL(tab, activeReport);
     checkDbStatus(); // Check DB when switching tabs
+    
+    // Re-validate cutoff date for the new tab
+    const validation = tab === 'upload' ? validateForUpload(cutoffDate) : validateForReports(cutoffDate);
+    setCutoffError(validation.error);
   };
 
   const handleReportChange = (report) => {
@@ -162,6 +292,8 @@ const App = () => {
     return date.toLocaleString('en-US', options);
   };
 
+  const isCurrentlyValid = getCurrentValidation().isValid;
+
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -171,56 +303,140 @@ const App = () => {
       {/* Header */}
       <div style={{ 
         background: '#003DA5', // Megaworld Blue
-        // background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
         padding: '10px',
         textAlign: 'center',
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-        display: 'flex', // Add this
-        alignItems: 'center', // Corrected property
-        justifyContent: 'center' // Add this to center the h1 content
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}>
         <h1 style={{ margin: 0, fontSize: '2.5rem', display: 'flex', alignItems: 'center' }}>
-      <img src = "/logo2019-v2-white_0.png" alt="MEG Logo" width="25%" height="25%" />&nbsp;POC Data Management</h1>
+          <img src="/logo2019-v2-white_0.png" alt="MEG Logo" width="25%" height="25%" />&nbsp;POC Data Management
+        </h1>
       </div>
 
-      {/* Combined Company Selector and Database Status Bar */}
+      {/* UNIFIED Control Bar: Company + Cutoff Date + Database Status */}
       <div style={{ 
         padding: '20px', 
         backgroundColor: 'white',
         borderBottom: '1px solid #dee2e6',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'flex-start'
       }}>
-        {/* Company Selector - Left Side */}
+        {/* Left Side: Company Selector + Cutoff Date */}
         <div style={{ 
           display: 'flex',
-          alignItems: 'center',
-          gap: '15px'
+          alignItems: 'flex-start',
+          gap: '30px'
         }}>
-          <label style={{ fontWeight: 'bold', color: '#495057' }}>Company:</label>
-          <select 
-            value={selectedCompany} 
-            onChange={handleCompanyChange}
-            style={{
-              padding: '8px 12px',
-              border: '1px solid #ced4da',
-              borderRadius: '4px',
-              fontSize: '14px',
-              backgroundColor: 'white',
-              cursor: 'pointer'
-            }}
-          >
-            {companies.map(company => (
-              <option key={company.code} value={company.code}>
-                {company.name}
-              </option>
-            ))}
-          </select>
+          {/* Company Selector */}
+          <div style={{ 
+            display: 'flex',
+            alignItems: 'center',
+            gap: '15px',
+            marginTop: '8px' // Align with cutoff date input
+          }}>
+            <label style={{ fontWeight: 'bold', color: '#495057' }}>Company:</label>
+            <select 
+              value={selectedCompany} 
+              onChange={handleCompanyChange}
+              style={{
+                padding: '8px 12px',
+                border: '1px solid #ced4da',
+                borderRadius: '4px',
+                fontSize: '14px',
+                backgroundColor: 'white',
+                cursor: 'pointer',
+                minWidth: '150px'
+              }}
+            >
+              {companies.map(company => (
+                <option key={company.code} value={company.code}>
+                  {company.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* UNIFIED Cutoff Date with Error Display */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column',
+            gap: '8px'
+          }}>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '15px',
+              backgroundColor: isCurrentlyValid ? 'rgba(40, 167, 69, 0.1)' : 'rgba(220, 53, 69, 0.1)',
+              padding: '8px 15px',
+              borderRadius: '8px',
+              border: isCurrentlyValid ? '1px solid #28a745' : '1px solid #dc3545'
+            }}>
+              <label style={{ 
+                fontSize: '14px', 
+                fontWeight: 'bold', 
+                color: '#495057',
+                whiteSpace: 'nowrap'
+              }}>
+                📅 Cutoff Date:
+              </label>
+              <input
+                type="date"
+                value={cutoffDate}
+                onChange={handleCutoffDateChange}
+                style={{
+                  padding: '6px 10px',
+                  border: '1px solid #ced4da',
+                  borderRadius: '4px',
+                  fontSize: '14px',
+                  backgroundColor: 'white',
+                  minWidth: '140px'
+                }}
+              />
+              <div style={{
+                fontSize: '14px',
+                fontWeight: 'bold',
+                color: isCurrentlyValid ? '#28a745' : '#dc3545'
+              }}>
+                {isCurrentlyValid ? '✅' : '❌'}
+              </div>
+            </div>
+            
+            {/* Error Message */}
+            {cutoffError && (
+              <div style={{
+                backgroundColor: '#f8d7da',
+                color: '#721c24',
+                padding: '8px 12px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                fontWeight: '500',
+                border: '1px solid #f5c6cb',
+                maxWidth: '350px'
+              }}>
+                ⚠️ {cutoffError}
+              </div>
+            )}
+            
+            {/* Helpful hint */}
+            <div style={{
+              fontSize: '11px',
+              color: '#6c757d',
+              fontStyle: 'italic',
+              maxWidth: '350px'
+            }}>
+              {activeTab === 'upload' 
+                ? 'Upload: Month-end dates only, no future dates'
+                : 'Reports: Month-end dates only, future dates allowed'
+              }
+            </div>
+          </div>
         </div>
 
-        {/* Database Status - Right Side */}
+        {/* Right Side: Database Status */}
         <div style={{ 
           display: 'flex',
           alignItems: 'center',
@@ -236,16 +452,34 @@ const App = () => {
               <span style={{ fontWeight: 'bold', color: '#495057' }}>
                 Database Status:
               </span>
-              <span style={{ 
-                color: getStatusColor(),
-                fontWeight: 'bold',
-                padding: '5px 10px',
-                borderRadius: '15px',
-                backgroundColor: `${getStatusColor()}20`,
-                border: `1px solid ${getStatusColor()}`
-              }}>
-                {getStatusText()}
-              </span>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 15px',
+                borderRadius: '20px',
+                backgroundColor: `${getStatusColor()}15`,
+                border: `1px solid ${getStatusColor()}`,
+                cursor: 'pointer'
+              }}
+              onClick={checkDbStatus}
+              title="Click to refresh status"
+              >
+                <div style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: getStatusColor(),
+                  animation: dbStatus === 'connected' ? 'pulse 2s infinite' : 'none'
+                }}></div>
+                <span style={{ 
+                  color: getStatusColor(),
+                  fontWeight: 'bold',
+                  fontSize: '14px'
+                }}>
+                  {getStatusText()}
+                </span>
+              </div>
               {dbStatus === 'error' && (
                 <button 
                   onClick={checkDbStatus} 
@@ -325,7 +559,9 @@ const App = () => {
             <CsvUploader 
               selectedCompany={selectedCompany} 
               cocode={selectedCompany}
-              dbStatus={dbStatus} 
+              dbStatus={dbStatus}
+              cutoffDate={cutoffDate} // Pass the unified cutoff date
+              validateCutoffDate={() => validateForUpload(cutoffDate)} // Pass upload-specific validation
             />
           </div>
         )}
@@ -333,16 +569,16 @@ const App = () => {
         {/* Reports Tab */}
         {activeTab === 'reports' && (
           <div style={{ padding: '30px' }}>
-            {/* Report Header with improved layout */}
+            {/* Report Header - Simplified since cutoff date is now in top bar */}
             <div style={{ 
               display: 'flex', 
-              justifyContent: 'space-between',
+              justifyContent: 'center',
               alignItems: 'center',
               marginBottom: '40px',
               paddingBottom: '20px',
               borderBottom: '2px solid #e9ecef'
             }}>
-              {/* Report Selector Tabs - Left Side */}
+              {/* Report Selector Tabs */}
               <div style={{ display: 'flex', gap: '30px' }}>
                 <button 
                   onClick={() => handleReportChange('poc')}
@@ -398,61 +634,28 @@ const App = () => {
                   Completion Date Report
                 </button>
               </div>
-              
-              {/* Cutoff Date - Right Side */}
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '15px',
-                backgroundColor: '#f8f9fa',
-                padding: '12px 20px',
-                borderRadius: '8px',
-                border: '1px solid #dee2e6'
-              }}>
-                <label style={{ 
-                  fontSize: '16px', 
-                  fontWeight: '600', 
-                  color: '#495057',
-                  whiteSpace: 'nowrap'
-                }}>
-                  Cutoff Date:
-                </label>
-                <input
-                  type="date"
-                  value={cutoffDate}
-                  onChange={handleCutoffDateChange}
-                  style={{
-                    padding: '10px 15px',
-                    border: '1px solid #ced4da',
-                    borderRadius: '6px',
-                    fontSize: '16px',
-                    backgroundColor: 'white',
-                    minWidth: '160px'
-                  }}
-                />
-              </div>
             </div>
 
             {/* Report Content */}
-            {dbStatus === 'connected' && (
+            {dbStatus === 'connected' && isCurrentlyValid && (
               <>
                 {activeReport === 'poc' && (
                   <DataDisplay 
-                    cutoffDate={cutoffDate} 
+                    cutoffDate={cutoffDate}  // Uses unified cutoff date
                     cocode={selectedCompany} 
                     dbStatus={dbStatus} 
                   />
                 )}
                 {activeReport === 'completion' && (
                   <PcompDataDisplay 
-                    cutoffDate={cutoffDate} 
+                    cutoffDate={cutoffDate}  // Uses unified cutoff date
                     cocode={selectedCompany} 
                   />
                 )}
               </>
             )}
             
-            {dbStatus !== 'connected' && (
+            {(dbStatus !== 'connected' || !isCurrentlyValid) && (
               <div style={{ 
                 padding: '40px', 
                 textAlign: 'center', 
@@ -461,22 +664,31 @@ const App = () => {
                 borderRadius: '8px',
                 border: '1px solid #dee2e6'
               }}>
-                <h3>Database Connection Required</h3>
-                <p>Please ensure the database is connected to view reports.</p>
-                <button 
-                  onClick={checkDbStatus}
-                  style={{
-                    padding: '10px 20px',
-                    backgroundColor: '#007bff',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    fontSize: '14px'
-                  }}
-                >
-                  Check Connection
-                </button>
+                <h3>
+                  {dbStatus !== 'connected' ? 'Database Connection Required' : 'Valid Cutoff Date Required'}
+                </h3>
+                <p>
+                  {dbStatus !== 'connected' 
+                    ? 'Please ensure the database is connected to view reports.'
+                    : 'Please enter a valid month-end cutoff date in the control bar above to view reports.'
+                  }
+                </p>
+                {dbStatus !== 'connected' && (
+                  <button 
+                    onClick={checkDbStatus}
+                    style={{
+                      padding: '10px 20px',
+                      backgroundColor: '#007bff',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      fontSize: '14px'
+                    }}
+                  >
+                    Check Connection
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -488,6 +700,14 @@ const App = () => {
         <p>Current Date/Time: {new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' })} | {new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila' })}</p>
         <p>All Rights Reserved (r) 2025 by Kenneth Advento</p>
       </footer>
+
+      {/* Add CSS for pulse animation */}
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      `}</style>
     </div>
   );
 };

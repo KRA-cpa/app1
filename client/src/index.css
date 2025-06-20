@@ -11,3 +11,223 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* New styles for CsvUploader UI */
+.csv-uploader-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.csv-uploader-container h2 {
+  color: #343a40;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.warning-box {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  color: #856404;
+  text-align: left;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.warning-box strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.upload-options-group {
+  margin: 30px 0;
+  border: 1px solid #e9ecef;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  text-align: left;
+}
+
+.option-title {
+  display: block;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #495057;
+  font-size: 1em;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: #007bff; /* Highlight color for radio buttons */
+  width: 18px;
+  height: 18px;
+}
+
+.radio-label.disabled-option {
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.template-selection-group {
+  margin-top: 20px;
+  padding-left: 25px;
+  border-left: 3px solid #007bff; /* Visual cue for nested option */
+}
+
+.file-input-area {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 25px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.custom-file-upload:active {
+  background-color: #004085;
+  transform: translateY(0);
+}
+
+/* Style for when the file input is disabled */
+.file-input-area input[type="file"]:disabled + .custom-file-upload {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.selected-file-name {
+  font-style: italic;
+  color: #555;
+  margin: 5px 0 0 0;
+}
+
+.upload-button {
+  padding: 12px 25px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 15px;
+}
+
+.upload-button:hover:not(:disabled) {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.upload-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.feedback-message {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.success-message {
+  color: #28a745;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.upload-results-summary {
+  border: 1px solid #a2d2ff;
+  padding: 20px;
+  margin-top: 25px;
+  background: #e0f2ff;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.upload-results-summary h4 {
+  color: #0056b3;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.upload-results-summary p {
+  font-size: 0.95em;
+  color: #343a40;
+}
+
+.upload-results-summary h5 {
+  color: #0056b3;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.upload-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.upload-summary-table th,
+.upload-summary-table td {
+  border: 1px solid #dee2e6;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.upload-summary-table th {
+  background-color: #e9ecef;
+  color: #495057;
+  font-weight: bold;
+}
+
+.upload-summary-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.upload-summary-table .text-right {
+  text-align: right;
+}

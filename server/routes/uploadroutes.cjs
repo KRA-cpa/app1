@@ -1,5 +1,6 @@
 // routes/uploadRoutes.cjs
 // Completion Date upload activated + project is flowing through
+// Actual/Projected added
 
 const express = require('express');
 const multer = require('multer');
@@ -54,10 +55,31 @@ const parseAndValidateDate = (dateStr) => {
     return { isValid: true, formattedDate };
 };
 
+// Helper function to determine if POC should be Actual (A) or Projected (P) based on cut-off date
+const getPocType = (year, month, cutoffDate) => {
+    if (!cutoffDate) return 'A'; // Default to Actual if no cutoff date
+    
+    const cutoffDateObj = new Date(cutoffDate);
+    const cutoffYear = cutoffDateObj.getFullYear();
+    const cutoffMonth = cutoffDateObj.getMonth() + 1; // getMonth() returns 0-11
+    
+    // Compare year and month with cutoff
+    if (year < cutoffYear) {
+        return 'A'; // Actual - year is before cutoff year
+    } else if (year === cutoffYear && month <= cutoffMonth) {
+        return 'A'; // Actual - same year but month is equal or before cutoff month
+    } else {
+        return 'P'; // Projected - year/month is after cutoff
+    }
+};
+
 // --- Combined Route for both 'pocpermonth' and 'pcompdate' tables ---
 router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
     const filePath = req.file.path;
-    const { uploadOption, templateType, completionType, cocode } = req.body;
+    const { uploadOption, templateType, completionType, cocode, cutoffDate } = req.body;
+
+    // Debug logging to ensure all parameters are received
+    logger.info(`Upload request received - Option: ${uploadOption}, Cocode: ${cocode}, CompletionType: ${completionType}, CutoffDate: ${cutoffDate}`);
 
     if (!req.file) {
         return res.status(400).json({ message: 'No file uploaded.' });
@@ -66,6 +88,11 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
     if (!cocode) {
         fs.unlinkSync(filePath);
         return res.status(400).json({ message: 'Company code (cocode) is required for upload.' });
+    }
+
+    if (uploadOption === 'poc' && !cutoffDate) {
+        fs.unlinkSync(filePath);
+        return res.status(400).json({ message: 'Cut-off date is required for POC uploads to determine Actual vs Projected classification.' });
     }
 
     const pool = getPool();
@@ -183,7 +210,12 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                 if (templateType === 'short') {
                     const pocValue = row[3];
                     if (pocValue !== null && pocValue.trim() !== '') {
-                        recordsToInsert.push([cocode, project, phasecode, year, 1, pocValue]);
+                        // Determine POC type based on cut-off date (month 1 for short template)
+                        const pocType = getPocType(year, 1, cutoffDate);
+                        recordsToInsert.push([cocode, project, phasecode, year, 1, pocValue, pocType]);
+                        
+                        // Debug logging for POC type determination
+                        logger.info(`POC Type determined for ${project}-${phasecode} ${year}/1: ${pocType} (cutoff: ${cutoffDate})`);
                     } else {
                         errors.push(`Row ${rowIndex + 1}: No POC value found in short template.`);
                     }
@@ -194,7 +226,12 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                         const pocValue = row[i + 3];
                         if (pocValue !== null && pocValue.trim() !== '') {
                             hasMonthData = true;
-                            recordsToInsert.push([cocode, project, phasecode, year, month, pocValue]);
+                            // Determine POC type based on cut-off date for each month
+                            const pocType = getPocType(year, month, cutoffDate);
+                            recordsToInsert.push([cocode, project, phasecode, year, month, pocValue, pocType]);
+                            
+                            // Debug logging for POC type determination
+                            logger.info(`POC Type determined for ${project}-${phasecode} ${year}/${month}: ${pocType} (cutoff: ${cutoffDate})`);
                         }
                     }
                     if (!hasMonthData) {
@@ -226,7 +263,8 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
 
             let query;
             if (uploadOption === 'poc') {
-                query = 'INSERT INTO `re.pocpermonth` (cocode, project, phasecode, year, month, value) VALUES ? ON DUPLICATE KEY UPDATE value = VALUES(value), timestampM = CURRENT_TIMESTAMP, userM = "CSV_UPLOAD"';
+                // Updated query to include POC type
+                query = 'INSERT INTO `re.pocpermonth` (cocode, project, phasecode, year, month, value, type) VALUES ? ON DUPLICATE KEY UPDATE value = VALUES(value), type = VALUES(type), timestampM = CURRENT_TIMESTAMP, userM = "CSV_UPLOAD"';
             } else if (uploadOption === 'date') {
                 query = 'INSERT INTO `re.pcompdate` (cocode, project, phasecode, type, completion_date) VALUES ? ON DUPLICATE KEY UPDATE completion_date = VALUES(completion_date), created_at = CURRENT_TIMESTAMP';
             }
@@ -234,23 +272,51 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
             try {
                 const [result] = await pool.query(query, [recordsToInsert]);
                 
-                // Create summary by project/phase for response
+                // Debug logging for database insertion
+                logger.info(`Database insertion completed - Affected rows: ${result.affectedRows}, Changed rows: ${result.changedRows || 0}`);
+                
+                // Create summary by project/phase for response with POC type breakdown
                 const summary = {};
                 recordsToInsert.forEach(record => {
                     const key = `${record[1]}-${record[2]}`; // project-phasecode
                     if (!summary[key]) {
-                        summary[key] = { project: record[1], phasecode: record[2], inserted: 0, updated: 0 };
+                        summary[key] = { 
+                            project: record[1], 
+                            phasecode: record[2], 
+                            inserted: 0, 
+                            updated: 0,
+                            actualCount: 0,
+                            projectedCount: 0
+                        };
                     }
-                    summary[key].inserted++; // This is a simplification - in reality you'd need to track actual inserts vs updates
+                    summary[key].inserted++; // This is a simplification
+                    
+                    // Count Actual vs Projected for POC uploads
+                    if (uploadOption === 'poc' && record[6]) { // POC type is at index 6
+                        if (record[6] === 'A') {
+                            summary[key].actualCount++;
+                        } else if (record[6] === 'P') {
+                            summary[key].projectedCount++;
+                        }
+                    }
                 });
 
+                // Prepare response message based on upload type
+                let responseMessage = `CSV processed successfully. ${uploadOption === 'poc' ? 'POC data' : 'Completion dates'} uploaded for company ${cocode}.`;
+                if (uploadOption === 'poc') {
+                    const totalActual = Object.values(summary).reduce((sum, item) => sum + item.actualCount, 0);
+                    const totalProjected = Object.values(summary).reduce((sum, item) => sum + item.projectedCount, 0);
+                    responseMessage += ` Classification: ${totalActual} Actual, ${totalProjected} Projected (based on cut-off date ${cutoffDate}).`;
+                }
+
                 res.status(200).json({
-                    message: `CSV processed successfully. ${uploadOption === 'poc' ? 'POC data' : 'Completion dates'} uploaded.`,
+                    message: responseMessage,
                     totalRowsProcessed: processedRowCount,
                     totalInserted: result.affectedRows - (result.changedRows || 0),
                     totalUpdated: result.changedRows || 0,
                     totalErrors: errors.length,
                     summary: Object.values(summary),
+                    cutoffDate: cutoffDate, // Include cutoff date in response
                     errors: errors
                 });
             } catch (dbError) {
