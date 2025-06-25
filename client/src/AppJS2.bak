@@ -1,4 +1,6 @@
-// client/src/App.js - Complete version with Sales Recognition tab added
+// kra-cpa/app1/app1-test1/client/src/App.js
+
+
 // kra-cpa/app1/app1-test1/client/src/App.js
 
 import React, { useState, useEffect } from 'react';
@@ -6,7 +8,6 @@ import DataDisplay from './components/DataDisplay';
 import PcompDataDisplay from './components/PcompDataDisplay';
 import CsvUploader from './components/CsvUploader';
 import ManualPcompEntry from './components/ManualPcompEntry';
-import SalesRecognitionManager from './components/SalesRecognitionManager';
 import { logToServer } from './utils/logger';
 
 // Calculate last month's end date dynamically in UTC+8 timezone
@@ -149,17 +150,12 @@ const App = () => {
   const getCurrentValidation = () => {
     if (activeTab === 'upload') {
       return validateForUpload(cutoffDate);
-    } else if (activeTab === 'reports') {
-      return validateForReports(cutoffDate);
-    } else if (activeTab === 'sales-recognition') {
-      // Sales Recognition uses the same validation as upload (month-end, not future)
-      return validateForUpload(cutoffDate);
     } else {
-      return { isValid: true, error: null };
+      return validateForReports(cutoffDate);
     }
   };
 
-  // URL parameter handling with /completiondate and /sales-recognition support
+  // URL parameter handling with /completiondate support
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab') || 'upload';
@@ -175,10 +171,8 @@ const App = () => {
       if (path.includes('/completion')) {
         setActiveReport('completion');
       }
-    } else if (path.includes('/manual-entry') || path.includes('/POCDataEntrya')) {
+    } else if (path.includes('/manual-entry') || path.includes('/completiondate')) {
       setActiveTab('manual-entry');
-    } else if (path.includes('/sales-recognition')) {
-      setActiveTab('sales-recognition');
     } else if (path.includes('/upload')) {
       setActiveTab('upload');
     }
@@ -190,7 +184,7 @@ const App = () => {
     setCutoffError(validation.error);
   }, [activeTab, cutoffDate]);
 
-  // Update URL when tab/report changes with /completiondate and /sales-recognition support
+  // Update URL when tab/report changes with /completiondate support
   const updateURL = (tab, report = null) => {
     let url = '/';
     if (tab === 'reports') {
@@ -201,9 +195,7 @@ const App = () => {
     } else if (tab === 'upload') {
       url = '/upload';
     } else if (tab === 'manual-entry') {
-      url = '/POCDataEntry';
-    } else if (tab === 'sales-recognition') {
-      url = '/sales-recognition';
+      url = '/completiondate';
     }
     
     window.history.pushState(null, '', url);
@@ -245,10 +237,10 @@ const App = () => {
 
   const handleCutoffDateChange = (e) => {
     const value = e.target.value;
-    setCutoffDate(value); // This will update for ALL tabs
+    setCutoffDate(value); // This will update for BOTH tabs
     
     // Validate based on current tab
-    const validation = getCurrentValidation();
+    const validation = activeTab === 'upload' ? validateForUpload(value) : validateForReports(value);
     setCutoffError(validation.error);
     
     if (validation.isValid) {
@@ -268,9 +260,13 @@ const App = () => {
     updateURL(tab, activeReport);
     checkDbStatus(); // Check DB when switching tabs
     
-    // Re-validate cutoff date for the new tab
-    const validation = getCurrentValidation();
-    setCutoffError(validation.error);
+    // Re-validate cutoff date for the new tab (only for upload/reports tabs)
+    if (tab === 'upload' || tab === 'reports') {
+      const validation = tab === 'upload' ? validateForUpload(cutoffDate) : validateForReports(cutoffDate);
+      setCutoffError(validation.error);
+    } else {
+      setCutoffError(null); // Clear cutoff error for manual entry tab
+    }
   };
 
   const handleReportChange = (report) => {
@@ -343,7 +339,7 @@ const App = () => {
         justifyContent: 'space-between',
         alignItems: 'flex-start'
       }}>
-        {/* Left Side: Company Selector + Cutoff Date (show cutoff date for upload/reports/sales-recognition) */}
+        {/* Left Side: Company Selector + Cutoff Date (only show cutoff date for upload/reports) */}
         <div style={{ 
           display: 'flex',
           alignItems: 'flex-start',
@@ -378,8 +374,8 @@ const App = () => {
             </select>
           </div>
 
-          {/* UNIFIED Cutoff Date with Error Display - show for upload/reports/sales-recognition tabs */}
-          {(activeTab === 'upload' || activeTab === 'reports' || activeTab === 'sales-recognition') && (
+          {/* UNIFIED Cutoff Date with Error Display - only show for upload/reports tabs */}
+          {(activeTab === 'upload' || activeTab === 'reports') && (
             <div style={{ 
               display: 'flex', 
               flexDirection: 'column',
@@ -449,8 +445,6 @@ const App = () => {
               }}>
                 {activeTab === 'upload' 
                   ? 'Upload: Month-end dates only, no future dates'
-                  : activeTab === 'sales-recognition'
-                  ? 'Sales Recognition: Month-end dates only, not beyond cutoff'
                   : 'Reports: Month-end dates only, future dates allowed'
                 }
               </div>
@@ -569,23 +563,7 @@ const App = () => {
             transition: 'all 0.2s ease'
           }}
         >
-          Completion Date/POC Detailed Entry
-        </button>
-        <button
-          onClick={() => handleTabChange('sales-recognition')}
-          style={{
-            padding: '15px 30px',
-            border: 'none',
-            backgroundColor: 'transparent',
-            color: activeTab === 'sales-recognition' ? '#007bff' : '#6c757d',
-            fontWeight: activeTab === 'sales-recognition' ? 'bold' : 'normal',
-            fontSize: '16px',
-            cursor: 'pointer',
-            borderBottom: activeTab === 'sales-recognition' ? '3px solid #007bff' : '3px solid transparent',
-            transition: 'all 0.2s ease'
-          }}
-        >
-          Sales Recognition
+          Completion Date Entry
         </button>
         <button
           onClick={() => handleTabChange('reports')}
@@ -629,16 +607,6 @@ const App = () => {
               dbStatus={dbStatus}
               cutoffDate={cutoffDate}
               validateCutoffDate={() => ({ isValid: true, error: null })} // Manual entry doesn't need cutoff validation
-            />
-          </div>
-        )}
-
-        {/* Sales Recognition Tab */}
-        {activeTab === 'sales-recognition' && (
-          <div style={{ padding: '30px' }}>
-            <SalesRecognitionManager 
-              dbStatus={dbStatus}
-              cutoffDate={cutoffDate}
             />
           </div>
         )}

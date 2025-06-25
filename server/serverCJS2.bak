@@ -1,4 +1,4 @@
-// server/server.cjs - Updated with Sales Recognition routes
+// server/server.cjs - Updated with managelogs route
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -8,7 +8,6 @@ const logger = require('./config/logger.cjs');
 const uploadRoutes = require('./routes/uploadRoutes.cjs');
 const dataRoutes = require('./routes/dataRoutes.cjs');
 const logRoutes = require('./routes/logRoutes.cjs');
-const salesRecognitionRoutes = require('./routes/salesRecognitionRoutes.cjs');
 
 const app = express();
 const port = process.env.API_PORT || 3001;
@@ -24,7 +23,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/api', uploadRoutes);
 app.use('/api', dataRoutes);
 app.use('/api/logs', logRoutes);
-app.use('/api', salesRecognitionRoutes); // Add Sales Recognition routes
 
 // --- Special route for managelogs ---
 app.get('/managelogs', (req, res) => {
@@ -119,7 +117,6 @@ async function startServer() {
             logger.info(`🚀 Server listening on http://localhost:${port}`);
             logger.info(`📊 Main React app: http://localhost:3000`);
             logger.info(`🗂️ Log management: http://localhost:${port}/managelogs`);
-            logger.info(`💰 Sales Recognition: Available in the Sales Recognition tab`);
             logger.info(`📁 Make sure to create server/public/managelogs.html with the log management HTML content`);
         });
     } else {
