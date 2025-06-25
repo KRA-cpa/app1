@@ -326,5 +326,99 @@ router.get('/validation-options', async (req, res) => {
     }
 });
 
+// Add this new route to server/routes/dataroutes.cjs
+
+// --- NEW: Route to get completion dates for POC validation ---
+router.get('/completion-dates', async (req, res) => {
+    const { cocode, project, phasecode } = req.query;
+    
+    if (!cocode) {
+        return res.status(400).json({ 
+            message: 'Company code (cocode) is required.' 
+        });
+    }
+
+    const pool = getPool();
+    if (!pool) return res.status(503).json({ message: 'Database not connected.' });
+
+    let connection;
+    try {
+        connection = await pool.getConnection();
+
+        // Get the latest completion date for each type (Actual and Projected) for the given project/phase
+        let sqlQuery = `
+            SELECT 
+                cocode, project, phasecode, type, completion_date, created_at
+            FROM 
+                re.pcompdate p1
+            WHERE 
+                p1.cocode = ? 
+                AND p1.created_at = (
+                    SELECT MAX(p2.created_at) 
+                    FROM re.pcompdate p2 
+                    WHERE p2.cocode = p1.cocode 
+                    AND p2.project = p1.project 
+                    AND p2.phasecode = p1.phasecode 
+                    AND p2.type = p1.type
+                )
+        `;
+        
+        const params = [cocode];
+
+        // Add project filter if specified
+        if (project) {
+            sqlQuery += ' AND p1.project = ?';
+            params.push(project);
+        }
+
+        // Add phase filter if specified  
+        if (phasecode !== undefined) {
+            if (phasecode === '') {
+                sqlQuery += ' AND (p1.phasecode IS NULL OR p1.phasecode = "")';
+            } else {
+                sqlQuery += ' AND p1.phasecode = ?';
+                params.push(phasecode);
+            }
+        }
+
+        sqlQuery += ' ORDER BY p1.project, p1.phasecode, p1.type';
+
+        console.log('DEBUG COMPLETION-DATES - Final SQL Query:', sqlQuery);
+        console.log('DEBUG COMPLETION-DATES - Query Parameters:', params);
+
+        const [rows] = await connection.execute(sqlQuery, params);
+
+        console.log('DEBUG COMPLETION-DATES - Query returned', rows.length, 'rows');
+
+        // Transform results into a more usable format
+        const completionDates = {};
+        rows.forEach(row => {
+            const key = `${row.project}-${row.phasecode || ''}`;
+            if (!completionDates[key]) {
+                completionDates[key] = {};
+            }
+            completionDates[key][row.type] = {
+                date: row.completion_date,
+                created_at: row.created_at
+            };
+        });
+
+        res.status(200).json({
+            success: true,
+            completionDates: completionDates,
+            rawData: rows // Include raw data for debugging
+        });
+
+    } catch (error) {
+        logger.error('Error fetching completion dates:', error);
+        res.status(500).json({ 
+            message: 'Failed to fetch completion dates.', 
+            error: error.message 
+        });
+    } finally {
+        if (connection) connection.release();
+    }
+});
+
 
 module.exports = router;

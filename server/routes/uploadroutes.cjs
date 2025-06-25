@@ -1,6 +1,6 @@
 // routes/uploadRoutes.cjs - FIXED VERSION
+// ✅ ENHANCED: Always creates new completion date records instead of updating existing ones
 // Properly handles async operations in CSV processing and Manual entry
-
 
 const express = require('express');
 const multer = require('multer');
@@ -48,6 +48,41 @@ const parseAndValidateDate = (dateStr) => {
     return { isValid: true, formattedDate };
 };
 
+// ✅ NEW: Enhanced date validation based on completion type
+const validateCompletionDateByType = (dateStr, completionType) => {
+    const parseResult = parseAndValidateDate(dateStr);
+    if (!parseResult.isValid) {
+        return parseResult;
+    }
+
+    const completionDate = new Date(parseResult.formattedDate);
+    const today = new Date();
+    
+    // Set time to start of day for accurate comparison
+    today.setHours(0, 0, 0, 0);
+    completionDate.setHours(0, 0, 0, 0);
+
+    if (completionType === 'A') {
+        // Actual: must be today or in the past
+        if (completionDate > today) {
+            return { 
+                isValid: false, 
+                error: `Actual completion date ${dateStr} cannot be in the future. Please select today or an earlier date.` 
+            };
+        }
+    } else if (completionType === 'P') {
+        // Projected: must be in the future
+        if (completionDate <= today) {
+            return { 
+                isValid: false, 
+                error: `Projected completion date ${dateStr} must be in the future. Please select a date after today.` 
+            };
+        }
+    }
+
+    return parseResult; // Return the original parse result if type validation passes
+};
+
 // Helper function to determine if POC should be Actual (A) or Projected (P)
 const getPocType = (year, month, cutoffDate) => {
     if (!cutoffDate) return 'A';
@@ -65,7 +100,117 @@ const getPocType = (year, month, cutoffDate) => {
     }
 };
 
-// Helper function to read and parse CSV completely before processing
+// ✅ NEW: Validate POC entry against completion dates
+const validatePocAgainstCompletionDates = async (row, rowIndex, cocode, pool) => {
+    const project = row[0]?.toString().trim();
+    const phasecode = row[1]?.toString().trim();
+    const year = parseInt(row[2], 10);
+    
+    // This validation is for POC data, so we need to check the POC value
+    // For short template: month is row[3], POC value is row[4]
+    // For long template: we need to check each month column (row[3] to row[14])
+    
+    // Get completion dates for this project/phase
+    try {
+        let completionQuery;
+        let queryParams;
+
+        if (phasecode === '') {
+            completionQuery = `
+                SELECT type, completion_date, created_at
+                FROM re.pcompdate p1
+                WHERE p1.cocode = ? 
+                AND p1.project = ?
+                AND (p1.phasecode IS NULL OR p1.phasecode = '')
+                AND p1.created_at = (
+                    SELECT MAX(p2.created_at) 
+                    FROM re.pcompdate p2 
+                    WHERE p2.cocode = p1.cocode 
+                    AND p2.project = p1.project 
+                    AND (p2.phasecode IS NULL OR p2.phasecode = '')
+                    AND p2.type = p1.type
+                )
+                ORDER BY p1.type`;
+            queryParams = [cocode, project];
+        } else {
+            completionQuery = `
+                SELECT type, completion_date, created_at
+                FROM re.pcompdate p1
+                WHERE p1.cocode = ? 
+                AND p1.project = ?
+                AND p1.phasecode = ?
+                AND p1.created_at = (
+                    SELECT MAX(p2.created_at) 
+                    FROM re.pcompdate p2 
+                    WHERE p2.cocode = p1.cocode 
+                    AND p2.project = p1.project 
+                    AND p2.phasecode = p1.phasecode 
+                    AND p2.type = p1.type
+                )
+                ORDER BY p1.type`;
+            queryParams = [cocode, project, phasecode];
+        }
+
+        const [completionRows] = await pool.query(completionQuery, queryParams);
+        
+        if (completionRows.length === 0) {
+            return { isValid: true, error: null }; // No completion dates found, validation passes
+        }
+
+        // Determine which completion date to use (prefer Actual over Projected)
+        let effectiveCompletionDate = null;
+        for (const completionRow of completionRows) {
+            if (completionRow.type === 'A') {
+                effectiveCompletionDate = new Date(completionRow.completion_date);
+                break;
+            }
+        }
+        
+        if (!effectiveCompletionDate && completionRows.length > 0) {
+            // Use projected if no actual found
+            effectiveCompletionDate = new Date(completionRows[0].completion_date);
+        }
+
+        if (!effectiveCompletionDate) {
+            return { isValid: true, error: null }; // No effective completion date
+        }
+
+        // Now validate specific POC values
+        // This function will be called from the main validation where we check individual POC values
+        
+        return { 
+            isValid: true, 
+            error: null, 
+            effectiveCompletionDate: effectiveCompletionDate,
+            completionType: completionRows.some(r => r.type === 'A') ? 'Actual' : 'Projected'
+        };
+
+    } catch (dbError) {
+        logger.error('Database error during completion date validation:', dbError);
+        return { isValid: false, error: `Row ${rowIndex + 1}: Database error during completion date validation.` };
+    }
+};
+
+// ✅ NEW: Validate individual POC value against completion date
+const validatePocValueAgainstCompletion = (pocValue, year, month, effectiveCompletionDate, completionType, rowIndex) => {
+    // Only validate if POC value is 100%
+    if (parseFloat(pocValue) !== 100) {
+        return { isValid: true, error: null };
+    }
+
+    // Create date for the POC entry (last day of the month)
+    const pocDate = new Date(year, month, 0); // Last day of the month
+    
+    if (pocDate > effectiveCompletionDate) {
+        const formattedCompletionDate = effectiveCompletionDate.toLocaleDateString();
+        return { 
+            isValid: false, 
+            error: `Row ${rowIndex + 1}: 100% POC not allowed for ${year}/${month} after ${completionType.toLowerCase()} completion date (${formattedCompletionDate})`
+        };
+    }
+
+    return { isValid: true, error: null };
+};
 const parseCSVFile = (filePath) => {
     return new Promise((resolve, reject) => {
         const results = [];
@@ -86,7 +231,7 @@ const parseCSVFile = (filePath) => {
 };
 
 // Validation function for POC data
-const validatePocRow = async (row, rowIndex, cocode, pool) => {
+const validatePocRow = async (row, rowIndex, cocode, pool, templateType) => {
     const project = row[0]?.toString().trim();
     const phasecode = row[1]?.toString().trim();
     const year = parseInt(row[2], 10);
@@ -121,6 +266,52 @@ const validatePocRow = async (row, rowIndex, cocode, pool) => {
         if (results.length === 0) {
             return { isValid: false, error: `Row ${rowIndex + 1}: Project '${project}' with Phasecode '${phasecode}' not found for company ${cocode}.` };
         }
+
+        // ✅ NEW: Validate against completion dates
+        const completionValidation = await validatePocAgainstCompletionDates(row, rowIndex, cocode, pool);
+        if (!completionValidation.isValid) {
+            return completionValidation;
+        }
+
+        // If completion date validation passed and we have completion date info, 
+        // validate individual POC values
+        if (completionValidation.effectiveCompletionDate) {
+            if (templateType === 'short') {
+                const month = parseInt(row[3], 10);
+                const pocValue = row[4];
+                
+                if (pocValue !== null && pocValue.toString().trim() !== '') {
+                    const pocValidation = validatePocValueAgainstCompletion(
+                        pocValue, year, month, 
+                        completionValidation.effectiveCompletionDate, 
+                        completionValidation.completionType, 
+                        rowIndex
+                    );
+                    if (!pocValidation.isValid) {
+                        return pocValidation;
+                    }
+                }
+            } else if (templateType === 'long') {
+                // Check all 12 months for long template
+                for (let monthIndex = 0; monthIndex < 12; monthIndex++) {
+                    const month = monthIndex + 1;
+                    const pocValue = row[monthIndex + 3];
+                    
+                    if (pocValue !== null && pocValue.toString().trim() !== '') {
+                        const pocValidation = validatePocValueAgainstCompletion(
+                            pocValue, year, month, 
+                            completionValidation.effectiveCompletionDate, 
+                            completionValidation.completionType, 
+                            rowIndex
+                        );
+                        if (!pocValidation.isValid) {
+                            return pocValidation;
+                        }
+                    }
+                }
+            }
+        }
+
     } catch (dbError) {
         logger.error('Database validation error for POC:', dbError);
         return { isValid: false, error: `Row ${rowIndex + 1}: Database error during validation.` };
@@ -129,8 +320,8 @@ const validatePocRow = async (row, rowIndex, cocode, pool) => {
     return { isValid: true, error: null };
 };
 
-// Validation function for Completion Date data
-const validateCompletionRow = async (row, rowIndex, cocode, pool) => {
+// ✅ ENHANCED: Validation function for Completion Date data with type-based date validation
+const validateCompletionRow = async (row, rowIndex, cocode, completionType, pool) => {
     const project = row[0]?.toString().trim();
     const phasecode = row[1]?.toString().trim();
     const completionDate = row[2]?.toString().trim();
@@ -143,7 +334,8 @@ const validateCompletionRow = async (row, rowIndex, cocode, pool) => {
         return { isValid: false, error: `Row ${rowIndex + 1}: Completion date cannot be empty.` };
     }
 
-    const dateValidation = parseAndValidateDate(completionDate);
+    // ✅ ENHANCED: Use type-based date validation
+    const dateValidation = validateCompletionDateByType(completionDate, completionType);
     if (!dateValidation.isValid) {
         return { isValid: false, error: `Row ${rowIndex + 1}: ${dateValidation.error}` };
     }
@@ -236,9 +428,10 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
             let validationResult;
 
             if (uploadOption === 'poc') {
-                validationResult = await validatePocRow(row, rowIndex, cocode, pool);
+                validationResult = await validatePocRow(row, rowIndex, cocode, pool, templateType);
             } else if (uploadOption === 'date') {
-                validationResult = await validateCompletionRow(row, rowIndex, cocode, pool);
+                // ✅ ENHANCED: Pass completionType to validation function
+                validationResult = await validateCompletionRow(row, rowIndex, cocode, completionType, pool);
             } else {
                 errors.push(`Row ${rowIndex + 1}: Unknown upload option: ${uploadOption}`);
                 continue;
@@ -311,6 +504,8 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
 
         try {
             let query;
+            let result;
+            
             if (uploadOption === 'poc') {
                 query = `INSERT INTO \`pocpermonth\` (cocode, project, phasecode, year, month, value, type) 
                          VALUES ? 
@@ -319,15 +514,19 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                             type = VALUES(type), 
                             timestampM = CURRENT_TIMESTAMP, 
                             userM = "${uploadSource}"`;  // ✅ FIXED: Track source in userM field
+                
+                [result] = await pool.query(query, [recordsToInsert]);
             } else if (uploadOption === 'date') {
+                // ✅ FIXED: Always insert new records for completion dates (no ON DUPLICATE KEY UPDATE)
                 query = `INSERT INTO pcompdate (cocode, project, phasecode, type, completion_date, created_at) 
-                         VALUES ? 
-                         ON DUPLICATE KEY UPDATE 
-                            completion_date = VALUES(completion_date), 
-                            type = VALUES(type)`;
+                         VALUES ?`;
+                
+                [result] = await pool.query(query, [recordsToInsert]);
+                
+                // ✅ NEW: Since we're always inserting, all records are "inserted", none are "updated"
+                result.changedRows = 0; // Override to ensure proper reporting
             }
-
-            const [result] = await pool.query(query, [recordsToInsert]);
+            
             await pool.query('COMMIT');
 
             logger.info(`${logPrefix} Database insertion completed - Affected rows: ${result.affectedRows}, Changed rows: ${result.changedRows || 0}`);
@@ -347,7 +546,13 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                         completionType: uploadOption === 'date' ? (completionType || 'A') : null
                     };
                 }
-                summary[key].inserted++;
+                
+                // ✅ FIXED: For completion dates, always count as inserted since we don't update
+                if (uploadOption === 'date') {
+                    summary[key].inserted++;
+                } else {
+                    summary[key].inserted++;
+                }
 
                 if (uploadOption === 'poc' && record[6]) {
                     if (record[6] === 'A') {
@@ -362,8 +567,9 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
                 }
             });
 
-            // ✅ FIXED: Enhanced response message with source information
+            // ✅ ENHANCED: Response message with source information and completion date behavior
             let responseMessage = `${uploadSource} processed successfully. ${uploadOption === 'poc' ? 'POC data' : 'Completion dates'} uploaded for company ${cocode}.`;
+            
             if (uploadOption === 'poc') {
                 const totalActual = Object.values(summary).reduce((sum, item) => sum + item.actualCount, 0);
                 const totalProjected = Object.values(summary).reduce((sum, item) => sum + item.projectedCount, 0);
@@ -371,14 +577,14 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
             } else if (uploadOption === 'date') {
                 const totalRecords = recordsToInsert.length;
                 const typeText = completionType === 'A' ? 'Actual' : 'Projected';
-                responseMessage += ` All ${totalRecords} completion dates marked as ${typeText}.`;
+                responseMessage += ` All ${totalRecords} completion dates saved as new ${typeText} entries (previous entries preserved for audit trail).`;
             }
 
             res.status(200).json({
                 message: responseMessage,
                 totalRowsProcessed: dataRows.length,
-                totalInserted: result.affectedRows - (result.changedRows || 0),
-                totalUpdated: result.changedRows || 0,
+                totalInserted: uploadOption === 'date' ? result.affectedRows : (result.affectedRows - (result.changedRows || 0)),
+                totalUpdated: uploadOption === 'date' ? 0 : (result.changedRows || 0), // ✅ FIXED: No updates for completion dates
                 totalErrors: errors.length,
                 summary: Object.values(summary),
                 cutoffDate: cutoffDate,
