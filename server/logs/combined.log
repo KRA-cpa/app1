@@ -6693,3 +6693,99 @@
 2025-06-26 00:41:55 info: Received request for /api/db-status
 2025-06-26 00:41:55 info: DB status check successful.
 2025-06-25T16:41:55.593Z info: [Frontend] 
+2025-06-26 00:42:55 info: Received request for /api/db-status
+2025-06-26 00:42:55 info: DB status check successful.
+2025-06-25T16:42:55.655Z info: [Frontend] 
+2025-06-26 00:43:55 info: Received request for /api/db-status
+2025-06-26 00:43:55 info: DB status check successful.
+2025-06-25T16:43:55.611Z info: [Frontend] 
+2025-06-26 00:44:55 info: Received request for /api/db-status
+2025-06-26 00:44:55 info: DB status check successful.
+2025-06-25T16:44:55.590Z info: [Frontend] 
+2025-06-26 00:45:55 info: Received request for /api/db-status
+2025-06-26 00:45:55 info: DB status check successful.
+2025-06-25T16:45:55.584Z info: [Frontend] 
+2025-06-26 00:46:07 info: Received request for /api/db-status
+2025-06-26 00:46:07 info: DB status check successful.
+2025-06-25T16:46:07.413Z info: [Frontend] 
+2025-06-26 00:46:28 info: Received request for /api/db-status
+2025-06-26 00:46:28 info: DB status check successful.
+2025-06-25T16:46:28.578Z info: [Frontend] 
+2025-06-26 00:46:58 info: Received request for /api/db-status
+2025-06-26 00:46:58 info: DB status check successful.
+2025-06-25T16:46:58.616Z info: [Frontend] 
+2025-06-26 00:47:55 info: Received request for /api/db-status
+2025-06-26 00:47:55 info: DB status check successful.
+2025-06-25T16:47:55.588Z info: [Frontend] 
+2025-06-26 00:48:55 info: Received request for /api/db-status
+2025-06-26 00:48:55 info: DB status check successful.
+2025-06-25T16:48:55.682Z info: [Frontend] 
+2025-06-26 00:49:55 info: Received request for /api/db-status
+2025-06-26 00:49:55 info: DB status check successful.
+2025-06-25T16:49:55.679Z info: [Frontend] 
+2025-06-26 00:50:55 info: Received request for /api/db-status
+2025-06-26 00:50:55 info: DB status check successful.
+2025-06-25T16:50:55.654Z info: [Frontend] 
+2025-06-26 00:51:55 info: Received request for /api/db-status
+2025-06-26 00:51:55 info: DB status check successful.
+2025-06-25T16:51:55.611Z info: [Frontend] 
+2025-06-26 00:52:55 info: Received request for /api/db-status
+2025-06-26 00:52:55 info: DB status check successful.
+2025-06-25T16:52:55.587Z info: [Frontend] 
+2025-06-26 00:53:55 info: Received request for /api/db-status
+2025-06-26 00:53:55 info: DB status check successful.
+2025-06-25T16:53:55.595Z info: [Frontend] 
+2025-06-26 00:54:55 info: Received request for /api/db-status
+2025-06-26 00:54:55 info: DB status check successful.
+2025-06-25T16:54:55.608Z info: [Frontend] 
+2025-06-26 00:55:55 info: Received request for /api/db-status
+2025-06-26 00:55:55 info: DB status check successful.
+2025-06-25T16:55:55.662Z info: [Frontend] 
+2025-06-26 00:56:55 info: Received request for /api/db-status
+2025-06-26 00:56:55 info: DB status check successful.
+2025-06-25T16:56:55.588Z info: [Frontend] 
+2025-06-26 00:57:55 info: Received request for /api/db-status
+2025-06-26 00:57:55 info: DB status check successful.
+2025-06-25T16:57:55.615Z info: [Frontend] 
+2025-06-26 00:58:55 info: Received request for /api/db-status
+2025-06-26 00:58:55 info: DB status check successful.
+2025-06-25T16:58:55.610Z info: [Frontend] 
+2025-06-26 00:59:55 info: Received request for /api/db-status
+2025-06-26 00:59:55 info: DB status check successful.
+2025-06-25T16:59:55.592Z info: [Frontend] 
+2025-06-26 01:32:22 info: Received request for /api/db-status
+2025-06-26 01:32:22 info: DB status check successful.
+2025-06-25T17:32:22.466Z info: [Frontend] 
+2025-06-27 21:48:23 info: Attempting to create MySQL connection pool...
+2025-06-27 21:48:23 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-27 21:48:23 info: MySQL Pool ready.
+2025-06-27 21:48:23 info: 🚀 Server listening on http://localhost:3001
+2025-06-27 21:48:23 info: 📊 Main React app: http://localhost:3000
+2025-06-27 21:48:23 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-27 21:48:23 info: 💰 Sales Recognition: Available in the Sales Recognition tab
+2025-06-27 21:48:23 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-27 21:48:30 info: Received request for /api/db-status
+2025-06-27 21:48:30 info: DB status check successful.
+2025-06-27T13:48:30.306Z info: [Frontend] 
+2025-06-27 21:48:32 info: Sales Recognition manual entry request received - Entries: 1, CutoffDate: 2025-05-31
+2025-06-27 21:48:32 info: Manual entry validation completed. Records to process: 1, Errors: 0
+2025-06-27 21:48:32 info: Sales Recognition manual entry completed - Inserted: 1, Updated: 0
+2025-06-27T13:48:32.252Z info: [Frontend] 
+2025-06-27 21:49:00 info: Received request for /api/db-status
+2025-06-27 21:49:00 info: DB status check successful.
+2025-06-27T13:49:00.538Z info: [Frontend] 
+2025-06-27 21:49:30 info: Received request for /api/db-status
+2025-06-27 21:49:30 info: DB status check successful.
+2025-06-27T13:49:30.548Z info: [Frontend] 
+2025-06-27 21:50:00 info: Received request for /api/db-status
+2025-06-27 21:50:00 info: DB status check successful.
+2025-06-27T13:50:00.226Z info: [Frontend] 
+2025-06-27 21:50:30 info: Received request for /api/db-status
+2025-06-27 21:50:30 info: DB status check successful.
+2025-06-27T13:50:30.547Z info: [Frontend] 
+2025-06-27 21:51:00 info: Received request for /api/db-status
+2025-06-27 21:51:00 info: DB status check successful.
+2025-06-27T13:51:00.554Z info: [Frontend] 
+2025-06-27 21:51:41 info: Received request for /api/db-status
+2025-06-27 21:51:41 info: DB status check successful.
+2025-06-27T13:51:41.600Z info: [Frontend] 

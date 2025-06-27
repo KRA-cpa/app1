@@ -225,14 +225,14 @@ router.post('/upload-salesrecognition', upload.single('csvFile'), async (req, re
             for (const record of recordsToProcess) {
                 // Check if account already exists
                 const [existingRows] = await pool.query(
-                    'SELECT AccountNo FROM `re`.`SalesRecognition` WHERE AccountNo = ?',
+                    'SELECT AccountNo FROM `SalesRecognition` WHERE AccountNo = ?',
                     [record.accountNo]
                 );
                 
                 if (existingRows.length > 0) {
                     // Update existing record
                     await pool.query(
-                        'UPDATE `re`.`SalesRecognition` SET `date` = ? WHERE AccountNo = ?',
+                        'UPDATE `SalesRecognition` SET `date` = ? WHERE AccountNo = ?',
                         [record.date, record.accountNo]
                     );
                     
@@ -247,7 +247,7 @@ router.post('/upload-salesrecognition', upload.single('csvFile'), async (req, re
                 } else {
                     // Insert new record
                     await pool.query(
-                        'INSERT INTO `re`.`SalesRecognition` (AccountNo, `date`) VALUES (?, ?)',
+                        'INSERT INTO `SalesRecognition` (AccountNo, `date`) VALUES (?, ?)',
                         [record.accountNo, record.date]
                     );
                     
@@ -371,14 +371,14 @@ router.post('/manual-salesrecognition', async (req, res) => {
             for (const record of recordsToProcess) {
                 // Check if account already exists
                 const [existingRows] = await pool.query(
-                    'SELECT AccountNo FROM `re`.`SalesRecognition` WHERE AccountNo = ?',
+                    'SELECT AccountNo FROM `SalesRecognition` WHERE AccountNo = ?',
                     [record.accountNo]
                 );
                 
                 if (existingRows.length > 0) {
                     // Update existing record
                     await pool.query(
-                        'UPDATE `re`.`SalesRecognition` SET `date` = ? WHERE AccountNo = ?',
+                        'UPDATE `SalesRecognition` SET `date` = ? WHERE AccountNo = ?',
                         [record.date, record.accountNo]
                     );
                     
@@ -393,7 +393,7 @@ router.post('/manual-salesrecognition', async (req, res) => {
                 } else {
                     // Insert new record
                     await pool.query(
-                        'INSERT INTO `re`.`SalesRecognition` (AccountNo, `date`) VALUES (?, ?)',
+                        'INSERT INTO `SalesRecognition` (AccountNo, `date`) VALUES (?, ?)',
                         [record.accountNo, record.date]
                     );
                     
@@ -446,7 +446,7 @@ router.get('/salesrecognition-data', async (req, res) => {
     }
     
     try {
-        let query = 'SELECT AccountNo, `date` FROM `re`.`SalesRecognition`';
+        let query = 'SELECT AccountNo, `date` FROM `SalesRecognition`';
         const conditions = [];
         const params = [];
         
