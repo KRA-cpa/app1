@@ -57,6 +57,21 @@ function SalesRecognitionManager({ dbStatus, cutoffDate }) {
     return { isValid: true, error: null };
   };
 
+// Date formatting
+const formatDisplayDate = (dateString) => {
+  if (!dateString) {
+    return 'Not set';
+  }
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) {
+    return 'Invalid Date';
+  }
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}/${day}/${year}`;
+};
+
   // Handle CSV file selection
   const handleFileChange = (event) => {
     setMessage('');
@@ -319,13 +334,14 @@ function SalesRecognitionManager({ dbStatus, cutoffDate }) {
             marginBottom: '20px'
           }}>
             <h4 style={{ color: '#0056b3', marginTop: 0 }}>📋 CSV File Format</h4>
-            <ul style={{ color: '#495057', marginBottom: 0 }}>
-              <li>Column A: Account Number (required)</li>
-              <li>Column B: Date in YYYY-MM-DD or MM/DD/YYYY format (required)</li>
-              <li>Row 1: Can contain headers (will be skipped)</li>
+            {/* Apply styles to the ul element only */}
+            <ul style={{ color: '#495057', marginBottom: 0, paddingLeft: '20px', textAlign: 'left' }}>
+              <li><strong>Column A:</strong> Account Number (required)</li>
+              <li><strong>Column B:</strong> Date in YYYY-MM-DD or MM/DD/YYYY format (required)</li>
+              <li><strong>Row 1:</strong> Can contain headers (will be skipped)</li>
               <li>Data starts from Row 2</li>
               <li>Dates must be month-end dates only</li>
-              <li>Dates cannot be beyond cutoff date: {cutoffDate || 'Not set'}</li>
+              <li>Dates cannot be beyond cutoff date: <strong>{formatDisplayDate(cutoffDate)}</strong></li>
             </ul>
           </div>
 
@@ -365,11 +381,12 @@ function SalesRecognitionManager({ dbStatus, cutoffDate }) {
             marginBottom: '20px'
           }}>
             <h4 style={{ color: '#0056b3', marginTop: 0 }}>📝 Manual Entry Instructions</h4>
-            <ul style={{ color: '#495057', marginBottom: 0 }}>
-              <li>You can copy data from Excel and paste it here (Ctrl+V)</li>
+            {/* Apply styles to the ul element only */}
+            <ul style={{ color: '#495057', marginBottom: 0, paddingLeft: '20px', textAlign: 'left' }}>
+              <li>You can copy data from Excel and paste it here <strong><i>(Ctrl+V)</i></strong></li>
               <li>Each row represents one account record</li>
               <li>Dates must be month-end dates only</li>
-              <li>Dates cannot be beyond cutoff date: {cutoffDate || 'Not set'}</li>
+              <li>Dates cannot be beyond cutoff date: <strong>{formatDisplayDate(cutoffDate)}</strong></li>
               <li>Existing accounts will be updated with new dates</li>
             </ul>
           </div>
@@ -431,7 +448,9 @@ function SalesRecognitionManager({ dbStatus, cutoffDate }) {
                         }}
                       />
                     </td>
-                    <td style={{ padding: '5px', border: '1px solid #dee2e6' }}>
+                   
+                   {/* Old date input (via picker) */}
+                    {/* <td style={{ padding: '5px', border: '1px solid #dee2e6' }}>
                       <input
                         type="date"
                         value={entry.date}
@@ -449,7 +468,30 @@ function SalesRecognitionManager({ dbStatus, cutoffDate }) {
                           {entry.error}
                         </div>
                       )}
-                    </td>
+                    </td> */}
+
+{/* new Date entry as text */}
+<td style={{ padding: '5px', border: '1px solid #dee2e6' }}>
+    <input
+        type="text" // Changed from "date" to "text"
+        value={entry.date}
+        onChange={(e) => updateManualEntry(entry.id, 'date', e.target.value)}
+        placeholder="Enter date (YYYY-MM-DD)" // Updated placeholder for clarity
+        disabled={controlsDisabled}
+        style={{
+            width: '100%',
+            padding: '8px',
+            border: entry.error ? '1px solid #dc3545' : '1px solid #ced4da',
+            borderRadius: '4px'
+        }}
+    />
+    {entry.error && (
+        <div style={{ fontSize: '12px', color: '#dc3545', marginTop: '5px' }}>
+            {entry.error}
+        </div>
+    )}
+</td>
+
                     <td style={{ padding: '5px', border: '1px solid #dee2e6', textAlign: 'center' }}>
                       {manualEntries.length > 1 && (
                         <button

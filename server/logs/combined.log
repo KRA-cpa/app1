@@ -6789,3 +6789,390 @@
 2025-06-27 21:51:41 info: Received request for /api/db-status
 2025-06-27 21:51:41 info: DB status check successful.
 2025-06-27T13:51:41.600Z info: [Frontend] 
+2025-06-27 21:52:41 info: Received request for /api/db-status
+2025-06-27 21:52:41 info: DB status check successful.
+2025-06-27T13:52:41.543Z info: [Frontend] 
+2025-06-27 21:53:41 info: Received request for /api/db-status
+2025-06-27 21:53:41 info: DB status check successful.
+2025-06-27T13:53:41.529Z info: [Frontend] 
+2025-06-27 21:54:41 info: Received request for /api/db-status
+2025-06-27 21:54:41 info: DB status check successful.
+2025-06-27T13:54:41.600Z info: [Frontend] 
+2025-06-27 21:55:00 info: Received request for /api/db-status
+2025-06-27 21:55:00 info: DB status check successful.
+2025-06-27T13:55:00.170Z info: [Frontend] 
+2025-06-27 21:55:30 info: Received request for /api/db-status
+2025-06-27 21:55:30 info: DB status check successful.
+2025-06-27T13:55:30.194Z info: [Frontend] 
+2025-06-27 21:56:00 info: Received request for /api/db-status
+2025-06-27 21:56:00 info: DB status check successful.
+2025-06-27T13:56:00.226Z info: [Frontend] 
+2025-06-27 21:56:30 info: Received request for /api/db-status
+2025-06-27 21:56:30 info: DB status check successful.
+2025-06-27T13:56:30.197Z info: [Frontend] 
+2025-06-27 21:57:00 info: Received request for /api/db-status
+2025-06-27 21:57:00 info: DB status check successful.
+2025-06-27T13:57:00.479Z info: [Frontend] 
+2025-06-27 21:57:30 info: Received request for /api/db-status
+2025-06-27 21:57:30 info: DB status check successful.
+2025-06-27T13:57:30.507Z info: [Frontend] 
+2025-06-27 21:58:41 info: Received request for /api/db-status
+2025-06-27 21:58:41 info: DB status check successful.
+2025-06-27T13:58:41.510Z info: [Frontend] 
+2025-06-27 21:59:41 info: Received request for /api/db-status
+2025-06-27 21:59:41 info: DB status check successful.
+2025-06-27T13:59:41.445Z info: [Frontend] 
+2025-06-27 22:00:41 info: Received request for /api/db-status
+2025-06-27 22:00:41 info: DB status check successful.
+2025-06-27T14:00:41.425Z info: [Frontend] 
+2025-06-27 22:01:41 info: Received request for /api/db-status
+2025-06-27 22:01:41 info: DB status check successful.
+2025-06-27T14:01:41.430Z info: [Frontend] 
+2025-06-27 22:02:41 info: Received request for /api/db-status
+2025-06-27 22:02:41 info: DB status check successful.
+2025-06-27T14:02:41.410Z info: [Frontend] 
+2025-06-27 22:03:41 info: Received request for /api/db-status
+2025-06-27 22:03:41 info: DB status check successful.
+2025-06-27T14:03:41.407Z info: [Frontend] 
+2025-06-27 22:04:41 info: Received request for /api/db-status
+2025-06-27 22:04:41 info: DB status check successful.
+2025-06-27T14:04:41.388Z info: [Frontend] 
+2025-06-27 22:05:41 info: Received request for /api/db-status
+2025-06-27 22:05:41 info: DB status check successful.
+2025-06-27T14:05:41.373Z info: [Frontend] 
+2025-06-27 22:06:41 info: Received request for /api/db-status
+2025-06-27 22:06:41 info: DB status check successful.
+2025-06-27T14:06:41.371Z info: [Frontend] 
+2025-06-27 22:07:41 info: Received request for /api/db-status
+2025-06-27 22:07:41 info: DB status check successful.
+2025-06-27T14:07:41.472Z info: [Frontend] 
+2025-06-27 22:08:22 info: Received request for /api/db-status
+2025-06-27 22:08:22 info: DB status check successful.
+2025-06-27T14:08:22.802Z info: [Frontend] 
+2025-06-27 22:08:30 info: Received request for /api/db-status
+2025-06-27 22:08:30 info: DB status check successful.
+2025-06-27T14:08:30.003Z info: [Frontend] 
+2025-06-27 22:08:59 info: Received request for /api/db-status
+2025-06-27 22:08:59 info: DB status check successful.
+2025-06-27T14:08:59.989Z info: [Frontend] 
+2025-06-27 22:09:30 info: Received request for /api/db-status
+2025-06-27 22:09:30 info: DB status check successful.
+2025-06-27T14:09:30.308Z info: [Frontend] 
+2025-06-27 22:09:43 info: Sales Recognition manual entry request received - Entries: 13, CutoffDate: 2025-05-31
+2025-06-27 22:09:43 info: Manual entry validation completed. Records to process: 13, Errors: 0
+2025-06-27 22:09:43 info: Sales Recognition manual entry completed - Inserted: 12, Updated: 1
+2025-06-27T14:09:43.273Z info: [Frontend] 
+2025-06-27 22:09:59 info: Received request for /api/db-status
+2025-06-27 22:09:59 info: DB status check successful.
+2025-06-27T14:09:59.970Z info: [Frontend] 
+2025-06-27 22:10:30 info: Received request for /api/db-status
+2025-06-27 22:10:30 info: DB status check successful.
+2025-06-27T14:10:30.307Z info: [Frontend] 
+2025-06-27 22:10:59 info: Received request for /api/db-status
+2025-06-27 22:10:59 info: DB status check successful.
+2025-06-27T14:10:59.967Z info: [Frontend] 
+2025-06-27 22:11:29 info: Received request for /api/db-status
+2025-06-27 22:11:29 info: DB status check successful.
+2025-06-27T14:11:29.972Z info: [Frontend] 
+2025-06-27 22:11:59 info: Received request for /api/db-status
+2025-06-27 22:11:59 info: DB status check successful.
+2025-06-27T14:11:59.960Z info: [Frontend] 
+2025-06-27 22:12:29 info: Received request for /api/db-status
+2025-06-27 22:12:29 info: DB status check successful.
+2025-06-27T14:12:29.959Z info: [Frontend] 
+2025-06-27 22:13:00 info: Received request for /api/db-status
+2025-06-27 22:13:00 info: DB status check successful.
+2025-06-27T14:13:00.284Z info: [Frontend] 
+2025-06-27 22:13:19 info: Received request for /api/db-status
+2025-06-27 22:13:19 info: DB status check successful.
+2025-06-27T14:13:19.411Z info: [Frontend] 
+2025-06-27 22:13:30 info: Received request for /api/db-status
+2025-06-27 22:13:30 info: DB status check successful.
+2025-06-27T14:13:30.269Z info: [Frontend] 
+2025-06-27 22:14:00 info: Received request for /api/db-status
+2025-06-27 22:14:00 info: DB status check successful.
+2025-06-27T14:14:00.269Z info: [Frontend] 
+2025-06-27 22:14:06 info: Received request for /api/db-status
+2025-06-27 22:14:06 info: DB status check successful.
+2025-06-27 22:14:06 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:14:06 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:14:06.066Z info: [Frontend] 
+2025-06-27 22:14:10 info: Received request for /api/db-status
+2025-06-27 22:14:10 info: DB status check successful.
+2025-06-27T14:14:10.526Z info: [Frontend] 
+2025-06-27 22:14:11 info: Received request for /api/db-status
+2025-06-27 22:14:11 info: DB status check successful.
+2025-06-27 22:14:11 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:14:11 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:14:11.781Z info: [Frontend] 
+2025-06-27 22:14:13 info: Received request for /api/db-status
+2025-06-27 22:14:13 info: DB status check successful.
+2025-06-27T14:14:13.564Z info: [Frontend] 
+2025-06-27 22:14:14 info: Received request for /api/db-status
+2025-06-27 22:14:14 info: DB status check successful.
+2025-06-27 22:14:14 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:14:14 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:14:14.243Z info: [Frontend] 
+2025-06-27 22:14:18 info: Received request for /api/db-status
+2025-06-27 22:14:18 info: DB status check successful.
+2025-06-27T14:14:18.464Z info: [Frontend] 
+2025-06-27 22:14:25 info: Received request for /api/db-status
+2025-06-27 22:14:25 info: DB status check successful.
+2025-06-27 22:14:25 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:14:25 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:14:25.384Z info: [Frontend] 
+2025-06-27 22:14:25 info: Received request for /api/db-status
+2025-06-27 22:14:25 info: DB status check successful.
+2025-06-27T14:14:25.958Z info: [Frontend] 
+2025-06-27 22:14:26 info: Received request for /api/db-status
+2025-06-27 22:14:26 info: DB status check successful.
+2025-06-27 22:14:26 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:14:26 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:14:26.593Z info: [Frontend] 
+2025-06-27 22:14:29 info: Received request for /api/db-status
+2025-06-27 22:14:29 info: DB status check successful.
+2025-06-27T14:14:29.936Z info: [Frontend] 
+2025-06-27 22:14:38 info: Received request for /api/db-status
+2025-06-27 22:14:38 info: DB status check successful.
+2025-06-27T14:14:38.209Z info: [Frontend] 
+2025-06-27 22:15:00 info: Received request for /api/db-status
+2025-06-27 22:15:00 info: DB status check successful.
+2025-06-27T14:15:00.260Z info: [Frontend] 
+2025-06-27 22:15:29 info: Received request for /api/db-status
+2025-06-27 22:15:29 info: DB status check successful.
+2025-06-27T14:15:29.951Z info: [Frontend] 
+2025-06-27 22:16:00 info: Received request for /api/db-status
+2025-06-27 22:16:00 info: DB status check successful.
+2025-06-27T14:16:00.136Z info: [Frontend] 
+2025-06-27 22:16:02 info: Received request for /api/db-status
+2025-06-27 22:16:02 info: DB status check successful.
+2025-06-27T14:16:02.158Z info: [Frontend] 
+2025-06-27 22:16:11 info: Received request for /api/db-status
+2025-06-27 22:16:11 info: DB status check successful.
+2025-06-27T14:16:11.620Z info: [Frontend] 
+2025-06-27 22:16:12 info: Received request for /api/db-status
+2025-06-27 22:16:12 info: DB status check successful.
+2025-06-27 22:16:12 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:16:12 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:16:12.579Z info: [Frontend] 
+2025-06-27 22:16:13 info: Received request for /api/db-status
+2025-06-27 22:16:13 info: DB status check successful.
+2025-06-27T14:16:13.619Z info: [Frontend] 
+2025-06-27 22:16:29 info: Received request for /api/db-status
+2025-06-27 22:16:29 info: DB status check successful.
+2025-06-27T14:16:29.914Z info: [Frontend] 
+2025-06-27 22:16:34 info: Received request for /api/db-status
+2025-06-27 22:16:34 info: DB status check successful.
+2025-06-27 22:16:34 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:16:34 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:16:34.482Z info: [Frontend] 
+2025-06-27 22:17:00 info: Received request for /api/db-status
+2025-06-27 22:17:00 info: DB status check successful.
+2025-06-27T14:17:00.243Z info: [Frontend] 
+2025-06-27 22:17:30 info: Received request for /api/db-status
+2025-06-27 22:17:30 info: DB status check successful.
+2025-06-27T14:17:30.246Z info: [Frontend] 
+2025-06-27 22:18:41 info: Received request for /api/db-status
+2025-06-27 22:18:41 info: DB status check successful.
+2025-06-27T14:18:41.257Z info: [Frontend] 
+2025-06-27 22:19:29 info: Received request for /api/db-status
+2025-06-27 22:19:29 info: DB status check successful.
+2025-06-27T14:19:29.057Z info: [Frontend] 
+2025-06-27 22:19:31 info: Received request for /api/db-status
+2025-06-27 22:19:31 info: DB status check successful.
+2025-06-27T14:19:31.045Z info: [Frontend] 
+2025-06-27 22:19:32 info: Received request for /api/db-status
+2025-06-27 22:19:32 info: DB status check successful.
+2025-06-27 22:19:32 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:19:32 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:19:32.061Z info: [Frontend] 
+2025-06-27 22:19:59 info: Received request for /api/db-status
+2025-06-27 22:19:59 info: DB status check successful.
+2025-06-27T14:19:59.903Z info: [Frontend] 
+2025-06-27 22:20:30 info: Received request for /api/db-status
+2025-06-27 22:20:30 info: DB status check successful.
+2025-06-27T14:20:30.206Z info: [Frontend] 
+2025-06-27 22:21:00 info: Received request for /api/db-status
+2025-06-27 22:21:00 info: DB status check successful.
+2025-06-27T14:21:00.210Z info: [Frontend] 
+2025-06-27 22:21:41 info: Received request for /api/db-status
+2025-06-27 22:21:41 info: DB status check successful.
+2025-06-27T14:21:41.208Z info: [Frontend] 
+2025-06-27 22:22:41 info: Received request for /api/db-status
+2025-06-27 22:22:41 info: DB status check successful.
+2025-06-27T14:22:41.217Z info: [Frontend] 
+2025-06-27 22:23:41 info: Received request for /api/db-status
+2025-06-27 22:23:41 info: DB status check successful.
+2025-06-27T14:23:41.221Z info: [Frontend] 
+2025-06-27 22:24:41 info: Received request for /api/db-status
+2025-06-27 22:24:41 info: DB status check successful.
+2025-06-27T14:24:41.183Z info: [Frontend] 
+2025-06-27 22:25:41 info: Received request for /api/db-status
+2025-06-27 22:25:41 info: DB status check successful.
+2025-06-27T14:25:42.217Z info: [Frontend] 
+2025-06-27 22:26:41 info: Received request for /api/db-status
+2025-06-27 22:26:41 info: DB status check successful.
+2025-06-27T14:26:41.198Z info: [Frontend] 
+2025-06-27 22:27:41 info: Received request for /api/db-status
+2025-06-27 22:27:41 info: DB status check successful.
+2025-06-27T14:27:41.258Z info: [Frontend] 
+2025-06-27 22:28:41 info: Received request for /api/db-status
+2025-06-27 22:28:41 info: DB status check successful.
+2025-06-27T14:28:41.174Z info: [Frontend] 
+2025-06-27 22:29:39 info: Received request for /api/db-status
+2025-06-27 22:29:39 info: DB status check successful.
+2025-06-27T14:29:39.566Z info: [Frontend] 
+2025-06-27 22:29:44 info: Received request for /api/db-status
+2025-06-27 22:29:44 info: DB status check successful.
+2025-06-27T14:29:44.780Z info: [Frontend] 
+2025-06-27 22:29:46 info: Received request for /api/db-status
+2025-06-27 22:29:46 info: DB status check successful.
+2025-06-27 22:29:46 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:29:46 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:29:46.283Z info: [Frontend] 
+2025-06-27 22:30:00 info: Received request for /api/db-status
+2025-06-27 22:30:00 info: DB status check successful.
+2025-06-27T14:30:00.134Z info: [Frontend] 
+2025-06-27 22:30:30 info: Received request for /api/db-status
+2025-06-27 22:30:30 info: DB status check successful.
+2025-06-27T14:30:30.139Z info: [Frontend] 
+2025-06-27 22:31:41 info: Received request for /api/db-status
+2025-06-27 22:31:41 info: DB status check successful.
+2025-06-27T14:31:41.137Z info: [Frontend] 
+2025-06-27 22:32:17 info: Received request for /api/db-status
+2025-06-27 22:32:18 info: DB status check successful.
+2025-06-27T14:32:18.041Z info: [Frontend] 
+2025-06-27 22:32:30 info: Received request for /api/db-status
+2025-06-27 22:32:30 info: DB status check successful.
+2025-06-27T14:32:30.124Z info: [Frontend] 
+2025-06-27 22:32:59 info: Received request for /api/db-status
+2025-06-27 22:32:59 info: DB status check successful.
+2025-06-27T14:32:59.782Z info: [Frontend] 
+2025-06-27 22:33:30 info: Received request for /api/db-status
+2025-06-27 22:33:30 info: DB status check successful.
+2025-06-27T14:33:30.116Z info: [Frontend] 
+2025-06-27 22:34:00 info: Received request for /api/db-status
+2025-06-27 22:34:00 info: DB status check successful.
+2025-06-27T14:34:00.382Z info: [Frontend] 
+2025-06-27 22:34:30 info: Received request for /api/db-status
+2025-06-27 22:34:30 info: DB status check successful.
+2025-06-27T14:34:30.110Z info: [Frontend] 
+2025-06-27 22:34:59 info: Received request for /api/db-status
+2025-06-27 22:34:59 info: DB status check successful.
+2025-06-27T14:34:59.761Z info: [Frontend] 
+2025-06-27 22:35:30 info: Received request for /api/db-status
+2025-06-27 22:35:30 info: DB status check successful.
+2025-06-27T14:35:30.095Z info: [Frontend] 
+2025-06-27 22:36:00 info: Received request for /api/db-status
+2025-06-27 22:36:00 info: DB status check successful.
+2025-06-27T14:36:00.116Z info: [Frontend] 
+2025-06-27 22:36:30 info: Received request for /api/db-status
+2025-06-27 22:36:30 info: DB status check successful.
+2025-06-27T14:36:30.083Z info: [Frontend] 
+2025-06-27 22:37:41 info: Received request for /api/db-status
+2025-06-27 22:37:41 info: DB status check successful.
+2025-06-27T14:37:41.112Z info: [Frontend] 
+2025-06-27 22:38:28 info: Received request for /api/db-status
+2025-06-27 22:38:28 info: DB status check successful.
+2025-06-27T14:38:28.212Z info: [Frontend] 
+2025-06-27 22:38:29 info: Received request for /api/db-status
+2025-06-27 22:38:29 info: DB status check successful.
+2025-06-27T14:38:29.738Z info: [Frontend] 
+2025-06-27 22:38:59 info: Received request for /api/db-status
+2025-06-27 22:38:59 info: DB status check successful.
+2025-06-27T14:38:59.746Z info: [Frontend] 
+2025-06-27 22:39:29 info: Received request for /api/db-status
+2025-06-27 22:39:29 info: DB status check successful.
+2025-06-27T14:39:29.746Z info: [Frontend] 
+2025-06-27 22:40:00 info: Received request for /api/db-status
+2025-06-27 22:40:00 info: DB status check successful.
+2025-06-27T14:40:00.065Z info: [Frontend] 
+2025-06-27 22:40:11 info: Received request for /api/db-status
+2025-06-27 22:40:11 info: DB status check successful.
+2025-06-27T14:40:11.924Z info: [Frontend] 
+2025-06-27 22:40:20 info: Received request for /api/db-status
+2025-06-27 22:40:20 info: DB status check successful.
+2025-06-27 22:40:20 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27 22:40:20 info: Manual entry validation options fetched for company SVCI: 5 projects, 5 phase combinations
+2025-06-27T14:40:20.787Z info: [Frontend] 
+2025-06-27 22:40:30 info: Received request for /api/db-status
+2025-06-27 22:40:30 info: DB status check successful.
+2025-06-27T14:40:30.050Z info: [Frontend] 
+2025-06-27 22:40:55 info: Received request for /api/db-status
+2025-06-27 22:40:55 info: DB status check successful.
+2025-06-27T14:40:55.901Z info: [Frontend] 
+2025-06-27 22:41:00 info: Received request for /api/db-status
+2025-06-27 22:41:00 info: DB status check successful.
+2025-06-27T14:41:00.059Z info: [Frontend] 
+2025-06-27 22:41:30 info: Received request for /api/db-status
+2025-06-27 22:41:30 info: DB status check successful.
+2025-06-27T14:41:30.056Z info: [Frontend] 
+2025-06-27 22:42:32 info: Received request for /api/db-status
+2025-06-27 22:42:32 info: DB status check successful.
+2025-06-27T14:42:32.526Z info: [Frontend] 
+2025-06-27 22:43:00 info: Received request for /api/db-status
+2025-06-27 22:43:00 info: DB status check successful.
+2025-06-27T14:43:00.069Z info: [Frontend] 
+2025-06-27 22:43:30 info: Received request for /api/db-status
+2025-06-27 22:43:30 info: DB status check successful.
+2025-06-27T14:43:30.055Z info: [Frontend] 
+2025-06-27 22:44:00 info: Received request for /api/db-status
+2025-06-27 22:44:00 info: DB status check successful.
+2025-06-27T14:44:00.073Z info: [Frontend] 
+2025-06-27 22:44:30 info: Received request for /api/db-status
+2025-06-27 22:44:30 info: DB status check successful.
+2025-06-27T14:44:30.049Z info: [Frontend] 
+2025-06-27 22:45:00 info: Received request for /api/db-status
+2025-06-27 22:45:00 info: DB status check successful.
+2025-06-27T14:45:00.065Z info: [Frontend] 
+2025-06-27 22:45:41 info: Received request for /api/db-status
+2025-06-27 22:45:41 info: DB status check successful.
+2025-06-27T14:45:41.069Z info: [Frontend] 
+2025-06-27 22:46:41 info: Received request for /api/db-status
+2025-06-27 22:46:41 info: DB status check successful.
+2025-06-27T14:46:41.047Z info: [Frontend] 
+2025-06-27 22:47:41 info: Received request for /api/db-status
+2025-06-27 22:47:41 info: DB status check successful.
+2025-06-27T14:47:41.209Z info: [Frontend] 
+2025-06-27 22:48:00 info: Received request for /api/db-status
+2025-06-27 22:48:00 info: DB status check successful.
+2025-06-27T14:48:00.021Z info: [Frontend] 
+2025-06-27 22:48:30 info: Received request for /api/db-status
+2025-06-27 22:48:30 info: DB status check successful.
+2025-06-27T14:48:30.016Z info: [Frontend] 
+2025-06-27 22:49:00 info: Received request for /api/db-status
+2025-06-27 22:49:00 info: DB status check successful.
+2025-06-27T14:49:00.036Z info: [Frontend] 
+2025-06-27 22:49:30 info: Received request for /api/db-status
+2025-06-27 22:49:30 info: DB status check successful.
+2025-06-27T14:49:30.027Z info: [Frontend] 
+2025-06-27 22:50:15 info: Received request for /api/db-status
+2025-06-27 22:50:15 info: DB status check successful.
+2025-06-27T14:50:15.304Z info: [Frontend] 
+2025-06-27 22:50:30 info: Received request for /api/db-status
+2025-06-27 22:50:30 info: DB status check successful.
+2025-06-27T14:50:30.003Z info: [Frontend] 
+2025-06-27 22:50:59 info: Received request for /api/db-status
+2025-06-27 22:50:59 info: DB status check successful.
+2025-06-27T14:51:00.017Z info: [Frontend] 
+2025-06-27 22:51:29 info: Received request for /api/db-status
+2025-06-27 22:51:29 info: DB status check successful.
+2025-06-27T14:51:30.020Z info: [Frontend] 
+2025-06-27 22:51:59 info: Received request for /api/db-status
+2025-06-27 22:51:59 info: DB status check successful.
+2025-06-27T14:52:00.008Z info: [Frontend] 
+2025-06-27 22:52:29 info: Received request for /api/db-status
+2025-06-27 22:52:29 info: DB status check successful.
+2025-06-27T14:52:29.988Z info: [Frontend] 
+2025-06-27 22:52:59 info: Received request for /api/db-status
+2025-06-27 22:52:59 info: DB status check successful.
+2025-06-27T14:53:00.007Z info: [Frontend] 
+2025-06-27 22:53:30 info: Received request for /api/db-status
+2025-06-27 22:53:30 info: DB status check successful.
+2025-06-27T14:53:30.036Z info: [Frontend] 
+2025-06-27 22:53:59 info: Received request for /api/db-status
+2025-06-27 22:53:59 info: DB status check successful.
+2025-06-27T14:53:59.979Z info: [Frontend] 
+2025-06-27 22:54:29 info: Received request for /api/db-status
+2025-06-27 22:54:29 info: DB status check successful.
+2025-06-27T14:54:30.000Z info: [Frontend] 

@@ -1072,8 +1072,8 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
         </div>
       )}
 
-      {/* ✅ ENHANCED: Information Section */}
-      <div style={{ 
+           {/* ✅ ENHANCED: Information Section */}
+      <div style={{
         marginTop: '40px',
         padding: '20px',
         backgroundColor: '#e8f4fd',
@@ -1081,8 +1081,9 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
         borderRadius: '8px'
       }}>
         <h4 style={{ color: '#0056b3', marginTop: 0 }}>ℹ️ Manual Entry Information</h4>
-        
-        <div style={{ marginBottom: '15px' }}>
+
+        {/* Apply textAlign: 'left' to the container div for this section */}
+        <div style={{ marginBottom: '15px', textAlign: 'left' }}>
           <strong style={{ color: '#495057' }}>Completion Date Entries:</strong>
           <ul style={{ marginTop: '5px', color: '#495057' }}>
             <li>Each entry creates a new record (preserves audit trail)</li>
@@ -1092,14 +1093,15 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
           </ul>
         </div>
 
-        <div>
+        {/* Apply textAlign: 'left' to the container div for this section */}
+        <div style={{ textAlign: 'left' }}>
           <strong style={{ color: '#495057' }}>POC Data Entries:</strong>
           <ul style={{ marginTop: '5px', color: '#495057' }}>
             <li>Updates existing records if found, creates new if not</li>
             <li>Year range: {POC_YEAR_RANGE.MIN} - {POC_YEAR_RANGE.MAX}</li>
             <li>Type determined by cutoff date: {cutoffDate || 'Not set'}</li>
             <li>POC values: 0-100 (percentage)</li>
-            <li><strong>⚠️ Validation Rule:</strong> 100% POC not allowed for periods after project completion date</li>
+            <strong>⚠️ Validation Rule:</strong> 100% POC not allowed for periods after project completion date
           </ul>
         </div>
       </div>

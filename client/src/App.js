@@ -553,7 +553,7 @@ const App = () => {
             transition: 'all 0.2s ease'
           }}
         >
-          Upload Data
+          Upload Completion/POC Data
         </button>
         <button
           onClick={() => handleTabChange('manual-entry')}
