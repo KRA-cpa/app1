@@ -9,9 +9,31 @@ const router = express.Router();
 
 // Google OAuth2 configuration
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const AUTHORIZED_EMAIL = process.env.AUTHORIZED_LOG_ADMIN_EMAIL || 'kenneth.advento@example.com'; // Hardcoded authorized email
+const AUTHORIZED_EMAIL = process.env.AUTHORIZED_LOG_ADMIN_EMAIL || 'kenneth.advento@example.com';
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
+
+// Helper function to generate timestamp in YYYYMMDDHMMSS format (UTC+8)
+const generateTimestamp = () => {
+    const now = new Date();
+    
+    // Convert to UTC+8 timezone (Philippines)
+    const utc8Offset = 8 * 60; // UTC+8 in minutes
+    const localTime = now.getTime();
+    const localOffset = now.getTimezoneOffset() * 60000; // Convert to milliseconds
+    const utc = localTime + localOffset;
+    const utc8Time = utc + (utc8Offset * 60000);
+    const utc8Date = new Date(utc8Time);
+    
+    const year = utc8Date.getFullYear();
+    const month = String(utc8Date.getMonth() + 1).padStart(2, '0');
+    const day = String(utc8Date.getDate()).padStart(2, '0');
+    const hours = String(utc8Date.getHours()).padStart(2, '0');
+    const minutes = String(utc8Date.getMinutes()).padStart(2, '0');
+    const seconds = String(utc8Date.getSeconds()).padStart(2, '0');
+    
+    return `${year}${month}${day}${hours}${minutes}${seconds}`;
+};
 
 // Middleware to verify Google token and check authorization
 const verifyGoogleAuth = async (req, res, next) => {
@@ -44,7 +66,8 @@ const verifyGoogleAuth = async (req, res, next) => {
             });
             return res.status(403).json({ 
                 error: 'Access denied',
-                message: `Only ${AUTHORIZED_EMAIL} is authorized to manage logs`
+                message: `You are not authorized to manage logs`
+                // `Only ${AUTHORIZED_EMAIL} is authorized to manage logs`
             });
         }
 
@@ -71,14 +94,15 @@ const verifyGoogleAuth = async (req, res, next) => {
     }
 };
 
-// Route to get log file information
+// Route to get log file information (updated to include timestamped backups)
 router.get('/info', verifyGoogleAuth, async (req, res) => {
     try {
         const logDirectory = path.join(__dirname, '..', 'logs');
-        const logFiles = ['combined.log', 'error.log', 'combined.log.bak', 'error.log.bak'];
+        const currentLogFiles = ['combined.log', 'error.log'];
         const logInfo = [];
 
-        for (const fileName of logFiles) {
+        // Get current log files
+        for (const fileName of currentLogFiles) {
             const filePath = path.join(logDirectory, fileName);
             try {
                 const stats = await fs.stat(filePath);
@@ -90,7 +114,7 @@ router.get('/info', verifyGoogleAuth, async (req, res) => {
                     sizeBytes: stats.size,
                     lastModified: stats.mtime.toISOString(),
                     exists: true,
-                    type: fileName.endsWith('.bak') ? 'backup' : 'current'
+                    type: 'current'
                 });
             } catch (err) {
                 logInfo.push({
@@ -99,9 +123,39 @@ router.get('/info', verifyGoogleAuth, async (req, res) => {
                     sizeBytes: 0,
                     lastModified: null,
                     exists: false,
-                    type: fileName.endsWith('.bak') ? 'backup' : 'current'
+                    type: 'current'
                 });
             }
+        }
+
+        // Get all backup files (with timestamps)
+        try {
+            const files = await fs.readdir(logDirectory);
+            const backupFiles = files.filter(file => 
+                file.match(/\.(combined|error)\.log\.\d{14}\.bak$/) || 
+                file.endsWith('.bak')
+            );
+
+            for (const fileName of backupFiles) {
+                const filePath = path.join(logDirectory, fileName);
+                try {
+                    const stats = await fs.stat(filePath);
+                    const sizeInMB = (stats.size / (1024 * 1024)).toFixed(2);
+                    
+                    logInfo.push({
+                        file: fileName,
+                        size: `${sizeInMB} MB`,
+                        sizeBytes: stats.size,
+                        lastModified: stats.mtime.toISOString(),
+                        exists: true,
+                        type: 'backup'
+                    });
+                } catch (err) {
+                    // Skip files that can't be read
+                }
+            }
+        } catch (err) {
+            // Directory read error, continue with current files only
         }
 
         logger.info(`Log info requested by: ${req.user.email}`, { 
@@ -114,7 +168,12 @@ router.get('/info', verifyGoogleAuth, async (req, res) => {
             success: true,
             requestedBy: req.user,
             timestamp: new Date().toISOString(),
-            logs: logInfo
+            logs: logInfo.sort((a, b) => {
+                // Sort: current files first, then backups by date (newest first)
+                if (a.type === 'current' && b.type === 'backup') return -1;
+                if (a.type === 'backup' && b.type === 'current') return 1;
+                return new Date(b.lastModified) - new Date(a.lastModified);
+            })
         });
     } catch (error) {
         logger.error('Error getting log info:', error);
@@ -125,16 +184,19 @@ router.get('/info', verifyGoogleAuth, async (req, res) => {
     }
 });
 
-// Route to clear all log files
+// Route to clear all log files (updated with timestamped backups)
 router.post('/clear', verifyGoogleAuth, async (req, res) => {
     try {
         const logDirectory = path.join(__dirname, '..', 'logs');
         const logFiles = ['combined.log', 'error.log'];
         const clearResults = [];
+        const timestamp = generateTimestamp(); // Generate once for consistent naming
 
         for (const fileName of logFiles) {
             const filePath = path.join(logDirectory, fileName);
-            const bakPath = path.join(logDirectory, `${fileName}.bak`);
+            // NEW: Create timestamped backup filename
+            const bakFileName = `${fileName}.${timestamp}.bak`;
+            const bakPath = path.join(logDirectory, bakFileName);
             
             try {
                 // Check if file exists
@@ -144,7 +206,7 @@ router.post('/clear', verifyGoogleAuth, async (req, res) => {
                 const stats = await fs.stat(filePath);
                 const originalSize = stats.size;
                 
-                // Create .bak file (overwrite existing .bak if it exists)
+                // Create timestamped .bak file
                 await fs.copyFile(filePath, bakPath);
                 
                 // Clear the original file (but keep it existing)
@@ -154,14 +216,16 @@ router.post('/clear', verifyGoogleAuth, async (req, res) => {
                     file: fileName,
                     cleared: true,
                     originalSize: originalSize,
-                    bakFileCreated: `${fileName}.bak`,
+                    bakFileCreated: bakFileName, // Updated to show timestamped name
+                    timestamp: timestamp,
                     error: null
                 });
 
                 logger.info(`Log file cleared: ${fileName}`, {
                     file: fileName,
                     originalSize,
-                    bakFile: `${fileName}.bak`,
+                    bakFile: bakFileName, // Updated to show timestamped name
+                    timestamp: timestamp,
                     clearedBy: req.user.email
                 });
                 
@@ -174,6 +238,7 @@ router.post('/clear', verifyGoogleAuth, async (req, res) => {
                         cleared: true,
                         originalSize: 0,
                         bakFileCreated: null,
+                        timestamp: timestamp,
                         error: 'File did not exist, created new empty file'
                     });
                 } else {
@@ -182,6 +247,7 @@ router.post('/clear', verifyGoogleAuth, async (req, res) => {
                         cleared: false,
                         originalSize: 0,
                         bakFileCreated: null,
+                        timestamp: timestamp,
                         error: err.message
                     });
                 }
@@ -194,15 +260,17 @@ router.post('/clear', verifyGoogleAuth, async (req, res) => {
             action: 'logs_cleared',
             clearedBy: req.user,
             timestamp: new Date().toISOString(),
+            backupTimestamp: timestamp, // Added backup timestamp info
             results: clearResults
         });
         logger.info('='.repeat(80));
 
         res.json({
             success: true,
-            message: 'Log files cleared successfully. Previous logs saved as .bak files. Fresh logging session started.',
+            message: `Log files cleared successfully. Previous logs saved with timestamp ${timestamp}. Fresh logging session started.`,
             clearedBy: req.user,
             timestamp: new Date().toISOString(),
+            backupTimestamp: timestamp, // Added backup timestamp info
             results: clearResults
         });
 
@@ -215,16 +283,21 @@ router.post('/clear', verifyGoogleAuth, async (req, res) => {
     }
 });
 
-// Route to download log files (for backup purposes)
+// Route to download log files (updated to handle timestamped backups)
 router.get('/download/:filename', verifyGoogleAuth, async (req, res) => {
     try {
         const { filename } = req.params;
-        const allowedFiles = ['combined.log', 'error.log', 'combined.log.bak', 'error.log.bak'];
         
-        if (!allowedFiles.includes(filename)) {
+        // Updated to allow timestamped backup files
+        const isCurrentFile = ['combined.log', 'error.log'].includes(filename);
+        const isTimestampedBackup = filename.match(/^(combined|error)\.log\.\d{14}\.bak$/);
+        const isLegacyBackup = ['combined.log.bak', 'error.log.bak'].includes(filename);
+        
+        if (!isCurrentFile && !isTimestampedBackup && !isLegacyBackup) {
             return res.status(400).json({ 
                 error: 'Invalid file requested',
-                allowedFiles 
+                message: 'File must be a current log file or a backup file',
+                examples: ['combined.log', 'error.log', 'combined.log.20250628143045.bak', 'error.log.20250628143045.bak']
             });
         }
 
@@ -244,6 +317,7 @@ router.get('/download/:filename', verifyGoogleAuth, async (req, res) => {
         logger.info(`Log file downloaded: ${filename}`, {
             file: filename,
             downloadedBy: req.user.email,
+            fileType: isCurrentFile ? 'current' : 'backup',
             action: 'log_download'
         });
         
@@ -265,22 +339,37 @@ router.get('/download/:filename', verifyGoogleAuth, async (req, res) => {
     }
 });
 
-// Route to list backup files
+// Route to list backup files (updated for timestamped backups)
 router.get('/backups', verifyGoogleAuth, async (req, res) => {
     try {
         const logDirectory = path.join(__dirname, '..', 'logs');
         const files = await fs.readdir(logDirectory);
         
+        // Updated to handle both timestamped and legacy backup files
         const backupFiles = files
-            .filter(file => file.endsWith('.bak'))
+            .filter(file => 
+                file.match(/\.(combined|error)\.log\.\d{14}\.bak$/) || // Timestamped backups
+                file.endsWith('.bak') // Legacy backups
+            )
             .map(async (file) => {
                 const filePath = path.join(logDirectory, file);
                 const stats = await fs.stat(filePath);
+                
+                // Extract timestamp from filename if it's a timestamped backup
+                const timestampMatch = file.match(/\.(\d{14})\.bak$/);
+                const extractedTimestamp = timestampMatch ? timestampMatch[1] : null;
+                
                 return {
                     filename: file,
                     size: `${(stats.size / (1024 * 1024)).toFixed(2)} MB`,
+                    sizeBytes: stats.size,
                     created: stats.birthtime.toISOString(),
-                    modified: stats.mtime.toISOString()
+                    modified: stats.mtime.toISOString(),
+                    type: extractedTimestamp ? 'timestamped' : 'legacy',
+                    extractedTimestamp: extractedTimestamp,
+                    formattedTimestamp: extractedTimestamp ? 
+                        `${extractedTimestamp.substring(0,4)}-${extractedTimestamp.substring(4,6)}-${extractedTimestamp.substring(6,8)} ${extractedTimestamp.substring(8,10)}:${extractedTimestamp.substring(10,12)}:${extractedTimestamp.substring(12,14)}` 
+                        : null
                 };
             });
 

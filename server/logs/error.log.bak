@@ -1,187 +1,78 @@
-2025-04-18 20:42:30 error: This error goes to console, combined.log, AND error.log
-2025-04-18 21:10:56 error: This error goes to console, combined.log, AND error.log
-2025-04-18 21:15:20 error: This error goes to console, combined.log, AND error.log
-2025-04-18 21:36:40 error: This error goes to console, combined.log, AND error.log
-2025-04-20 14:52:00 error: This error goes to console, combined.log, AND error.log
-2025-06-08 19:12:42 error: This error goes to console, combined.log, AND error.log
-2025-06-08 19:27:34 error: This error goes to console, combined.log, AND error.log
-2025-06-08 19:28:51 error: This error goes to console, combined.log, AND error.log
-2025-06-08 19:30:47 error: This error goes to console, combined.log, AND error.log
-2025-06-12 21:07:15 error: This error goes to console, combined.log, AND error.log
-2025-06-13 00:11:38 error: This error goes to console, combined.log, AND error.log
-2025-06-13 00:11:51 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:11:51 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:15:28 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:15:28 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:15:28 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:16:46 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:16:47 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:17:35 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:17:39 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:17:39 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:17:39 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:17:40 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:18:03 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:18:03 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:18:03 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
-2025-06-13 00:18:04 error: ReferenceError: db is not defined
-    at Z:\Work Files\project\app1\server\server.cjs:260:20
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:157:13)
-    at Route.dispatch (Z:\Work Files\project\app1\server\node_modules\router\lib\route.js:117:3)
-    at handle (Z:\Work Files\project\app1\server\node_modules\router\index.js:435:11)
-    at Layer.handleRequest (Z:\Work Files\project\app1\server\node_modules\router\lib\layer.js:152:17)
-    at Z:\Work Files\project\app1\server\node_modules\router\index.js:295:15
-    at processParams (Z:\Work Files\project\app1\server\node_modules\router\index.js:582:12)
-    at next (Z:\Work Files\project\app1\server\node_modules\router\index.js:291:5)
-    at jsonParser (Z:\Work Files\project\app1\server\node_modules\body-parser\lib\types\json.js:100:7)
+2025-06-20T09:47:22.694Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20T10:11:56.455Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20T10:14:22.485Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20T10:14:29.158Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20T10:18:39.515Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20 18:24:46 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:153:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:191:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20T10:24:46.488Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:32:16 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:153:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:191:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20T10:32:16.135Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:33:56 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:157:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:195:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20T10:33:56.220Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20 18:38:14 error: Error: Table 're.re.project_phase_validation' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at validateCompletionRow (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:157:42)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:195:42)
+    at CsvParser.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+    at Readable.push (node:internal/streams/readable:393:5)
+    at CsvParser.writeRow (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:200:12)
+    at CsvParser.parseLine (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:170:14)
+    at CsvParser._transform (Z:\Work Files\project\app1\server\node_modules\csv-parser\index.js:262:16)
+2025-06-20T10:38:14.293Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20T10:38:58.684Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
+2025-06-20T10:40:29.190Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20T10:47:48.092Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-06-20 18:48:25 error: Error: Table 're.re.pcompdate' doesn't exist
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:277:45)
+    at CsvParser.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-06-20T10:48:25.326Z error: [Frontend] CSV upload failed (backend error): Failed to save data to the database.
+2025-06-20 19:21:59 error: Error: Column count doesn't match value count at row 1
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:277:45)
+    at CsvParser.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-06-20T11:21:59.376Z error: [Frontend] CSV upload failed (backend error): Failed to save data to the database.
+2025-06-20 19:24:56 error: Error: Column count doesn't match value count at row 1
+    at PromisePool.query (Z:\Work Files\project\app1\server\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at CsvParser.<anonymous> (Z:\Work Files\project\app1\server\routes\uploadRoutes.cjs:277:45)
+    at CsvParser.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-06-20T11:24:56.896Z error: [Frontend] CSV upload failed (backend error): Failed to save data to the database.
+2025-06-20T11:39:14.725Z error: [Frontend] CSV upload failed (backend error): Upload finished. No valid data found to process. See errors below.
