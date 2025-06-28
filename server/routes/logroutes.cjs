@@ -1,4 +1,4 @@
-// routes/logRoutes.cjs
+// routes/logRoutes.cjs - FIXED VERSION with enhanced security
 const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
@@ -9,7 +9,21 @@ const router = express.Router();
 
 // Google OAuth2 configuration
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const AUTHORIZED_EMAIL = process.env.AUTHORIZED_LOG_ADMIN_EMAIL || 'kenneth.advento@example.com';
+const AUTHORIZED_EMAIL = process.env.AUTHORIZED_LOG_ADMIN_EMAIL;
+
+// ✅ SECURITY FIX: Validate that required environment variables are set
+if (!GOOGLE_CLIENT_ID) {
+    logger.error('CRITICAL: GOOGLE_CLIENT_ID environment variable is not set');
+    throw new Error('GOOGLE_CLIENT_ID environment variable is required');
+}
+
+if (!AUTHORIZED_EMAIL) {
+    logger.error('CRITICAL: AUTHORIZED_LOG_ADMIN_EMAIL environment variable is not set');
+    throw new Error('AUTHORIZED_LOG_ADMIN_EMAIL environment variable is required');
+}
+
+// ✅ SECURITY FIX: Normalize the authorized email (lowercase, trim)
+const NORMALIZED_AUTHORIZED_EMAIL = AUTHORIZED_EMAIL.toLowerCase().trim();
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
@@ -35,64 +49,194 @@ const generateTimestamp = () => {
     return `${year}${month}${day}${hours}${minutes}${seconds}`;
 };
 
-// Middleware to verify Google token and check authorization
+// ✅ ENHANCED: More robust authentication middleware with better security
 const verifyGoogleAuth = async (req, res, next) => {
     try {
-        const token = req.headers.authorization?.replace('Bearer ', '');
+        const authHeader = req.headers.authorization;
         
-        if (!token) {
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            logger.warn('Log access attempt without proper authorization header', {
+                ip: req.ip,
+                userAgent: req.get('User-Agent'),
+                action: 'missing_auth_header'
+            });
             return res.status(401).json({ 
                 error: 'No authentication token provided',
                 message: 'Google authentication required'
             });
         }
 
-        // Verify the Google token
-        const ticket = await client.verifyIdToken({
-            idToken: token,
-            audience: GOOGLE_CLIENT_ID,
-        });
-
-        const payload = ticket.getPayload();
-        const userEmail = payload.email;
-        const userName = payload.name;
-
-        // Check if the user is authorized
-        if (userEmail !== AUTHORIZED_EMAIL) {
-            logger.warn(`Unauthorized log access attempt from: ${userEmail}`, { 
-                email: userEmail, 
-                name: userName,
-                action: 'log_access_denied'
+        const token = authHeader.replace('Bearer ', '');
+        
+        if (!token || token.trim() === '') {
+            logger.warn('Log access attempt with empty token', {
+                ip: req.ip,
+                userAgent: req.get('User-Agent'),
+                action: 'empty_token'
             });
-            return res.status(403).json({ 
-                error: 'Access denied',
-                message: `You are not authorized to manage logs`
-                // `Only ${AUTHORIZED_EMAIL} is authorized to manage logs`
+            return res.status(401).json({ 
+                error: 'Invalid authentication token',
+                message: 'Authentication token is empty'
             });
         }
 
-        // Log successful authentication
-        logger.info(`Authorized log access by: ${userEmail}`, { 
-            email: userEmail, 
-            name: userName,
-            action: 'log_access_granted'
+        // ✅ ENHANCED: More robust Google token verification
+        let ticket;
+        try {
+            ticket = await client.verifyIdToken({
+                idToken: token,
+                audience: GOOGLE_CLIENT_ID,
+            });
+        } catch (tokenError) {
+            logger.warn('Invalid Google token provided', {
+                ip: req.ip,
+                userAgent: req.get('User-Agent'),
+                error: tokenError.message,
+                action: 'invalid_token'
+            });
+            return res.status(401).json({ 
+                error: 'Invalid authentication token',
+                message: 'Google token verification failed'
+            });
+        }
+
+        const payload = ticket.getPayload();
+        
+        // ✅ SECURITY FIX: Validate payload structure
+        if (!payload || !payload.email || !payload.name) {
+            logger.warn('Invalid token payload structure', {
+                ip: req.ip,
+                userAgent: req.get('User-Agent'),
+                hasEmail: !!payload?.email,
+                hasName: !!payload?.name,
+                action: 'invalid_payload'
+            });
+            return res.status(401).json({ 
+                error: 'Invalid token payload',
+                message: 'Token does not contain required user information'
+            });
+        }
+
+        const userEmail = payload.email.toLowerCase().trim(); // ✅ SECURITY FIX: Normalize email
+        const userName = payload.name;
+        const userSub = payload.sub; // Google's unique user ID
+
+        // ✅ ENHANCED: More detailed logging for security audit
+        logger.info('Authentication attempt details', {
+            userEmail: userEmail,
+            userName: userName,
+            userSub: userSub,
+            authorizedEmail: NORMALIZED_AUTHORIZED_EMAIL,
+            ip: req.ip,
+            userAgent: req.get('User-Agent'),
+            timestamp: new Date().toISOString(),
+            action: 'auth_attempt'
         });
 
-        // Add user info to request for use in handlers
+        // ✅ SECURITY FIX: Case-insensitive email comparison with additional validation
+        if (userEmail !== NORMALIZED_AUTHORIZED_EMAIL) {
+            logger.warn(`SECURITY ALERT: Unauthorized log access attempt`, { 
+                attemptedEmail: userEmail,
+                userName: userName,
+                userSub: userSub,
+                authorizedEmail: NORMALIZED_AUTHORIZED_EMAIL,
+                ip: req.ip,
+                userAgent: req.get('User-Agent'),
+                timestamp: new Date().toISOString(),
+                action: 'access_denied_unauthorized_email'
+            });
+            
+            return res.status(403).json({ 
+                error: 'Access denied',
+                message: 'You are not authorized to manage server logs'
+            });
+        }
+
+        // ✅ ENHANCED: Additional security checks
+        
+        // Check if email is verified in Google
+        if (payload.email_verified !== true) {
+            logger.warn(`SECURITY ALERT: Unverified email attempted access`, {
+                email: userEmail,
+                userName: userName,
+                emailVerified: payload.email_verified,
+                ip: req.ip,
+                action: 'access_denied_unverified_email'
+            });
+            
+            return res.status(403).json({ 
+                error: 'Email not verified',
+                message: 'Your Google account email must be verified to access this service'
+            });
+        }
+
+        // Check token expiration more strictly
+        const now = Math.floor(Date.now() / 1000);
+        if (payload.exp && payload.exp < now) {
+            logger.warn('Expired token used for log access', {
+                email: userEmail,
+                expiredAt: payload.exp,
+                currentTime: now,
+                ip: req.ip,
+                action: 'access_denied_expired_token'
+            });
+            
+            return res.status(401).json({ 
+                error: 'Token expired',
+                message: 'Please sign in again'
+            });
+        }
+
+        // ✅ SUCCESS: Log successful authentication with all details
+        logger.info(`✅ AUTHORIZED LOG ACCESS GRANTED`, { 
+            email: userEmail, 
+            name: userName,
+            userSub: userSub,
+            ip: req.ip,
+            userAgent: req.get('User-Agent'),
+            timestamp: new Date().toISOString(),
+            action: 'access_granted_success'
+        });
+
+        // Add comprehensive user info to request
         req.user = {
             email: userEmail,
-            name: userName
+            name: userName,
+            sub: userSub,
+            emailVerified: payload.email_verified,
+            ip: req.ip
         };
 
         next();
+        
     } catch (error) {
-        logger.error('Google authentication verification failed:', error);
-        return res.status(401).json({ 
-            error: 'Invalid authentication token',
-            message: 'Google authentication verification failed'
+        logger.error('CRITICAL: Google authentication verification system error', {
+            error: error.message,
+            stack: error.stack,
+            ip: req.ip,
+            userAgent: req.get('User-Agent'),
+            action: 'auth_system_error'
+        });
+        
+        return res.status(500).json({ 
+            error: 'Authentication system error',
+            message: 'Please try again later or contact administrator'
         });
     }
 };
+
+// ✅ NEW: Security status endpoint (for debugging - remove in production)
+router.get('/auth-status', (req, res) => {
+    // This endpoint helps debug authentication issues
+    // Remove this in production for security
+    res.json({
+        googleClientIdConfigured: !!GOOGLE_CLIENT_ID,
+        authorizedEmailConfigured: !!AUTHORIZED_EMAIL,
+        normalizedAuthorizedEmail: NORMALIZED_AUTHORIZED_EMAIL,
+        serverTime: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
 
 // Route to get log file information (updated to include timestamped backups)
 router.get('/info', verifyGoogleAuth, async (req, res) => {
@@ -158,10 +302,10 @@ router.get('/info', verifyGoogleAuth, async (req, res) => {
             // Directory read error, continue with current files only
         }
 
-        logger.info(`Log info requested by: ${req.user.email}`, { 
+        logger.info(`Log info requested successfully`, { 
             user: req.user,
-            logInfo,
-            action: 'log_info_requested'
+            logCount: logInfo.length,
+            action: 'log_info_success'
         });
 
         res.json({
@@ -226,7 +370,7 @@ router.post('/clear', verifyGoogleAuth, async (req, res) => {
                     originalSize,
                     bakFile: bakFileName, // Updated to show timestamped name
                     timestamp: timestamp,
-                    clearedBy: req.user.email
+                    clearedBy: req.user
                 });
                 
             } catch (err) {
@@ -294,6 +438,12 @@ router.get('/download/:filename', verifyGoogleAuth, async (req, res) => {
         const isLegacyBackup = ['combined.log.bak', 'error.log.bak'].includes(filename);
         
         if (!isCurrentFile && !isTimestampedBackup && !isLegacyBackup) {
+            logger.warn('Invalid file download attempted', {
+                filename,
+                user: req.user,
+                action: 'invalid_file_download_attempt'
+            });
+            
             return res.status(400).json({ 
                 error: 'Invalid file requested',
                 message: 'File must be a current log file or a backup file',
@@ -314,17 +464,23 @@ router.get('/download/:filename', verifyGoogleAuth, async (req, res) => {
         // Stream the file
         const fileContent = await fs.readFile(filePath, 'utf8');
         
-        logger.info(`Log file downloaded: ${filename}`, {
+        logger.info(`Log file downloaded successfully`, {
             file: filename,
-            downloadedBy: req.user.email,
+            user: req.user,
             fileType: isCurrentFile ? 'current' : 'backup',
-            action: 'log_download'
+            action: 'log_download_success'
         });
         
         res.send(fileContent);
         
     } catch (error) {
         if (error.code === 'ENOENT') {
+            logger.warn('Log file download failed - file not found', {
+                filename: req.params.filename,
+                user: req.user,
+                action: 'file_not_found'
+            });
+            
             res.status(404).json({ 
                 error: 'Log file not found',
                 file: req.params.filename 
@@ -375,10 +531,10 @@ router.get('/backups', verifyGoogleAuth, async (req, res) => {
 
         const backupInfo = await Promise.all(backupFiles);
         
-        logger.info(`Backup files listed by: ${req.user.email}`, {
+        logger.info(`Backup files listed successfully`, {
             user: req.user,
             backupCount: backupInfo.length,
-            action: 'backup_list_requested'
+            action: 'backup_list_success'
         });
 
         res.json({

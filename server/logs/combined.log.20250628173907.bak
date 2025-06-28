@@ -1,0 +1,88 @@
+2025-06-28 17:21:06 info: Log file cleared: combined.log
+2025-06-28 17:21:06 info: Log file cleared: error.log
+2025-06-28 17:21:06 info: ================================================================================
+2025-06-28T09:21:06.728Z info: LOG SYSTEM REFRESHED
+2025-06-28 17:21:06 info: ================================================================================
+2025-06-28 17:21:06 info: Authorized log access by: ken.advento@gmail.com
+2025-06-28 17:21:06 info: Log info requested by: ken.advento@gmail.com
+2025-06-28 17:21:06 info: Authorized log access by: ken.advento@gmail.com
+2025-06-28 17:21:06 info: Backup files listed by: ken.advento@gmail.com
+2025-06-28 17:22:26 info: Received request for /api/db-status
+2025-06-28 17:22:26 info: DB status check successful.
+2025-06-28T09:22:26.294Z info: [Frontend] 
+2025-06-28 17:23:26 info: Received request for /api/db-status
+2025-06-28 17:23:26 info: DB status check successful.
+2025-06-28T09:23:26.283Z info: [Frontend] 
+2025-06-28 17:24:26 info: Received request for /api/db-status
+2025-06-28 17:24:26 info: DB status check successful.
+2025-06-28T09:24:26.268Z info: [Frontend] 
+2025-06-28 17:25:26 info: Received request for /api/db-status
+2025-06-28 17:25:26 info: DB status check successful.
+2025-06-28T09:25:26.258Z info: [Frontend] 
+2025-06-28 17:26:26 info: Received request for /api/db-status
+2025-06-28 17:26:26 info: DB status check successful.
+2025-06-28T09:26:26.275Z info: [Frontend] 
+2025-06-28 17:27:04 warn: Unauthorized log access attempt from: clarkkent07@gmail.com
+2025-06-28 17:27:18 warn: Unauthorized log access attempt from: clarkkent07@gmail.com
+2025-06-28 17:27:19 warn: Unauthorized log access attempt from: clarkkent07@gmail.com
+2025-06-28 17:27:26 info: Received request for /api/db-status
+2025-06-28 17:27:26 info: DB status check successful.
+2025-06-28T09:27:26.271Z info: [Frontend] 
+2025-06-28 17:28:26 info: Received request for /api/db-status
+2025-06-28 17:28:26 info: DB status check successful.
+2025-06-28T09:28:26.330Z info: [Frontend] 
+2025-06-28 17:29:26 info: Received request for /api/db-status
+2025-06-28 17:29:26 info: DB status check successful.
+2025-06-28T09:29:26.264Z info: [Frontend] 
+2025-06-28 17:30:26 info: Received request for /api/db-status
+2025-06-28 17:30:26 info: DB status check successful.
+2025-06-28T09:30:26.251Z info: [Frontend] 
+2025-06-28 17:31:26 info: Received request for /api/db-status
+2025-06-28 17:31:26 info: DB status check successful.
+2025-06-28T09:31:26.272Z info: [Frontend] 
+2025-06-28 17:32:26 info: Received request for /api/db-status
+2025-06-28 17:32:26 info: DB status check successful.
+2025-06-28T09:32:26.276Z info: [Frontend] 
+2025-06-28 17:32:38 warn: Unauthorized log access attempt from: clarkkent07@gmail.com
+2025-06-28 17:33:26 info: Received request for /api/db-status
+2025-06-28 17:33:26 info: DB status check successful.
+2025-06-28T09:33:26.255Z info: [Frontend] 
+2025-06-28 17:34:26 info: Received request for /api/db-status
+2025-06-28 17:34:26 info: DB status check successful.
+2025-06-28T09:34:26.261Z info: [Frontend] 
+2025-06-28 17:35:26 info: Received request for /api/db-status
+2025-06-28 17:35:26 info: DB status check successful.
+2025-06-28T09:35:26.252Z info: [Frontend] 
+2025-06-28 17:36:26 info: Received request for /api/db-status
+2025-06-28 17:36:26 info: DB status check successful.
+2025-06-28T09:36:26.264Z info: [Frontend] 
+2025-06-28 17:37:29 info: Attempting to create MySQL connection pool...
+2025-06-28 17:37:30 info: ✅ MySQL connection test successful! Releasing test connection.
+2025-06-28 17:37:30 info: MySQL Pool ready.
+2025-06-28 17:37:30 info: 🚀 Server listening on http://localhost:3001
+2025-06-28 17:37:30 info: 📊 Main React app: http://localhost:3000
+2025-06-28 17:37:30 info: 🗂️ Log management: http://localhost:3001/managelogs
+2025-06-28 17:37:30 info: 💰 Sales Recognition: Available in the Sales Recognition tab
+2025-06-28 17:37:30 info: 📁 Make sure to create server/public/managelogs.html with the log management HTML content
+2025-06-28T09:38:05.297Z info: Authentication attempt details
+2025-06-28T09:38:05.299Z warn: SECURITY ALERT: Unauthorized log access attempt
+2025-06-28T09:38:09.696Z info: Authentication attempt details
+2025-06-28T09:38:09.696Z warn: SECURITY ALERT: Unauthorized log access attempt
+2025-06-28T09:38:10.440Z info: Authentication attempt details
+2025-06-28T09:38:10.441Z warn: SECURITY ALERT: Unauthorized log access attempt
+2025-06-28T09:38:14.469Z info: Authentication attempt details
+2025-06-28T09:38:14.469Z warn: SECURITY ALERT: Unauthorized log access attempt
+2025-06-28 17:38:26 info: Received request for /api/db-status
+2025-06-28 17:38:26 info: DB status check successful.
+2025-06-28T09:38:26.294Z info: [Frontend] 
+2025-06-28T09:38:40.654Z info: Authentication attempt details
+2025-06-28T09:38:40.656Z info: ✅ AUTHORIZED LOG ACCESS GRANTED
+2025-06-28 17:38:40 info: Log info requested successfully
+2025-06-28T09:38:48.995Z info: Authentication attempt details
+2025-06-28T09:38:48.995Z info: ✅ AUTHORIZED LOG ACCESS GRANTED
+2025-06-28 17:38:48 info: Backup files listed successfully
+2025-06-28T09:38:53.678Z info: Authentication attempt details
+2025-06-28T09:38:53.679Z info: ✅ AUTHORIZED LOG ACCESS GRANTED
+2025-06-28 17:38:53 info: Log info requested successfully
+2025-06-28T09:39:07.747Z info: Authentication attempt details
+2025-06-28T09:39:07.747Z info: ✅ AUTHORIZED LOG ACCESS GRANTED
