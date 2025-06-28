@@ -334,6 +334,40 @@ const App = () => {
         </h1>
       </div>
 
+    {/* Right side - Log Management Link */}
+        <div style={{ width: '120px', display: 'flex', justifyContent: 'flex-end' }}>
+          <a 
+            href="http://localhost:3001/managelogs" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              background: 'rgba(255, 255, 255, 0.2)',
+              color: 'white',
+              padding: '8px 15px',
+              borderRadius: '20px',
+              textDecoration: 'none',
+              fontSize: '14px',
+              fontWeight: '500',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              transition: 'all 0.3s ease',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px'
+            }}
+            onMouseOver={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.3)';
+              e.target.style.transform = 'translateY(-1px)';
+            }}
+            onMouseOut={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+              e.target.style.transform = 'translateY(0)';
+            }}
+          >
+            🗂️ Server Logs
+          </a>
+        </div>
+      </div>
+
       {/* UNIFIED Control Bar: Company + Cutoff Date + Database Status */}
       <div style={{ 
         padding: '20px', 
