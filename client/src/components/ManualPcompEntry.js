@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
+import CompletionConflictDialog from './CompletionConflictDialog'; // ✅ NEW: Import conflict dialog
 
 // ✅ CONFIGURABLE: Year range for POC entry (easily editable)
 const POC_YEAR_RANGE = {
@@ -567,6 +568,297 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
     { value: 10, name: 'October' }, { value: 11, name: 'November' }, { value: 12, name: 'December' }
   ];
 
+  // start new 0713
+  // ✅ NEW: Add conflict handling state
+  const [conflictDialog, setConflictDialog] = useState({
+    isVisible: false,
+    conflicts: [],
+    pendingEntries: [],
+    isProcessing: false
+  });
+
+  // ✅ NEW: Check for completion date conflicts
+  const checkCompletionConflicts = async (entries) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/check-completion-conflicts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          completionEntries: entries,
+          cocode: cocode
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        return result;
+      } else {
+        throw new Error(result.message || 'Failed to check conflicts');
+      }
+    } catch (error) {
+      console.error('Error checking completion conflicts:', error);
+      throw error;
+    }
+  };
+
+
+ // ✅ NEW: Handle upload with conflict resolution
+  const uploadWithConflictResolution = async (entries, conflicts, confirmedBy) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/upload-completion-with-conflicts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          completionEntries: entries,
+          conflicts: conflicts,
+          cocode: cocode,
+          completionType: entries[0]?.completionType || 'A',
+          confirmedBy: confirmedBy
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        return result;
+      } else {
+        throw new Error(result.message || 'Failed to upload with conflict resolution');
+      }
+    } catch (error) {
+      console.error('Error uploading with conflict resolution:', error);
+      throw error;
+    }
+  };
+
+  // ✅ UPDATED: Enhanced handleSubmit with conflict checking
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const validationError = validateAllEntries();
+    if (validationError) {
+      setMessage(validationError);
+      return;
+    }
+
+    if (dbStatus !== 'connected') {
+      setMessage('Cannot submit: Database is not connected.');
+      return;
+    }
+
+    if (!cocode) {
+      setMessage('Cannot submit: No company selected.');
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      setMessage('Checking for conflicts...');
+
+      // ✅ NEW: For completion date entries, check for conflicts first
+      if (activeEntryType === 'completion') {
+        const conflictCheck = await checkCompletionConflicts(completionEntries);
+        
+        if (conflictCheck.hasConflicts) {
+          // Show conflict dialog
+          setConflictDialog({
+            isVisible: true,
+            conflicts: conflictCheck.conflicts,
+            pendingEntries: completionEntries,
+            isProcessing: false
+          });
+          setMessage(''); // Clear the checking message
+          setIsSubmitting(false);
+          return; // Stop here, wait for user confirmation
+        }
+      }
+
+      // If no conflicts or POC entry, proceed with normal upload
+      await proceedWithNormalUpload();
+
+    } catch (error) {
+      console.error('Error during submission:', error);
+      setMessage(`❌ Error during submission: ${error.message}`);
+      setIsSubmitting(false);
+    }
+  };
+
+  // ✅ NEW: Normal upload process (extracted from original handleSubmit)
+  const proceedWithNormalUpload = async () => {
+    try {
+      setMessage('Submitting entries...');
+
+      let csvContent = '';
+      let uploadOption = '';
+      let templateType = '';
+      let completionType = '';
+
+      if (activeEntryType === 'completion') {
+        csvContent = 'Project,Phase,Completion Date\n';
+        completionEntries.forEach(entry => {
+          const formattedDate = formatDateForUpload(entry.completionDate);
+          csvContent += `${entry.project},${entry.phasecode},${formattedDate}\n`;
+        });
+        uploadOption = 'date';
+        completionType = completionEntries[0].completionType;
+      } else if (activeEntryType === 'poc') {
+        csvContent = 'Project,Phase,Year,Month,POC\n';
+        pocEntries.forEach(entry => {
+          csvContent += `${entry.project},${entry.phasecode},${entry.year},${entry.month},${entry.pocValue}\n`;
+        });
+        uploadOption = 'poc';
+        templateType = 'short';
+      }
+
+      const csvBlob = new Blob([csvContent], { type: 'text/csv' });
+      const uploadFormData = new FormData();
+      uploadFormData.append('csvFile', csvBlob, 'manual_entry.csv');
+      uploadFormData.append('uploadOption', uploadOption);
+      uploadFormData.append('cocode', cocode);
+      uploadFormData.append('source', 'manual_entry');
+      
+      if (uploadOption === 'date') {
+        uploadFormData.append('completionType', completionType);
+      } else if (uploadOption === 'poc') {
+        uploadFormData.append('templateType', templateType);
+        uploadFormData.append('cutoffDate', cutoffDate);
+      }
+
+      const response = await fetch('http://localhost:3001/api/upload-csv', {
+        method: 'POST',
+        body: uploadFormData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        const entryCount = activeEntryType === 'completion' ? completionEntries.length : pocEntries.length;
+        const entryType = activeEntryType === 'completion' ? 'completion date' : 'POC';
+        setMessage(`✅ Successfully saved ${entryCount} ${entryType} ${entryCount === 1 ? 'entry' : 'entries'}! ${result.message}`);
+        
+        logToServer({ 
+          level: 'info', 
+          message: `Manual ${entryType} entries successful: ${entryCount} entries for company ${cocode}`,
+          component: 'ManualPcompEntry',
+          data: { entryType: activeEntryType, entryCount, cocode }
+        });
+        
+        // Reset entries
+        resetEntries();
+      } else {
+        setMessage(`❌ Failed to save entries: ${result.message}`);
+        logToServer({ 
+          level: 'error', 
+          message: `Manual entry submission failed: ${result.message}`,
+          component: 'ManualPcompEntry'
+        });
+      }
+    } catch (error) {
+      console.error('Normal upload error:', error);
+      setMessage(`❌ Error submitting entries: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // ✅ NEW: Reset entries helper
+  const resetEntries = () => {
+    if (activeEntryType === 'completion') {
+      setCompletionEntries([{
+        id: Date.now(),
+        project: '',
+        phasecode: '',
+        completionDate: '',
+        completionType: 'A',
+        projectDescription: '',
+        phaseDescription: '',
+        dateValidationError: ''
+      }]);
+    } else {
+      setPocEntries([{
+        id: Date.now(),
+        project: '',
+        phasecode: '',
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+        pocValue: '',
+        projectDescription: '',
+        phaseDescription: '',
+        pocType: 'A',
+        isExistingRecord: false,
+        completionValidationError: ''
+      }]);
+    }
+  };
+
+  // ✅ NEW: Handle conflict dialog confirmation
+  const handleConflictConfirmation = async (userConfirmation) => {
+    if (userConfirmation !== 'CONFIRM DELETE POC DATA') {
+      return;
+    }
+
+    try {
+      setConflictDialog(prev => ({ ...prev, isProcessing: true }));
+      setMessage('Processing upload with POC data deletion...');
+
+      const result = await uploadWithConflictResolution(
+        conflictDialog.pendingEntries,
+        conflictDialog.conflicts,
+        'Manual Entry User' // You might want to get actual user info
+      );
+
+      setMessage(`✅ Upload completed successfully! 
+        ${result.totalInserted} completion dates saved.
+        ${result.totalDeactivated} POC records marked as deleted.`);
+      
+      logToServer({ 
+        level: 'info', 
+        message: `Manual completion date upload with conflict resolution: ${result.totalInserted} inserted, ${result.totalDeactivated} POC deactivated`,
+        component: 'ManualPcompEntry',
+        data: { 
+          totalInserted: result.totalInserted, 
+          totalDeactivated: result.totalDeactivated,
+          cocode 
+        }
+      });
+
+      // Reset and close dialog
+      resetEntries();
+      setConflictDialog({
+        isVisible: false,
+        conflicts: [],
+        pendingEntries: [],
+        isProcessing: false
+      });
+
+    } catch (error) {
+      console.error('Conflict resolution error:', error);
+      setMessage(`❌ Error during conflict resolution: ${error.message}`);
+      
+      setConflictDialog(prev => ({ ...prev, isProcessing: false }));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // ✅ NEW: Handle conflict dialog cancellation
+  const handleConflictCancellation = () => {
+    setConflictDialog({
+      isVisible: false,
+      conflicts: [],
+      pendingEntries: [],
+      isProcessing: false
+    });
+    setIsSubmitting(false);
+    setMessage('Upload cancelled by user due to POC data conflicts.');
+  };
+
+  // end new 0713
+
   return (
     <div className="csv-uploader-container">
       <h2>Manual Data Entry</h2>
@@ -637,6 +929,22 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
               </label>
             </div>
           </div>
+
+ {/* ✅ NEW as of 0713: Add Conflict Dialog */}
+      <CompletionConflictDialog
+        conflicts={conflictDialog.conflicts}
+        onConfirm={handleConflictConfirmation}
+        onCancel={handleConflictCancellation}
+        isVisible={conflictDialog.isVisible}
+        isProcessing={conflictDialog.isProcessing}
+      />
+
+     {/* Message Display */}
+      {message && (
+        <div className={`feedback-message ${message.startsWith('❌') || message.includes('Failed') || message.includes('Error') || message.includes('Cannot submit') ? 'error-message' : 'success-message'}`}>
+          <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{message}</pre>
+        </div>
+      )}
 
           <form onSubmit={handleSubmit}>
             {/* ✅ COMPLETION DATE ENTRIES */}
