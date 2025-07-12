@@ -7,6 +7,7 @@
 const express = require('express');
 const { getPool } = require('../config/db.cjs');
 const logger = require('../config/logger.cjs');
+const PocDataUtils = require('../utils/pocDataUtils.cjs'); // New
 
 const router = express.Router();
 
@@ -420,5 +421,301 @@ router.get('/completion-dates', async (req, res) => {
     }
 });
 
+// NEW
+
+// ✅ UPDATED: POC data route with active filter
+router.get('/pocdata', async (req, res) => {
+    const { project, phasecode, year, cutoffDate, cocode, includeInactive = 'false' } = req.query;
+    const effectiveCutoffDate = cutoffDate || getDefaultCutoffDate();
+    const cutoffDateObj = new Date(effectiveCutoffDate);
+    const cutoffYear = cutoffDateObj.getFullYear();
+    const cutoffMonth = cutoffDateObj.getMonth() + 1;
+
+    const pool = getPool();
+    if (!pool) return res.status(503).json({ message: 'Database not connected.' });
+
+    let connection;
+    try {
+        connection = await pool.getConnection();
+
+        let baseSql = `
+            SELECT
+                p.ID, p.cocode, p.project, p.phasecode, p.year, p.month, p.value,
+                p.timestampC, p.userC, p.timestampM, p.userM, p.active,
+                p.deleted_at, p.deleted_by, p.deletion_reason,
+                COALESCE(v.description, 'N/A') as description
+            FROM
+                re.pocpermonth p
+            LEFT JOIN
+                re.project_phase_validation v ON p.project = v.project
+                AND p.phasecode = v.phasecode
+                AND p.cocode = v.cocode
+        `;
+
+        const whereClauses = ['(p.year < ? OR (p.year = ? AND p.month <= ?))'];
+        const params = [cutoffYear, cutoffYear, cutoffMonth];
+
+        // ✅ NEW: Add active filter (default to active only)
+        if (includeInactive !== 'true') {
+            whereClauses.push('p.active = 1');
+        }
+
+        if (cocode) {
+            whereClauses.push('p.cocode = ?');
+            params.push(cocode);
+        }
+        if (project) {
+            whereClauses.push('p.project = ?');
+            params.push(project);
+        }
+        if (phasecode) {
+            whereClauses.push('p.phasecode = ?');
+            params.push(phasecode);
+        }
+        if (year) {
+            whereClauses.push('p.year = ?');
+            params.push(parseInt(year, 10));
+        }
+
+        let sqlQuery = baseSql + ' WHERE ' + whereClauses.join(' AND ');
+        sqlQuery += ' ORDER BY p.project, p.phasecode, p.year ASC, p.month ASC';
+
+        const [rows] = await connection.execute(sqlQuery, params);
+
+        res.status(200).json(rows);
+    } catch (error) {
+        logger.error('Error fetching data from pocpermonth:', error);
+        res.status(500).json({ message: 'Failed to fetch data.', error: error.message });
+    } finally {
+        if (connection) connection.release();
+    }
+});
+
+// ✅ UPDATED: POC options route with active filter
+router.get('/pocdata/options', async (req, res) => {
+    const { cocode } = req.query;
+    const pool = getPool();
+    if (!pool) return res.status(503).json({ message: 'Database not connected.' });
+
+    let connection;
+    try {
+        connection = await pool.getConnection();
+        
+        // ✅ NEW: Only get options from active records
+        const activeFilter = 'AND active = 1';
+        const whereClause = cocode ? `WHERE cocode = ? ${activeFilter}` : `WHERE 1=1 ${activeFilter}`;
+        const params = cocode ? [cocode] : [];
+
+        const [projectRows] = await connection.execute(`SELECT DISTINCT project FROM re.pocpermonth ${whereClause} ORDER BY project`, params);
+        const [phasecodeRows] = await connection.execute(`SELECT DISTINCT phasecode FROM re.pocpermonth ${whereClause} ORDER BY phasecode`, params);
+        const [yearRows] = await connection.execute(`SELECT DISTINCT year FROM re.pocpermonth ${whereClause} ORDER BY year DESC`, params);
+
+        res.status(200).json({
+            projects: projectRows.map(r => r.project),
+            phasecodes: phasecodeRows.map(r => r.phasecode),
+            years: yearRows.map(r => r.year)
+        });
+    } catch (error) {
+        logger.error('Error fetching pocdata options:', error);
+        res.status(500).json({ message: 'Failed to fetch options.', error: error.message });
+    } finally {
+        if (connection) connection.release();
+    }
+});
+
+// ✅ NEW: Route to check completion date conflicts before upload
+router.post('/check-completion-conflicts', async (req, res) => {
+    const { completionEntries, cocode } = req.body;
+
+    if (!completionEntries || !Array.isArray(completionEntries) || completionEntries.length === 0) {
+        return res.status(400).json({ message: 'No completion entries provided.' });
+    }
+
+    if (!cocode) {
+        return res.status(400).json({ message: 'Company code is required.' });
+    }
+
+    try {
+        const conflicts = await PocDataUtils.checkCompletionDateConflicts(
+            completionEntries.map(entry => ({
+                cocode,
+                project: entry.project,
+                phasecode: entry.phasecode || '',
+                completionDate: entry.completionDate,
+                completionType: entry.completionType
+            }))
+        );
+
+        res.status(200).json({
+            hasConflicts: conflicts.length > 0,
+            conflicts: conflicts,
+            message: conflicts.length > 0 
+                ? `Found ${conflicts.length} project/phase combinations with POC data beyond completion dates.`
+                : 'No conflicts found. Upload can proceed safely.'
+        });
+
+    } catch (error) {
+        logger.error('Error checking completion date conflicts:', error);
+        res.status(500).json({
+            message: 'Error checking for conflicts.',
+            error: error.message
+        });
+    }
+});
+
+// ✅ NEW: Route to proceed with completion upload and mark conflicting POC as deleted
+router.post('/upload-completion-with-conflicts', async (req, res) => {
+    const { completionEntries, conflicts, cocode, completionType, confirmedBy } = req.body;
+
+    if (!completionEntries || !cocode || !confirmedBy) {
+        return res.status(400).json({ message: 'Missing required data for completion upload.' });
+    }
+
+    const pool = getPool();
+    if (!pool) {
+        return res.status(503).json({ message: 'Database not connected.' });
+    }
+
+    try {
+        await pool.query('START TRANSACTION');
+
+        let totalDeactivated = 0;
+        const deactivationResults = [];
+
+        // Step 1: Mark conflicting POC records as deleted
+        if (conflicts && conflicts.length > 0) {
+            for (const conflict of conflicts) {
+                const deactivatedCount = await PocDataUtils.markConflictingPocAsDeleted(
+                    conflict.cocode,
+                    conflict.project,
+                    conflict.phasecode,
+                    new Date(conflict.completionDate),
+                    `${confirmedBy} via Completion Date Upload`
+                );
+
+                totalDeactivated += deactivatedCount;
+                deactivationResults.push({
+                    project: conflict.project,
+                    phasecode: conflict.phasecode,
+                    completionDate: conflict.completionDate,
+                    recordsDeactivated: deactivatedCount
+                });
+            }
+        }
+
+        // Step 2: Insert new completion date records
+        const recordsToInsert = completionEntries.map(entry => [
+            cocode,
+            entry.project,
+            entry.phasecode || '',
+            completionType,
+            entry.completionDate,
+            new Date()
+        ]);
+
+        const insertQuery = `
+            INSERT INTO pcompdate (cocode, project, phasecode, type, completion_date, created_at) 
+            VALUES ?
+        `;
+        
+        const [insertResult] = await pool.query(insertQuery, [recordsToInsert]);
+
+        await pool.query('COMMIT');
+
+        logger.info(`Completion date upload with conflict resolution completed:
+            - Inserted: ${insertResult.affectedRows} completion dates
+            - Deactivated: ${totalDeactivated} POC records
+            - Confirmed by: ${confirmedBy}`);
+
+        res.status(200).json({
+            message: `Upload completed successfully. ${insertResult.affectedRows} completion dates saved, ${totalDeactivated} POC records deactivated.`,
+            totalInserted: insertResult.affectedRows,
+            totalDeactivated: totalDeactivated,
+            deactivationResults: deactivationResults,
+            source: 'Completion Date Upload with Conflict Resolution'
+        });
+
+    } catch (error) {
+        await pool.query('ROLLBACK');
+        logger.error('Error in upload-completion-with-conflicts:', error);
+        res.status(500).json({
+            message: 'Error processing completion upload with conflicts.',
+            error: error.message
+        });
+    }
+});
+
+// ✅ NEW: Route to get deletion history/statistics
+router.get('/deletion-stats', async (req, res) => {
+    const { cocode, project, phasecode, fromDate, toDate } = req.query;
+
+    const pool = getPool();
+    if (!pool) return res.status(503).json({ message: 'Database not connected.' });
+
+    try {
+        let query = `
+            SELECT 
+                COUNT(*) as total_deleted,
+                COUNT(DISTINCT CONCAT(project, '-', COALESCE(phasecode, ''))) as affected_project_phases,
+                MIN(deleted_at) as first_deletion,
+                MAX(deleted_at) as last_deletion,
+                deleted_by,
+                COUNT(*) as count_by_user
+            FROM pocpermonth 
+            WHERE active = 0 AND deleted_at IS NOT NULL
+        `;
+        
+        const conditions = [];
+        const params = [];
+
+        if (cocode) {
+            conditions.push('cocode = ?');
+            params.push(cocode);
+        }
+        if (project) {
+            conditions.push('project = ?');
+            params.push(project);
+        }
+        if (phasecode !== undefined) {
+            if (phasecode === '') {
+                conditions.push('(phasecode IS NULL OR phasecode = "")');
+            } else {
+                conditions.push('phasecode = ?');
+                params.push(phasecode);
+            }
+        }
+        if (fromDate) {
+            conditions.push('deleted_at >= ?');
+            params.push(fromDate);
+        }
+        if (toDate) {
+            conditions.push('deleted_at <= ?');
+            params.push(toDate);
+        }
+
+        if (conditions.length > 0) {
+            query += ' AND ' + conditions.join(' AND ');
+        }
+
+        query += ' GROUP BY deleted_by ORDER BY count_by_user DESC';
+
+        const [rows] = await pool.execute(query, params);
+
+        res.status(200).json({
+            success: true,
+            deletionStats: rows
+        });
+
+    } catch (error) {
+        logger.error('Error fetching deletion stats:', error);
+        res.status(500).json({
+            message: 'Error fetching deletion statistics.',
+            error: error.message
+        });
+    }
+});
+
+// Export the PocDataUtils for use in other modules
+module.exports.PocDataUtils = PocDataUtils;
 
 module.exports = router;
