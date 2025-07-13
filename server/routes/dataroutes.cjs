@@ -43,7 +43,7 @@ router.get('/pocdata', async (req, res) => {
             FROM
                 re.pocpermonth p
             LEFT JOIN
-                re.project_phase_validation v ON p.project = v.project
+                project_phase_validation v ON p.project = v.project
                 AND p.phasecode = v.phasecode
                 AND p.cocode = v.cocode
         `;
@@ -146,7 +146,7 @@ router.get('/pcompdata', async (req, res) => {
             FROM
                 re.pcompdate p
             LEFT JOIN
-                re.project_phase_validation v
+                project_phase_validation v
                 ON p.project = v.project
                 AND p.phasecode = v.phasecode
                 AND p.cocode = v.cocode
@@ -294,13 +294,13 @@ router.get('/validation-options', async (req, res) => {
 
         // Get distinct projects for the company from the same validation table used by CsvUploader
         const [projectRows] = await connection.execute(
-            'SELECT DISTINCT project FROM re.project_phase_validation WHERE cocode = ? ORDER BY project',
+            'SELECT DISTINCT project FROM project_phase_validation WHERE cocode = ? ORDER BY project',
             [cocode]
         );
 
         // Get all project/phase combinations for the company (same validation as CsvUploader)
         const [phaseRows] = await connection.execute(
-            'SELECT project, phasecode FROM re.project_phase_validation WHERE cocode = ? ORDER BY project, phasecode',
+            'SELECT project, phasecode FROM project_phase_validation WHERE cocode = ? ORDER BY project, phasecode',
             [cocode]
         );
 
@@ -447,7 +447,7 @@ router.get('/pocdata', async (req, res) => {
             FROM
                 re.pocpermonth p
             LEFT JOIN
-                re.project_phase_validation v ON p.project = v.project
+                project_phase_validation v ON p.project = v.project
                 AND p.phasecode = v.phasecode
                 AND p.cocode = v.cocode
         `;

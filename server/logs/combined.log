@@ -6049,3 +6049,146 @@
 2025-07-13 08:34:07 info: Received request for /api/db-status
 2025-07-13 08:34:07 info: DB status check successful.
 2025-07-13T00:34:07.855Z info: [Frontend] 
+2025-07-13 08:43:42 info: Received request for /api/db-status
+2025-07-13 08:43:42 info: DB status check successful.
+2025-07-13 08:43:42 info: Received request for /api/db-status
+2025-07-13 08:43:42 info: DB status check successful.
+2025-07-13T00:43:42.167Z info: [Frontend] 
+2025-07-13T00:43:42.169Z info: [Frontend] 
+2025-07-13 08:44:12 info: Received request for /api/db-status
+2025-07-13 08:44:12 info: DB status check successful.
+2025-07-13T00:44:12.571Z info: [Frontend] 
+2025-07-13 08:44:42 info: Received request for /api/db-status
+2025-07-13 08:44:42 info: DB status check successful.
+2025-07-13T00:44:42.581Z info: [Frontend] 
+2025-07-13 08:44:51 info: Received request for /api/db-status
+2025-07-13 08:44:51 info: DB status check successful.
+2025-07-13 08:44:51 info: Received request for /api/db-status
+2025-07-13 08:44:51 info: DB status check successful.
+2025-07-13T00:44:51.800Z info: [Frontend] 
+2025-07-13T00:44:51.812Z info: [Frontend] 
+2025-07-13T00:44:59.290Z info: [Frontend] 
+2025-07-13T00:45:11.192Z info: [Frontend] CSV file selected: comp2025Q2-SVCI.csv
+2025-07-13 08:45:16 info: Received request for /api/db-status
+2025-07-13 08:45:16 info: DB status check successful.
+2025-07-13 08:45:16 info: [CSV] Upload request received - Option: date, Cocode: SVCI, CompletionType: P, CutoffDate: undefined, Source: CSV File Upload
+2025-07-13 08:45:16 info: [CSV] Starting CSV parsing...
+2025-07-13 08:45:16 info: [CSV] CSV parsed successfully. Processing 6 data rows...
+2025-07-13 08:45:16 info: [CSV] Validation completed. Records to insert: 6, Errors: 0
+2025-07-13 08:45:16 info: [CSV] Database insertion completed - Affected rows: 6, Changed rows: 0
+2025-07-13T00:45:16.382Z info: [Frontend] CSV upload successful: comp2025Q2-SVCI.csv
+2025-07-13 08:45:21 info: Received request for /api/db-status
+2025-07-13 08:45:21 info: DB status check successful.
+2025-07-13T00:45:21.798Z info: [Frontend] 
+2025-07-13 08:45:22 info: Received request for /api/db-status
+2025-07-13 08:45:22 info: DB status check successful.
+2025-07-13T00:45:22.666Z info: [Frontend] 
+2025-07-13T00:45:22.685Z info: [Frontend] 
+2025-07-13T00:45:22.687Z info: [Frontend] 
+2025-07-13T00:45:22.951Z info: [Frontend] 
+2025-07-13T00:45:22.952Z info: [Frontend] 
+2025-07-13T00:45:23.127Z info: [Frontend] 
+2025-07-13T00:45:28.691Z info: [Frontend] 
+2025-07-13T00:45:29.597Z info: [Frontend] 
+2025-07-13T00:45:34.080Z info: [Frontend] 
+2025-07-13T00:45:34.327Z info: [Frontend] 
+2025-07-13T00:45:34.441Z info: [Frontend] 
+2025-07-13T00:45:34.573Z info: [Frontend] 
+2025-07-13T00:45:34.619Z info: [Frontend] 
+2025-07-13T00:45:35.140Z info: [Frontend] 
+2025-07-13T00:45:35.640Z info: [Frontend] 
+2025-07-13T00:45:35.640Z info: [Frontend] 
+2025-07-13T00:45:35.641Z info: [Frontend] 
+2025-07-13T00:45:38.406Z info: [Frontend] 
+2025-07-13T00:45:39.686Z info: [Frontend] 
+2025-07-13T00:45:40.846Z info: [Frontend] 
+2025-07-13 08:45:51 info: Received request for /api/db-status
+2025-07-13 08:45:51 info: DB status check successful.
+2025-07-13T00:45:51.798Z info: [Frontend] 
+2025-07-13 08:45:52 info: Received request for /api/db-status
+2025-07-13 08:45:52 info: DB status check successful.
+2025-07-13T00:45:52.286Z info: [Frontend] 
+2025-07-13T00:45:54.709Z info: [Frontend] 
+2025-07-13T00:45:54.885Z info: [Frontend] 
+2025-07-13T00:45:54.992Z info: [Frontend] 
+2025-07-13T00:45:55.272Z info: [Frontend] 
+2025-07-13 08:46:21 info: Received request for /api/db-status
+2025-07-13 08:46:21 info: DB status check successful.
+2025-07-13T00:46:21.809Z info: [Frontend] 
+2025-07-13 08:46:51 info: Received request for /api/db-status
+2025-07-13 08:46:51 info: DB status check successful.
+2025-07-13T00:46:51.799Z info: [Frontend] 
+2025-07-13 08:47:21 info: Received request for /api/db-status
+2025-07-13 08:47:21 info: DB status check successful.
+2025-07-13T00:47:21.803Z info: [Frontend] 
+2025-07-13 08:47:51 info: Received request for /api/db-status
+2025-07-13 08:47:51 info: DB status check successful.
+2025-07-13T00:47:51.811Z info: [Frontend] 
+2025-07-13 08:48:07 info: Received request for /api/db-status
+2025-07-13 08:48:07 info: DB status check successful.
+2025-07-13 08:48:07 info: Manual entry validation options fetched for company SVCI: 6 projects, 6 phase combinations
+2025-07-13 08:48:07 info: Manual entry validation options fetched for company SVCI: 6 projects, 6 phase combinations
+2025-07-13T00:48:07.603Z info: [Frontend] 
+2025-07-13 08:48:21 info: Received request for /api/db-status
+2025-07-13 08:48:21 info: DB status check successful.
+2025-07-13T00:48:21.040Z info: [Frontend] 
+2025-07-13T00:48:21.053Z info: [Frontend] 
+2025-07-13T00:48:21.053Z info: [Frontend] 
+2025-07-13T00:48:21.381Z info: [Frontend] 
+2025-07-13 08:48:21 info: Received request for /api/db-status
+2025-07-13 08:48:21 info: DB status check successful.
+2025-07-13T00:48:21.383Z info: [Frontend] 
+2025-07-13T00:48:21.383Z info: [Frontend] 
+2025-07-13T00:48:21.799Z info: [Frontend] 
+2025-07-13T00:48:25.316Z info: [Frontend] 
+2025-07-13T00:48:27.924Z info: [Frontend] 
+2025-07-13T00:48:28.027Z info: [Frontend] 
+2025-07-13T00:48:29.344Z info: [Frontend] 
+2025-07-13T00:48:29.652Z info: [Frontend] 
+2025-07-13T00:48:29.820Z info: [Frontend] 
+2025-07-13T00:48:29.855Z info: [Frontend] 
+2025-07-13T00:48:30.381Z info: [Frontend] 
+2025-07-13T00:48:30.793Z info: [Frontend] 
+2025-07-13T00:48:30.793Z info: [Frontend] 
+2025-07-13T00:48:30.794Z info: [Frontend] 
+2025-07-13T00:48:34.774Z info: [Frontend] 
+2025-07-13T00:48:36.346Z info: [Frontend] 
+2025-07-13T00:48:40.101Z info: [Frontend] 
+2025-07-13 08:48:44 info: Received request for /api/db-status
+2025-07-13 08:48:44 info: DB status check successful.
+2025-07-13 08:48:44 info: Manual entry validation options fetched for company SVCI: 6 projects, 6 phase combinations
+2025-07-13 08:48:44 info: Manual entry validation options fetched for company SVCI: 6 projects, 6 phase combinations
+2025-07-13T00:48:44.716Z info: [Frontend] 
+2025-07-13 08:48:51 info: Received request for /api/db-status
+2025-07-13 08:48:51 info: DB status check successful.
+2025-07-13T00:48:51.796Z info: [Frontend] 
+2025-07-13 08:49:06 info: [MANUAL] Upload request received - Option: date, Cocode: SVCI, CompletionType: P, CutoffDate: undefined, Source: Manual Entry Form
+2025-07-13 08:49:06 info: [MANUAL] Starting CSV parsing...
+2025-07-13 08:49:06 info: [MANUAL] CSV parsed successfully. Processing 1 data rows...
+2025-07-13 08:49:06 info: [MANUAL] Validation completed. Records to insert: 1, Errors: 0
+2025-07-13 08:49:06 info: [MANUAL] Database insertion completed - Affected rows: 1, Changed rows: 0
+2025-07-13T00:49:06.282Z info: [Frontend] 
+2025-07-13 08:49:21 info: Received request for /api/db-status
+2025-07-13 08:49:21 info: DB status check successful.
+2025-07-13T00:49:21.796Z info: [Frontend] 
+2025-07-13 08:49:51 info: Received request for /api/db-status
+2025-07-13 08:49:51 info: DB status check successful.
+2025-07-13T00:49:51.796Z info: [Frontend] 
+2025-07-13 08:50:21 info: Received request for /api/db-status
+2025-07-13 08:50:21 info: DB status check successful.
+2025-07-13T00:50:21.808Z info: [Frontend] 
+2025-07-13 08:50:52 info: Received request for /api/db-status
+2025-07-13 08:50:52 info: DB status check successful.
+2025-07-13T00:50:52.586Z info: [Frontend] 
+2025-07-13 08:51:22 info: Received request for /api/db-status
+2025-07-13 08:51:22 info: DB status check successful.
+2025-07-13T00:51:22.579Z info: [Frontend] 
+2025-07-13 08:52:13 info: Received request for /api/db-status
+2025-07-13 08:52:13 info: DB status check successful.
+2025-07-13T00:52:13.590Z info: [Frontend] 
+2025-07-13 08:53:13 info: Received request for /api/db-status
+2025-07-13 08:53:13 info: DB status check successful.
+2025-07-13T00:53:13.573Z info: [Frontend] 
+2025-07-13 08:54:13 info: Received request for /api/db-status
+2025-07-13 08:54:13 info: DB status check successful.
+2025-07-13T00:54:13.621Z info: [Frontend] 

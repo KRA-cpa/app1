@@ -1,10 +1,12 @@
 // client/src/components/CsvUploader.js
+// Complete CsvUploader Component with Conflict Handling
 
 import React, { useState, useEffect } from 'react';
 import { logToServer } from '../utils/logger';
-import CompletionConflictDialog from './CompletionConflictDialog'; // ✅ NEW: Import conflict dialog
+import CompletionConflictDialog from './CompletionConflictDialog'; // Import conflict dialog
 
 function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkDbConnection, isCheckingDb, cutoffDate, validateCutoffDate }) {
+  // Existing state variables
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +15,8 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
   const [uploadOption, setUploadOption] = useState('poc');
   const [templateType, setTemplateType] = useState('short'); // 'short' or 'long'
   const [completionType, setCompletionType] = useState('A'); // 'A' for Actual, 'P' for Projected
-// ✅ NEW: Add conflict handling state
+
+  // NEW: Conflict handling state
   const [conflictDialog, setConflictDialog] = useState({
     isVisible: false,
     conflicts: [],
@@ -22,7 +25,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
     isProcessing: false
   });
 
-
+  // Existing file change handler
   const handleFileChange = (event) => {
     setMessage('');
     setUploadSummary(null);
@@ -42,21 +45,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
     }
   };
 
-  const handleUpload = async () => {
-    if (!selectedFile) {
-      setMessage('Please select a file first.');
-      return;
-    }
-    if (dbStatus !== 'connected') {
-      setMessage('Cannot upload: Database is not connected.');
-      return;
-    }
-    if (!cocode) {
-      setMessage('Cannot upload: No company selected.');
-      return;
-    }
-// New 0713
- // ✅ NEW: Parse CSV to extract completion entries for conflict checking
+  // NEW: Parse CSV to extract completion entries for conflict checking
   const parseCompletionEntriesFromFile = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -91,10 +80,10 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
     });
   };
 
-  // ✅ NEW: Check for completion date conflicts
+  // NEW: Check for completion date conflicts
   const checkCompletionConflicts = async (entries) => {
     try {
-      const response = await fetch('http://localhost:3001/api/check-completion-conflicts', {
+      const response = await fetch('/api/check-completion-conflicts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -118,13 +107,13 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
     }
   };
 
-  // ✅ NEW: Upload with conflict resolution
+  // NEW: Upload with conflict resolution
   const uploadWithConflictResolution = async (formData, conflicts) => {
     try {
       // Convert FormData to completion entries for the conflict resolution endpoint
       const completionEntries = await parseCompletionEntriesFromFile(conflictDialog.pendingFile);
       
-      const response = await fetch('http://localhost:3001/api/upload-completion-with-conflicts', {
+      const response = await fetch('/api/upload-completion-with-conflicts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -145,7 +134,67 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
     }
   };
 
-  // ✅ UPDATED: Enhanced handleUpload with conflict checking
+  // NEW: Normal upload process (extracted from original handleUpload)
+  const proceedWithNormalUpload = async (formData) => {
+    try {
+      console.log('Testing backend connectivity...');
+      const testResponse = await fetch('/api/db-status');
+      if (!testResponse.ok) {
+        throw new Error(`Backend test failed: ${testResponse.status}`);
+      }
+      console.log('Backend connectivity test: SUCCESS');
+
+      const uploadUrl = '/api/upload-csv';
+      console.log('Uploading to:', uploadUrl);
+      
+      const response = await fetch(uploadUrl, {
+        method: 'POST',
+        body: formData,
+      });
+
+      console.log('Upload response status:', response.status);
+      console.log('Upload response ok:', response.ok);
+
+      const result = await response.json();
+      console.log('Upload result:', result);
+
+      if (response.ok) {
+        setMessage(result.message || 'File uploaded successfully!');
+        setUploadSummary(result.summary || []);
+        setUploadTotals({
+          inserted: result.totalInserted,
+          updated: result.totalUpdated,
+          errors: result.totalErrors,
+          processed: result.totalRowsProcessed
+        });
+        logToServer('info', `CSV upload successful: ${selectedFile.name}`, 'CsvUploader', { response: result });
+        
+        // Clear file selection
+        setSelectedFile(null);
+        const fileInput = document.getElementById('csvFileInput');
+        if (fileInput) fileInput.value = null;
+
+        if (onUploadSuccess) {
+          onUploadSuccess();
+        }
+      } else {
+        setMessage(`Upload failed: ${result.message || response.statusText}`);
+        setUploadSummary(null);
+        setUploadTotals(null);
+        
+        if (result.errors && result.errors.length > 0) {
+          const errorList = result.errors.slice(0, 5).join('\n');
+          setMessage(`Upload failed: ${result.message}\n\nFirst few errors:\n${errorList}${result.errors.length > 5 ? '\n...and more' : ''}`);
+        }
+        
+        logToServer('error', `CSV upload failed (backend error): ${result.message || response.statusText}`, 'CsvUploader', { response: result, fileName: selectedFile?.name });
+      }
+    } catch (error) {
+      throw error; // Re-throw to be handled by the caller
+    }
+  };
+
+  // UPDATED: Enhanced handleUpload with conflict checking
   const handleUpload = async () => {
     if (!selectedFile) {
       setMessage('Please select a file first.');
@@ -186,7 +235,7 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
     }
 
     try {
-      // ✅ NEW: For completion date uploads, check for conflicts first
+      // NEW: For completion date uploads, check for conflicts first
       if (uploadOption === 'date') {
         setMessage('Checking for POC data conflicts...');
         
@@ -212,7 +261,9 @@ function CsvUploader({ onUploadSuccess, cocode, dbStatus, dbErrorMessage, checkD
       await proceedWithNormalUpload(formData);
 
     } catch (error) {
-      console.error('Upload error:', error);
+      console.error('Upload fetch error:', error);
+      
+      // Enhanced error handling
       let errorMessage = `Upload failed: ${error.message}`;
       
       if (error.message.includes('Failed to fetch')) {
@@ -228,73 +279,19 @@ Technical error: ${error.message}`;
       setMessage(errorMessage);
       setUploadSummary(null);
       setUploadTotals(null);
-      logToServer({ level: 'error', message: `CSV upload failed: ${error.message}` });
+      logToServer('error', `CSV upload failed (network/fetch error): ${error.message}`, 'CsvUploader', { 
+        error: {
+          name: error.name,
+          message: error.message
+        }, 
+        fileName: selectedFile?.name
+      });
     } finally {
       setIsLoading(false);
     }
   };
 
-  // ✅ NEW: Normal upload process (extracted from original handleUpload)
-  const proceedWithNormalUpload = async (formData) => {
-    try {
-      console.log('Testing backend connectivity...');
-      const testResponse = await fetch('http://localhost:3001/api/db-status');
-      if (!testResponse.ok) {
-        throw new Error(`Backend test failed: ${testResponse.status}`);
-      }
-      console.log('Backend connectivity test: SUCCESS');
-
-      const uploadUrl = 'http://localhost:3001/api/upload-csv';
-      console.log('Uploading to:', uploadUrl);
-      
-      const response = await fetch(uploadUrl, {
-        method: 'POST',
-        body: formData,
-      });
-
-      console.log('Upload response status:', response.status);
-      console.log('Upload response ok:', response.ok);
-
-      const result = await response.json();
-      console.log('Upload result:', result);
-
-      if (response.ok) {
-        setMessage(result.message || 'File uploaded successfully!');
-        setUploadSummary(result.summary || []);
-        setUploadTotals({
-          inserted: result.totalInserted,
-          updated: result.totalUpdated,
-          errors: result.totalErrors,
-          processed: result.totalRowsProcessed
-        });
-        logToServer({ level: 'info', message: `CSV upload successful: ${selectedFile.name}`, data: result });
-        
-        // Clear file selection
-        setSelectedFile(null);
-        const fileInput = document.getElementById('csvFileInput');
-        if (fileInput) fileInput.value = null;
-
-        if (onUploadSuccess) {
-          onUploadSuccess();
-        }
-      } else {
-        setMessage(`Upload failed: ${result.message || response.statusText}`);
-        setUploadSummary(null);
-        setUploadTotals(null);
-        
-        if (result.errors && result.errors.length > 0) {
-          const errorList = result.errors.slice(0, 5).join('\n');
-          setMessage(`Upload failed: ${result.message}\n\nFirst few errors:\n${errorList}${result.errors.length > 5 ? '\n...and more' : ''}`);
-        }
-        
-        logToServer({ level: 'error', message: `CSV upload failed: ${result.message}`, data: result });
-      }
-    } catch (error) {
-      throw error; // Re-throw to be handled by the caller
-    }
-  };
-
-  // ✅ NEW: Handle conflict dialog confirmation
+  // NEW: Handle conflict dialog confirmation
   const handleConflictConfirmation = async (userConfirmation) => {
     if (userConfirmation !== 'CONFIRM DELETE POC DATA') {
       return;
@@ -323,11 +320,7 @@ Technical error: ${error.message}`;
           deactivated: result.totalDeactivated
         });
 
-        logToServer({ 
-          level: 'info', 
-          message: `CSV completion date upload with conflict resolution: ${result.totalInserted} inserted, ${result.totalDeactivated} POC deactivated`,
-          data: result
-        });
+        logToServer('info', `CSV completion date upload with conflict resolution: ${result.totalInserted} inserted, ${result.totalDeactivated} POC deactivated`, 'CsvUploader', { data: result });
 
         // Clear file selection
         setSelectedFile(null);
@@ -359,7 +352,7 @@ Technical error: ${error.message}`;
     }
   };
 
-  // ✅ NEW: Handle conflict dialog cancellation
+  // NEW: Handle conflict dialog cancellation
   const handleConflictCancellation = () => {
     setConflictDialog({
       isVisible: false,
@@ -370,128 +363,6 @@ Technical error: ${error.message}`;
     });
     setIsLoading(false);
     setMessage('Upload cancelled by user due to POC data conflicts.');
-  };
-
-
-
-    // Validate cutoff date for POC uploads
-    if (uploadOption === 'poc') {
-      const validation = validateCutoffDate();
-      if (!validation.isValid) {
-        setMessage(`Cannot upload: ${validation.error}`);
-        return;
-      }
-    }
-
-    setIsLoading(true);
-    setMessage('Uploading...');
-    logToServer('info', `Starting CSV upload: ${selectedFile.name}`, 'CsvUploader', { uploadOption, templateType, completionType, cocode });
-    setUploadSummary(null);
-    setUploadTotals(null);
-
-    const formData = new FormData();
-    formData.append('csvFile', selectedFile);
-    formData.append('uploadOption', uploadOption);
-    formData.append('cocode', cocode);
-
-    if (uploadOption === 'poc') {
-      formData.append('templateType', templateType);
-      formData.append('cutoffDate', cutoffDate);
-    } else if (uploadOption === 'date') {
-      formData.append('completionType', completionType);
-    }
-
-    // STEP 1: Test backend connectivity first
-    try {
-      console.log('Testing backend connectivity...');
-      const testResponse = await fetch('http://localhost:3001/api/db-status');
-      if (!testResponse.ok) {
-        throw new Error(`Backend test failed: ${testResponse.status}`);
-      }
-      console.log('Backend connectivity test: SUCCESS');
-    } catch (testError) {
-      console.error('Backend connectivity test: FAILED', testError);
-      setMessage(`Upload failed: Cannot connect to backend server (${testError.message}). Please check if server is running on port 3001.`);
-      setIsLoading(false);
-      return;
-    }
-
-    // STEP 2: Attempt the actual upload
-    const uploadUrl = 'http://localhost:3001/api/upload-csv';
-    console.log('Uploading to:', uploadUrl);
-    
-    try {
-      const response = await fetch(uploadUrl, {
-        method: 'POST',
-        body: formData,
-      });
-
-      console.log('Upload response status:', response.status);
-      console.log('Upload response ok:', response.ok);
-
-      const result = await response.json();
-      console.log('Upload result:', result);
-
-      if (response.ok) {
-        setMessage(result.message || 'File uploaded successfully!');
-        setUploadSummary(result.summary || []);
-        setUploadTotals({
-          inserted: result.totalInserted,
-          updated: result.totalUpdated,
-          errors: result.totalErrors,
-          processed: result.totalRowsProcessed
-        });
-        logToServer('info', `CSV upload successful: ${selectedFile.name}`, 'CsvUploader', { response: result });
-        setSelectedFile(null);
-        const fileInput = document.getElementById('csvFileInput');
-        if (fileInput) fileInput.value = null;
-
-        if (onUploadSuccess) {
-          onUploadSuccess();
-        }
-      } else {
-        setMessage(`Upload failed: ${result.message || response.statusText}`);
-        setUploadSummary(null);
-        setUploadTotals(null);
-        
-        // Display specific errors if available
-        if (result.errors && result.errors.length > 0) {
-          const errorList = result.errors.slice(0, 5).join('\n'); // Show first 5 errors
-          setMessage(`Upload failed: ${result.message}\n\nFirst few errors:\n${errorList}${result.errors.length > 5 ? '\n...and more' : ''}`);
-        }
-        
-        logToServer('error', `CSV upload failed (backend error): ${result.message || response.statusText}`, 'CsvUploader', { response: result, fileName: selectedFile?.name });
-      }
-    } catch (error) {
-      console.error('Upload fetch error:', error);
-      
-      // Enhanced error handling
-      let errorMessage = `Upload failed: ${error.message}`;
-      
-      if (error.message.includes('Failed to fetch')) {
-        errorMessage = `Upload failed: Cannot connect to server. Please check:
-        
-1. Backend server is running (should see "Server listening on http://localhost:3001")
-2. No firewall blocking port 3001
-3. Try refreshing the page and uploading again
-        
-Technical error: ${error.message}`;
-      }
-      
-      setMessage(errorMessage);
-      setUploadSummary(null);
-      setUploadTotals(null);
-      logToServer('error', `CSV upload failed (network/fetch error): ${error.message}`, 'CsvUploader', { 
-        error: {
-          name: error.name,
-          message: error.message
-        }, 
-        fileName: selectedFile?.name,
-        uploadUrl: uploadUrl
-      });
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   const controlsDisabled = isLoading || dbStatus !== 'connected';
@@ -649,21 +520,6 @@ Technical error: ${error.message}`;
         </div>
       )}
       
-return (
-    <div className="csv-uploader-container">
-      {/* ... (keep all existing JSX content) */}
-
-      {/* ✅ NEW: Add Conflict Dialog */}
-      <CompletionConflictDialog
-        conflicts={conflictDialog.conflicts}
-        onConfirm={handleConflictConfirmation}
-        onCancel={handleConflictCancellation}
-        isVisible={conflictDialog.isVisible}
-        isProcessing={conflictDialog.isProcessing}
-      />
-
-
-
       {uploadTotals && (
         <div className="upload-results-summary">
           <h4>Upload Results:</h4>
@@ -672,6 +528,7 @@ return (
             Inserted: {uploadTotals.inserted ?? 'N/A'} |
             Updated: {uploadTotals.updated ?? 'N/A'} |
             Errors: {uploadTotals.errors ?? 'N/A'}
+            {uploadTotals.deactivated && ` | Deactivated: ${uploadTotals.deactivated}`}
           </p>
           {uploadSummary && uploadSummary.length > 0 && (
             <>
@@ -716,8 +573,15 @@ return (
           )}
         </div>
       )}
-    </div>
-      )}
+
+      {/* NEW: Add Conflict Dialog */}
+      <CompletionConflictDialog
+        conflicts={conflictDialog.conflicts}
+        onConfirm={handleConflictConfirmation}
+        onCancel={handleConflictCancellation}
+        isVisible={conflictDialog.isVisible}
+        isProcessing={conflictDialog.isProcessing}
+      />
     </div>
   );
 }
