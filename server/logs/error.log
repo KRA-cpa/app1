@@ -1,1 +1,7 @@
 2025-07-11T17:12:41.611Z error: [Frontend] CSV upload failed (backend error): No valid data found to upload.
+2025-07-13T00:16:22.397Z error: [Frontend] CSV upload failed (backend error): No valid data found to upload.
+2025-07-13T00:17:41.638Z error: [Frontend] CSV upload failed (backend error): No valid data found to upload.
+2025-07-13T00:18:25.404Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-07-13T00:19:19.164Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-07-13T00:19:35.225Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch
+2025-07-13T00:20:55.714Z error: [Frontend] CSV upload failed (network/fetch error): Failed to fetch

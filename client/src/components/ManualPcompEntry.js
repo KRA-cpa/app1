@@ -50,6 +50,14 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // ✅ NEW: Add conflict handling state
+  const [conflictDialog, setConflictDialog] = useState({
+    isVisible: false,
+    conflicts: [],
+    pendingEntries: [],
+    isProcessing: false
+  });
+
   // Debug logging for API calls
   useEffect(() => {
     console.log('ManualPcompEntry - Props received:', { selectedCompany, cocode, dbStatus });
@@ -420,163 +428,6 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
     return `${month}/${day}/${year}`;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    const validationError = validateAllEntries();
-    if (validationError) {
-      setMessage(validationError);
-      return;
-    }
-
-    if (dbStatus !== 'connected') {
-      setMessage('Cannot submit: Database is not connected.');
-      return;
-    }
-
-    if (!cocode) {
-      setMessage('Cannot submit: No company selected.');
-      return;
-    }
-
-    try {
-      setIsSubmitting(true);
-      setMessage('Submitting entries...');
-
-      let csvContent = '';
-      let uploadOption = '';
-      let templateType = '';
-      let completionType = '';
-
-      if (activeEntryType === 'completion') {
-        // Create CSV for completion date entries
-        csvContent = 'Project,Phase,Completion Date\n';
-        completionEntries.forEach(entry => {
-          const formattedDate = formatDateForUpload(entry.completionDate);
-          csvContent += `${entry.project},${entry.phasecode},${formattedDate}\n`;
-        });
-        uploadOption = 'date';
-        completionType = completionEntries[0].completionType; // Assume all same type for simplicity
-      } else if (activeEntryType === 'poc') {
-        // Create CSV for POC entries (short template format)
-        csvContent = 'Project,Phase,Year,Month,POC\n';
-        pocEntries.forEach(entry => {
-          csvContent += `${entry.project},${entry.phasecode},${entry.year},${entry.month},${entry.pocValue}\n`;
-        });
-        uploadOption = 'poc';
-        templateType = 'short';
-      }
-
-      // Create a Blob with CSV content
-      const csvBlob = new Blob([csvContent], { type: 'text/csv' });
-      
-      // Create FormData to mimic file upload
-      const uploadFormData = new FormData();
-      uploadFormData.append('csvFile', csvBlob, 'manual_entry.csv');
-      uploadFormData.append('uploadOption', uploadOption);
-      uploadFormData.append('cocode', cocode);
-      uploadFormData.append('source', 'manual_entry');
-      
-      if (uploadOption === 'date') {
-        uploadFormData.append('completionType', completionType);
-      } else if (uploadOption === 'poc') {
-        uploadFormData.append('templateType', templateType);
-        uploadFormData.append('cutoffDate', cutoffDate);
-      }
-
-      const response = await fetch('http://localhost:3001/api/upload-csv', {
-        method: 'POST',
-        body: uploadFormData,
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        const entryCount = activeEntryType === 'completion' ? completionEntries.length : pocEntries.length;
-        const entryType = activeEntryType === 'completion' ? 'completion date' : 'POC';
-        setMessage(`✅ Successfully saved ${entryCount} ${entryType} ${entryCount === 1 ? 'entry' : 'entries'}! ${result.message}`);
-        
-        logToServer({ 
-          level: 'info', 
-          message: `Manual ${entryType} entries successful: ${entryCount} entries for company ${cocode}`,
-          component: 'ManualPcompEntry',
-          data: { entryType: activeEntryType, entryCount, cocode }
-        });
-        
-        // Reset entries
-        if (activeEntryType === 'completion') {
-          setCompletionEntries([{
-            id: Date.now(),
-            project: '',
-            phasecode: '',
-            completionDate: '',
-            completionType: 'A',
-            projectDescription: '',
-            phaseDescription: '',
-            dateValidationError: ''
-          }]);
-        } else {
-          setPocEntries([{
-            id: Date.now(),
-            project: '',
-            phasecode: '',
-            year: new Date().getFullYear(),
-            month: new Date().getMonth() + 1,
-            pocValue: '',
-            projectDescription: '',
-            phaseDescription: '',
-            pocType: 'A',
-            isExistingRecord: false,
-            completionValidationError: ''
-          }]);
-        }
-      } else {
-        setMessage(`❌ Failed to save entries: ${result.message}`);
-        logToServer({ 
-          level: 'error', 
-          message: `Manual entry submission failed: ${result.message}`,
-          component: 'ManualPcompEntry'
-        });
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      setMessage(`❌ Error submitting entries: ${error.message}`);
-      logToServer({ 
-        level: 'error', 
-        message: `Manual entry submission error: ${error.message}`,
-        component: 'ManualPcompEntry'
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const controlsDisabled = isLoading || isSubmitting || dbStatus !== 'connected';
-  const submitDisabled = controlsDisabled || !cocode;
-
-  // Generate year options
-  const yearOptions = [];
-  for (let year = POC_YEAR_RANGE.MIN; year <= POC_YEAR_RANGE.MAX; year++) {
-    yearOptions.push(year);
-  }
-
-  // Generate month options
-  const monthOptions = [
-    { value: 1, name: 'January' }, { value: 2, name: 'February' }, { value: 3, name: 'March' },
-    { value: 4, name: 'April' }, { value: 5, name: 'May' }, { value: 6, name: 'June' },
-    { value: 7, name: 'July' }, { value: 8, name: 'August' }, { value: 9, name: 'September' },
-    { value: 10, name: 'October' }, { value: 11, name: 'November' }, { value: 12, name: 'December' }
-  ];
-
-  // start new 0713
-  // ✅ NEW: Add conflict handling state
-  const [conflictDialog, setConflictDialog] = useState({
-    isVisible: false,
-    conflicts: [],
-    pendingEntries: [],
-    isProcessing: false
-  });
-
   // ✅ NEW: Check for completion date conflicts
   const checkCompletionConflicts = async (entries) => {
     try {
@@ -604,8 +455,7 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
     }
   };
 
-
- // ✅ NEW: Handle upload with conflict resolution
+  // ✅ NEW: Handle upload with conflict resolution
   const uploadWithConflictResolution = async (entries, conflicts, confirmedBy) => {
     try {
       const response = await fetch('http://localhost:3001/api/upload-completion-with-conflicts', {
@@ -857,7 +707,22 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
     setMessage('Upload cancelled by user due to POC data conflicts.');
   };
 
-  // end new 0713
+  const controlsDisabled = isLoading || isSubmitting || dbStatus !== 'connected';
+  const submitDisabled = controlsDisabled || !cocode;
+
+  // Generate year options
+  const yearOptions = [];
+  for (let year = POC_YEAR_RANGE.MIN; year <= POC_YEAR_RANGE.MAX; year++) {
+    yearOptions.push(year);
+  }
+
+  // Generate month options
+  const monthOptions = [
+    { value: 1, name: 'January' }, { value: 2, name: 'February' }, { value: 3, name: 'March' },
+    { value: 4, name: 'April' }, { value: 5, name: 'May' }, { value: 6, name: 'June' },
+    { value: 7, name: 'July' }, { value: 8, name: 'August' }, { value: 9, name: 'September' },
+    { value: 10, name: 'October' }, { value: 11, name: 'November' }, { value: 12, name: 'December' }
+  ];
 
   return (
     <div className="csv-uploader-container">
@@ -930,21 +795,21 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
             </div>
           </div>
 
- {/* ✅ NEW as of 0713: Add Conflict Dialog */}
-      <CompletionConflictDialog
-        conflicts={conflictDialog.conflicts}
-        onConfirm={handleConflictConfirmation}
-        onCancel={handleConflictCancellation}
-        isVisible={conflictDialog.isVisible}
-        isProcessing={conflictDialog.isProcessing}
-      />
+          {/* ✅ NEW: Add Conflict Dialog */}
+          <CompletionConflictDialog
+            conflicts={conflictDialog.conflicts}
+            onConfirm={handleConflictConfirmation}
+            onCancel={handleConflictCancellation}
+            isVisible={conflictDialog.isVisible}
+            isProcessing={conflictDialog.isProcessing}
+          />
 
-     {/* Message Display */}
-      {message && (
-        <div className={`feedback-message ${message.startsWith('❌') || message.includes('Failed') || message.includes('Error') || message.includes('Cannot submit') ? 'error-message' : 'success-message'}`}>
-          <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{message}</pre>
-        </div>
-      )}
+          {/* Message Display */}
+          {message && (
+            <div className={`feedback-message ${message.startsWith('❌') || message.includes('Failed') || message.includes('Error') || message.includes('Cannot submit') ? 'error-message' : 'success-message'}`}>
+              <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{message}</pre>
+            </div>
+          )}
 
           <form onSubmit={handleSubmit}>
             {/* ✅ COMPLETION DATE ENTRIES */}
@@ -1373,14 +1238,7 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
         </>
       )}
 
-      {/* Message Display */}
-      {message && (
-        <div className={`feedback-message ${message.startsWith('❌') || message.includes('Failed') || message.includes('Error') || message.includes('Cannot submit') ? 'error-message' : 'success-message'}`}>
-          <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{message}</pre>
-        </div>
-      )}
-
-           {/* ✅ ENHANCED: Information Section */}
+      {/* ✅ ENHANCED: Information Section */}
       <div style={{
         marginTop: '40px',
         padding: '20px',
@@ -1409,7 +1267,7 @@ function ManualPcompEntry({ selectedCompany, cocode, dbStatus, cutoffDate, valid
             <li>Year range: {POC_YEAR_RANGE.MIN} - {POC_YEAR_RANGE.MAX}</li>
             <li>Type determined by cutoff date: {cutoffDate || 'Not set'}</li>
             <li>POC values: 0-100 (percentage)</li>
-            <strong>⚠️ Validation Rule:</strong> 100% POC not allowed for periods after project completion date
+            <li><strong>⚠️ Validation Rule:</strong> 100% POC not allowed for periods after project completion date</li>
           </ul>
         </div>
       </div>
