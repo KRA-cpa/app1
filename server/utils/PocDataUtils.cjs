@@ -12,12 +12,12 @@ const logger = require('../config/logger.cjs');
 class PocDataUtils {
     
     /**
-     * Check if there are 100% POC records after a given completion date
+     * Check if there are any active POC records after a given completion date.
      * @param {string} cocode - Company code
      * @param {string} project - Project name
      * @param {string} phasecode - Phase code (can be empty string)
      * @param {Date} completionDate - Completion date to check against
-     * @returns {Promise<Array>} Array of conflicting POC records
+     * @returns {Promise<Array>} Array of conflicting POC records.
      */
     static async findConflictingPocRecords(cocode, project, phasecode, completionDate) {
         const pool = getPool();
@@ -37,7 +37,6 @@ class PocDataUtils {
                 AND project = ? 
                 AND (phasecode IS NULL OR phasecode = '')
                 AND active = 1
-                AND value = 100
                 AND (
                     year > ? 
                     OR (year = ? AND month > ?)
@@ -52,8 +51,7 @@ class PocDataUtils {
                 WHERE cocode = ? 
                 AND project = ? 
                 AND phasecode = ?
-                AND active = 1
-                AND value = 100
+                AND active = 1 
                 AND (
                     year > ? 
                     OR (year = ? AND month > ?)
